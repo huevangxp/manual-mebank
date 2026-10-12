@@ -101,7 +101,7 @@
     <!-- Top Navigation Bar -->
     <header
         class="bg-gradient-to-r from-apb-800 via-apb-700 to-apb-600 text-white shadow-lg sticky top-0 z-50 no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div
                     class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center font-bold text-xl border border-white/20 shadow-inner">
@@ -118,7 +118,14 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Full Screen Toggle -->
+                <button id="btn-fullscreen" onclick="toggleFullScreen()"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
+                    <span id="fullscreen-icon">⛶</span>
+                    <span id="fullscreen-text">ເຕັມຈໍ (Full Screen)</span>
+                </button>
+
                 <!-- View Mode Toggle: Interactive Tabs vs All Steps List -->
                 <button id="btn-toggle-view" onclick="toggleAllView()"
                     class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
@@ -138,7 +145,7 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
+    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
 
         <!-- Title Banner -->
         <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm mb-6">

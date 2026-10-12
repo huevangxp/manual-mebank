@@ -749,12 +749,12 @@
             <!-- STEP 5: Passenger Details Form & Continue  -->
             <!-- ========================================== -->
             <div id="step-panel-5" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                    <!-- LEFT COLUMN: Image with sticky positioning -->
-                    <div class="lg:col-span-6 xl:col-span-6 lg:sticky lg:top-[170px]">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800">
+                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
                                     <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
                                     <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 5 (Screen 5 View)</span>
@@ -771,10 +771,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex justify-center items-center relative group">
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[360px]">
                                 <img id="img-screen-5" src="images/passenger_details_marked.png"
                                     alt="APB MeBank Passenger Details Form Guide"
-                                    class="w-full h-auto object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    class="w-full h-auto max-h-[520px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
                                     onclick="openLightbox('img-screen-5')">
                                 <button onclick="openLightbox('img-screen-5')"
                                     class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
@@ -782,7 +782,7 @@
                                 </button>
                             </div>
                             <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
                                 <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 <span class="font-mono text-slate-400">1024 × 772</span>
                             </div>
@@ -790,8 +790,8 @@
                     </div>
 
                     <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
                             <div class="flex items-start gap-3.5">
                                 <span
                                     class="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-600 to-rose-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">5</span>
@@ -802,35 +802,37 @@
                             </div>
                         </div>
 
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2 h-5 bg-rose-600 rounded-sm inline-block"></span>
-                                <span>ວິທີປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ ແລະ ກົດຕໍ່ໄປ (Passenger Details Form)</span>
-                            </h3>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-rose-600 rounded-sm inline-block"></span>
+                                    <span>ວິທີປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ ແລະ ກົດຕໍ່ໄປ (Passenger Details Form)</span>
+                                </h3>
 
-                            <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-3">
-                                <div class="flex items-start gap-2.5">
-                                    <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                    <div>
-                                        <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານໃຫ້ຄົບຖ້ວນທຸກຊ່ອງ (Marks 1..10)</h4>
-                                        <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
-                                            <p>• <strong>ຄຳນຳໜ້າ & ເພດ:</strong> ທ່ານ (Mr.) · ເພດ: ຊາຍ (Male)</p>
-                                            <p>• <strong>ຊື່ & ນາມສະກຸນ:</strong> Huevang XIONGPOR</p>
-                                            <p>• <strong>ປະເທດ & ສັນຊາດ:</strong> Laos PDR</p>
-                                            <p>• <strong>ວັນເດືອນປີເກີດ:</strong> 02/09/2000</p>
-                                            <p>• <strong>ອີເມວ & ເບີໂທ:</strong> huevangxp@gmail.com · +856 2011223344</p>
-                                            <p>• <strong>ເອກະສານປະຈຳຕົວ:</strong> ບັດປະຈຳຕົວ (ID Card) ເລກທີ: 012345678</p>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    <div class="flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານໃຫ້ຄົບຖ້ວນທຸກຊ່ອງ (Marks 1..10)</h4>
+                                            <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
+                                                <p>• <strong>ຄຳນຳໜ້າ & ເພດ:</strong> ທ່ານ (Mr.) · ເພດ: ຊາຍ (Male)</p>
+                                                <p>• <strong>ຊື່ & ນາມສະກຸນ:</strong> Huevang XIONGPOR</p>
+                                                <p>• <strong>ປະເທດ & ສັນຊາດ:</strong> Laos PDR</p>
+                                                <p>• <strong>ວັນເດືອນປີເກີດ:</strong> 02/09/2000</p>
+                                                <p>• <strong>ອີເມວ & ເບີໂທ:</strong> huevangxp@gmail.com · +856 2011223344</p>
+                                                <p>• <strong>ເອກະສານປະຈຳຕົວ:</strong> ບັດປະຈຳຕົວ (ID Card) ເລກທີ: 012345678</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="pt-3 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                    <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">11</span>
-                                    <div>
-                                        <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 11)</h4>
-                                        <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                            ເມື່ອກວດສອບຂໍ້ມູນຄົບທຸກຊ່ອງແລ້ວ, ຄລິກປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ດ້ານລຸ່ມຂວາມື ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 11)</strong> ເພື່ອກ້າວສູ່ໜ້າກວດສອບຂໍ້ມູນການຈອງ.
-                                        </p>
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">11</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 11)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ເມື່ອກວດສອບຂໍ້ມູນຄົບທຸກຊ່ອງແລ້ວ, ຄລິກປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ດ້ານລຸ່ມຂວາມື ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 11)</strong> ເພື່ອກ້າວສູ່ໜ້າກວດສອບຂໍ້ມູນການຈອງ.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -842,22 +844,21 @@
                                 </p>
                             </div>
                         </div>
-
-                        <!-- Bottom Nav Controller -->
-                        <div
-                            class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                            <button onclick="goToStep(4)"
-                                class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                                ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 4)
-                            </button>
-                            <span class="text-xs text-slate-500 font-bold">5 / 9</span>
-                            <button onclick="goToStep(6)"
-                                class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                                <span>ຕໍ່ໄປ: ກວດສອບຂໍ້ມູນ (Step 6)</span>
-                                <span>›</span>
-                            </button>
-                        </div>
                     </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
+                    <button onclick="goToStep(4)"
+                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 4)
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">5 / 9</span>
+                    <button onclick="goToStep(6)"
+                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+                        <span>ຕໍ່ໄປ: ກວດສອບຂໍ້ມູນ (Step 6)</span>
+                        <span>›</span>
+                    </button>
                 </div>
             </div>
 

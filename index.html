@@ -827,6 +827,131 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- SCREEN 7: Select Payment Account Modal -->
+        <!-- ========================================== -->
+        <section id="screen-7" class="mb-14 scroll-mt-20">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-apb-600 text-white flex items-center justify-center font-bold text-sm shadow">7</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">ຕອນທີ 7: ເລືອກບັນຊີສຳລັບຊຳລະເງິນ (Select Payment Account)</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">ເລືອກບັນຊີເງິນກີບ (LAK) ທີ່ມີຍອດເງິນພຽງພໍເພື່ອຕັດຊຳລະຄ່າປີ້ເຮືອບິນ</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <!-- Image Header with Toggle -->
+                <div class="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wide">ປັອບອັບເລືອກບັນຊີຕັດເງິນ (Select Account Popup Modal)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-slate-400 text-[11px] hidden sm:inline">ຮູບແບບການສະແດງ:</span>
+                        <button id="btn-s7-marked" onclick="switchImageScreen7('marked')" class="px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition">
+                            ຮູບມີເຄື່ອງໝາຍ (Marked)
+                        </button>
+                        <button id="btn-s7-original" onclick="switchImageScreen7('original')" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition">
+                            ຮູບຕົ້ນສະບັບ (Original)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image Display Area -->
+                <div class="p-4 sm:p-6 bg-slate-100 flex justify-center items-center border-b border-slate-200">
+                    <img id="img-screen-7" src="images/account_selection_marked.png" alt="APB MeBank Select Account" class="rounded-xl shadow-lg border border-slate-300 max-w-full h-auto transition-all duration-300">
+                </div>
+
+                <!-- Explanation Cards -->
+                <div class="p-5 sm:p-8 space-y-6">
+                    <div class="border-l-4 border-apb-600 pl-4">
+                        <h3 class="text-lg font-bold text-slate-900">ຄຳແນະນຳການເລືອກບັນຊີຕັດເງິນ (Account Selection Instructions)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                            ໃນກໍລະນີທີ່ທ່ານມີຫຼາຍບັນຊີ ຫຼື ຕ້ອງການປ່ຽນບັນຊີທີ່ໃຊ້ຕັດເງິນ, ລະບົບຈະສະແດງລາຍການບັນຊີທັງໝົດຂອງທ່ານຂຶ້ນມາໃຫ້ເລືອກ. ເນື່ອງຈາກປີ້ເຮືອບິນ Lao Skyway ຄິດໄລ່ເປັນເງິນກີບ (<strong>710,000.00 LAK</strong>), ທ່ານຄວນເລືອກບັນຊີສະກຸນເງິນ LAK ທີ່ມີຍອດເງິນພຽງພໍ.
+                        </p>
+                    </div>
+
+                    <!-- Grid of Detailed Fields to Check -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Mark 1: Primary LAK Account (Selected) -->
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border-2 border-emerald-400 hover:border-emerald-500 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px]">1</span>
+                                    <span>ບັນຊີຫຼັກ LAK (ເລືອກໄວ້ແລ້ວ ✔)</span>
+                                </span>
+                                <span class="text-xs font-semibold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">ແນະນຳ / Default</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ບັນຊີເລກທີ: 0000-XXXX-00108241 LAK</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                • ຊື່ບັນຊີ: <strong>ທ່ານ ວັນທະວິສິດ ວິວົງກອນ</strong><br>
+                                • ສະຖານະ: ມີໝາຍຕິກຖືກ <span class="text-emerald-600 font-bold">✔</span> (Active). ເປັນບັນຊີຫຼັກທີ່ຖືກເລືອກໄວ້ໂດຍອັດຕະໂນມັດ.<br>
+                                • ຫາກບັນຊີນີ້ມີເງິນພຽງພໍ <strong>710,000.00 LAK</strong>, ທ່ານສາມາດໃຊ້ບັນຊີນີ້ຊຳລະໄດ້ເລີຍ.
+                            </p>
+                        </div>
+
+                        <!-- Mark 2: Alternative LAK Account -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-rose-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">2</span>
+                                    <span>ບັນຊີ LAK ສຳຮອງ (Alternative)</span>
+                                </span>
+                                <span class="text-xs font-semibold text-slate-600 bg-white px-2 py-0.5 rounded border border-slate-200">ບັນຊີເງິນກີບອື່ນ</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ບັນຊີເລກທີ: 0100-XXXX-000685 LAK</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                • ຊື່ບັນຊີ: <strong>ທ່ານ ວັນທະວິສິດ ວິວົງກອນ</strong><br>
+                                • ຫາກບັນຊີຫຼັກ (Mark 1) ມີເງິນບໍ່ພຽງພໍ, ທ່ານສາມາດ <strong>ຄລິກທີ່ແຖວນີ້</strong> ເພື່ອສະຫຼັບມາຕັດເງິນຈາກບັນຊີ LAK ນີ້ແທນ.
+                            </p>
+                        </div>
+
+                        <!-- Mark 3: Foreign Currency Accounts -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">3</span>
+                                    <span>ບັນຊີເງິນຕາຕ່າງປະເທດ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-amber-700 bg-white px-2 py-0.5 rounded border border-amber-200">CNY / THB / USD</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ບັນຊີສະກຸນເງິນ: ຢວນ, ບາດ ແລະ ໂດລາ</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                • <strong>0100-XXXX-000298 CNY</strong> (ເງິນຢວນ)<br>
+                                • <strong>0100-XXXX-000598 THB</strong> (ເງິນບາດ)<br>
+                                • <strong>0100-XXXX-000531 USD</strong> (ເງິນໂດລາ)<br>
+                                • <em>ໝາຍເຫດ:</em> ການຕັດເງິນຄ່າປີ້ພາຍໃນປະເທດແນະນຳໃຫ້ໃຊ້ບັນຊີ LAK ເພື່ອຫຼີກລ່ຽງສ່ວນຕ່າງອັດຕາແລກປ່ຽນ.
+                            </p>
+                        </div>
+
+                        <!-- Mark 4: Back Button / Confirm -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-sky-100 text-sky-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px]">4</span>
+                                    <span>ປຸ່ມກັບຄືນ (Back / Confirm)</span>
+                                </span>
+                                <span class="text-xs font-semibold text-sky-700 bg-white px-2 py-0.5 rounded border border-sky-200">← ເລືອກບັນຊີ</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ປຸ່ມລູກສອນກັບຄືນໜ້າກວດສອບ</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                • ເມື່ອຄລິກເລືອກບັນຊີທີ່ຕ້ອງການຮຽບຮ້ອຍແລ້ວ (ຫຼື ຫາກໃຊ້ບັນຊີຫຼັກເດີມ), ສາມາດຄລິກປຸ່ມລູກສອນ <strong>"←"</strong> ດ້ານເທິງຊ້າຍ ເພື່ອກັບຄືນສູ່ໜ້າກວດສອບຂໍ້ມູນການຈອງ.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow summary tip -->
+                    <div class="p-4 rounded-xl bg-teal-50 border border-teal-200 flex items-start gap-3">
+                        <span class="text-teal-600 text-lg">💡</span>
+                        <div class="text-xs sm:text-sm text-teal-900 leading-relaxed">
+                            <strong>ວິທີປະຕິບັດ:</strong> ຫາກທ່ານພໍໃຈກັບບັນຊີຫຼັກ <strong>0000-XXXX-00108241 LAK</strong> ທີ່ມີໝາຍຕິກຖືກຢູ່ແລ້ວ, ສາມາດກົດປຸ່ມ <strong>←</strong> ເພື່ອກັບຄືນໜ້າຢືນຢັນ ແລະ ກົດປຸ່ມ <strong>"ຕໍ່ໄປ" (Continue)</strong> ເພື່ອກ້າວສູ່ຂັ້ນຕອນປ້ອນລະຫັດ TPIN ຢືນຢັນການຕັດເງິນ.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Summary & Next Steps -->
         <div class="bg-gradient-to-r from-apb-800 to-apb-700 text-white rounded-2xl p-6 sm:p-8 shadow-lg mb-10">
             <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
@@ -835,7 +960,7 @@
             <p class="text-sm text-emerald-100/90 leading-relaxed mb-6">
                 ສະຫຼຸບຂະບວນການຈອງປີ້ເຮືອບິນ Lao Skyway ຜ່ານ APB MeBank ແຕ່ຕົ້ນຈົນຈົບ:
             </p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 text-xs">
                 <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">1. ເຂົ້າເມນູ</span>
                     <span>ກົດ "ຊຳລະບິນ" ແລ້ວເລືອກ "ລາວເດີນອາກາດ"</span>
@@ -857,8 +982,12 @@
                     <span>ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ 10 ຊ່ອງ ແລ້ວກົດ "ຕໍ່ໄປ"</span>
                 </div>
                 <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
-                    <span class="font-bold text-emerald-300 block mb-1">6. ກວດສອບ & ຕໍ່ໄປ</span>
-                    <span>ກວດສອບຄວາມຖືກຕ້ອງ ແລ້ວກົດ "ຕໍ່ໄປ"</span>
+                    <span class="font-bold text-emerald-300 block mb-1">6. ກວດສອບ</span>
+                    <span>ກວດສອບຄວາມຖືກຕ້ອງຂອງຂໍ້ມູນການຈອງ</span>
+                </div>
+                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                    <span class="font-bold text-emerald-300 block mb-1">7. ເລືອກບັນຊີ</span>
+                    <span>ເລືອກບັນຊີ LAK ທີ່ໃຊ້ຊຳລະເງິນ</span>
                 </div>
             </div>
         </div>
@@ -960,6 +1089,21 @@
                 btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             } else {
                 img.src = 'images/booking_review.png';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            }
+        }
+
+        function switchImageScreen7(type) {
+            const img = document.getElementById('img-screen-7');
+            const btnMarked = document.getElementById('btn-s7-marked');
+            const btnOriginal = document.getElementById('btn-s7-original');
+            if (type === 'marked') {
+                img.src = 'images/account_selection_marked.png';
+                btnMarked.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            } else {
+                img.src = 'images/account_selection.png';
                 btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
                 btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             }

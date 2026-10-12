@@ -1476,6 +1476,31 @@
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
+        // Full Screen presentation mode
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log("Full Screen request not allowed or cancelled: " + err.message);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(err => console.log(err));
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const fsText = document.getElementById('fullscreen-text');
+            const fsIcon = document.getElementById('fullscreen-icon');
+            if (document.fullscreenElement) {
+                if (fsText) fsText.innerText = 'ອອກເຕັມຈໍ (Exit)';
+                if (fsIcon) fsIcon.innerText = '🗗';
+            } else {
+                if (fsText) fsText.innerText = 'ເຕັມຈໍ (Full Screen)';
+                if (fsIcon) fsIcon.innerText = '⛶';
+            }
+        });
+
         // Image Switchers for Screen 1 to 9
         function switchImageScreen1(type) {
             const img = document.getElementById('img-screen-1');

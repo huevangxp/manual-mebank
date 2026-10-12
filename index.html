@@ -73,6 +73,7 @@
                 <a href="#screen-6" class="hidden xl:inline-flex text-xs px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition">6. ກວດສອບ & ຕໍ່ໄປ</a>
                 <a href="#screen-7" class="hidden xl:inline-flex text-xs px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition">7. ເລືອກບັນຊີຊຳລະ</a>
                 <a href="#screen-8" class="hidden xl:inline-flex text-xs px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition">8. ຢັ້ງຢືນ TPIN</a>
+                <a href="#screen-9" class="hidden xl:inline-flex text-xs px-2.5 py-1 rounded bg-emerald-400 text-slate-900 font-bold hover:bg-emerald-300 transition shadow">9. ສຳເລັດ & ດາວໂຫຼດ</a>
                 <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs sm:text-sm font-medium transition backdrop-blur-sm border border-white/20 shadow-sm ml-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -100,50 +101,55 @@
                 ຄູ່ມືການຊຳລະບິນ ແລະ ຈອງປີ້ເຮືອບິນ: <span class="text-apb-600">ລາວເດີນອາກາດ (Lao Skyway)</span>
             </h1>
             <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed max-w-4xl">
-                ຄູ່ມືແນະນຳລະອຽດທຸກຂັ້ນຕອນ: ການເຂົ້າເມນູຊຳລະບິນ, ການເລືອກຜູ້ໃຫ້ບໍລິການ, ການປ້ອນຂໍ້ມູນຄົ້ນຫາຖ້ຽວບິນ, ການເລືອກແພັກເກດຊັ້ນບ່ອນນັ່ງ, ການຍອມຮັບເງື່ອນໄຂປັອບອັບ, ການປ້ອນລາຍລະອຽດຜູ້ໂດຍສານ (Passenger Details), ການກວດສອບຂໍ້ມູນການຈອງ (Booking Review), ການເລືອກບັນຊີຊຳລະເງິນ (Select Payment Account) ແລະ ການປ້ອນລະຫັດ TPIN ເພື່ອຢືນຢັນການຕັດເງິນ.
+                ຄູ່ມືແນະນຳລະອຽດທຸກຂັ້ນຕອນ: ການເຂົ້າເມນູຊຳລະບິນ, ການເລືອກຜູ້ໃຫ້ບໍລິການ, ການປ້ອນຂໍ້ມູນຄົ້ນຫາຖ້ຽວບິນ, ການເລືອກແພັກເກດຊັ້ນບ່ອນນັ່ງ, ການຍອມຮັບເງື່ອນໄຂປັອບອັບ, ການປ້ອນລາຍລະອຽດຜູ້ໂດຍສານ (Passenger Details), ການກວດສອບຂໍ້ມູນການຈອງ (Booking Review), ການເລືອກບັນຊີຊຳລະເງິນ (Select Payment Account), ການປ້ອນລະຫັດ TPIN ແລະ ການດາວໂຫຼດໃບຢັ້ງຢືນການຊຳລະເງິນ (Payment Success E-Receipt).
             </p>
 
             <!-- Quick Step Tracker Pills -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 mt-6 pt-6 border-t border-slate-100">
-                <a href="#screen-1" class="p-3 bg-emerald-50/70 hover:bg-emerald-100/70 border border-emerald-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">ຂັ້ນຕອນ 01</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ເລືອກເມນູ</div>
-                    <div class="text-[11px] text-slate-500">Bill Payment</div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-2 mt-6 pt-6 border-t border-slate-100">
+                <a href="#screen-1" class="p-2.5 bg-emerald-50/70 hover:bg-emerald-100/70 border border-emerald-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">ຂັ້ນຕອນ 01</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ເລືອກເມນູ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Bill Payment</div>
                 </a>
-                <a href="#screen-2" class="p-3 bg-teal-50/70 hover:bg-teal-100/70 border border-teal-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-teal-800 uppercase tracking-wider">ຂັ້ນຕອນ 02</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ຄົ້ນຫາຖ້ຽວບິນ</div>
-                    <div class="text-[11px] text-slate-500">Search Flight</div>
+                <a href="#screen-2" class="p-2.5 bg-teal-50/70 hover:bg-teal-100/70 border border-teal-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-teal-800 uppercase tracking-wider">ຂັ້ນຕອນ 02</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ຄົ້ນຫາຖ້ຽວບິນ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Search Flight</div>
                 </a>
-                <a href="#screen-3" class="p-3 bg-sky-50/70 hover:bg-sky-100/70 border border-sky-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-sky-800 uppercase tracking-wider">ຂັ້ນຕອນ 03</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ເລືອກຊັ້ນບ່ອນນັ່ງ</div>
-                    <div class="text-[11px] text-slate-500">Select Fare (LOVE)</div>
+                <a href="#screen-3" class="p-2.5 bg-sky-50/70 hover:bg-sky-100/70 border border-sky-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-sky-800 uppercase tracking-wider">ຂັ້ນຕອນ 03</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ເລືອກຊັ້ນບ່ອນນັ່ງ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Select Fare</div>
                 </a>
-                <a href="#screen-4" class="p-3 bg-amber-50/70 hover:bg-amber-100/70 border border-amber-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-amber-800 uppercase tracking-wider">ຂັ້ນຕອນ 04</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ຍອມຮັບເງື່ອນໄຂ</div>
-                    <div class="text-[11px] text-slate-500">Terms Popup</div>
+                <a href="#screen-4" class="p-2.5 bg-amber-50/70 hover:bg-amber-100/70 border border-amber-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-amber-800 uppercase tracking-wider">ຂັ້ນຕອນ 04</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ຍອມຮັບເງື່ອນໄຂ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Terms Popup</div>
                 </a>
-                <a href="#screen-5" class="p-3 bg-rose-50/70 hover:bg-rose-100/70 border border-rose-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wider">ຂັ້ນຕອນ 05</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ປ້ອນຊື່ຜູ້ໂດຍສານ</div>
-                    <div class="text-[11px] text-slate-500">Passenger Details</div>
+                <a href="#screen-5" class="p-2.5 bg-rose-50/70 hover:bg-rose-100/70 border border-rose-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-rose-800 uppercase tracking-wider">ຂັ້ນຕອນ 05</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ປ້ອນຊື່ຜູ້ໂດຍສານ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Passenger Info</div>
                 </a>
-                <a href="#screen-6" class="p-3 bg-purple-50/70 hover:bg-purple-100/70 border border-purple-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-purple-800 uppercase tracking-wider">ຂັ້ນຕອນ 06</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ກວດສອບຂໍ້ມູນ</div>
-                    <div class="text-[11px] text-slate-500">Review Booking</div>
+                <a href="#screen-6" class="p-2.5 bg-purple-50/70 hover:bg-purple-100/70 border border-purple-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-purple-800 uppercase tracking-wider">ຂັ້ນຕອນ 06</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ກວດສອບຂໍ້ມູນ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Review Booking</div>
                 </a>
-                <a href="#screen-7" class="p-3 bg-cyan-50/70 hover:bg-cyan-100/70 border border-cyan-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-cyan-800 uppercase tracking-wider">ຂັ້ນຕອນ 07</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ເລືອກບັນຊີຊຳລະ</div>
-                    <div class="text-[11px] text-slate-500">Select Account</div>
+                <a href="#screen-7" class="p-2.5 bg-cyan-50/70 hover:bg-cyan-100/70 border border-cyan-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-cyan-800 uppercase tracking-wider">ຂັ້ນຕອນ 07</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ເລືອກບັນຊີຊຳລະ</div>
+                    <div class="text-[10px] text-slate-500 truncate">Select Account</div>
                 </a>
-                <a href="#screen-8" class="p-3 bg-indigo-50/70 hover:bg-indigo-100/70 border border-indigo-100 rounded-xl transition">
-                    <div class="text-[11px] font-bold text-indigo-800 uppercase tracking-wider">ຂັ້ນຕອນ 08</div>
-                    <div class="text-xs font-bold text-slate-900 mt-0.5">ຢັ້ງຢືນ TPIN</div>
-                    <div class="text-[11px] text-slate-500">TPIN Verification</div>
+                <a href="#screen-8" class="p-2.5 bg-indigo-50/70 hover:bg-indigo-100/70 border border-indigo-100 rounded-xl transition">
+                    <div class="text-[10px] font-bold text-indigo-800 uppercase tracking-wider">ຂັ້ນຕອນ 08</div>
+                    <div class="text-xs font-bold text-slate-900 mt-0.5 truncate">ຢັ້ງຢືນ TPIN</div>
+                    <div class="text-[10px] text-slate-500 truncate">TPIN PIN</div>
+                </a>
+                <a href="#screen-9" class="p-2.5 bg-emerald-100/80 hover:bg-emerald-200/80 border border-emerald-300 rounded-xl transition shadow-sm">
+                    <div class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider">ຂັ້ນຕອນ 09</div>
+                    <div class="text-xs font-bold text-emerald-950 mt-0.5 truncate">ສຳເລັດ & ດາວໂຫຼດ</div>
+                    <div class="text-[10px] text-emerald-700 truncate">Success Receipt</div>
                 </a>
             </div>
         </div>

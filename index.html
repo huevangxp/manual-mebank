@@ -1085,6 +1085,161 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- SCREEN 9: Payment Success & E-Receipt -->
+        <!-- ========================================== -->
+        <section id="screen-9" class="mb-14 scroll-mt-20">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow">9</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">ຕອນທີ 9: ການຊຳລະເງິນສຳເລັດ ແລະ ດາວໂຫຼດໃບຢັ້ງຢືນ (Payment Success & E-Receipt)</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">ລາຍການສຳເລັດສົມບູນ, ຕັດເງິນ 710,000.00 LAK ແລະ ດາວໂຫຼດໃບຢັ້ງຢືນປີ້ເຮືອບິນ</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <!-- Image Header with Toggle -->
+                <div class="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wide">ໜ້າຈໍສະລິບໃບຢັ້ງຢືນການຊຳລະເງິນສຳເລັດ (Payment Success E-Receipt)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-slate-400 text-[11px] hidden sm:inline">ຮູບແບບການສະແດງ:</span>
+                        <button id="btn-s9-marked" onclick="switchImageScreen9('marked')" class="px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition">
+                            ຮູບມີເຄື່ອງໝາຍ (Marked)
+                        </button>
+                        <button id="btn-s9-original" onclick="switchImageScreen9('original')" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition">
+                            ຮູບຕົ້ນສະບັບ (Original)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image Display Area -->
+                <div class="p-4 sm:p-6 bg-slate-100 flex justify-center items-center border-b border-slate-200">
+                    <img id="img-screen-9" src="images/payment_success_marked.png" alt="APB MeBank Payment Success Receipt" class="rounded-xl shadow-lg border border-slate-300 max-w-full h-auto transition-all duration-300">
+                </div>
+
+                <!-- Explanation Cards -->
+                <div class="p-5 sm:p-8 space-y-6">
+                    <!-- Success Banner -->
+                    <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white flex items-center justify-between gap-4 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold">🎉</span>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold">ການຈອງປີ້ເຮືອບິນ ແລະ ຊຳລະເງິນສຳເລັດສົມບູນ!</h3>
+                                <p class="text-xs sm:text-sm text-emerald-100">ລະບົບ APB MeBank ໄດ້ຕັດເງິນ ແລະ ອອກເລກປີ້ໃຫ້ແລ້ວ</p>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-white/20 px-3 py-1.5 rounded-full font-semibold hidden sm:inline-block">Completed</span>
+                    </div>
+
+                    <!-- Grid of Detailed Fields to Check -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Mark 1: Status -->
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border-2 border-emerald-400 hover:border-emerald-500 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px]">1</span>
+                                    <span>ສະຖານະທຸລະກຳ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">Success</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ສຳເລັດ (Transaction Successful)</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• ເຄື່ອງໝາຍຕິກຖືກ <strong class="text-emerald-600">✔ ສຳເລັດ</strong> ພ້ອມໄອຄອນສາຍການບິນ Lao Skyway.</li>
+                                <li>• ວັນທີ & ເວລາທຸລະກຳ: <strong>2026-10-12 14:10</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 2: Transaction Details -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-sky-100 text-sky-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px]">2</span>
+                                    <span>ລາຍລະອຽດການຊຳລະເງິນ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-sky-700 bg-white px-2 py-0.5 rounded border border-sky-200">Payment Info</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ຂໍ້ມູນການໂອນ ແລະ ບັນຊີ</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• <strong>ສາຍການບິນ:</strong> LAOSKYWAY</li>
+                                <li>• <strong>ວິທີການຊຳລະ:</strong> tr (Bank Transfer)</li>
+                                <li>• <strong>ເນື້ອໃນການໂອນ:</strong> LAOSKYWAY Booking Payment</li>
+                                <li>• <strong>ເລກບັນຊີ:</strong> 0000-XXXX-00108241 (ທ່ານ ວັນທະວິສິດ ວິວົງກອນ)</li>
+                                <li>• <strong>ສະກຸນເງິນ & ສາຂາ:</strong> LAK / ລະຫັດສາຂາ 000020</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 3: Passenger Info -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">3</span>
+                                    <span>ຂໍ້ມູນຜູ້ໂດຍສານ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-amber-700 bg-white px-2 py-0.5 rounded border border-amber-200">Passenger</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ຜູ້ໂດຍສານທີ່ອອກປີ້</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1">
+                                <li>• <strong>ຊື່ຜູ້ໂດຍສານ:</strong> Mr. Huevang XIONGPOR</li>
+                                <li>• <strong>ປະເພດ:</strong> ADT (Adult - ຜູ້ໃຫຍ່)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 4: Total Amount Paid -->
+                        <div class="p-4 rounded-xl bg-rose-50/60 border border-rose-200 hover:border-rose-400 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">4</span>
+                                    <span>ຈຳນວນເງິນທີ່ຕັດຊຳລະ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-rose-700 bg-white px-2 py-0.5 rounded border border-rose-200">Paid Amount</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ຍອດເງິນຕັດຕົວຈິງ</h4>
+                            <div class="mt-2 text-xl font-extrabold text-rose-600">
+                                710,000.00 LAK
+                            </div>
+                            <p class="text-[11px] text-slate-500 mt-1">
+                                ຍອດເງິນຖືກຫັກອອກຈາກບັນຊີ MeBank ຮຽບຮ້ອຍແລ້ວ.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Mark 5: Action Download Buttons -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow ring-4 ring-emerald-100">
+                                    5
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-emerald-950">ປຸ່ມດາວໂຫຼດຫຼັກຖານ (Download Receipt & Certificate)</h4>
+                                    <p class="text-xs sm:text-sm text-emerald-900 mt-1 leading-relaxed">
+                                        ທ່ານສາມາດກົດປຸ່ມດາວໂຫຼດທັງສອງປຸ່ມເພື່ອເກັບຫຼັກຖານໄວ້ໃນໂທລະສັບ ຫຼື ພິມອອກເປັນເອກະສານ:
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
+                                <div class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow flex items-center gap-1.5">
+                                    <span>📥 ດາວໂຫຼດ (e-Receipt)</span>
+                                </div>
+                                <div class="px-4 py-2 rounded-xl bg-apb-700 text-white text-xs font-bold shadow flex items-center gap-1.5">
+                                    <span>📥 ດາວໂຫຼດໃບຢັ້ງຢືນ (e-Ticket)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-emerald-200/80 text-xs text-emerald-900 space-y-1">
+                            <p>• <strong>ດາວໂຫຼດ:</strong> ເກັບຮູບສະລິບການໂອນເງິນສຳເລັດ (Payment Receipt).</p>
+                            <p>• <strong>ດາວໂຫຼດໃບຢັ້ງຢືນ:</strong> ດາວໂຫຼດເອກະສານຢັ້ງຢືນປີ້ເຮືອບິນທາງການ (Official E-Ticket Certificate) ເພື່ອໃຊ້ສະແດງຕໍ່ເຈົ້າໜ້າທີ່ສາຍການບິນ Lao Skyway ໃນມື້ຂຶ້ນຖ້ຽວບິນ LK212 ທີ່ສະໜາມບິນວັດໄຕ (VTE).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Summary & Next Steps -->
         <div class="bg-gradient-to-r from-apb-800 to-apb-700 text-white rounded-2xl p-6 sm:p-8 shadow-lg mb-10">
             <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
@@ -1093,38 +1248,42 @@
             <p class="text-sm text-emerald-100/90 leading-relaxed mb-6">
                 ສະຫຼຸບຂະບວນການຈອງປີ້ເຮືອບິນ Lao Skyway ຜ່ານ APB MeBank ແຕ່ຕົ້ນຈົນຈົບ:
             </p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 text-xs">
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-2 text-xs">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">1. ເຂົ້າເມນູ</span>
-                    <span>ກົດ "ຊຳລະບິນ"</span>
+                    <span class="text-[11px]">ກົດ "ຊຳລະບິນ"</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">2. ຄົ້ນຫາ</span>
-                    <span>ປ້ອນຂໍ້ມູນຖ້ຽວບິນ</span>
+                    <span class="text-[11px]">ປ້ອນຖ້ຽວບິນ</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">3. ເລືອກຊັ້ນ</span>
-                    <span>ເລືອກແພັກເກດປີ້</span>
+                    <span class="text-[11px]">ເລືອກ LOVE</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">4. ເງື່ອນໄຂ</span>
-                    <span>ຍອມຮັບເງື່ອນໄຂ</span>
+                    <span class="text-[11px]">ຍອມຮັບປັອບອັບ</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">5. ປ້ອນຊື່</span>
-                    <span>ປ້ອນຊື່ຜູ້ໂດຍສານ</span>
+                    <span class="text-[11px]">10 ຊ່ອງຜູ້ໂດຍສານ</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">6. ກວດສອບ</span>
-                    <span>ກວດສອບຂໍ້ມູນ</span>
+                    <span class="text-[11px]">ກວດສອບ & ຕໍ່ໄປ</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">7. ເລືອກບັນຊີ</span>
-                    <span>ເລືອກບັນຊີ LAK</span>
+                    <span class="text-[11px]">ເລືອກບັນຊີ LAK</span>
                 </div>
-                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">8. ຢັ້ງຢືນ TPIN</span>
-                    <span>ປ້ອນລະຫັດ 6 ຫຼັກ</span>
+                    <span class="text-[11px]">ປ້ອນລະຫັດ 6 ຫຼັກ</span>
+                </div>
+                <div class="bg-emerald-500/30 p-2.5 rounded-xl backdrop-blur-sm border border-emerald-400">
+                    <span class="font-bold text-emerald-200 block mb-1">9. ສຳເລັດ 🎉</span>
+                    <span class="text-[11px]">ດາວໂຫຼດ e-Ticket</span>
                 </div>
             </div>
         </div>
@@ -1256,6 +1415,21 @@
                 btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             } else {
                 img.src = 'images/tpin_verification.png';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            }
+        }
+
+        function switchImageScreen9(type) {
+            const img = document.getElementById('img-screen-9');
+            const btnMarked = document.getElementById('btn-s9-marked');
+            const btnOriginal = document.getElementById('btn-s9-original');
+            if (type === 'marked') {
+                img.src = 'images/payment_success_marked.png';
+                btnMarked.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            } else {
+                img.src = 'images/payment_success.png';
                 btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
                 btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             }

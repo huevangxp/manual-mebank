@@ -663,6 +663,164 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- SCREEN 6: Booking Review & Confirmation -->
+        <!-- ========================================== -->
+        <section id="screen-6" class="mb-14 scroll-mt-20">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-apb-600 text-white flex items-center justify-center font-bold text-sm shadow">6</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">ຕອນທີ 6: ກວດສອບຂໍ້ມູນການຈອງ ແລະ ຄລິກປຸ່ມຕໍ່ໄປ</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Booking Review, Verification & Continue to Payment</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <!-- Image Header with Toggle -->
+                <div class="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wide">ໜ້າຈໍກວດສອບຂໍ້ມູນການຈອງທັງໝົດ (Review Booking Information)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-slate-400 text-[11px] hidden sm:inline">ຮູບແບບການສະແດງ:</span>
+                        <button id="btn-s6-marked" onclick="switchImageScreen6('marked')" class="px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition">
+                            ຮູບມີເຄື່ອງໝາຍ (Marked)
+                        </button>
+                        <button id="btn-s6-original" onclick="switchImageScreen6('original')" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition">
+                            ຮູບຕົ້ນສະບັບ (Original)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image Display Area -->
+                <div class="p-4 sm:p-6 bg-slate-100 flex justify-center items-center border-b border-slate-200">
+                    <img id="img-screen-6" src="images/booking_review_marked.png" alt="APB MeBank Booking Review" class="rounded-xl shadow-lg border border-slate-300 max-w-full h-auto transition-all duration-300">
+                </div>
+
+                <!-- Explanation Cards -->
+                <div class="p-5 sm:p-8 space-y-6">
+                    <div class="border-l-4 border-apb-600 pl-4">
+                        <h3 class="text-lg font-bold text-slate-900">ຄຳແນະນຳການກວດສອບລາຍລະອຽດ (Verification Guidelines)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                            ກ່ອນຈະດຳເນີນການຕັດເງິນຈາກບັນຊີ, ທ່ານຕ້ອງກວດສອບຂໍ້ມູນທັງໝົດ 4 ສ່ວນຫຼັກໃຫ້ລະອຽດ ແລະ ຖືກຕ້ອງ 100%. ຫາກຂໍ້ມູນຖືກຕ້ອງຄົບຖ້ວນແລ້ວ ຈຶ່ງຄລິກປຸ່ມ <strong>"ຕໍ່ໄປ" (Continue)</strong> ເພື່ອດຳເນີນການ.
+                        </p>
+                    </div>
+
+                    <!-- Grid of Detailed Fields to Check -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Mark 1: Account & Overview -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">1</span>
+                                    <span>ແຖບຂໍ້ມູນບັນຊີ & ປາຍທາງ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Account Overview</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ກວດສອບບັນຊີຕັດເງິນ ແລະ ເສັ້ນທາງບິນ</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+                                <li>• <strong>ຊື່ບັນຊີ:</strong> Mr. Huevang XIONGPOR</li>
+                                <li>• <strong>ເລກບັນຊີ:</strong> 0000200100108241 LAK (ບັນຊີ MeBank ທີ່ໃຊ້ຕັດເງິນ)</li>
+                                <li>• <strong>ເສັ້ນທາງ:</strong> VTE → XKH (ວຽງຈັນ ໄປ ຊຽງຂວາງ)</li>
+                                <li>• <strong>ປະເພດຖ້ຽວບິນ:</strong> 1 ຜູ້ໂດຍສານ · ຖ້ຽວບິນດຽວ (One-way)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 2: Flight Details -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">2</span>
+                                    <span>ຂໍ້ມູນຖ້ຽວບິນຂາໄປ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">Flight Details</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ກວດສອບເວລາ ແລະ ຖ້ຽວບິນ</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+                                <li>• <strong>ສາຍການບິນ & ຖ້ຽວບິນ:</strong> Lao Skyway - LK212</li>
+                                <li>• <strong>ຊັ້ນບ່ອນນັ່ງ:</strong> LOVE · Economy (ຊັ້ນປະຢັດ)</li>
+                                <li>• <strong>ເວລາອອກ:</strong> 15:10 VTE (14/10/2026 - ສະໜາມບິນວັດໄຕ)</li>
+                                <li>• <strong>ເວລາຮອດ:</strong> 15:45 XKH (14/10/2026 - ສະໜາມບິນຊຽງຂວາງ)</li>
+                                <li>• <strong>ໄລຍະເວລາບິນ:</strong> 1 ຊົ່ວໂມງ (1h)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 3: Passenger Details -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">3</span>
+                                    <span>ຂໍ້ມູນຜູ້ໂດຍສານ ໝາຍເລກ 1</span>
+                                </span>
+                                <span class="text-xs font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">Passenger Info</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ກວດສອບຊື່-ນາມສະກຸນ ແລະ ຂໍ້ມູນຕິດຕໍ່</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+                                <li>• <strong>ຊື່ & ນາມສະກຸນ:</strong> Mr. Huevang XIONGPOR (ຕ້ອງກົງກັບເອກະສານຕົວຈິງ)</li>
+                                <li>• <strong>ເພດ:</strong> M (ຊາຍ) | <strong>ສະຖານະ:</strong> ຜູ້ໃຫຍ່ (Adult)</li>
+                                <li>• <strong>ວັນເດືອນປີເກີດ:</strong> 2000-09-02 (2 ກັນຍາ 2000)</li>
+                                <li>• <strong>ເບີໂທລະສັບ:</strong> +8562011223344</li>
+                                <li>• <strong>ອີເມວ:</strong> huevangxp@gmail.com (ສຳລັບຮັບປີ້ E-ticket)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mark 4: Total Amount -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">4</span>
+                                    <span>ຍອດລວມທັງໝົດ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Total Price</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ກວດສອບຈຳນວນເງິນຊຳລະ</h4>
+                            <div class="mt-2 p-3 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">ລາຄາລວມຄ່າປີ້ & ພາສີ:</span>
+                                <span class="text-base font-extrabold text-apb-600">710,000.00 LAK</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mt-2">
+                                * ຈຳນວນເງິນນີ້ແມ່ນລາຄາປີ້ຊັ້ນ LOVE ຮວມຄ່າທຳນຽມ ແລະ ພາສີສະໜາມບິນແລ້ວ.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Mark 5: Action Button & Return Option -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-sm shadow ring-4 ring-rose-100">
+                                    5
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-emerald-950">ຂັ້ນຕອນສຸດທ້າຍ (Mark 5): ຄລິກປຸ່ມ "ຕໍ່ໄປ" (Click Continue Button)</h4>
+                                    <p class="text-xs sm:text-sm text-emerald-900 mt-1 leading-relaxed">
+                                        ເມື່ອກວດສອບຂໍ້ມູນ <strong>1, 2, 3, 4</strong> ຖືກຕ້ອງຄົບຖ້ວນທຸກລາຍການແລ້ວ, ໃຫ້ຄລິກປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ທີ່ມີໄອຄອນຕິກຖືກຢູ່ດ້ານລຸ່ມ ເພື່ອດຳເນີນການຊຳລະເງິນ ແລະ ສຳເລັດການອອກປີ້.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
+                                <div class="px-4 py-2 rounded-xl bg-rose-100 border border-rose-300 text-rose-800 text-xs font-semibold">
+                                    ‹ ກັບຄືນ (ຫາກມີຂໍ້ມູນຜິດ)
+                                </div>
+                                <div class="px-5 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-md flex items-center gap-1.5 ring-2 ring-emerald-300">
+                                    <span>ຕໍ່ໄປ (Continue)</span>
+                                    <span>✔</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Important Note / Tip -->
+                        <div class="mt-4 pt-3 border-t border-emerald-200/80 flex items-center gap-2 text-xs text-emerald-800">
+                            <span class="font-bold">💡 ຄຳແນະນຳ:</span>
+                            <span>ຫາກພົບເຫັນຂໍ້ມູນຜູ້ໂດຍສານ, ວັນທີ ຫຼື ຖ້ຽວບິນບໍ່ຖືກຕ້ອງ ສາມາດກົດປຸ່ມ <strong>"ກັບຄືນ" (Back)</strong> ສີບົວດ້ານຊ້າຍ ເພື່ອກັບໄປແກ້ໄຂໄດ້ທັນທີ.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Summary & Next Steps -->
         <div class="bg-gradient-to-r from-apb-800 to-apb-700 text-white rounded-2xl p-6 sm:p-8 shadow-lg mb-10">
             <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
@@ -671,7 +829,7 @@
             <p class="text-sm text-emerald-100/90 leading-relaxed mb-6">
                 ສະຫຼຸບຂະບວນການຈອງປີ້ເຮືອບິນ Lao Skyway ຜ່ານ APB MeBank ແຕ່ຕົ້ນຈົນຈົບ:
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 text-xs">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
                 <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">1. ເຂົ້າເມນູ</span>
                     <span>ກົດ "ຊຳລະບິນ" ແລ້ວເລືອກ "ລາວເດີນອາກາດ"</span>
@@ -689,8 +847,12 @@
                     <span>ກົດ "ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ" ປັອບອັບ</span>
                 </div>
                 <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
-                    <span class="font-bold text-emerald-300 block mb-1">5. ປ້ອນຊື່ & ຕໍ່ໄປ</span>
+                    <span class="font-bold text-emerald-300 block mb-1">5. ປ້ອນຊື່</span>
                     <span>ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ 10 ຊ່ອງ ແລ້ວກົດ "ຕໍ່ໄປ"</span>
+                </div>
+                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                    <span class="font-bold text-emerald-300 block mb-1">6. ກວດສອບ & ຕໍ່ໄປ</span>
+                    <span>ກວດສອບຄວາມຖືກຕ້ອງ ແລ້ວກົດ "ຕໍ່ໄປ"</span>
                 </div>
             </div>
         </div>
@@ -777,6 +939,21 @@
                 btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             } else {
                 img.src = 'images/passenger_details.png';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            }
+        }
+
+        function switchImageScreen6(type) {
+            const img = document.getElementById('img-screen-6');
+            const btnMarked = document.getElementById('btn-s6-marked');
+            const btnOriginal = document.getElementById('btn-s6-original');
+            if (type === 'marked') {
+                img.src = 'images/booking_review_marked.png';
+                btnMarked.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            } else {
+                img.src = 'images/booking_review.png';
                 btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
                 btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             }

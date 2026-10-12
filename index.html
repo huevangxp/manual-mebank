@@ -958,6 +958,127 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- SCREEN 8: TPIN Verification Modal -->
+        <!-- ========================================== -->
+        <section id="screen-8" class="mb-14 scroll-mt-20">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-apb-600 text-white flex items-center justify-center font-bold text-sm shadow">8</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">ຕອນທີ 8: ປ້ອນລະຫັດ TPIN ເພື່ອຢືນຢັນການຊຳລະເງິນ (TPIN Verification)</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">ປ້ອນລະຫັດລັບທຸລະກຳ TPIN 6 ຫຼັກ ເພື່ອອະນຸມັດຕັດເງິນ 710,000.00 LAK</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <!-- Image Header with Toggle -->
+                <div class="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wide">ປັອບອັບຢັ້ງຢືນລະຫັດ TPIN (TPIN Verification Modal)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-slate-400 text-[11px] hidden sm:inline">ຮູບແບບການສະແດງ:</span>
+                        <button id="btn-s8-marked" onclick="switchImageScreen8('marked')" class="px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition">
+                            ຮູບມີເຄື່ອງໝາຍ (Marked)
+                        </button>
+                        <button id="btn-s8-original" onclick="switchImageScreen8('original')" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition">
+                            ຮູບຕົ້ນສະບັບ (Original)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image Display Area -->
+                <div class="p-4 sm:p-6 bg-slate-100 flex justify-center items-center border-b border-slate-200">
+                    <img id="img-screen-8" src="images/tpin_verification_marked.png" alt="APB MeBank TPIN Verification" class="rounded-xl shadow-lg border border-slate-300 max-w-full h-auto transition-all duration-300">
+                </div>
+
+                <!-- Explanation Cards -->
+                <div class="p-5 sm:p-8 space-y-6">
+                    <div class="border-l-4 border-apb-600 pl-4">
+                        <h3 class="text-lg font-bold text-slate-900">ຄຳແນະນຳການປ້ອນລະຫັດ TPIN (TPIN Security Instructions)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                            ລະຫັດ TPIN (Transaction Personal Identification Number) ແມ່ນລະຫັດຄວາມປອດໄພ 6 ຕົວເລກສ່ວນບຸກຄົນ ທີ່ທ່ານໄດ້ກຳນົດຂຶ້ນກັບແອັບ APB MeBank. ລະບົບຈະຮຽກຮ້ອງໃຫ້ປ້ອນລະຫັດນີ້ທຸກຄັ້ງກ່ອນຕັດເງິນອອກຈາກບັນຊີ ເພື່ອປ້ອງກັນຄວາມປອດໄພສູງສຸດ.
+                        </p>
+                    </div>
+
+                    <!-- Grid of Detailed Fields to Check -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Mark 1: Title -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-sky-100 text-sky-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px]">1</span>
+                                    <span>ຫົວຂໍ້ປັອບອັບ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-sky-700 bg-white px-2 py-0.5 rounded border border-sky-200">Security Modal</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ການຢັ້ງຢືນ TPIN (Authentication)</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ປັອບອັບນີ້ຈະປະກົດຂຶ້ນອັດຕະໂນມັດຫຼັງຈາກທ່ານກົດປຸ່ມ <strong>"ຕໍ່ໄປ" (Continue)</strong> ເພື່ອຢືນຢັນການຕັດເງິນ <strong>710,000.00 LAK</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Mark 2: 6-Digit TPIN Input -->
+                        <div class="p-4 rounded-xl bg-rose-50/70 border-2 border-rose-300 hover:border-rose-400 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-100 text-rose-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">2</span>
+                                    <span>ຊ່ອງປ້ອນລະຫັດ 6 ຫຼັກ</span>
+                                </span>
+                                <span class="text-xs font-semibold text-rose-700 bg-white px-2 py-0.5 rounded border border-rose-200">6-Digit PIN</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ປ້ອນຕົວເລກ TPIN 6 ຫຼັກ (Enter 6 Numbers)</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                • ປ້ອນລະຫັດຜ່ານທຸລະກຳ 6 ຕົວເລກຂອງບັນຊີທ່ານ (ຕົວຢ່າງ: • • • • • •).<br>
+                                • ແຕ່ລະຊ່ອງຈະຮັບ 1 ຕົວເລກຈົນຄົບ 6 ຫຼັກ.<br>
+                                • <span class="text-rose-700 font-semibold">ຄຳເຕືອນ:</span> ຫ້າມປ້ອນຜິດເກີນ 3 ຄັ້ງ ເພາະລະບົບອາດຈະລັອກບັນຊີເພື່ອຄວາມປອດໄພ.
+                            </p>
+                        </div>
+
+                        <!-- Mark 3: Cancel Button -->
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-slate-200 text-slate-700 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-500 text-white flex items-center justify-center text-[10px]">3</span>
+                                    <span>ປຸ່ມ "ປະຕິເສດ"</span>
+                                </span>
+                                <span class="text-xs font-semibold text-rose-600 bg-white px-2 py-0.5 rounded border border-rose-200">Cancel</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ຍົກເລີກລາຍການ (Cancel Transaction)</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ຫາກທ່ານປ່ຽນໃຈ, ຕ້ອງການກວດສອບຂໍ້ມູນໃໝ່ ຫຼື ບໍ່ຕ້ອງການຈອງປີ້ແລ້ວ, ສາມາດກົດປຸ່ມສີບົວ <strong>"ປະຕິເສດ"</strong> ເພື່ອຍົກເລີກການຕັດເງິນ.
+                            </p>
+                        </div>
+
+                        <!-- Mark 4: Confirm Button -->
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border-2 border-emerald-400 hover:border-emerald-500 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px]">4</span>
+                                    <span>ປຸ່ມ "ຕົກລົງ"</span>
+                                </span>
+                                <span class="text-xs font-semibold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">Confirm Payment</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-800">ກົດຢືນຢັນເພື່ອຕັດເງິນ (Click Confirm)</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ເມື່ອປ້ອນລະຫັດ TPIN 6 ຫຼັກຄົບຖ້ວນຖືກຕ້ອງແລ້ວ, ໃຫ້ຄລິກປຸ່ມສີຂຽວ <strong>"ຕົກລົງ"</strong> ເພື່ອດຳເນີນການຕັດຍອດເງິນ <strong>710,000.00 LAK</strong> ແລະ ສຳເລັດການອອກປີ້ທັນທີ!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow success notification -->
+                    <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-300 flex items-start gap-3">
+                        <span class="text-emerald-600 text-xl font-bold">✔</span>
+                        <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed">
+                            <strong>ຜົນໄດ້ຮັບຫຼັງຈາກກົດ "ຕົກລົງ":</strong> ລະບົບ APB MeBank ຈະຕັດເງິນຈາກບັນຊີ ແລະ ສະແດງໜ້າຈໍ <strong>"ສຳເລັດ" (Payment Success e-Receipt)</strong> ພ້ອມປຸ່ມດາວໂຫຼດໃບຢັ້ງຢືນການຊຳລະເງິນ (e-Ticket Receipt).
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Summary & Next Steps -->
         <div class="bg-gradient-to-r from-apb-800 to-apb-700 text-white rounded-2xl p-6 sm:p-8 shadow-lg mb-10">
             <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
@@ -966,34 +1087,38 @@
             <p class="text-sm text-emerald-100/90 leading-relaxed mb-6">
                 ສະຫຼຸບຂະບວນການຈອງປີ້ເຮືອບິນ Lao Skyway ຜ່ານ APB MeBank ແຕ່ຕົ້ນຈົນຈົບ:
             </p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 text-xs">
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 text-xs">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">1. ເຂົ້າເມນູ</span>
-                    <span>ກົດ "ຊຳລະບິນ" ແລ້ວເລືອກ "ລາວເດີນອາກາດ"</span>
+                    <span>ກົດ "ຊຳລະບິນ"</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
-                    <span class="font-bold text-emerald-300 block mb-1">2. ຄົ້ນຫາຖ້ຽວບິນ</span>
-                    <span>ປ້ອນຂໍ້ມູນຖ້ຽວບິນ ແລ້ວກົດ "ຄົ້ນຫາຖ້ຽວບິນ"</span>
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                    <span class="font-bold text-emerald-300 block mb-1">2. ຄົ້ນຫາ</span>
+                    <span>ປ້ອນຂໍ້ມູນຖ້ຽວບິນ</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">3. ເລືອກຊັ້ນ</span>
-                    <span>ເລືອກແພັກເກດປີ້ (LOVE 710,000 LAK)</span>
+                    <span>ເລືອກແພັກເກດປີ້</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
-                    <span class="font-bold text-emerald-300 block mb-1">4. ຍອມຮັບເງື່ອນໄຂ</span>
-                    <span>ກົດ "ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ" ປັອບອັບ</span>
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                    <span class="font-bold text-emerald-300 block mb-1">4. ເງື່ອນໄຂ</span>
+                    <span>ຍອມຮັບເງື່ອນໄຂ</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">5. ປ້ອນຊື່</span>
-                    <span>ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ 10 ຊ່ອງ ແລ້ວກົດ "ຕໍ່ໄປ"</span>
+                    <span>ປ້ອນຊື່ຜູ້ໂດຍສານ</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">6. ກວດສອບ</span>
-                    <span>ກວດສອບຄວາມຖືກຕ້ອງຂອງຂໍ້ມູນການຈອງ</span>
+                    <span>ກວດສອບຂໍ້ມູນ</span>
                 </div>
-                <div class="bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10">
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
                     <span class="font-bold text-emerald-300 block mb-1">7. ເລືອກບັນຊີ</span>
-                    <span>ເລືອກບັນຊີ LAK ທີ່ໃຊ້ຊຳລະເງິນ</span>
+                    <span>ເລືອກບັນຊີ LAK</span>
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                    <span class="font-bold text-emerald-300 block mb-1">8. ຢັ້ງຢືນ TPIN</span>
+                    <span>ປ້ອນລະຫັດ 6 ຫຼັກ</span>
                 </div>
             </div>
         </div>
@@ -1110,6 +1235,21 @@
                 btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             } else {
                 img.src = 'images/account_selection.png';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            }
+        }
+
+        function switchImageScreen8(type) {
+            const img = document.getElementById('img-screen-8');
+            const btnMarked = document.getElementById('btn-s8-marked');
+            const btnOriginal = document.getElementById('btn-s8-original');
+            if (type === 'marked') {
+                img.src = 'images/tpin_verification_marked.png';
+                btnMarked.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
+                btnOriginal.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
+            } else {
+                img.src = 'images/tpin_verification.png';
                 btnOriginal.className = 'px-3 py-1.5 rounded-md bg-apb-600 text-white shadow-sm transition';
                 btnMarked.className = 'px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition';
             }

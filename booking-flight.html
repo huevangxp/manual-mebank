@@ -1459,7 +1459,7 @@
             6: '6. ກວດສອບຂໍ້ມູນການຈອງທັງໝົດ & ຄລິກຕໍ່ໄປ',
             7: '7. ເລືອກບັນຊີເງິນກີບ LAK ສຳລັບຊຳລະເງິນ',
             8: '8. ປ້ອນລະຫັດລັບທຸລະກຳ TPIN 6 ຫຼັກ',
-            9: '9. ສຳເລັດການຊຳລະເງິນ 🎉 & ດາວໂຫຼດໃບຢັ້ງຢືນ'
+            9: '9. ສຳເລັດການຊຳລະເງິນ & ດາວໂຫຼດໃບຢັ້ງຢືນ'
         };
 
         function goToStep(step) {
@@ -1469,7 +1469,8 @@
             // If we were in All View, return to Tab view
             if (isAllView) {
                 isAllView = false;
-                document.getElementById('toggle-view-text').innerText = '📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ';
+                const toggleText = document.getElementById('toggle-view-text');
+                if (toggleText) toggleText.innerText = 'ເບິ່ງທຸກຂັ້ນຕອນ';
             }
 
             // Hide all panels, show only target
@@ -1508,6 +1509,11 @@
 
             // Update URL hash without jumping
             history.replaceState(null, null, `#step-${step}`);
+
+            // Render Lucide icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
 
         function changeStep(delta) {
@@ -1518,14 +1524,17 @@
             isAllView = !isAllView;
             const toggleText = document.getElementById('toggle-view-text');
             if (isAllView) {
-                toggleText.innerText = '📑 ກັບຄືນຮູບແບບແທັບ (Tabs)';
+                if (toggleText) toggleText.innerText = 'ກັບຄືນຮູບແບບແທັບ';
                 for (let i = 1; i <= totalSteps; i++) {
                     const panel = document.getElementById(`step-panel-${i}`);
                     if (panel) panel.style.display = 'block';
                 }
             } else {
-                toggleText.innerText = '📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ';
+                if (toggleText) toggleText.innerText = 'ເບິ່ງທຸກຂັ້ນຕອນ';
                 goToStep(currentStep);
+            }
+            if (window.lucide) {
+                lucide.createIcons();
             }
         }
 
@@ -1573,14 +1582,18 @@
         }
 
         document.addEventListener('fullscreenchange', () => {
-            const fsText = document.getElementById('fullscreen-text');
-            const fsIcon = document.getElementById('fullscreen-icon');
+            const fsBtn = document.getElementById('btn-fullscreen');
             if (document.fullscreenElement) {
-                if (fsText) fsText.innerText = 'ອອກເຕັມຈໍ (Exit)';
-                if (fsIcon) fsIcon.innerText = '🗗';
+                if (fsBtn) {
+                    fsBtn.innerHTML = '<i data-lucide="minimize" class="w-3.5 h-3.5"></i><span id="fullscreen-text">ອອກເຕັມຈໍ</span>';
+                }
             } else {
-                if (fsText) fsText.innerText = 'ເຕັມຈໍ (Full Screen)';
-                if (fsIcon) fsIcon.innerText = '⛶';
+                if (fsBtn) {
+                    fsBtn.innerHTML = '<i data-lucide="maximize" class="w-3.5 h-3.5"></i><span id="fullscreen-text">ເຕັມຈໍ</span>';
+                }
+            }
+            if (window.lucide) {
+                lucide.createIcons();
             }
         });
 

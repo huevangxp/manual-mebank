@@ -7,6 +7,8 @@
     <title>ຄູ່ມືລະບົບ Admin Portal: ເພີ່ມຜູ້ໃຊ້ງານ (Add User) - APB MeBank</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -77,6 +79,12 @@
             color: #ccfbef !important;
         }
 
+        /* Lucide icon alignment fix */
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
         /* Print styles */
         @media print {
             .no-print {
@@ -105,14 +113,12 @@
             <div class="flex items-center space-x-3">
                 <a href="index.html" title="ກັບໄປໜ້າຫຼັກລວມຄູ່ມື"
                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition border border-white/20 shadow-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span>ໜ້າຫຼັກຄູ່ມື</span>
                 </a>
                 <div
                     class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center font-bold text-xl border border-white/20 shadow-inner">
-                    <span class="text-emerald-300">👤</span>
+                    <i data-lucide="user-cog" class="w-5 h-5 text-emerald-300"></i>
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
@@ -128,32 +134,32 @@
                 <!-- Direct Links to Other Manuals -->
                 <a href="booking-flight.html"
                     class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <span>✈️ ຈອງປີ້ເຮືອບິນ</span>
+                    <i data-lucide="plane" class="w-3.5 h-3.5 text-emerald-300"></i>
+                    <span>ຈອງປີ້ເຮືອບິນ</span>
                 </a>
                 <a href="create-chairman-card.html"
                     class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <span>💳 ເມນູສ້າງບັດປະທານ</span>
+                    <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                    <span>ເມນູສ້າງບັດປະທານ</span>
                 </a>
 
                 <!-- Full Screen Toggle -->
                 <button id="btn-fullscreen" onclick="toggleFullScreen()"
                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="fullscreen-icon">⛶</span>
+                    <i data-lucide="maximize" class="w-3.5 h-3.5" id="fullscreen-icon"></i>
                     <span id="fullscreen-text">ເຕັມຈໍ</span>
                 </button>
 
                 <!-- View Mode Toggle -->
                 <button id="btn-toggle-view" onclick="toggleAllView()"
                     class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="toggle-view-text">📄 ເບິ່ງທຸກຂັ້ນຕອນ</span>
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span id="toggle-view-text">ເບິ່ງທຸກຂັ້ນຕອນ</span>
                 </button>
 
                 <button onclick="window.print()"
                     class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-xs sm:text-sm font-bold transition shadow-md">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
+                    <i data-lucide="printer" class="w-4 h-4"></i>
                     <span>ພິມຄູ່ມື (PDF)</span>
                 </button>
             </div>
@@ -164,7 +170,7 @@
     <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
 
         <!-- ============================================================= -->
-        <!-- SLICE TABS BAR (Horizontal tabs left-to-right + Prev/Next) -->
+        <!-- SLICE TABS BAR                                                -->
         <!-- ============================================================= -->
         <div
             class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
@@ -184,13 +190,13 @@
                 <div class="flex items-center gap-2 self-end sm:self-center">
                     <button id="btn-prev-step" onclick="changeStep(-1)"
                         class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
-                        <span>‹</span>
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
                         <span>ກ່ອນໜ້າ</span>
                     </button>
                     <button id="btn-next-step" onclick="changeStep(1)"
                         class="px-4 py-1.5 rounded-xl bg-apb-600 hover:bg-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-emerald-200">
                         <span>ຕໍ່ໄປ</span>
-                        <span>›</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -201,37 +207,44 @@
                     <button onclick="goToStep(1)" id="tab-btn-1"
                         class="step-tab-btn active px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
+                        <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
                         <span>1. ເຂົ້າສູ່ລະບົບ & 2FA</span>
                     </button>
                     <button onclick="goToStep(2)" id="tab-btn-2"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
+                        <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
                         <span>2. ເຂົ້າເມນູ ເພີ່ມຜູ້ໃຊ້ງານ</span>
                     </button>
                     <button onclick="goToStep(3)" id="tab-btn-3"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
+                        <i data-lucide="contact" class="w-3.5 h-3.5"></i>
                         <span>3. ປ້ອນຂໍ້ມູນພະນັກງານ</span>
                     </button>
                     <button onclick="goToStep(4)" id="tab-btn-4"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
+                        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
                         <span>4. ກຳນົດສິດ (Roles)</span>
                     </button>
                     <button onclick="goToStep(5)" id="tab-btn-5"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">5</span>
+                        <i data-lucide="building" class="w-3.5 h-3.5"></i>
                         <span>5. ກຳນົດສາຂາ & Limits</span>
                     </button>
                     <button onclick="goToStep(6)" id="tab-btn-6"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">6</span>
+                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
                         <span>6. ກວດສອບ & ສົ່ງ Maker</span>
                     </button>
                     <button onclick="goToStep(7)" id="tab-btn-7"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">7</span>
-                        <span>7. Checker ອະນຸມັດ 🎉</span>
+                        <i data-lucide="party-popper" class="w-3.5 h-3.5"></i>
+                        <span>7. Checker ອະນຸມັດ</span>
                     </button>
                 </div>
             </div>
@@ -259,10 +272,13 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 1: Admin Portal Login & 2FA OTP</span>
                                 </div>
-                                <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">PORTAL SECURE</span>
+                                <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono flex items-center gap-1">
+                                    <i data-lucide="lock" class="w-3 h-3"></i>
+                                    <span>PORTAL SECURE</span>
+                                </span>
                             </div>
 
                             <!-- Screen UI Mockup -->
@@ -271,7 +287,7 @@
                                 <div class="w-full max-w-md bg-slate-800/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-md">
                                     <div class="flex items-center gap-3 pb-4 mb-4 border-b border-slate-700">
                                         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-apb-600 to-emerald-400 flex items-center justify-center text-white font-bold text-lg shadow-md">
-                                            APB
+                                            <i data-lucide="landmark" class="w-5 h-5 text-white"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-sm text-white">APB MeBank Admin Portal</h4>
@@ -284,7 +300,10 @@
                                             <label class="block text-xs font-semibold text-slate-300 mb-1">ຊື່ຜູ້ໃຊ້ງານ (Username / Staff ID)</label>
                                             <div class="relative">
                                                 <input type="text" readonly value="admin.it@apb.com.la" class="w-full bg-slate-900 border border-emerald-500/60 rounded-xl px-3 py-2 text-xs text-emerald-300 font-mono ring-2 ring-emerald-500/20">
-                                                <span class="absolute right-3 top-2 text-emerald-400 text-xs">✓ ຖືກຕ້ອງ</span>
+                                                <span class="absolute right-3 top-2 text-emerald-400 text-xs flex items-center gap-1">
+                                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                                    <span>ຖືກຕ້ອງ</span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div>
@@ -293,8 +312,11 @@
                                         </div>
                                         <div>
                                             <label class="block text-xs font-semibold text-slate-300 mb-1 flex items-center justify-between">
-                                                <span>ລະຫັດ 2FA Authenticator Code</span>
-                                                <span class="text-[10px] text-amber-400">Google Authenticator</span>
+                                                <span class="flex items-center gap-1">
+                                                    <i data-lucide="key-round" class="w-3.5 h-3.5 text-amber-400"></i>
+                                                    <span>ລະຫັດ 2FA Authenticator Code</span>
+                                                </span>
+                                                <span class="text-[10px] text-amber-400 font-mono">Google Authenticator</span>
                                             </label>
                                             <div class="grid grid-cols-6 gap-1.5">
                                                 <div class="h-9 bg-slate-900 border border-emerald-500 rounded-lg flex items-center justify-center font-mono font-bold text-emerald-400 text-sm">8</div>
@@ -306,15 +328,19 @@
                                             </div>
                                         </div>
                                         <div class="pt-2">
-                                            <div class="w-full py-2.5 rounded-xl bg-gradient-to-r from-apb-600 to-emerald-500 text-white font-bold text-xs text-center shadow-lg shadow-emerald-900/30">
-                                                ເຂົ້າສູ່ລະບົບ (Sign In to Admin Portal)
+                                            <div class="w-full py-2.5 rounded-xl bg-gradient-to-r from-apb-600 to-emerald-500 text-white font-bold text-xs text-center shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-1.5">
+                                                <i data-lucide="log-in" class="w-4 h-4"></i>
+                                                <span>ເຂົ້າສູ່ລະບົບ (Sign In to Admin Portal)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>🔒 ລະບົບມີການປ້ອງກັນຄວາມປອດໄພດ້ວຍລະຫັດ 2FA ສະເໝີ</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                    <span>ລະບົບມີການປ້ອງກັນຄວາມປອດໄພດ້ວຍລະຫັດ 2FA ສະເໝີ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">Security Standard L2</span>
                             </div>
                         </div>
@@ -346,7 +372,7 @@
                             </div>
 
                             <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-start gap-2.5">
-                                <span class="text-base">💡</span>
+                                <i data-lucide="lightbulb" class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
                                 <div>
                                     <strong>ຂໍ້ແນະນຳຄວາມປອດໄພ:</strong> ຫ້າມແບ່ງປັນລະຫັດຜ່ານ ຫຼື 2FA Token ໃຫ້ກັບຜູ້ອື່ນຢ່າງເດັດຂາດ. ລະບົບຈະບັນທຶກ Audit Log ທຸກການເຄື່ອນໄຫວພ້ອມ IP Address ແລະ ເວລາເຂົ້າໃຊ້.
                                 </div>
@@ -358,7 +384,7 @@
                             <span class="text-xs text-slate-400 font-medium">ຂັ້ນຕອນທີ 1 ຈາກ 7</span>
                             <button onclick="goToStep(2)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: ເຂົ້າເມນູ ເພີ່ມຜູ້ໃຊ້ງານ</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -375,7 +401,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="layout-dashboard" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 2: ເລືອກເມນູ "User Management" & "Add User"</span>
                                 </div>
                                 <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">SIDEBAR MENU</span>
@@ -389,20 +415,25 @@
                                         <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2">ເມນູຫຼັກ (Navigation)</div>
                                         <div class="space-y-1">
                                             <div class="px-2.5 py-2 rounded-lg text-xs text-slate-400 hover:bg-slate-800 flex items-center gap-2">
-                                                <span>📊</span> <span>Dashboard</span>
+                                                <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+                                                <span>Dashboard</span>
                                             </div>
                                             <div class="px-2.5 py-2 rounded-lg text-xs bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 font-bold flex items-center justify-between">
                                                 <div class="flex items-center gap-2">
-                                                    <span>👥</span> <span>User Management</span>
+                                                    <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+                                                    <span>User Management</span>
                                                 </div>
-                                                <span>▾</span>
+                                                <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
                                             </div>
                                             <div class="pl-6 space-y-1">
                                                 <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-300 hover:text-white flex items-center gap-1.5">
-                                                    <span>•</span> <span>ລາຍຊື່ຜູ້ໃຊ້ງານ (Users)</span>
+                                                    <span>•</span> <span>ລາຍຊື່ຜູ້ໃຊ້ງານ</span>
                                                 </div>
                                                 <div class="px-2 py-1.5 rounded-md text-[11px] bg-emerald-500/20 text-emerald-200 font-bold border border-emerald-400/40 flex items-center justify-between">
-                                                    <span class="flex items-center gap-1"><span>✚</span> <span>ເພີ່ມຜູ້ໃຊ້ງານ (Add User)</span></span>
+                                                    <span class="flex items-center gap-1">
+                                                        <i data-lucide="user-plus" class="w-3 h-3 text-emerald-300"></i>
+                                                        <span>ເພີ່ມຜູ້ໃຊ້ງານ (Add User)</span>
+                                                    </span>
                                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                                 </div>
                                                 <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-300 hover:text-white flex items-center gap-1.5">
@@ -410,10 +441,12 @@
                                                 </div>
                                             </div>
                                             <div class="px-2.5 py-2 rounded-lg text-xs text-slate-400 hover:bg-slate-800 flex items-center gap-2">
-                                                <span>💳</span> <span>Card Management</span>
+                                                <i data-lucide="credit-card" class="w-4 h-4 text-slate-400"></i>
+                                                <span>Card Management</span>
                                             </div>
                                             <div class="px-2.5 py-2 rounded-lg text-xs text-slate-400 hover:bg-slate-800 flex items-center gap-2">
-                                                <span>📋</span> <span>Audit & Logs</span>
+                                                <i data-lucide="clipboard-list" class="w-4 h-4 text-slate-400"></i>
+                                                <span>Audit & Logs</span>
                                             </div>
                                         </div>
                                     </div>
@@ -426,30 +459,34 @@
                                                     <h4 class="font-bold text-xs sm:text-sm text-white">ເພີ່ມຜູ້ໃຊ້ງານໃໝ່ (Create New System User)</h4>
                                                     <p class="text-[11px] text-slate-400">ແບບຟອມກຳນົດບັນຊີຜູ້ໃຊ້ງານ ແລະ ສິດທິປະຕິບັດການ</p>
                                                 </div>
-                                                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">Step 1 of 4</span>
+                                                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30 font-mono">Step 1 of 4</span>
                                             </div>
                                             <div class="bg-slate-900/80 rounded-lg p-3 border border-slate-700 space-y-2">
                                                 <div class="text-[11px] font-semibold text-slate-300">ເລືອກປະເພດການສ້າງບັນຊີ:</div>
                                                 <div class="grid grid-cols-2 gap-2 text-xs">
                                                     <div class="p-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-950/30 text-white font-medium flex items-center gap-2">
-                                                        <span class="text-emerald-400 text-sm">◉</span>
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
                                                         <span>ພະນັກງານທະນາຄານ (Bank Staff)</span>
                                                     </div>
                                                     <div class="p-2.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-400 font-medium flex items-center gap-2">
-                                                        <span class="text-slate-500 text-sm">○</span>
+                                                        <i data-lucide="circle" class="w-4 h-4 text-slate-500"></i>
                                                         <span>ຜູ້ກວດສອບພາຍນອກ (Auditor)</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-right text-[11px] text-emerald-400 font-mono">
-                                            Click "+ ເພີ່ມຜູ້ໃຊ້ງານ" to proceed →
+                                        <div class="text-right text-[11px] text-emerald-400 font-mono flex items-center justify-end gap-1">
+                                            <span>Click "+ ເພີ່ມຜູ້ໃຊ້ງານ" to proceed</span>
+                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຖ້າບໍ່ເຫັນເມນູ Add User ກະລຸນາຕິດຕໍ່ Super Admin ເພື່ອເປີດສິດ</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-500"></i>
+                                    <span>ຖ້າບໍ່ເຫັນເມນູ Add User ກະລຸນາຕິດຕໍ່ Super Admin ເພື່ອເປີດສິດ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">Permission: USER_CREATE</span>
                             </div>
                         </div>
@@ -481,7 +518,7 @@
                             </div>
 
                             <div class="p-3.5 bg-blue-50 rounded-xl border border-blue-200 text-xs text-blue-900 flex items-start gap-2.5">
-                                <span class="text-base">ℹ️</span>
+                                <i data-lucide="info" class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"></i>
                                 <div>
                                     <strong>ໝາຍເຫດສຳຄັນ:</strong> ໃນກໍລະນີທີ່ທ່ານບໍ່ເຫັນເມນູນີ້ ສະແດງວ່າບັນຊີຂອງທ່ານມີສິດພຽງແຕ່ເປັນ Viewer ຫຼື Checker ເທົ່ານັ້ນ. ການສ້າງຜູ້ໃຊ້ງານໃໝ່ຕ້ອງດຳເນີນການໂດຍບັນຊີ Maker ທີ່ມີສິດ <code>USER_CREATE</code>.
                                 </div>
@@ -491,11 +528,12 @@
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(1)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <button onclick="goToStep(3)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: ປ້ອນຂໍ້ມູນພະນັກງານ</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -512,7 +550,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="contact" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 3: ປ້ອນຂໍ້ມູນພະນັກງານ (Employee Details)</span>
                                 </div>
                                 <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">FORM: BASIC INFO</span>
@@ -522,7 +560,8 @@
                                 <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 space-y-3.5">
                                     <div class="flex items-center justify-between pb-2 border-b border-slate-700">
                                         <span class="font-bold text-xs text-emerald-400 flex items-center gap-1.5">
-                                            <span>📝</span> <span>ຂໍ້ມູນສ່ວນຕົວ ແລະ ຕຳແໜ່ງ (Personal & Work Info)</span>
+                                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                                            <span>ຂໍ້ມູນສ່ວນຕົວ ແລະ ຕຳແໜ່ງ (Personal & Work Info)</span>
                                         </span>
                                         <span class="text-[10px] text-rose-400">* ທຸກຊ່ອງທີ່ມີດາວແມ່ນຈຳເປັນ</span>
                                     </div>
@@ -556,21 +595,24 @@
                                             <label class="block text-slate-300 font-semibold mb-1">ພະແນກ (Department) <span class="text-rose-400">*</span></label>
                                             <div class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs flex justify-between items-center">
                                                 <span>ພະແນກໄອທີ & ດິຈິຕອລ (IT & Digital)</span>
-                                                <span class="text-slate-400">▾</span>
+                                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
                                             </div>
                                         </div>
                                         <div>
                                             <label class="block text-slate-300 font-semibold mb-1">ສາຂາປະຈຳການ (Branch) <span class="text-rose-400">*</span></label>
                                             <div class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs flex justify-between items-center">
                                                 <span>ສຳນັກງານໃຫຍ່ (Head Office - VTE)</span>
-                                                <span class="text-slate-400">▾</span>
+                                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>📧 ລະຫັດຜ່ານຊົ່ວຄາວຈະຖືກສົ່ງໄປທີ່ອີເມລທາງການ @apb.com.la</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="mail" class="w-3.5 h-3.5 text-apb-600"></i>
+                                    <span>ລະຫັດຜ່ານຊົ່ວຄາວຈະຖືກສົ່ງໄປທີ່ອີເມລທາງການ @apb.com.la</span>
+                                </span>
                                 <span class="font-mono text-slate-400">Validation Passed</span>
                             </div>
                         </div>
@@ -627,7 +669,7 @@
                             </div>
 
                             <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2">
-                                <span class="text-base">⚠️</span>
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"></i>
                                 <div><strong>ຂໍ້ຄວນລະວັງ:</strong> ຫ້າມໃຊ້ອີເມລສ່ວນຕົວ (ເຊັ່ນ Gmail, Yahoo) ໃນການລົງທະບຽນລະບົບ Admin Portal ເດັດຂາດ ເພື່ອຄວາມປອດໄພຂອງຂໍ້ມູນ.</div>
                             </div>
                         </div>
@@ -635,11 +677,12 @@
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(2)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <button onclick="goToStep(4)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດສິດ (Roles)</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -656,7 +699,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 4: ກຳນົດບົດບາດ & ສິດທິ (Role & Permission)</span>
                                 </div>
                                 <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">ACCESS CONTROL</span>
@@ -673,7 +716,7 @@
                                     <div class="space-y-2">
                                         <div class="p-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-950/40 flex items-center justify-between">
                                             <div class="flex items-center gap-2.5">
-                                                <span class="text-emerald-400 text-sm">◉</span>
+                                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
                                                 <div>
                                                     <div class="font-bold text-xs text-white">Card Management Operator (Maker)</div>
                                                     <div class="text-[10px] text-slate-300">ສິດສ້າງບັດ, ເມນູສ້າງບັດປະທານ, ແກ້ໄຂຂໍ້ມູນບັດ</div>
@@ -684,7 +727,7 @@
 
                                         <div class="p-2.5 rounded-lg border border-slate-700 bg-slate-900 flex items-center justify-between opacity-80">
                                             <div class="flex items-center gap-2.5">
-                                                <span class="text-slate-500 text-sm">○</span>
+                                                <i data-lucide="circle" class="w-4 h-4 text-slate-500"></i>
                                                 <div>
                                                     <div class="font-bold text-xs text-slate-300">Card Approver (Checker)</div>
                                                     <div class="text-[10px] text-slate-400">ສິດກວດສອບ ແລະ ອະນຸມັດການອອກບັດ ແລະ ວົງເງິນ</div>
@@ -695,7 +738,7 @@
 
                                         <div class="p-2.5 rounded-lg border border-slate-700 bg-slate-900 flex items-center justify-between opacity-80">
                                             <div class="flex items-center gap-2.5">
-                                                <span class="text-slate-500 text-sm">○</span>
+                                                <i data-lucide="circle" class="w-4 h-4 text-slate-500"></i>
                                                 <div>
                                                     <div class="font-bold text-xs text-slate-300">Branch Operations Officer</div>
                                                     <div class="text-[10px] text-slate-400">ສິດຈັດການທຸລະກຳ ແລະ ບໍລິການລູກຄ້າປະຈຳສາຂາ</div>
@@ -718,7 +761,10 @@
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>🛡️ ຫຼັກການ Segregation of Duties (SOD): Maker ບໍ່ສາມາດເປັນ Checker ພ້ອມກັນໄດ້</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-apb-600"></i>
+                                    <span>ຫຼັກການ Segregation of Duties (SOD): Maker ບໍ່ສາມາດເປັນ Checker ພ້ອມກັນໄດ້</span>
+                                </span>
                                 <span class="font-mono text-slate-400">SOD Compliant</span>
                             </div>
                         </div>
@@ -742,14 +788,16 @@
                             <div class="space-y-2.5">
                                 <div class="p-3 rounded-xl border border-emerald-200 bg-emerald-50 text-xs text-slate-800 space-y-1">
                                     <div class="font-bold text-emerald-800 flex items-center gap-1.5">
-                                        <span>🛠️</span> <span>Maker Role (ຜູ້ສ້າງ / ຜູ້ຮ້ອງຂໍ)</span>
+                                        <i data-lucide="wrench" class="w-4 h-4 text-emerald-700"></i>
+                                        <span>Maker Role (ຜູ້ສ້າງ / ຜູ້ຮ້ອງຂໍ)</span>
                                     </div>
                                     <p>ມີສິດປ້ອນຂໍ້ມູນ, ສ້າງຜູ້ໃຊ້ງານ, ສ້າງບັດປະທານ (Create Chairman Card), ແຕ່<strong>ບໍ່ສາມາດ</strong>ອະນຸມັດລາຍການຂອງຕົນເອງໄດ້.</p>
                                 </div>
 
                                 <div class="p-3 rounded-xl border border-blue-200 bg-blue-50 text-xs text-slate-800 space-y-1">
                                     <div class="font-bold text-blue-800 flex items-center gap-1.5">
-                                        <span>✅</span> <span>Checker Role (ຜູ້ກວດສອບ / ຜູ້ອະນຸມັດ)</span>
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-700"></i>
+                                        <span>Checker Role (ຜູ້ກວດສອບ / ຜູ້ອະນຸມັດ)</span>
                                     </div>
                                     <p>ມີສິດກວດສອບຂໍ້ມູນ, ອະນຸມັດ (Approve) ຫຼື ສົ່ງກັບ (Reject) ຄຳຮ້ອງຂໍທີ່ Maker ສົ່ງມາ. ບໍ່ສາມາດສ້າງລາຍການເອງໄດ້.</p>
                                 </div>
@@ -763,11 +811,12 @@
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(3)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <button onclick="goToStep(5)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດສາຂາ & Limits</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -784,7 +833,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="building" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 5: ກຳນົດຂອບເຂດສາຂາ & ວົງເງິນ Limit</span>
                                 </div>
                                 <span class="text-[11px] bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">SCOPE & LIMITS</span>
@@ -828,7 +877,10 @@
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>🔒 ຜູ້ໃຊ້ສາມາດເຂົ້າເຖິງຜ່ານເຄືອຂ່າຍ VPN ພາຍໃນທະນາຄານເທົ່ານັ້ນ</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="lock" class="w-3.5 h-3.5 text-apb-600"></i>
+                                    <span>ຜູ້ໃຊ້ສາມາດເຂົ້າເຖິງຜ່ານເຄືອຂ່າຍ VPN ພາຍໃນທະນາຄານເທົ່ານັ້ນ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">VPN Enforced</span>
                             </div>
                         </div>
@@ -868,11 +920,12 @@
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(4)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <button onclick="goToStep(6)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: ກວດສອບ & ສົ່ງ Maker</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -889,7 +942,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="file-check" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 6: ກວດສອບຂໍ້ມູນ & ສົ່ງຄຳຂໍ (Submit for Approval)</span>
                                 </div>
                                 <span class="text-[11px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">PENDING SUBMISSION</span>
@@ -921,26 +974,34 @@
                                         </div>
                                         <div class="flex justify-between py-1 border-b border-slate-800">
                                             <span class="text-slate-400">ສິດພິເສດ:</span>
-                                            <span class="text-amber-300">ເມນູສ້າງບັດປະທານ (Create Chairman Card)</span>
+                                            <span class="text-amber-300 font-semibold">ເມນູສ້າງບັດປະທານ (Create Chairman Card)</span>
                                         </div>
                                         <div class="flex justify-between py-1">
                                             <span class="text-slate-400">ສະຖານະຄຳຂໍ:</span>
-                                            <span class="text-amber-400 font-bold">⏳ ລໍຖ້າ Checker ອະນຸມັດ</span>
+                                            <span class="text-amber-400 font-bold flex items-center gap-1">
+                                                <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                                                <span>ລໍຖ້າ Checker ອະນຸມັດ</span>
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div class="pt-2 flex gap-2">
-                                        <div class="w-1/3 py-2 rounded-xl bg-slate-700 text-slate-300 text-center text-xs font-semibold">
-                                            ແກ້ໄຂ (Edit)
+                                        <div class="w-1/3 py-2 rounded-xl bg-slate-700 text-slate-300 text-center text-xs font-semibold flex items-center justify-center gap-1">
+                                            <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                                            <span>ແກ້ໄຂ</span>
                                         </div>
-                                        <div class="w-2/3 py-2 rounded-xl bg-emerald-600 text-white text-center text-xs font-bold shadow-lg shadow-emerald-900/30">
-                                            ສົ່ງຄຳຂໍອະນຸມັດ (Submit to Checker) ✓
+                                        <div class="w-2/3 py-2 rounded-xl bg-emerald-600 text-white text-center text-xs font-bold shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-1.5">
+                                            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                            <span>ສົ່ງຄຳຂໍອະນຸມັດ (Submit to Checker)</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>📤 ຄຳຂໍຈະຖືກສົ່ງໄປທີ່ Inbox ຂອງ Checker ປະຈຳລະບົບ</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="send" class="w-3.5 h-3.5 text-apb-600"></i>
+                                    <span>ຄຳຂໍຈະຖືກສົ່ງໄປທີ່ Inbox ຂອງ Checker ປະຈຳລະບົບ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">Audit Log Created</span>
                             </div>
                         </div>
@@ -975,11 +1036,12 @@
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(5)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <button onclick="goToStep(7)" class="px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                                 <span>ຂັ້ນຕອນຕໍ່ໄປ: Checker ອະນຸມັດ</span>
-                                <span>›</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -996,7 +1058,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
                             <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
                                     <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 7: Checker ອະນຸມັດ & ສົ່ງ Activation Email</span>
                                 </div>
                                 <span class="text-[11px] bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">APPROVED & ACTIVE</span>
@@ -1005,7 +1067,7 @@
                             <div class="p-6 bg-slate-900 flex-1 flex flex-col justify-center items-center text-slate-200 min-h-[460px]">
                                 <div class="w-full max-w-md bg-slate-800 rounded-2xl p-6 border border-emerald-500/50 shadow-2xl text-center space-y-4">
                                     <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto border-2 border-emerald-500 shadow-lg shadow-emerald-900/40">
-                                        ✓
+                                        <i data-lucide="check" class="w-8 h-8 text-emerald-400"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-base text-white">ອະນຸມັດການສ້າງຜູ້ໃຊ້ງານສຳເລັດ!</h4>
@@ -1027,17 +1089,24 @@
                                         </div>
                                         <div class="flex justify-between">
                                             <span class="text-slate-400">ສະຖານະສົ່ງອີເມລ:</span>
-                                            <span class="text-emerald-400 font-bold">✓ ສົ່ງລິ້ງຕັ້ງລະຫັດຜ່ານແລ້ວ</span>
+                                            <span class="text-emerald-400 font-bold flex items-center gap-1">
+                                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                                <span>ສົ່ງລິ້ງຕັ້ງລະຫັດຜ່ານແລ້ວ</span>
+                                            </span>
                                         </div>
                                     </div>
 
-                                    <div class="p-3 bg-emerald-950/60 rounded-xl border border-emerald-500/30 text-xs text-emerald-200 text-left">
-                                        📧 ພະນັກງານຈະໄດ້ຮັບອີເມລແຈ້ງເຕືອນພ້ອມລິ້ງ Activation ເພື່ອຕັ້ງລະຫັດຜ່ານ ແລະ ເປີດໃຊ້ 2FA ພາຍໃນ 24 ຊົ່ວໂມງ.
+                                    <div class="p-3 bg-emerald-950/60 rounded-xl border border-emerald-500/30 text-xs text-emerald-200 text-left flex items-start gap-2">
+                                        <i data-lucide="mail" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                        <div>ພະນັກງານຈະໄດ້ຮັບອີເມລແຈ້ງເຕືອນພ້ອມລິ້ງ Activation ເພື່ອຕັ້ງລະຫັດຜ່ານ ແລະ ເປີດໃຊ້ 2FA ພາຍໃນ 24 ຊົ່ວໂມງ.</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>🎉 ຂັ້ນຕອນການເພີ່ມຜູ້ໃຊ້ງານໃໝ່ສຳເລັດສົມບູນ</span>
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                    <span>ຂັ້ນຕອນການເພີ່ມຜູ້ໃຊ້ງານໃໝ່ສຳເລັດສົມບູນ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">Status: ACTIVE</span>
                             </div>
                         </div>
@@ -1065,19 +1134,24 @@
                                 <li>ລະບົບຈະສ້າງບັນຊີຜູ້ໃຊ້ງານ ແລະ ສົ່ງອີເມລ Activation ພ້ອມລິ້ງຕັ້ງລະຫັດຜ່ານຄັ້ງທຳອິດໄປທີ່ອີເມລຂອງພະນັກງານໂດຍອັດຕະໂນມັດ.</li>
                             </ol>
 
-                            <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900">
-                                <strong>ສຳເລັດຂັ້ນຕອນ:</strong> ຜູ້ໃຊ້ງານສາມາດນຳໃຊ້ບັນຊີເຂົ້າສູ່ລະບົບ Admin Portal ແລະ ເຂົ້າສູ່ເມນູທີ່ໄດ້ຮັບສິດ ເຊັ່ນ <strong>"ເມນູສ້າງບັດປະທານ (Create Chairman Card)"</strong> ໄດ້ທັນທີ!
+                            <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <strong>ສຳເລັດຂັ້ນຕອນ:</strong> ຜູ້ໃຊ້ງານສາມາດນຳໃຊ້ບັນຊີເຂົ້າສູ່ລະບົບ Admin Portal ແລະ ເຂົ້າສູ່ເມນູທີ່ໄດ້ຮັບສິດ ເຊັ່ນ <strong>"ເມນູສ້າງບັດປະທານ (Create Chairman Card)"</strong> ໄດ້ທັນທີ!
+                                </div>
                             </div>
                         </div>
 
                         <!-- Footer Nav -->
                         <div class="flex items-center justify-between pt-2 no-print">
                             <button onclick="goToStep(6)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                <span>ກ່ອນໜ້າ</span>
                             </button>
                             <a href="create-chairman-card.html" class="px-4 py-2 rounded-xl bg-gradient-to-r from-apb-600 to-emerald-600 hover:from-apb-700 hover:to-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md">
                                 <span>ໄປຕໍ່: ຄູ່ມືເມນູສ້າງບັດປະທານ</span>
-                                <span>💳 ›</span>
+                                <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -1092,16 +1166,26 @@
     <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-2">
+                <i data-lucide="landmark" class="w-4 h-4 text-emerald-400"></i>
                 <span class="font-bold text-white">APB MeBank Manual System</span>
                 <span>•</span>
                 <span>ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</span>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="index.html" class="hover:text-white transition">ໜ້າຫຼັກລວມຄູ່ມື</a>
+                <a href="index.html" class="hover:text-white transition flex items-center gap-1">
+                    <i data-lucide="home" class="w-3.5 h-3.5"></i>
+                    <span>ໜ້າຫຼັກລວມຄູ່ມື</span>
+                </a>
                 <span>•</span>
-                <a href="booking-flight.html" class="hover:text-white transition">ຄູ່ມືຈອງປີ້ເຮືອບິນ</a>
+                <a href="booking-flight.html" class="hover:text-white transition flex items-center gap-1">
+                    <i data-lucide="plane" class="w-3.5 h-3.5"></i>
+                    <span>ຄູ່ມືຈອງປີ້ເຮືອບິນ</span>
+                </a>
                 <span>•</span>
-                <a href="create-chairman-card.html" class="hover:text-white transition">ຄູ່ມືສ້າງບັດປະທານ</a>
+                <a href="create-chairman-card.html" class="hover:text-white transition flex items-center gap-1">
+                    <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                    <span>ຄູ່ມືສ້າງບັດປະທານ</span>
+                </a>
             </div>
         </div>
     </footer>
@@ -1166,6 +1250,10 @@
             }
 
             history.replaceState(null, null, `#step-${currentStep}`);
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
 
         function changeStep(delta) {
@@ -1196,27 +1284,31 @@
             }
 
             if (isAllView) {
-                toggleBtnText.innerText = "📑 ສະຫຼັບເປັນແບບ Slide ທີລະຂັ້ນ";
+                toggleBtnText.innerText = "ສະຫຼັບເປັນແບບ Slide ທີລະຂັ້ນ";
             } else {
-                toggleBtnText.innerText = "📄 ເບິ່ງທຸກຂັ້ນຕອນ";
+                toggleBtnText.innerText = "ເບິ່ງທຸກຂັ້ນຕອນ";
+            }
+
+            if (window.lucide) {
+                lucide.createIcons();
             }
         }
 
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => console.log(err));
-                document.getElementById('fullscreen-icon').innerText = "✕";
                 document.getElementById('fullscreen-text').innerText = "ອອກເຕັມຈໍ";
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                    document.getElementById('fullscreen-icon').innerText = "⛶";
                     document.getElementById('fullscreen-text').innerText = "ເຕັມຈໍ";
                 }
             }
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'PageDown') {
                 changeStep(1);
@@ -1236,6 +1328,9 @@
                 }
             }
             goToStep(1);
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>

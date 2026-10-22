@@ -317,12 +317,16 @@
                                     onclick="openLightbox('img-screen-1')">
                                 <button onclick="openLightbox('img-screen-1')"
                                     class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
                                 </button>
                             </div>
                             <div
                                 class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">1024 × 772</span>
                             </div>
                         </div>
@@ -354,7 +358,7 @@
                                         <div>
                                             <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດເລືອກເມນູ "ຊຳລະບິນ" (Mark 1)</h4>
                                             <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຢູ່ແຖບເມນູຫຼັກດ້ານເທິງສຸດຂອງໜ້າຈໍ, ໃຫ້ຄລິກເລືອກເມນູ <strong>"ຊຳລະບິນ"</strong> (ໄອຄອນຮູບໃບບິນສີເຫຼືອງ ຖັດຈາກເມນູໂອນເງິນ) ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 1)</strong>.
+                                                 ຢູ່ແຖບເມນູຫຼັກດ້ານເທິງສຸດຂອງໜ້າຈໍ, ໃຫ້ຄລິກເລືອກເມນູ <strong>"ຊຳລະບິນ"</strong> (ໄອຄອນຮູບໃບບິນສີເຫຼືອງ ຖັດຈາກເມນູໂອນເງິນ) ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 1)</strong>.
                                             </p>
                                         </div>
                                     </div>
@@ -372,7 +376,7 @@
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
                                 <p class="leading-relaxed">
                                     <strong>ຄຳແນະນຳ:</strong> ເມື່ອກົດເລືອກ "ລາວເດີນອາກາດ" ແລ້ວ ລະບົບຈະພາທ່ານເຂົ້າສູ່ໜ້າຄົ້ນຫາຖ້ຽວບິນ ແລະ ຕາຕະລາງການບິນໃນຂັ້ນຕອນທີ 2 ທັນທີ.
                                 </p>
@@ -384,14 +388,15 @@
                 <!-- Bottom Nav Controller -->
                 <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
                     <button disabled
-                        class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-400 opacity-40 cursor-not-allowed">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
                     </button>
                     <span class="text-xs text-slate-500 font-bold">1 / 9</span>
                     <button onclick="goToStep(2)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
                         <span>ຕໍ່ໄປ: ຄົ້ນຫາຖ້ຽວບິນ (Step 2)</span>
-                        <span>›</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>

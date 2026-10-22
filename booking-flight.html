@@ -1741,10 +1741,12 @@
                 const s = parseInt(match[1]);
                 if (s >= 1 && s <= totalSteps) {
                     goToStep(s);
+                    if (window.lucide) lucide.createIcons();
                     return;
                 }
             }
             goToStep(1);
+            if (window.lucide) lucide.createIcons();
         });
     </script>
 </body>

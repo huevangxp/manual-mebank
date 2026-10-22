@@ -513,7 +513,7 @@
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
                                 <p class="leading-relaxed">
                                     <strong>ຄຳແນະນຳ:</strong> ກວດສອບວັນທີ ແລະ ເສັ້ນທາງບິນໃຫ້ຖືກຕ້ອງກ່ອນກົດປຸ່ມ "ຕໍ່ໄປ" ເພື່ອກ້າວສູ່ການເລືອກຊັ້ນບ່ອນນັ່ງໃນຂັ້ນຕອນທີ 3.
                                 </p>
@@ -525,14 +525,15 @@
                 <!-- Bottom Nav Controller -->
                 <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
                     <button onclick="goToStep(1)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 1)
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ (Step 1)</span>
                     </button>
                     <span class="text-xs text-slate-500 font-bold">2 / 9</span>
                     <button onclick="goToStep(3)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
                         <span>ຕໍ່ໄປ: ເລືອກຊັ້ນບິນ (Step 3)</span>
-                        <span>›</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>

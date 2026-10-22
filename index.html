@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ຄູ່ມືການຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway) - APB MeBank</title>
+    <title>ສູນລວມຄູ່ມືລະບົບ APB MeBank - Documentation & Manual Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,6 +21,13 @@
                             700: '#02675d',
                             800: '#06524b',
                             900: '#08443e'
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207'
                         }
                     },
                     fontFamily: {
@@ -41,1596 +48,522 @@
             font-family: 'Noto Sans Lao', 'Inter', sans-serif;
         }
 
-        /* Custom scrollbar for horizontal tabs */
-        .tabs-scrollbar::-webkit-scrollbar {
-            height: 6px;
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .tabs-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 9999px;
+        .card-hover-effect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 131, 117, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
         }
 
-        .tabs-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 9999px;
+        .chairman-glow:hover {
+            box-shadow: 0 20px 35px -10px rgba(202, 138, 4, 0.25), 0 10px 15px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .tabs-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* Active Tab styles */
-        .step-tab-btn.active {
-            background-color: #008375 !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(0, 131, 117, 0.25);
-            border-color: #008375 !important;
-        }
-
-        .step-tab-btn.active .step-num-badge {
-            background-color: #ffffff !important;
-            color: #008375 !important;
-        }
-
-        .step-tab-btn.active .step-sub {
-            color: #ccfbef !important;
-        }
-
-        /* Print styles */
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-
-            .step-panel {
-                display: block !important;
-                page-break-after: always;
-                margin-bottom: 2.5rem;
-            }
-
-            .lg\:sticky {
-                position: static !important;
-            }
+        /* Subtle animated background grid */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(2, 103, 93, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(2, 103, 93, 0.04) 1px, transparent 1px);
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between bg-grid-pattern">
 
-    <!-- Top Navigation Bar -->
-    <header
-        class="bg-gradient-to-r from-apb-800 via-apb-700 to-apb-600 text-white shadow-lg sticky top-0 z-50 no-print">
+    <!-- Top Navigation Header -->
+    <header class="bg-gradient-to-r from-apb-900 via-apb-800 to-apb-700 text-white shadow-xl sticky top-0 z-50">
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <div
-                    class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center font-bold text-xl border border-white/20 shadow-inner">
-                    <span class="text-emerald-300">✈️</span>
+            <div class="flex items-center space-x-3.5">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-200 flex items-center justify-center font-black text-apb-900 text-xl shadow-lg shadow-emerald-900/30">
+                    APB
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
-                        <span>APB MeBank Manual</span>
-                        <span
-                            class="text-xs bg-emerald-400/20 text-emerald-200 border border-emerald-400/30 px-2 py-0.5 rounded-full font-medium">Web
-                            Portal</span>
+                        <span>APB MeBank Manuals Hub</span>
+                        <span class="text-xs bg-emerald-400/25 text-emerald-200 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">
+                            Official Portal
+                        </span>
                     </div>
-                    <p class="text-xs text-emerald-100/80">ຄູ່ມືລະບົບຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)</p>
+                    <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2.5 sm:gap-3">
-                <!-- Full Screen Toggle -->
-                <button id="btn-fullscreen" onclick="toggleFullScreen()"
-                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="fullscreen-icon">⛶</span>
-                    <span id="fullscreen-text">ເຕັມຈໍ (Full Screen)</span>
-                </button>
+            <!-- Quick Navigation Menu to Manuals -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <nav class="hidden lg:flex items-center gap-1.5 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+                    <a href="booking-flight.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
+                        <span>✈️</span> <span>ຈອງປີ້ເຮືອບິນ</span>
+                    </a>
+                    <a href="admin-portal-add-user.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
+                        <span>👤</span> <span>Admin ເພີ່ມຜູ້ໃຊ້</span>
+                    </a>
+                    <a href="create-chairman-card.html" class="px-3 py-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-amber-500/25 transition flex items-center gap-1.5 border border-amber-400/30">
+                        <span>👑</span> <span>ເມນູສ້າງບັດປະທານ</span>
+                    </a>
+                </nav>
 
-                <!-- View Mode Toggle: Interactive Tabs vs All Steps List -->
-                <button id="btn-toggle-view" onclick="toggleAllView()"
-                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="toggle-view-text">📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ</span>
-                </button>
-
-                <button onclick="window.print()"
-                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-xs sm:text-sm font-bold transition shadow-md">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span>ພິມຄູ່ມື (Print / PDF)</span>
-                </button>
+                <div class="flex items-center gap-2">
+                    <span class="text-[11px] bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>3 Modules Active</span>
+                    </span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
+    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-10">
 
         <!-- ============================================================= -->
-        <!-- SLICE TABS BAR (Horizontal tabs left-to-right + Prev/Next) -->
+        <!-- HERO BANNER SECTION                                           -->
         <!-- ============================================================= -->
-        <div
-            class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                <div class="flex items-center gap-2.5">
-                    <span
-                        class="text-xs font-bold uppercase tracking-wider text-apb-700 bg-apb-50 px-3 py-1 rounded-full border border-apb-200 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>ຂັ້ນຕອນທີ <strong id="step-counter-text" class="text-apb-800 text-sm">1</strong> ຈາກ
-                            9</span>
-                    </span>
-                    <span id="current-step-label" class="text-xs sm:text-sm font-bold text-slate-800 truncate">
-                        1. ເລືອກເມນູ "ຊຳລະບິນ" & "ລາວເດີນອາກາດ"
-                    </span>
+        <section class="relative rounded-3xl bg-gradient-to-r from-apb-900 via-apb-800 to-slate-900 text-white p-6 sm:p-10 lg:p-12 shadow-2xl overflow-hidden border border-apb-700/50">
+            <!-- Decorative Ambient Glows -->
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-4xl space-y-5">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold backdrop-blur-md border border-white/15">
+                    <span>📚</span>
+                    <span>ລະບົບຄູ່ມືປະຕິບັດງານແບບ Interactive & Print Ready</span>
                 </div>
 
-                <!-- Navigation Action Buttons (Prev / Next) -->
-                <div class="flex items-center gap-2 self-end sm:self-center">
-                    <button id="btn-prev-step" onclick="changeStep(-1)"
-                        class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
-                        <span>‹</span>
-                        <span>ກ່ອນໜ້າ</span>
-                    </button>
-                    <button id="btn-next-step" onclick="changeStep(1)"
-                        class="px-4 py-1.5 rounded-xl bg-apb-600 hover:bg-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-emerald-200">
-                        <span>ຕໍ່ໄປ</span>
-                        <span>›</span>
-                    </button>
+                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບ <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300 bg-clip-text text-transparent">APB MeBank</span>
+                </h1>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+                    ຮວບຮວມທຸກຂັ້ນຕອນການດຳເນີນງານລະບົບແອັບມືຖື ແລະ ລະບົບ Admin Portal ຂອງທະນາຄານສົ່ງເສີມກະສິກຳ. 
+                    ມີພາບປະກອບຕົວຈິງ, ຄຳອະທິບາຍທຸກຟິວຂໍ້ມູນ, ຮອງຮັບການສະຫຼັບຮູບ Marked/Original ແລະ ພິມເປັນເອກະສານ PDF ໄດ້ທັນທີ.
+                </p>
+
+                <!-- Search and Live Filter Input -->
+                <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <div class="relative flex-1 max-w-xl">
+                        <input type="text" id="manual-search-input" oninput="filterManualCards()"
+                            placeholder="🔍 ຄົ້ນຫາຄູ່ມື (ເຊັ່ນ: ຈອງປີ້ເຮືອບິນ, Add User, ສ້າງບັດປະທານ, flight, admin...)"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
+                        <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-3.5 top-3 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
+                            ✕
+                        </button>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold" id="category-pills">
+                        <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm">
+                            ທັງໝົດ (All)
+                        </button>
+                        <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
+                            📱 ແອັບ MeBank
+                        </button>
+                        <button onclick="setCategoryFilter('admin')" id="cat-admin" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
+                            🖥️ Admin Portal
+                        </button>
+                        <button onclick="setCategoryFilter('card')" id="cat-card" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-amber-400/30 text-amber-200">
+                            👑 ລະບົບຈັດການບັດ VIP
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Horizontal Scrollable Tabs Strip (Left to Right) -->
-            <div class="overflow-x-auto pb-1 tabs-scrollbar" id="tabs-scroll-container">
-                <div class="flex items-center gap-2 min-w-max" role="tablist" aria-label="Flight Booking Steps">
-                    <button onclick="goToStep(1)" id="tab-btn-1"
-                        class="step-tab-btn active px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
-                        <span>1. ເລືອກເມນູ</span>
-                    </button>
-                    <button onclick="goToStep(2)" id="tab-btn-2"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
-                        <span>2. ຄົ້ນຫາຖ້ຽວບິນ</span>
-                    </button>
-                    <button onclick="goToStep(3)" id="tab-btn-3"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
-                        <span>3. ເລືອກຊັ້ນບິນ</span>
-                    </button>
-                    <button onclick="goToStep(4)" id="tab-btn-4"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
-                        <span>4. ເງື່ອນໄຂປັອບອັບ</span>
-                    </button>
-                    <button onclick="goToStep(5)" id="tab-btn-5"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">5</span>
-                        <span>5. ປ້ອນຊື່ຜູ້ໂດຍສານ</span>
-                    </button>
-                    <button onclick="goToStep(6)" id="tab-btn-6"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">6</span>
-                        <span>6. ກວດສອບຂໍ້ມູນ</span>
-                    </button>
-                    <button onclick="goToStep(7)" id="tab-btn-7"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">7</span>
-                        <span>7. ເລືອກບັນຊີຊຳລະ</span>
-                    </button>
-                    <button onclick="goToStep(8)" id="tab-btn-8"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">8</span>
-                        <span>8. ຢັ້ງຢືນ TPIN</span>
-                    </button>
-                    <button onclick="goToStep(9)" id="tab-btn-9"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span
-                            class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">9</span>
-                        <span>9. ສຳເລັດ & ດາວໂຫຼດ 🎉</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Animated Progress Bar -->
-            <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
-                <div id="step-progress-bar"
-                    class="h-full bg-gradient-to-r from-apb-600 via-teal-500 to-emerald-400 transition-all duration-300"
-                    style="width: 11.11%;"></div>
-            </div>
-        </div>
+        </section>
 
         <!-- ============================================================= -->
-        <!-- STEPS CONTAINER (Image Left, Explanation & Buttons Right)   -->
+        <!-- MANUALS GRID: CARDS FOR EACH MODULE                           -->
         <!-- ============================================================= -->
-        <div id="all-steps-container" class="space-y-12">
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+                        <span>📑</span> <span>ເລືອກຄູ່ມືທີ່ຕ້ອງການສຶກສາ (Available Manuals)</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">ຄລິກທີ່ກາດ ຫຼື ປຸ່ມ "ເປີດຄູ່ມື" ເພື່ອເຂົ້າສູ່ໜ້າຄູ່ມືຂັ້ນຕອນລະອຽດ</p>
+                </div>
+                <span id="manual-count-badge" class="text-xs font-bold bg-apb-50 text-apb-700 border border-apb-200 px-3 py-1 rounded-full">
+                    ສະແດງ 3 ຄູ່ມື
+                </span>
+            </div>
 
-            <!-- ========================================== -->
-            <!-- STEP 1: Menu Header & Lao Skyway Selection -->
-            <!-- ========================================== -->
-            <div id="step-panel-1" class="step-panel" role="tabpanel">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 1 (Screen 1 View)</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch" id="manuals-card-grid">
+
+                <!-- ========================================================= -->
+                <!-- CARD 1: CHAIRMAN CARD (HIGHLIGHTED PER USER REQUEST)     -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect chairman-glow flex flex-col justify-between bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl border-2 border-amber-500/50 shadow-xl overflow-hidden cursor-pointer group"
+                    data-category="admin card"
+                    data-keywords="ສ້າງບັດປະທານ chairman card vip metal card management admin portal ອອກບັດ"
+                    onclick="window.location.href='create-chairman-card.html'">
+                    
+                    <div>
+                        <!-- Header Banner -->
+                        <div class="relative h-48 bg-gradient-to-tr from-black via-zinc-900 to-slate-900 p-5 overflow-hidden flex flex-col justify-between border-b border-amber-500/30">
+                            <div class="absolute -right-12 -top-12 w-44 h-44 bg-amber-500/15 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 text-[11px] font-extrabold uppercase tracking-wider shadow">
+                                    👑 VIP EXECUTIVE
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-slate-800/80 text-amber-300 text-[11px] font-mono border border-amber-500/30">
+                                    7 ຂັ້ນຕອນ
+                                </span>
+                            </div>
+
+                            <!-- Metallic Chairman Card Preview Graphic -->
+                            <div class="relative z-10 w-full max-w-[270px] mx-auto h-24 rounded-xl bg-gradient-to-r from-zinc-900 via-black to-zinc-900 border border-amber-400/50 p-3 shadow-2xl flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
+                                <div class="flex justify-between items-center text-[10px]">
+                                    <span class="font-bold text-amber-400 tracking-wider">APB MeBank</span>
+                                    <span class="text-[8px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-extrabold">BLACK METAL</span>
                                 </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s1-marked" onclick="switchImageScreen1('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s1-original" onclick="switchImageScreen1('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
+                                <div class="font-mono text-xs text-amber-200 tracking-widest">
+                                    9999 •••• •••• 8888
+                                </div>
+                                <div class="flex justify-between text-[8px] text-amber-300 uppercase">
+                                    <span>CHAIRMAN CARD</span>
+                                    <span>EXP: 10/31</span>
                                 </div>
                             </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-1" src="images/bill_payment_marked.png"
-                                    alt="APB MeBank Bill Payment Lao Skyway Selection"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-1')">
-                                <button onclick="openLightbox('img-screen-1')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <span>💳</span> <span>Admin Portal • Card Management</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center gap-2">
+                                    <span>ຄູ່ມືເມນູສ້າງບັດປະທານ</span>
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1.5 line-clamp-3 leading-relaxed">
+                                    ຄູ່ມືຂັ້ນຕອນການອອກບັດພິເສດລະດັບສູງສຸດ MeBank Black Executive Metal Card: ການຄົ້ນຫາລູກຄ້າ VIP, ຕັ້ງຄ່າສິດທິພິເສດ, ຜູກບັນຊີຫຼາຍສະກຸນເງິນ ແລະ ການອະນຸມັດສອງຊັ້ນ.
+                                </p>
                             </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
+
+                            <!-- Key Steps Badges -->
+                            <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">1. ເມນູສ້າງບັດ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">2. ຄົ້ນຫາ VIP</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">3. ສິດທິພິເສດ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">4. ຜູກບັນຊີ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-amber-950 text-amber-300 border border-amber-600/40 text-[10px]">6. ອະນຸມັດ 2 ຊັ້ນ</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 01 · Step 1</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 1: ເຂົ້າສູ່ເມນູຊຳລະບິນ ແລະ ເລືອກ "ລາວເດີນອາກາດ"</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
-                                    <span>ວິທີເຂົ້າສູ່ເມນູ ແລະ ເລືອກບໍລິການ Lao Skyway</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດເລືອກເມນູ "ຊຳລະບິນ" (Mark 1)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຢູ່ແຖບເມນູຫຼັກດ້ານເທິງສຸດຂອງໜ້າຈໍ, ໃຫ້ຄລິກເລືອກເມນູ <strong>"ຊຳລະບິນ"</strong> (ໄອຄອນຮູບໃບບິນສີເຫຼືອງ ຖັດຈາກເມນູໂອນເງິນ) ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 1)</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກບໍລິການ "ລາວເດີນອາກາດ" (Mark 2)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ເລື່ອນລົງມາທີ່ໝວດ <strong>"ຈອງປີ້ເຮືອບິນ" (Flight Booking)</strong> ແລ້ວກົດເລືອກໂລໂກ້ <strong>"ລາວເດີນອາກາດ" (Lao Skyway)</strong> ໄອຄອນຮູບນົກສີຂຽວ ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 2)</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ເມື່ອກົດເລືອກ "ລາວເດີນອາກາດ" ແລ້ວ ລະບົບຈະພາທ່ານເຂົ້າສູ່ໜ້າຄົ້ນຫາຖ້ຽວບິນ ແລະ ຕາຕະລາງການບິນໃນຂັ້ນຕອນທີ 2 ທັນທີ.
-                                </p>
-                            </div>
-                        </div>
+                    <!-- Card Action Button -->
+                    <div class="p-6 pt-0">
+                        <a href="create-chairman-card.html"
+                            onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg shadow-amber-950/40 transition-all duration-300 group-hover:shadow-amber-500/20">
+                            <span>ເປີດຄູ່ມືສ້າງບັດປະທານ (Open Manual)</span>
+                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button disabled
-                        class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-400 opacity-40 cursor-not-allowed">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">1 / 9</span>
-                    <button onclick="goToStep(2)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ຄົ້ນຫາຖ້ຽວບິນ (Step 2)</span>
-                        <span>›</span>
-                    </button>
+                <!-- ========================================================= -->
+                <!-- CARD 2: ADMIN PORTAL - ADD USER                           -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                    data-category="admin"
+                    data-keywords="admin portal add user ເພີ່ມຜູ້ໃຊ້ງານ ຈັດການຜູ້ໃຊ້ role maker checker permissions ຄວາມປອດໄພ"
+                    onclick="window.location.href='admin-portal-add-user.html'">
+                    
+                    <div>
+                        <!-- Header Banner -->
+                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-800 p-5 overflow-hidden flex flex-col justify-between text-white">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold uppercase tracking-wider">
+                                    ADMIN SECURITY
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10">
+                                    7 ຂັ້ນຕອນ
+                                </span>
+                            </div>
+
+                            <!-- Graphic Illustration of Admin Users -->
+                            <div class="relative z-10 flex items-center justify-center gap-3 py-2">
+                                <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-2xl shadow-lg">
+                                    👤
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-xs font-bold text-white">User Management</div>
+                                    <div class="text-[10px] text-emerald-300 font-mono">Role: Maker / Checker</div>
+                                    <div class="text-[9px] bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded font-mono inline-block">2FA Protected</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <span>👥</span> <span>Admin Portal • User Access Control</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
+                                    <span>ຄູ່ມື Admin Portal: ເພີ່ມຜູ້ໃຊ້ງານ</span>
+                                </h3>
+                                <p class="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed">
+                                    ຄູ່ມືສຳລັບຜູ້ດູແລລະບົບ (Admin) ໃນການສ້າງບັນຊີຜູ້ໃຊ້ງານໃໝ່, ກຳນົດບົດບາດ (Role & Permissions), ກຳນົດຂອບເຂດສາຂາ, ວົງເງິນ Limit ແລະ ຂັ້ນຕອນການອະນຸມັດໂດຍ Checker.
+                                </p>
+                            </div>
+
+                            <!-- Key Steps Badges -->
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">1. Login 2FA</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">2. ເມນູ Add User</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">3. ຂໍ້ມູນພະນັກງານ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">4. ກຳນົດ Role</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">7. Checker ອະນຸມັດ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Action Button -->
+                    <div class="p-6 pt-0">
+                        <a href="admin-portal-add-user.html"
+                            onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
+                            <span>ເປີດຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ (Open Manual)</span>
+                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= -->
+                <!-- CARD 3: FLIGHT BOOKING (MOVED FROM ORIGINAL INDEX)       -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                    data-category="mobile"
+                    data-keywords="ຊຳລະບິນປີ້ເຮືອບິນ ຈອງປີ້ເຮືອບິນ booking flight lao skyway ລາວເດີນອາກາດ mebank mobile app ປີ້ເຮືອບິນ"
+                    onclick="window.location.href='booking-flight.html'">
+                    
+                    <div>
+                        <!-- Header Banner -->
+                        <div class="relative h-48 bg-gradient-to-tr from-apb-800 via-teal-700 to-emerald-600 p-5 overflow-hidden flex flex-col justify-between text-white">
+                            <div class="absolute -right-8 -top-8 w-36 h-36 bg-white/15 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider">
+                                    MOBILE BANKING
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-black/20 text-emerald-200 text-[11px] font-mono border border-white/10">
+                                    9 ຂັ້ນຕອນ
+                                </span>
+                            </div>
+
+                            <!-- Airplane Preview Graphic -->
+                            <div class="relative z-10 flex items-center justify-center gap-3 py-2">
+                                <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-3xl shadow-lg">
+                                    ✈️
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-xs font-bold text-white">Lao Skyway Booking</div>
+                                    <div class="text-[10px] text-emerald-100">ຊຳລະຄ່າປີ້ຜ່ານແອັບ MeBank</div>
+                                    <div class="text-[9px] bg-white/20 text-white px-2 py-0.5 rounded font-mono inline-block">18 ຮູບປະກອບຕົ້ນສະບັບ</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <span>📱</span> <span>ແອັບມືຖື MeBank • Bill Payment</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
+                                    <span>ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ</span>
+                                </h3>
+                                <p class="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed">
+                                    ຄູ່ມືການຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway) ຜ່ານແອັບ MeBank ແບບລະອຽດ 9 ຂັ້ນຕອນ: ຄົ້ນຫາຖ້ຽວບິນ, ເລືອກຊັ້ນບິນ, ປ້ອນຊື່ຜູ້ໂດຍສານ ແລະ ຢືນຢັນ TPIN.
+                                </p>
+                            </div>
+
+                            <!-- Key Steps Badges -->
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">1. ເມນູຊຳລະບິນ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">2. ຄົ້ນຫາຖ້ຽວບິນ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">3. ເລືອກຊັ້ນບິນ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">7. ບັນຊີຊຳລະ</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">9. ສຳເລັດ 🎉</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Action Button -->
+                    <div class="p-6 pt-0">
+                        <a href="booking-flight.html"
+                            onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-teal-700/20 transition-all duration-300">
+                            <span>ເປີດຄູ່ມືຈອງປີ້ເຮືອບິນ (Open Manual)</span>
+                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- No results message -->
+            <div id="no-search-results" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+                <div class="text-4xl">🔍</div>
+                <h3 class="text-base font-bold text-slate-800">ບໍ່ພົບຄູ່ມືທີ່ກົງກັບຄຳຄົ້ນຫາ</h3>
+                <p class="text-xs text-slate-500">ກະລຸນາລອງປ້ອນຄຳຄົ້ນຫາໃໝ່ ເຊັ່ນ: "ເຮືອບິນ", "admin", "ບັດປະທານ" ຫຼື ກົດປຸ່ມລ້າງຄຳຄົ້ນຫາ</p>
+                <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm">
+                    ລ້າງການຄົ້ນຫາ (Clear Search)
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- SYSTEM HIGHLIGHTS / QUICK REFERENCE                           -->
+        <!-- ============================================================= -->
+        <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center text-lg border border-apb-200">
+                    💡
+                </span>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຄຸນລັກສະນະເດັ່ນຂອງລະບົບຄູ່ມື APB MeBank</h3>
+                    <p class="text-xs text-slate-500">Standards and Features Designed for APB Staff and Customers</p>
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- STEP 2: Flight Search Form & Selection     -->
-            <!-- ========================================== -->
-            <div id="step-panel-2" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 2 (Screen 2 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s2-marked" onclick="switchImageScreen2('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s2-original" onclick="switchImageScreen2('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-2" src="images/flight_search_marked.png"
-                                    alt="APB MeBank Flight Search Screen Guide"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-2')">
-                                <button onclick="openLightbox('img-screen-2')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-600 to-teal-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-teal-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 02 · Step 2</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 2: ປ້ອນຂໍ້ມູນຄົ້ນຫາ ແລະ ເລືອກຖ້ຽວບິນ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-teal-600 rounded-sm inline-block"></span>
-                                    <span>ວິທີປ້ອນຂໍ້ມູນຄົ້ນຫາ ແລະ ເລືອກຖ້ຽວບິນ (Flight Search & Selection)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປ້ອນຂໍ້ມູນຄົ້ນຫາຖ້ຽວບິນ (Mark 1)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຕົວຢ່າງ: ເລືອກ <strong>ຖ້ຽວດຽວ (One-Way)</strong> · ຕົ້ນທາງ <strong>VTE (ວັດໄຕ)</strong> → ປາຍທາງ <strong>XKH (ຊຽງຂວາງ)</strong> · ວັນທີ <strong>14/10/2026</strong> · ຜູ້ໂດຍສານ <strong>1 ຜູ້ໃຫຍ່</strong> · ຊັ້ນ <strong>Economy</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຄົ້ນຫາຖ້ຽວບິນ" (Mark 2)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ກົດປຸ່ມສີຂຽວ <strong>"ຄົ້ນຫາຖ້ຽວບິນ" (Search Flight)</strong> ດ້ານລຸ່ມຟອມ ເພື່ອໃຫ້ລະບົບສະແດງຕາຕະລາງຖ້ຽວບິນທີ່ວ່າງ.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກຖ້ຽວບິນທີ່ຕ້ອງການ (Mark 3)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຄລິກເລືອກກາດຖ້ຽວບິນ <strong>LK212 (15:10 VTE → 15:45 XKH) ລາຄາ 710,000.00 LAK</strong> ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 3)</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 4)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ກົດປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ຢູ່ລຸ່ມຂວາມື ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 4)</strong> ເພື່ອກ້າວສູ່ໜ້າເລືອກຊັ້ນບ່ອນນັ່ງ.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ກວດສອບວັນທີ ແລະ ເສັ້ນທາງບິນໃຫ້ຖືກຕ້ອງກ່ອນກົດປຸ່ມ "ຕໍ່ໄປ" ເພື່ອກ້າວສູ່ການເລືອກຊັ້ນບ່ອນນັ່ງໃນຂັ້ນຕອນທີ 3.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <div class="text-apb-600 text-xl font-bold">📸</div>
+                    <div class="font-bold text-slate-900">ພາບປະກອບທຸກຂັ້ນຕອນ</div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">ສະຫຼັບເບິ່ງຮູບຕົ້ນສະບັບ ແລະ ຮູບທີ່ມີໝາຍເນັ້ນຈຸດສຳຄັນພ້ອມລະບົບຊູມຂະຫຍາຍ.</p>
                 </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(1)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 1)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">2 / 9</span>
-                    <button onclick="goToStep(3)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ເລືອກຊັ້ນບິນ (Step 3)</span>
-                        <span>›</span>
-                    </button>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <div class="text-apb-600 text-xl font-bold">🖨️</div>
+                    <div class="font-bold text-slate-900">ພິມ ຫຼື ບັນທຶກເປັນ PDF</div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">ອອກແບບພິເສດສຳລັບການພິມ ຫຼື Export ເປັນເອກະສານຝຶກອົບຮົມໂດຍບໍ່ມີແຖບເມນູລົບກວນ.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <div class="text-apb-600 text-xl font-bold">🛡️</div>
+                    <div class="font-bold text-slate-900">ມາດຕະຖານ Maker-Checker</div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">ລະບົບແບ່ງແຍກສິດທິການສ້າງ (Maker) ແລະ ການອະນຸມັດ (Checker) ຕາມມາດຕະຖານທະນາຄານ.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <div class="text-apb-600 text-xl font-bold">👑</div>
+                    <div class="font-bold text-slate-900">ສິດທິພິເສດ Chairman VIP</div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">ຮອງຮັບການອອກບັດໂລຫະ Metal Card ລະດັບສູງສຸດພ້ອມບໍລິການ Private Banking.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- ========================================== -->
-            <!-- STEP 3: Seat Class / Fare Selection        -->
-            <!-- ========================================== -->
-            <div id="step-panel-3" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 3 (Screen 3 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s3-marked" onclick="switchImageScreen3('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s3-original" onclick="switchImageScreen3('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-3" src="images/fare_selection_marked.png"
-                                    alt="APB MeBank Fare Selection Screen Guide"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-3')">
-                                <button onclick="openLightbox('img-screen-3')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-600 to-sky-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">3</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-sky-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 03 · Step 3</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 3: ເລືອກຊັ້ນບ່ອນນັ່ງຕາມຄວາມຕ້ອງການ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-sky-600 rounded-sm inline-block"></span>
-                                    <span>ຄຳແນະນຳການເລືອກຖ້ຽວບິນ ແລະ ຊັ້ນບ່ອນນັ່ງ (Flight & Fare Recommendation)</span>
-                                </h3>
-
-                                <!-- Recommendation explanation box -->
-                                <div
-                                    class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-center gap-2.5">
-                                        <span
-                                            class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0">1</span>
-                                        <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ແນະນຳເລືອກຊັ້ນບ່ອນນັ່ງ:</h4>
-                                    </div>
-
-                                    <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed">
-                                        ຕົວຢ່າງ: <strong>ໃນຂັ້ນຕອນນີ້ ລະບົບຈະສະແດງຕົວເລືອກແພັກເກດຊັ້ນບ່ອນນັ່ງຂອງສາຍການບິນ Lao Skyway.</strong>
-                                        <strong>ຄລິກເລືອກຊັ້ນບ່ອນນັ່ງ "LOVE" (ລາຄາ 710,000.00 LAK)</strong>
-                                        ດັ່ງທີ່ມີເຄື່ອງໝາຍຕິກຖືກສີຂຽວ <strong class="text-emerald-700">✔</strong>
-                                        ໝາຍໄວ້ໃນຮູບພາບດ້ານຊ້າຍ (Mark 1).
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ຫຼັງຈາກຄລິກເລືອກຊັ້ນບ່ອນນັ່ງ <strong>LOVE</strong>
-                                    ຮຽບຮ້ອຍແລ້ວ, ໃຫ້ກຽມພ້ອມກົດ <strong>"ຕໍ່ໄປ (Continue)"</strong> ເພື່ອອ່ານ ແລະ
-                                    ຍອມຮັບເງື່ອນໄຂປີ້ໂດຍສານໃນຂັ້ນຕອນທີ 4.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(2)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 2)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">3 / 9</span>
-                    <button onclick="goToStep(4)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ເງື່ອນໄຂປັອບອັບ (Step 4)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 4: Read Popup Terms & Accept          -->
-            <!-- ========================================== -->
-            <div id="step-panel-4" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 4 (Screen 4 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s4-marked" onclick="switchImageScreen4('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s4-original" onclick="switchImageScreen4('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-4" src="images/terms_popup_marked.png"
-                                    alt="APB MeBank Terms Popup Screen Guide"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-4')">
-                                <button onclick="openLightbox('img-screen-4')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-600 to-amber-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">4</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-amber-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 04 · Step 4</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 4: ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂປັອບອັບ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-amber-600 rounded-sm inline-block"></span>
-                                    <span>ອ່ານເງື່ອນໄຂປັອບອັບ ແລະ ຢືນຢັນ (Terms & Conditions Confirmation)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ອ່ານ 5 ເງື່ອນໄຂປີ້ໂດຍສານໃນປັອບອັບ (Mark 1)</h4>
-                                            <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
-                                                <p>• <strong>ສຳພາລະ:</strong> ບໍ່ເສຍຄ່າ 20 ກກ (ສູງສຸດ 2 ໜ່ວຍ)</p>
-                                                <p>• <strong>ປ່ຽນຖ້ຽວບິນ:</strong> ຄ່າທຳນຽມ 250,000 ກີບ/ຄົນ/ຄັ້ງ</p>
-                                                <p>• <strong>ປ່ຽນຊື່:</strong> ຄ່າທຳນຽມ 300,000 ກີບ/ຄົນ/ຄັ້ງ</p>
-                                                <p>• <strong>ຄ່າສົ່ງເງິນຄືນ:</strong> ຄ່າທຳນຽມ 300,000 ກີບ/ຄົນ/ຄັ້ງ</p>
-                                                <p>• <strong>ຍົກເລີກມື້ເດີນທາງ:</strong> ຄ່າທຳນຽມ 350,000 ກີບ/ຄົນ/ຄັ້ງ</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ" (Mark 2)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ກົດປຸ່ມສີຂຽວ <strong>"ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ"</strong> ຢູ່ລຸ່ມສຸດຂອງປັອບອັບ ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 2)</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 3)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ກົດປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ຢູ່ລຸ່ມຂວາມື ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 3)</strong> ເພື່ອກ້າວສູ່ໜ້າປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ຕ້ອງກົດປຸ່ມ "ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ" ໃນປັອບອັບກ່ອນ ຈຶ່ງສາມາດກົດປຸ່ມ "ຕໍ່ໄປ" ເພື່ອກ້າວໄປປ້ອນຂໍ້ມູນຜູ້ໂດຍສານໃນຂັ້ນຕອນທີ 5.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(3)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 3)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">4 / 9</span>
-                    <button onclick="goToStep(5)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ປ້ອນຊື່ຜູ້ໂດຍສານ (Step 5)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 5: Passenger Details Form & Continue  -->
-            <!-- ========================================== -->
-            <div id="step-panel-5" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 5 (Screen 5 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s5-marked" onclick="switchImageScreen5('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s5-original" onclick="switchImageScreen5('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-5" src="images/passenger_details_marked.png"
-                                    alt="APB MeBank Passenger Details Form Guide"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-5')">
-                                <button onclick="openLightbox('img-screen-5')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-600 to-rose-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">5</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-rose-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 05 · Step 5</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 5: ປ້ອນລາຍລະອຽດຜູ້ໂດຍສານ ແລະ ກົດຕໍ່ໄປ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-rose-600 rounded-sm inline-block"></span>
-                                    <span>ວິທີປ້ອນຂໍ້ມູນຜູ້ໂດຍສານ ແລະ ກົດຕໍ່ໄປ (Passenger Details Form)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປ້ອນຂໍ້ມູນຜູ້ໂດຍສານໃຫ້ຄົບຖ້ວນທຸກຊ່ອງ (Marks 1..10)</h4>
-                                            <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
-                                                <p>• <strong>ຄຳນຳໜ້າ & ເພດ:</strong> ທ່ານ (Mr.) · ເພດ: ຊາຍ (Male)</p>
-                                                <p>• <strong>ຊື່ & ນາມສະກຸນ:</strong> Huevang XIONGPOR</p>
-                                                <p>• <strong>ປະເທດ & ສັນຊາດ:</strong> Laos PDR</p>
-                                                <p>• <strong>ວັນເດືອນປີເກີດ:</strong> 02/09/2000</p>
-                                                <p>• <strong>ອີເມວ & ເບີໂທ:</strong> huevangxp@gmail.com · +856 2011223344</p>
-                                                <p>• <strong>ເອກະສານປະຈຳຕົວ:</strong> ບັດປະຈຳຕົວ (ID Card) ເລກທີ: 012345678</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">11</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 11)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ເມື່ອກວດສອບຂໍ້ມູນຄົບທຸກຊ່ອງແລ້ວ, ຄລິກປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ດ້ານລຸ່ມຂວາມື ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 11)</strong> ເພື່ອກ້າວສູ່ໜ້າກວດສອບຂໍ້ມູນການຈອງ.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ກະລຸນາກວດສອບຕົວສະກົດຊື່, ນາມສະກຸນ ແລະ ເລກທີເອກະສານໃຫ້ກົງກັບບັດຕົວຈິງ ເພື່ອຫຼີກລ່ຽງບັນຫາໃນການເຊັກອິນທີ່ສະໜາມບິນ.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(4)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 4)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">5 / 9</span>
-                    <button onclick="goToStep(6)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ກວດສອບຂໍ້ມູນ (Step 6)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 6: Booking Review & Confirmation      -->
-            <!-- ========================================== -->
-            <div id="step-panel-6" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 6 (Screen 6 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s6-marked" onclick="switchImageScreen6('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s6-original" onclick="switchImageScreen6('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-6" src="images/booking_review_marked.png"
-                                    alt="APB MeBank Booking Review"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-6')">
-                                <button onclick="openLightbox('img-screen-6')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">6</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 06 · Step 6</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 6: ກວດສອບຂໍ້ມູນການຈອງ ແລະ ຄລິກປຸ່ມຕໍ່ໄປ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
-                                    <span>ກວດສອບຂໍ້ມູນການຈອງ ແລະ ຢືນຢັນ (Booking Review & Verification)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບ 4 ສ່ວນຫຼັກ (Marks 1..4)</h4>
-                                            <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
-                                                <p>• <strong>ບັນຊີຕັດເງິນ:</strong> Mr. Huevang XIONGPOR (0000200100108241 LAK) · ເສັ້ນທາງ VTE → XKH</p>
-                                                <p>• <strong>ຖ້ຽວບິນ:</strong> Lao Skyway LK212 (LOVE) · 15:10 VTE → 15:45 XKH (14/10/2026)</p>
-                                                <p>• <strong>ຜູ້ໂດຍສານ:</strong> Mr. Huevang XIONGPOR · +856 2011223344 · huevangxp@gmail.com</p>
-                                                <p>• <strong>ຍອດລວມທັງໝົດ:</strong> <strong class="text-apb-600 font-extrabold text-base">710,000.00 LAK</strong> (ລວມພາສີ ແລະ ຄ່າທຳນຽມແລ້ວ)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">5</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ" (Mark 5)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຫາກຂໍ້ມູນຖືກຕ້ອງຄົບຖ້ວນ, ກົດປຸ່ມສີຂຽວ <strong>"ຕໍ່ໄປ" (Continue)</strong> ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 5)</strong> ເພື່ອເລືອກບັນຊີຊຳລະເງິນ.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ຫາກພົບເຫັນຂໍ້ມູນຜິດພາດ ສາມາດກົດປຸ່ມ <strong>"‹ ກັບຄືນ"</strong> ເພື່ອແກ້ໄຂຂໍ້ມູນໄດ້ກ່ອນທີ່ຈະທຳການຊຳລະເງິນ.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(5)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 5)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">6 / 9</span>
-                    <button onclick="goToStep(7)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ເລືອກບັນຊີຊຳລະ (Step 7)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 7: Select Payment Account Modal       -->
-            <!-- ========================================== -->
-            <div id="step-panel-7" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 7 (Screen 7 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s7-marked" onclick="switchImageScreen7('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s7-original" onclick="switchImageScreen7('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-7" src="images/account_selection_marked.png"
-                                    alt="APB MeBank Select Account"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-7')">
-                                <button onclick="openLightbox('img-screen-7')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">7</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 07 · Step 7</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 7: ເລືອກບັນຊີສຳລັບຊຳລະເງິນ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
-                                    <span>ເລືອກບັນຊີສຳລັບຊຳລະເງິນ (Select Payment Account)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກບັນຊີຫຼັກ LAK ທີ່ມີຍອດເງິນພຽງພໍ (Mark 1)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ຕົວຢ່າງ: ລະບົບຈະເລືອກບັນຊີຫຼັກ <strong>0000-XXXX-00108241 LAK</strong> (ທ່ານ ວັນທະວິສິດ ວິວົງກອນ) ໄວ້ອັດຕະໂນມັດ ດັ່ງທີ່ມີເຄື່ອງໝາຍຕິກຖືກ <strong class="text-emerald-700">✔</strong> <strong>(Mark 1)</strong>.
-                                            </p>
-                                            <div class="text-xs text-emerald-900 mt-1.5 space-y-0.5">
-                                                <p>• <strong>ບັນຊີ LAK ສຳຮອງ (Mark 2):</strong> ຫາກບັນຊີຫຼັກມີເງິນບໍ່ພໍ ສາມາດຄລິກປ່ຽນມາໃຊ້ບັນຊີ 0100-XXXX-000685 ໄດ້.</p>
-                                                <p>• <strong>ບັນຊີສະກຸນຕ່າງປະເທດ (Mark 3):</strong> ແນະນຳໃຫ້ເລືອກບັນຊີ LAK ເພື່ອຫຼີກລ່ຽງສ່ວນຕ່າງອັດຕາແລກປ່ຽນ.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມກັບຄືນ "←" (Mark 4)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ເມື່ອເລືອກບັນຊີຮຽບຮ້ອຍແລ້ວ, ຄລິກປຸ່ມລູກສອນ <strong>"←" (Back)</strong> ມຸມເທິງຊ້າຍ ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 4)</strong> ເພື່ອກັບຄືນໜ້າກວດສອບ ແລະ ດຳເນີນການຊຳລະ.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ກວດສອບຍອດເງິນຄົງເຫຼືອໃນບັນຊີໃຫ້ພຽງພໍກັບຄ່າຍອດຊຳລະ <strong>710,000.00 LAK</strong> ກ່ອນກົດຢັ້ງຢືນ.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(6)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 6)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">7 / 9</span>
-                    <button onclick="goToStep(8)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ຢັ້ງຢືນ TPIN (Step 8)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 8: TPIN Verification Modal            -->
-            <!-- ========================================== -->
-            <div id="step-panel-8" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 8 (Screen 8 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s8-marked" onclick="switchImageScreen8('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s8-original" onclick="switchImageScreen8('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-8" src="images/tpin_verification_marked.png"
-                                    alt="APB MeBank TPIN Verification"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-8')">
-                                <button onclick="openLightbox('img-screen-8')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">8</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 08 · Step 8</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 8: ປ້ອນລະຫັດ TPIN ເພື່ອຢືນຢັນການຊຳລະເງິນ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
-                                    <span>ຢັ້ງຢືນລະຫັດ TPIN (TPIN Verification)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປ້ອນລະຫັດ TPIN 6 ຫຼັກ (Marks 1..2)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ເມື່ອປັອບອັບຢັ້ງຢືນ TPIN ປະກົດຂຶ້ນ <strong>(Mark 1)</strong>, ໃຫ້ປ້ອນລະຫັດຄວາມປອດໄພສ່ວນຕົວ 6 ຕົວເລກໃນຊ່ອງປ້ອນລະຫັດ ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 2)</strong> ເພື່ອອະນຸມັດຕັດເງິນ <strong>710,000.00 LAK</strong>.
-                                            </p>
-                                            <p class="text-xs text-rose-700 font-semibold mt-1">
-                                                * ຄຳເຕືອນ: ຫ້າມປ້ອນລະຫັດຜິດເກີນ 3 ຄັ້ງ ເພື່ອປ້ອງກັນບັນຊີ MeBank ຖືກລັອກ.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕົກລົງ" ເພື່ອຕັດເງິນ (Mark 4)</h4>
-                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                ກົດປຸ່ມສີຂຽວ <strong>"ຕົກລົງ" (Confirm)</strong> ດັ່ງທີ່ມີເຄື່ອງໝາຍ <strong>(Mark 4)</strong> ເພື່ອດຳເນີນການຕັດເງິນ ແລະ ອອກປີ້ທັນທີ (ຫາກຕ້ອງການຍົກເລີກ ສາມາດກົດປຸ່ມ "ປະຕິເສດ" Mark 3).
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ລະຫັດ TPIN ເປັນລະຫັດຄວາມປອດໄພສ່ວນຕົວ ຫ້າມເປີດເຜີຍ ຫຼື ແບ່ງປັນໃຫ້ຜູ້ອື່ນຮູ້ຢ່າງເດັດຂາດ.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(7)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 7)
-                    </button>
-                    <span class="text-xs text-slate-500 font-bold">8 / 9</span>
-                    <button onclick="goToStep(9)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                        <span>ຕໍ່ໄປ: ສຳເລັດ & ດາວໂຫຼດ (Step 9)</span>
-                        <span>›</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ========================================== -->
-            <!-- STEP 9: Payment Success & E-Receipt        -->
-            <!-- ========================================== -->
-            <div id="step-panel-9" class="step-panel" role="tabpanel" style="display: none;">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Image Card (Equal Height) -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div
-                                class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຕອນທີ 9 (Screen 9 View)</span>
-                                </div>
-                                <div
-                                    class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium">
-                                    <button id="btn-s9-marked" onclick="switchImageScreen9('marked')"
-                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
-                                        ຮູບມີໝາຍ (Marked)
-                                    </button>
-                                    <button id="btn-s9-original" onclick="switchImageScreen9('original')"
-                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
-                                        ຕົ້ນສະບັບ (Original)
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[420px] lg:min-h-[520px]">
-                                <img id="img-screen-9" src="images/payment_success_marked.png"
-                                    alt="APB MeBank Payment Success Receipt"
-                                    class="w-full h-auto max-h-[640px] xl:max-h-[720px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
-                                    onclick="openLightbox('img-screen-9')">
-                                <button onclick="openLightbox('img-screen-9')"
-                                    class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
-                                </button>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
-                                <span class="font-mono text-slate-400">1024 × 772</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: Explanations, Field Breakdown & Buttons -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
-                            <div class="flex items-start gap-3.5">
-                                <span
-                                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">9</span>
-                                <div>
-                                    <div class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">ຂັ້ນຕອນທີ 09 · Step 9 (ສຳເລັດ)</div>
-                                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">ຕອນທີ 9: ການຊຳລະເງິນສຳເລັດ ແລະ ດາວໂຫຼດໃບຢັ້ງຢືນ</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-4">
-                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                                    <span class="w-2 h-5 bg-emerald-600 rounded-sm inline-block"></span>
-                                    <span>ລາຍລະອຽດໃບຢັ້ງຢືນການຊຳລະເງິນ (Payment Receipt & Ticket)</span>
-                                </h3>
-
-                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
-                                    <div class="flex items-start gap-2.5">
-                                        <span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-emerald-100 flex-shrink-0 mt-0.5">✔</span>
-                                        <div>
-                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສະຫຼຸບລາຍການຊຳລະເງິນສຳເລັດ (Marks 1..4)</h4>
-                                            <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-1 space-y-1">
-                                                <p>• <strong>ສະຖານະທຸລະກຳ (Mark 1):</strong> <strong class="text-emerald-700 font-bold">✔ ສຳເລັດ (Success)</strong> (2026-10-12 14:10)</p>
-                                                <p>• <strong>ບັນຊີຕັດເງິນ (Mark 2):</strong> 0000-XXXX-00108241 LAK (ທ່ານ ວັນທະວິສິດ ວິວົງກອນ)</p>
-                                                <p>• <strong>ຂໍ້ມູນຜູ້ໂດຍສານ (Mark 3):</strong> Mr. Huevang XIONGPOR (ສາຍການບິນ Lao Skyway LK212)</p>
-                                                <p>• <strong>ຈຳນວນເງິນທີ່ຕັດຊຳລະ (Mark 4):</strong> <strong class="text-rose-600 font-extrabold text-base">710,000.00 LAK</strong></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2.5 border-t border-emerald-200/80 space-y-2">
-                                        <div class="flex items-start gap-2.5">
-                                            <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">5</span>
-                                            <div>
-                                                <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ດາວໂຫຼດໃບຢັ້ງຢືນ ແລະ ປີ້ເຮືອບິນ (Mark 5)</h4>
-                                                <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
-                                                    ທ່ານສາມາດຄລິກປຸ່ມດາວໂຫຼດທັງ 2 ປຸ່ມດ້ານລຸ່ມນີ້:
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-wrap items-center gap-2 pt-1 pl-9">
-                                            <div class="px-3 py-1.5 rounded-lg bg-apb-600 text-white font-bold shadow flex items-center gap-1.5 text-xs">
-                                                <span>📥 ດາວໂຫຼດ (e-Receipt ສະລິບເງິນ)</span>
-                                            </div>
-                                            <div class="px-3 py-1.5 rounded-lg bg-apb-700 text-white font-bold shadow flex items-center gap-1.5 text-xs">
-                                                <span>📥 ດາວໂຫຼດໃບຢັ້ງຢືນ (e-Ticket PDF)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
-                                <p class="leading-relaxed">
-                                    <strong>ຄຳແນະນຳ:</strong> ນຳເອົາໃບຢັ້ງຢືນ <strong>e-Ticket (PDF)</strong> ສະແດງຕໍ່ເຈົ້າໜ້າທີ່ Lao Skyway ພ້ອມບັດປະຈຳຕົວ ຫຼື ໜັງສືຜ່ານແດນ ໃນມື້ຂຶ້ນຖ້ຽວບິນ LK212 ທີ່ສະໜາມບິນວັດໄຕ (VTE).
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Nav Controller -->
-                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
-                    <button onclick="goToStep(8)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 8)
-                    </button>
-                    <span
-                        class="text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">🎉
-                        ຈົບ 9 ຂັ້ນຕອນ</span>
-                    <button onclick="goToStep(1)"
-                        class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold transition flex items-center gap-1">
-                        <span>↺ ກັບໄປຂັ້ນຕອນທີ 1</span>
-                    </button>
-                </div>
-            </div>
-
-        </div>
     </main>
 
-    <!-- Lightbox Zoom Modal (Click to zoom image) -->
-    <div id="lightbox-modal"
-        class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden no-print"
-        onclick="closeLightbox()">
-        <div class="relative max-w-7xl max-h-[95vh] w-full flex flex-col items-center"
-            onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()"
-                class="absolute -top-11 right-0 text-white bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1">
-                <span>✕ ອັດ (Close)</span>
-            </button>
-            <img id="lightbox-img" src="" alt="Zoomed Screenshot"
-                class="max-w-full max-h-[88vh] object-contain rounded-xl shadow-2xl border border-white/20">
-            <p id="lightbox-caption" class="text-xs text-slate-300 mt-2 text-center"></p>
+    <!-- Global Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 mt-12 border-t border-slate-800">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-sm">
+                        APB
+                    </div>
+                    <div>
+                        <div class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</div>
+                        <div class="text-[11px] text-slate-500">ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ & ດິຈິຕອລແບັງກິ້ງ (IT & Digital Banking Division)</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 text-[11px]">
+                    <a href="booking-flight.html" class="hover:text-emerald-300 transition">ຄູ່ມືຈອງປີ້ເຮືອບິນ</a>
+                    <span>•</span>
+                    <a href="admin-portal-add-user.html" class="hover:text-emerald-300 transition">ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ Admin</a>
+                    <span>•</span>
+                    <a href="create-chairman-card.html" class="hover:text-amber-300 transition">ຄູ່ມືສ້າງບັດປະທານ</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
+                <div>© 2026 APB MeBank. ສະຫງວນລິຂະສິດທຸກປະການ (All Rights Reserved).</div>
+                <div>Internal Banking Documentation Portal • Version 2.4</div>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- Interactive Scripts: Slice Tabs, Image Switchers, Lightbox, Keyboard Navigation -->
+    <!-- Interactive Filtering & Search Script -->
     <script>
-        let currentStep = 1;
-        const totalSteps = 9;
-        let isAllView = false;
+        let currentCategory = 'all';
 
-        const stepTitles = {
-            1: '1. ເລືອກເມນູ "ຊຳລະບິນ" & "ລາວເດີນອາກາດ"',
-            2: '2. ປ້ອນຂໍ້ມູນຄົ້ນຫາຖ້ຽວບິນ & ເລືອກຖ້ຽວ LK212',
-            3: '3. ເລືອກຊັ້ນບ່ອນນັ່ງ (ແພັກເກດ LOVE 710,000 LAK)',
-            4: '4. ອ່ານ & ຍອມຮັບເງື່ອນໄຂປັອບອັບ 5 ຂໍ້',
-            5: '5. ປ້ອນລາຍລະອຽດຜູ້ໂດຍສານ 10 ຊ່ອງ & ກົດຕໍ່ໄປ',
-            6: '6. ກວດສອບຂໍ້ມູນການຈອງທັງໝົດ & ຄລິກຕໍ່ໄປ',
-            7: '7. ເລືອກບັນຊີເງິນກີບ LAK ສຳລັບຊຳລະເງິນ',
-            8: '8. ປ້ອນລະຫັດລັບທຸລະກຳ TPIN 6 ຫຼັກ',
-            9: '9. ສຳເລັດການຊຳລະເງິນ 🎉 & ດາວໂຫຼດໃບຢັ້ງຢືນ'
-        };
+        function filterManualCards() {
+            const query = document.getElementById('manual-search-input').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.manual-card');
+            const clearBtn = document.getElementById('btn-clear-search');
+            let visibleCount = 0;
 
-        function goToStep(step) {
-            if (step < 1 || step > totalSteps) return;
-            currentStep = step;
-
-            // If we were in All View, return to Tab view
-            if (isAllView) {
-                isAllView = false;
-                document.getElementById('toggle-view-text').innerText = '📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ';
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
             }
 
-            // Hide all panels, show only target
-            for (let i = 1; i <= totalSteps; i++) {
-                const panel = document.getElementById(`step-panel-${i}`);
-                if (panel) {
-                    panel.style.display = (i === step) ? 'block' : 'none';
-                }
+            cards.forEach(card => {
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                const category = card.getAttribute('data-category');
+                const cardText = card.innerText.toLowerCase();
 
-                const tabBtn = document.getElementById(`tab-btn-${i}`);
-                if (tabBtn) {
-                    if (i === step) {
-                        tabBtn.classList.add('active');
+                const matchesQuery = query === '' || keywords.includes(query) || cardText.includes(query);
+                const matchesCategory = currentCategory === 'all' || category.includes(currentCategory);
+
+                if (matchesQuery && matchesCategory) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            const noResults = document.getElementById('no-search-results');
+            const countBadge = document.getElementById('manual-count-badge');
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            countBadge.innerText = `ສະແດງ ${visibleCount} ຄູ່ມື`;
+        }
+
+        function setCategoryFilter(category) {
+            currentCategory = category;
+
+            // Update button styles
+            const buttons = ['all', 'mobile', 'admin', 'card'];
+            buttons.forEach(b => {
+                const btn = document.getElementById(`cat-${b}`);
+                if (btn) {
+                    if (b === category) {
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm";
                     } else {
-                        tabBtn.classList.remove('active');
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition";
                     }
                 }
-            }
+            });
 
-            // Update Header Status & Progress
-            document.getElementById('step-counter-text').innerText = step;
-            document.getElementById('current-step-label').innerText = stepTitles[step] || '';
-
-            const percent = (step / totalSteps) * 100;
-            document.getElementById('step-progress-bar').style.width = `${percent}%`;
-
-            // Update Prev/Next buttons in sticky bar
-            document.getElementById('btn-prev-step').disabled = (step === 1);
-            document.getElementById('btn-next-step').disabled = (step === totalSteps);
-
-            // Auto-scroll active tab into view horizontally in the tabs strip
-            const activeTab = document.getElementById(`tab-btn-${step}`);
-            if (activeTab) {
-                activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-
-            // Update URL hash without jumping
-            history.replaceState(null, null, `#step-${step}`);
+            filterManualCards();
         }
 
-        function changeStep(delta) {
-            goToStep(currentStep + delta);
+        function clearSearch() {
+            document.getElementById('manual-search-input').value = '';
+            filterManualCards();
         }
-
-        function toggleAllView() {
-            isAllView = !isAllView;
-            const toggleText = document.getElementById('toggle-view-text');
-            if (isAllView) {
-                toggleText.innerText = '📑 ກັບຄືນຮູບແບບແທັບ (Tabs)';
-                for (let i = 1; i <= totalSteps; i++) {
-                    const panel = document.getElementById(`step-panel-${i}`);
-                    if (panel) panel.style.display = 'block';
-                }
-            } else {
-                toggleText.innerText = '📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ';
-                goToStep(currentStep);
-            }
-        }
-
-        // Keyboard navigation (ArrowLeft = prev, ArrowRight = next)
-        document.addEventListener('keydown', function (e) {
-            if (document.getElementById('lightbox-modal').classList.contains('hidden') === false) {
-                if (e.key === 'Escape') closeLightbox();
-                return;
-            }
-            if (e.key === 'ArrowRight') {
-                if (currentStep < totalSteps) changeStep(1);
-            } else if (e.key === 'ArrowLeft') {
-                if (currentStep > 1) changeStep(-1);
-            }
-        });
-
-        // Lightbox Functions
-        function openLightbox(imgId) {
-            const img = document.getElementById(imgId);
-            if (!img) return;
-            const lightbox = document.getElementById('lightbox-modal');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-
-            lightboxImg.src = img.src;
-            caption.innerText = img.alt || '';
-            lightbox.classList.remove('hidden');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox-modal').classList.add('hidden');
-        }
-
-        // Full Screen presentation mode
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.log("Full Screen request not allowed or cancelled: " + err.message);
-                });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(err => console.log(err));
-                }
-            }
-        }
-
-        document.addEventListener('fullscreenchange', () => {
-            const fsText = document.getElementById('fullscreen-text');
-            const fsIcon = document.getElementById('fullscreen-icon');
-            if (document.fullscreenElement) {
-                if (fsText) fsText.innerText = 'ອອກເຕັມຈໍ (Exit)';
-                if (fsIcon) fsIcon.innerText = '🗗';
-            } else {
-                if (fsText) fsText.innerText = 'ເຕັມຈໍ (Full Screen)';
-                if (fsIcon) fsIcon.innerText = '⛶';
-            }
-        });
-
-        // Image Switchers for Screen 1 to 9
-        function switchImageScreen1(type) {
-            const img = document.getElementById('img-screen-1');
-            const btnMarked = document.getElementById('btn-s1-marked');
-            const btnOriginal = document.getElementById('btn-s1-original');
-            if (type === 'marked') {
-                img.src = 'images/bill_payment_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/bill_payment.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen2(type) {
-            const img = document.getElementById('img-screen-2');
-            const btnMarked = document.getElementById('btn-s2-marked');
-            const btnOriginal = document.getElementById('btn-s2-original');
-            if (type === 'marked') {
-                img.src = 'images/flight_search_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/flight_search.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen3(type) {
-            const img = document.getElementById('img-screen-3');
-            const btnMarked = document.getElementById('btn-s3-marked');
-            const btnOriginal = document.getElementById('btn-s3-original');
-            if (type === 'marked') {
-                img.src = 'images/fare_selection_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/fare_selection.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen4(type) {
-            const img = document.getElementById('img-screen-4');
-            const btnMarked = document.getElementById('btn-s4-marked');
-            const btnOriginal = document.getElementById('btn-s4-original');
-            if (type === 'marked') {
-                img.src = 'images/terms_popup_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/terms_popup.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen5(type) {
-            const img = document.getElementById('img-screen-5');
-            const btnMarked = document.getElementById('btn-s5-marked');
-            const btnOriginal = document.getElementById('btn-s5-original');
-            if (type === 'marked') {
-                img.src = 'images/passenger_details_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/passenger_details.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen6(type) {
-            const img = document.getElementById('img-screen-6');
-            const btnMarked = document.getElementById('btn-s6-marked');
-            const btnOriginal = document.getElementById('btn-s6-original');
-            if (type === 'marked') {
-                img.src = 'images/booking_review_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/booking_review.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen7(type) {
-            const img = document.getElementById('img-screen-7');
-            const btnMarked = document.getElementById('btn-s7-marked');
-            const btnOriginal = document.getElementById('btn-s7-original');
-            if (type === 'marked') {
-                img.src = 'images/account_selection_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/account_selection.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen8(type) {
-            const img = document.getElementById('img-screen-8');
-            const btnMarked = document.getElementById('btn-s8-marked');
-            const btnOriginal = document.getElementById('btn-s8-original');
-            if (type === 'marked') {
-                img.src = 'images/tpin_verification_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/tpin_verification.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        function switchImageScreen9(type) {
-            const img = document.getElementById('img-screen-9');
-            const btnMarked = document.getElementById('btn-s9-marked');
-            const btnOriginal = document.getElementById('btn-s9-original');
-            if (type === 'marked') {
-                img.src = 'images/payment_success_marked.png';
-                btnMarked.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            } else {
-                img.src = 'images/payment_success.png';
-                btnOriginal.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
-                btnMarked.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
-            }
-        }
-
-        // Initialize based on URL hash (e.g. #step-5)
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash;
-            const match = hash.match(/#step-(\d+)/);
-            if (match) {
-                const s = parseInt(match[1]);
-                if (s >= 1 && s <= totalSteps) {
-                    goToStep(s);
-                    return;
-                }
-            }
-            goToStep(1);
-        });
     </script>
 </body>
 

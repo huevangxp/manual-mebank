@@ -686,12 +686,16 @@
                                     onclick="openLightbox('img-screen-4')">
                                 <button onclick="openLightbox('img-screen-4')"
                                     class="absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
-                                    <span>🔍 ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
                                 </button>
                             </div>
                             <div
                                 class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span>💡 ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
                                 <span class="font-mono text-slate-400">1024 × 772</span>
                             </div>
                         </div>
@@ -755,7 +759,7 @@
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-                                <span class="text-slate-400 text-sm">💡</span>
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
                                 <p class="leading-relaxed">
                                     <strong>ຄຳແນະນຳ:</strong> ຕ້ອງກົດປຸ່ມ "ອ່ານ ແລະ ຍອມຮັບເງື່ອນໄຂ" ໃນປັອບອັບກ່ອນ ຈຶ່ງສາມາດກົດປຸ່ມ "ຕໍ່ໄປ" ເພື່ອກ້າວໄປປ້ອນຂໍ້ມູນຜູ້ໂດຍສານໃນຂັ້ນຕອນທີ 5.
                                 </p>
@@ -767,14 +771,15 @@
                 <!-- Bottom Nav Controller -->
                 <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3">
                     <button onclick="goToStep(3)"
-                        class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                        ‹ ຂັ້ນຕອນກ່ອນໜ້າ (Step 3)
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ (Step 3)</span>
                     </button>
                     <span class="text-xs text-slate-500 font-bold">4 / 9</span>
                     <button onclick="goToStep(5)"
-                        class="px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
                         <span>ຕໍ່ໄປ: ປ້ອນຊື່ຜູ້ໂດຍສານ (Step 5)</span>
-                        <span>›</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>

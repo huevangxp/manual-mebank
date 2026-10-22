@@ -7,6 +7,8 @@
     <title>ສູນລວມຄູ່ມືລະບົບ APB MeBank - Documentation & Manual Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -61,12 +63,17 @@
             box-shadow: 0 20px 35px -10px rgba(202, 138, 4, 0.25), 0 10px 15px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Subtle animated background grid */
         .bg-grid-pattern {
             background-size: 40px 40px;
             background-image: 
                 linear-gradient(to right, rgba(2, 103, 93, 0.04) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(2, 103, 93, 0.04) 1px, transparent 1px);
+        }
+
+        /* Lucide icon alignment fix */
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -78,13 +85,14 @@
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-3.5">
                 <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-200 flex items-center justify-center font-black text-apb-900 text-xl shadow-lg shadow-emerald-900/30">
-                    APB
+                    <i data-lucide="landmark" class="w-6 h-6 text-apb-900"></i>
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
                         <span>APB MeBank Manuals Hub</span>
-                        <span class="text-xs bg-emerald-400/25 text-emerald-200 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">
-                            Official Portal
+                        <span class="text-xs bg-emerald-400/25 text-emerald-200 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
+                            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-300"></i>
+                            <span>Official Portal</span>
                         </span>
                     </div>
                     <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</p>
@@ -95,19 +103,23 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <nav class="hidden lg:flex items-center gap-1.5 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
                     <a href="booking-flight.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
-                        <span>✈️</span> <span>ຈອງປີ້ເຮືອບິນ</span>
+                        <i data-lucide="plane" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>ຈອງປີ້ເຮືອບິນ</span>
                     </a>
                     <a href="admin-portal-add-user.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
-                        <span>👤</span> <span>Admin ເພີ່ມຜູ້ໃຊ້</span>
+                        <i data-lucide="user-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>Admin ເພີ່ມຜູ້ໃຊ້</span>
                     </a>
                     <a href="create-chairman-card.html" class="px-3 py-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-amber-500/25 transition flex items-center gap-1.5 border border-amber-400/30">
-                        <span>👑</span> <span>ເມນູສ້າງບັດປະທານ</span>
+                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                        <span>ເມນູສ້າງບັດປະທານ</span>
                     </a>
                 </nav>
 
                 <div class="flex items-center gap-2">
                     <span class="text-[11px] bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
                         <span>3 Modules Active</span>
                     </span>
                 </div>
@@ -128,7 +140,7 @@
 
             <div class="relative z-10 max-w-4xl space-y-5">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold backdrop-blur-md border border-white/15">
-                    <span>📚</span>
+                    <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-300"></i>
                     <span>ລະບົບຄູ່ມືປະຕິບັດງານແບບ Interactive & Print Ready</span>
                 </div>
 
@@ -144,27 +156,34 @@
                 <!-- Search and Live Filter Input -->
                 <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                     <div class="relative flex-1 max-w-xl">
+                        <div class="absolute left-3.5 top-3.5 text-slate-400 pointer-events-none">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </div>
                         <input type="text" id="manual-search-input" oninput="filterManualCards()"
-                            placeholder="🔍 ຄົ້ນຫາຄູ່ມື (ເຊັ່ນ: ຈອງປີ້ເຮືອບິນ, Add User, ສ້າງບັດປະທານ, flight, admin...)"
-                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
+                            placeholder="ຄົ້ນຫາຄູ່ມື (ເຊັ່ນ: ຈອງປີ້ເຮືອບິນ, Add User, ສ້າງບັດປະທານ, flight, admin...)"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
                         <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-3.5 top-3 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
-                            ✕
+                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
                         </button>
                     </div>
 
                     <!-- Category Filter Buttons -->
                     <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold" id="category-pills">
-                        <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm">
-                            ທັງໝົດ (All)
+                        <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5">
+                            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                            <span>ທັງໝົດ</span>
                         </button>
-                        <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
-                            📱 ແອັບ MeBank
+                        <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5">
+                            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-emerald-300"></i>
+                            <span>ແອັບ MeBank</span>
                         </button>
-                        <button onclick="setCategoryFilter('admin')" id="cat-admin" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
-                            🖥️ Admin Portal
+                        <button onclick="setCategoryFilter('admin')" id="cat-admin" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5">
+                            <i data-lucide="shield" class="w-3.5 h-3.5 text-teal-300"></i>
+                            <span>Admin Portal</span>
                         </button>
-                        <button onclick="setCategoryFilter('card')" id="cat-card" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-amber-400/30 text-amber-200">
-                            👑 ລະບົບຈັດການບັດ VIP
+                        <button onclick="setCategoryFilter('card')" id="cat-card" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-amber-400/30 text-amber-200 flex items-center gap-1.5">
+                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                            <span>ບັດ VIP</span>
                         </button>
                     </div>
                 </div>
@@ -178,12 +197,14 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2">
-                        <span>📑</span> <span>ເລືອກຄູ່ມືທີ່ຕ້ອງການສຶກສາ (Available Manuals)</span>
+                        <i data-lucide="files" class="w-6 h-6 text-apb-700"></i>
+                        <span>ເລືອກຄູ່ມືທີ່ຕ້ອງການສຶກສາ (Available Manuals)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500">ຄລິກທີ່ກາດ ຫຼື ປຸ່ມ "ເປີດຄູ່ມື" ເພື່ອເຂົ້າສູ່ໜ້າຄູ່ມືຂັ້ນຕອນລະອຽດ</p>
                 </div>
-                <span id="manual-count-badge" class="text-xs font-bold bg-apb-50 text-apb-700 border border-apb-200 px-3 py-1 rounded-full">
-                    ສະແດງ 3 ຄູ່ມື
+                <span id="manual-count-badge" class="text-xs font-bold bg-apb-50 text-apb-700 border border-apb-200 px-3 py-1 rounded-full flex items-center gap-1">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-600"></i>
+                    <span>ສະແດງ 3 ຄູ່ມື</span>
                 </span>
             </div>
 
@@ -203,11 +224,13 @@
                             <div class="absolute -right-12 -top-12 w-44 h-44 bg-amber-500/15 rounded-full blur-2xl"></div>
 
                             <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 text-[11px] font-extrabold uppercase tracking-wider shadow">
-                                    👑 VIP EXECUTIVE
+                                <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 text-[11px] font-extrabold uppercase tracking-wider shadow flex items-center gap-1">
+                                    <i data-lucide="crown" class="w-3.5 h-3.5 text-slate-950"></i>
+                                    <span>VIP EXECUTIVE</span>
                                 </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-800/80 text-amber-300 text-[11px] font-mono border border-amber-500/30">
-                                    7 ຂັ້ນຕອນ
+                                <span class="px-2.5 py-1 rounded-full bg-slate-800/80 text-amber-300 text-[11px] font-mono border border-amber-500/30 flex items-center gap-1">
+                                    <i data-lucide="list-ordered" class="w-3 h-3 text-amber-300"></i>
+                                    <span>7 ຂັ້ນຕອນ</span>
                                 </span>
                             </div>
 
@@ -215,10 +238,14 @@
                             <div class="relative z-10 w-full max-w-[270px] mx-auto h-24 rounded-xl bg-gradient-to-r from-zinc-900 via-black to-zinc-900 border border-amber-400/50 p-3 shadow-2xl flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
                                 <div class="flex justify-between items-center text-[10px]">
                                     <span class="font-bold text-amber-400 tracking-wider">APB MeBank</span>
-                                    <span class="text-[8px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-extrabold">BLACK METAL</span>
+                                    <span class="text-[8px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-extrabold flex items-center gap-0.5">
+                                        <i data-lucide="sparkles" class="w-2.5 h-2.5 text-black"></i>
+                                        <span>BLACK METAL</span>
+                                    </span>
                                 </div>
-                                <div class="font-mono text-xs text-amber-200 tracking-widest">
-                                    9999 •••• •••• 8888
+                                <div class="font-mono text-xs text-amber-200 tracking-widest flex items-center justify-between">
+                                    <span>9999 •••• •••• 8888</span>
+                                    <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
                                 </div>
                                 <div class="flex justify-between text-[8px] text-amber-300 uppercase">
                                     <span>CHAIRMAN CARD</span>
@@ -231,7 +258,8 @@
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <span>💳</span> <span>Admin Portal • Card Management</span>
+                                    <i data-lucide="credit-card" class="w-3.5 h-3.5 text-amber-400"></i>
+                                    <span>Admin Portal • Card Management</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center gap-2">
                                     <span>ຄູ່ມືເມນູສ້າງບັດປະທານ</span>
@@ -261,7 +289,7 @@
                             onclick="event.stopPropagation();"
                             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg shadow-amber-950/40 transition-all duration-300 group-hover:shadow-amber-500/20">
                             <span>ເປີດຄູ່ມືສ້າງບັດປະທານ (Open Manual)</span>
-                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -280,23 +308,28 @@
                             <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl"></div>
 
                             <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold uppercase tracking-wider">
-                                    ADMIN SECURITY
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-300"></i>
+                                    <span>ADMIN SECURITY</span>
                                 </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10">
-                                    7 ຂັ້ນຕອນ
+                                <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
+                                    <span>7 ຂັ້ນຕອນ</span>
                                 </span>
                             </div>
 
                             <!-- Graphic Illustration of Admin Users -->
                             <div class="relative z-10 flex items-center justify-center gap-3 py-2">
-                                <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-2xl shadow-lg">
-                                    👤
+                                <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="user-plus" class="w-7 h-7 text-emerald-300"></i>
                                 </div>
                                 <div class="space-y-1">
                                     <div class="text-xs font-bold text-white">User Management</div>
                                     <div class="text-[10px] text-emerald-300 font-mono">Role: Maker / Checker</div>
-                                    <div class="text-[9px] bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded font-mono inline-block">2FA Protected</div>
+                                    <div class="text-[9px] bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
+                                        <i data-lucide="key-round" class="w-2.5 h-2.5"></i>
+                                        <span>2FA Protected</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -305,7 +338,8 @@
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <span>👥</span> <span>Admin Portal • User Access Control</span>
+                                    <i data-lucide="users" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>Admin Portal • User Access Control</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
                                     <span>ຄູ່ມື Admin Portal: ເພີ່ມຜູ້ໃຊ້ງານ</span>
@@ -335,7 +369,7 @@
                             onclick="event.stopPropagation();"
                             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
                             <span>ເປີດຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ (Open Manual)</span>
-                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -354,23 +388,28 @@
                             <div class="absolute -right-8 -top-8 w-36 h-36 bg-white/15 rounded-full blur-2xl"></div>
 
                             <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider">
-                                    MOBILE BANKING
+                                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <i data-lucide="smartphone" class="w-3.5 h-3.5 text-white"></i>
+                                    <span>MOBILE BANKING</span>
                                 </span>
-                                <span class="px-2.5 py-1 rounded-full bg-black/20 text-emerald-200 text-[11px] font-mono border border-white/10">
-                                    9 ຂັ້ນຕອນ
+                                <span class="px-2.5 py-1 rounded-full bg-black/20 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-200"></i>
+                                    <span>9 ຂັ້ນຕອນ</span>
                                 </span>
                             </div>
 
                             <!-- Airplane Preview Graphic -->
                             <div class="relative z-10 flex items-center justify-center gap-3 py-2">
-                                <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-3xl shadow-lg">
-                                    ✈️
+                                <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="plane" class="w-8 h-8 text-white"></i>
                                 </div>
                                 <div class="space-y-1">
                                     <div class="text-xs font-bold text-white">Lao Skyway Booking</div>
                                     <div class="text-[10px] text-emerald-100">ຊຳລະຄ່າປີ້ຜ່ານແອັບ MeBank</div>
-                                    <div class="text-[9px] bg-white/20 text-white px-2 py-0.5 rounded font-mono inline-block">18 ຮູບປະກອບຕົ້ນສະບັບ</div>
+                                    <div class="text-[9px] bg-white/20 text-white px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
+                                        <i data-lucide="image" class="w-2.5 h-2.5"></i>
+                                        <span>18 ຮູບປະກອບຕົ້ນສະບັບ</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +418,8 @@
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <span>📱</span> <span>ແອັບມືຖື MeBank • Bill Payment</span>
+                                    <i data-lucide="receipt" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>ແອັບມືຖື MeBank • Bill Payment</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
                                     <span>ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ</span>
@@ -397,7 +437,7 @@
                                     <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">2. ຄົ້ນຫາຖ້ຽວບິນ</span>
                                     <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">3. ເລືອກຊັ້ນບິນ</span>
                                     <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">7. ບັນຊີຊຳລະ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">9. ສຳເລັດ 🎉</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">9. ສຳເລັດ</span>
                                 </div>
                             </div>
                         </div>
@@ -409,7 +449,7 @@
                             onclick="event.stopPropagation();"
                             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-teal-700/20 transition-all duration-300">
                             <span>ເປີດຄູ່ມືຈອງປີ້ເຮືອບິນ (Open Manual)</span>
-                            <span class="text-base group-hover:translate-x-1 transition-transform">→</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -418,11 +458,14 @@
 
             <!-- No results message -->
             <div id="no-search-results" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
-                <div class="text-4xl">🔍</div>
+                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+                    <i data-lucide="search-x" class="w-6 h-6"></i>
+                </div>
                 <h3 class="text-base font-bold text-slate-800">ບໍ່ພົບຄູ່ມືທີ່ກົງກັບຄຳຄົ້ນຫາ</h3>
                 <p class="text-xs text-slate-500">ກະລຸນາລອງປ້ອນຄຳຄົ້ນຫາໃໝ່ ເຊັ່ນ: "ເຮືອບິນ", "admin", "ບັດປະທານ" ຫຼື ກົດປຸ່ມລ້າງຄຳຄົ້ນຫາ</p>
-                <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm">
-                    ລ້າງການຄົ້ນຫາ (Clear Search)
+                <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm inline-flex items-center gap-1.5">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    <span>ລ້າງການຄົ້ນຫາ (Clear Search)</span>
                 </button>
             </div>
         </section>
@@ -433,7 +476,7 @@
         <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
             <div class="flex items-center gap-3">
                 <span class="w-10 h-10 rounded-2xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center text-lg border border-apb-200">
-                    💡
+                    <i data-lucide="sparkles" class="w-5 h-5 text-apb-700"></i>
                 </span>
                 <div>
                     <h3 class="font-bold text-base sm:text-lg text-slate-900">ຄຸນລັກສະນະເດັ່ນຂອງລະບົບຄູ່ມື APB MeBank</h3>
@@ -442,23 +485,31 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <div class="text-apb-600 text-xl font-bold">📸</div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                        <i data-lucide="images" class="w-5 h-5"></i>
+                    </div>
                     <div class="font-bold text-slate-900">ພາບປະກອບທຸກຂັ້ນຕອນ</div>
                     <p class="text-slate-500 text-[11px] leading-relaxed">ສະຫຼັບເບິ່ງຮູບຕົ້ນສະບັບ ແລະ ຮູບທີ່ມີໝາຍເນັ້ນຈຸດສຳຄັນພ້ອມລະບົບຊູມຂະຫຍາຍ.</p>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <div class="text-apb-600 text-xl font-bold">🖨️</div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <div class="w-9 h-9 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
+                        <i data-lucide="printer" class="w-5 h-5"></i>
+                    </div>
                     <div class="font-bold text-slate-900">ພິມ ຫຼື ບັນທຶກເປັນ PDF</div>
                     <p class="text-slate-500 text-[11px] leading-relaxed">ອອກແບບພິເສດສຳລັບການພິມ ຫຼື Export ເປັນເອກະສານຝຶກອົບຮົມໂດຍບໍ່ມີແຖບເມນູລົບກວນ.</p>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <div class="text-apb-600 text-xl font-bold">🛡️</div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
                     <div class="font-bold text-slate-900">ມາດຕະຖານ Maker-Checker</div>
                     <p class="text-slate-500 text-[11px] leading-relaxed">ລະບົບແບ່ງແຍກສິດທິການສ້າງ (Maker) ແລະ ການອະນຸມັດ (Checker) ຕາມມາດຕະຖານທະນາຄານ.</p>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <div class="text-apb-600 text-xl font-bold">👑</div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                        <i data-lucide="crown" class="w-5 h-5 text-amber-600"></i>
+                    </div>
                     <div class="font-bold text-slate-900">ສິດທິພິເສດ Chairman VIP</div>
                     <p class="text-slate-500 text-[11px] leading-relaxed">ຮອງຮັບການອອກບັດໂລຫະ Metal Card ລະດັບສູງສຸດພ້ອມບໍລິການ Private Banking.</p>
                 </div>
@@ -473,7 +524,7 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-slate-800">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-sm">
-                        APB
+                        <i data-lucide="landmark" class="w-4 h-4 text-slate-950"></i>
                     </div>
                     <div>
                         <div class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</div>
@@ -482,17 +533,26 @@
                 </div>
 
                 <div class="flex items-center gap-4 text-[11px]">
-                    <a href="booking-flight.html" class="hover:text-emerald-300 transition">ຄູ່ມືຈອງປີ້ເຮືອບິນ</a>
+                    <a href="booking-flight.html" class="hover:text-emerald-300 transition flex items-center gap-1">
+                        <i data-lucide="plane" class="w-3.5 h-3.5"></i>
+                        <span>ຄູ່ມືຈອງປີ້ເຮືອບິນ</span>
+                    </a>
                     <span>•</span>
-                    <a href="admin-portal-add-user.html" class="hover:text-emerald-300 transition">ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ Admin</a>
+                    <a href="admin-portal-add-user.html" class="hover:text-emerald-300 transition flex items-center gap-1">
+                        <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+                        <span>ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ Admin</span>
+                    </a>
                     <span>•</span>
-                    <a href="create-chairman-card.html" class="hover:text-amber-300 transition">ຄູ່ມືສ້າງບັດປະທານ</a>
+                    <a href="create-chairman-card.html" class="hover:text-amber-300 transition flex items-center gap-1">
+                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                        <span>ຄູ່ມືສ້າງບັດປະທານ</span>
+                    </a>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
                 <div>© 2026 APB MeBank. ສະຫງວນລິຂະສິດທຸກປະການ (All Rights Reserved).</div>
-                <div>Internal Banking Documentation Portal • Version 2.4</div>
+                <div>Internal Banking Documentation Portal • Version 2.5 • Powered by Lucide Icons</div>
             </div>
         </div>
     </footer>
@@ -538,7 +598,10 @@
                 noResults.classList.add('hidden');
             }
 
-            countBadge.innerText = `ສະແດງ ${visibleCount} ຄູ່ມື`;
+            countBadge.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-600"></i> <span>ສະແດງ ${visibleCount} ຄູ່ມື</span>`;
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
 
         function setCategoryFilter(category) {
@@ -550,9 +613,9 @@
                 const btn = document.getElementById(`cat-${b}`);
                 if (btn) {
                     if (b === category) {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm";
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5";
                     } else {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition";
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5";
                     }
                 }
             });
@@ -564,6 +627,12 @@
             document.getElementById('manual-search-input').value = '';
             filterManualCards();
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 

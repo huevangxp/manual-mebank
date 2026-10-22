@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="lo" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ຄູ່ມືເມນູສ້າງບັດປະທານ (Create Chairman Card) - APB MeBank Admin Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apb: {
+                            50: '#f0fdf9',
+                            100: '#ccfbef',
+                            200: '#99f6df',
+                            500: '#00a884',
+                            600: '#008375',
+                            700: '#02675d',
+                            800: '#06524b',
+                            900: '#08443e'
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans Lao"', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Lao and English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Lao', 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar for horizontal tabs */
+        .tabs-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Active Tab styles */
+        .step-tab-btn.active {
+            background-color: #06524b !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(6, 82, 75, 0.3);
+            border-color: #ca8a04 !important;
+        }
+
+        .step-tab-btn.active .step-num-badge {
+            background-color: #ca8a04 !important;
+            color: #ffffff !important;
+        }
+
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .step-panel {
+                display: block !important;
+                page-break-after: always;
+                margin-bottom: 2.5rem;
+            }
+
+            .lg\:sticky {
+                position: static !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header
+        class="bg-gradient-to-r from-slate-950 via-apb-900 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-amber-500/30 no-print">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" title="ກັບໄປໜ້າຫຼັກລວມຄູ່ມື"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/20 shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    <span>ໜ້າຫຼັກຄູ່ມື</span>
+                </a>
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-bold text-xl text-slate-950 shadow-lg shadow-amber-500/20">
+                    <span>💳</span>
+                </div>
+                <div>
+                    <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
+                        <span>APB MeBank Admin Portal</span>
+                        <span
+                            class="text-xs bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">VIP Chairman Card</span>
+                    </div>
+                    <p class="text-xs text-amber-100/80">ຄູ່ມືເມນູສ້າງບັດປະທານ: ຂັ້ນຕອນການອອກບັດ VIP Chairman Card ແລະ ກຳນົດສິດທິພິເສດ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Direct Links to Other Manuals -->
+                <a href="booking-flight.html"
+                    class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
+                    <span>✈️ ຈອງປີ້ເຮືອບິນ</span>
+                </a>
+                <a href="admin-portal-add-user.html"
+                    class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
+                    <span>👤 ເພີ່ມຜູ້ໃຊ້ງານ Admin</span>
+                </a>
+
+                <!-- Full Screen Toggle -->
+                <button id="btn-fullscreen" onclick="toggleFullScreen()"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
+                    <span id="fullscreen-icon">⛶</span>
+                    <span id="fullscreen-text">ເຕັມຈໍ</span>
+                </button>
+
+                <!-- View Mode Toggle -->
+                <button id="btn-toggle-view" onclick="toggleAllView()"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
+                    <span id="toggle-view-text">📄 ເບິ່ງທຸກຂັ້ນຕອນ</span>
+                </button>
+
+                <button onclick="window.print()"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span>ພິມຄູ່ມື (PDF)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
+
+        <!-- ============================================================= -->
+        <!-- SLICE TABS BAR                                                -->
+        <!-- ============================================================= -->
+        <div
+            class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                <div class="flex items-center gap-2.5">
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        <span>ຂັ້ນຕອນທີ <strong id="step-counter-text" class="text-amber-900 text-sm">1</strong> ຈາກ 7</span>
+                    </span>
+                    <span id="current-step-label" class="text-xs sm:text-sm font-bold text-slate-800 truncate">
+                        1. ເຂົ້າເມນູ "Card Management" -> "ສ້າງບັດປະທານ (Create Chairman Card)"
+                    </span>
+                </div>
+
+                <!-- Navigation Action Buttons (Prev / Next) -->
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                    <button id="btn-prev-step" onclick="changeStep(-1)"
+                        class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
+                        <span>‹</span>
+                        <span>ກ່ອນໜ້າ</span>
+                    </button>
+                    <button id="btn-next-step" onclick="changeStep(1)"
+                        class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-apb-700 to-apb-600 hover:from-apb-800 hover:to-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-amber-200">
+                        <span>ຕໍ່ໄປ</span>
+                        <span>›</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Tabs Strip -->
+            <div class="overflow-x-auto pb-1 tabs-scrollbar" id="tabs-scroll-container">
+                <div class="flex items-center gap-2 min-w-max" role="tablist" aria-label="Create Chairman Card Steps">
+                    <button onclick="goToStep(1)" id="tab-btn-1"
+                        class="step-tab-btn active px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
+                        <span>1. ເຂົ້າເມນູສ້າງບັດປະທານ</span>
+                    </button>
+                    <button onclick="goToStep(2)" id="tab-btn-2"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
+                        <span>2. ຄົ້ນຫາລູກຄ້າ VIP</span>
+                    </button>
+                    <button onclick="goToStep(3)" id="tab-btn-3"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
+                        <span>3. ກຳນົດສິດທິພິເສດ VIP</span>
+                    </button>
+                    <button onclick="goToStep(4)" id="tab-btn-4"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
+                        <span>4. ຜູກບັນຊີຫຼາຍສະກຸນເງິນ</span>
+                    </button>
+                    <button onclick="goToStep(5)" id="tab-btn-5"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">5</span>
+                        <span>5. ກຳນົດວົງເງິນ & ການຈັດສົ່ງ</span>
+                    </button>
+                    <button onclick="goToStep(6)" id="tab-btn-6"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">6</span>
+                        <span>6. ສົ່ງອະນຸມັດ 2 ຊັ້ນ</span>
+                    </button>
+                    <button onclick="goToStep(7)" id="tab-btn-7"
+                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">7</span>
+                        <span>7. ອອກບັດປະທານສຳເລັດ 🎉</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Animated Progress Bar -->
+            <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div id="step-progress-bar"
+                    class="h-full bg-gradient-to-r from-amber-500 via-emerald-500 to-apb-600 transition-all duration-300"
+                    style="width: 14.28%;"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- STEPS CONTAINER                                               -->
+        <!-- ============================================================= -->
+        <div id="all-steps-container" class="space-y-12">
+
+            <!-- ========================================== -->
+            <!-- STEP 1: Access Chairman Card Menu          -->
+            <!-- ========================================== -->
+            <div id="step-panel-1" class="step-panel" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Simulated Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 1: ເລືອກເມນູ "Card Management" -> "ສ້າງບັດປະທານ"</span>
+                                </div>
+                                <span class="text-[11px] bg-amber-950 text-amber-300 border border-amber-600/40 px-2.5 py-0.5 rounded-full font-mono">CHAIRMAN VIP</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex text-slate-200 min-h-[460px]">
+                                <div class="w-full flex rounded-xl border border-slate-800 overflow-hidden bg-slate-900">
+                                    <!-- Sidebar -->
+                                    <div class="w-60 bg-slate-950 border-r border-slate-800 p-3 space-y-4">
+                                        <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider px-2">APB Card System</div>
+                                        <div class="space-y-1">
+                                            <div class="px-2.5 py-2 rounded-lg text-xs text-slate-400 flex items-center gap-2">
+                                                <span>📊</span> <span>Dashboard</span>
+                                            </div>
+                                            <div class="px-2.5 py-2 rounded-lg text-xs bg-slate-800 text-white font-bold flex items-center justify-between border-l-4 border-amber-400">
+                                                <div class="flex items-center gap-2">
+                                                    <span>💳</span> <span>Card Management</span>
+                                                </div>
+                                                <span>▾</span>
+                                            </div>
+                                            <div class="pl-4 space-y-1">
+                                                <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-400 flex items-center gap-1.5">
+                                                    <span>•</span> <span>ບັດທົ່ວໄປ (Standard Cards)</span>
+                                                </div>
+                                                <!-- Highlighting Chairman Card Menu -->
+                                                <div class="px-2 py-2 rounded-lg text-[11px] bg-gradient-to-r from-amber-950/80 to-amber-900/40 text-amber-200 font-bold border border-amber-500/50 shadow-md flex items-center justify-between">
+                                                    <span class="flex items-center gap-1.5">
+                                                        <span class="text-amber-400">👑</span>
+                                                        <span>ເມນູສ້າງບັດປະທານ</span>
+                                                    </span>
+                                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                                                </div>
+                                                <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-400 flex items-center gap-1.5">
+                                                    <span>•</span> <span>ຕິດຕາມສະຖານະການອອກບັດ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Main Preview -->
+                                    <div class="flex-1 p-5 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-slate-950">
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                                <div>
+                                                    <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                                                        <span>👑</span> <span>ລະບົບສ້າງບັດປະທານ (Create Chairman Card)</span>
+                                                    </h4>
+                                                    <p class="text-[11px] text-amber-200/70">ບໍລິການອອກບັດພິເສດລະດັບສູງສຸດ MeBank Black Executive Metal</p>
+                                                </div>
+                                                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full border border-amber-500/40 font-mono">TIER 1 VIP</span>
+                                            </div>
+
+                                            <!-- Card Visual Mockup -->
+                                            <div class="w-full max-w-sm mx-auto h-44 rounded-2xl bg-gradient-to-tr from-black via-slate-900 to-zinc-800 border border-amber-400/40 p-4 shadow-2xl relative overflow-hidden flex flex-col justify-between text-white">
+                                                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-400/10 rounded-full blur-xl"></div>
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase">APB MeBank</span>
+                                                        <div class="text-xs font-extrabold text-white">CHAIRMAN VIP</div>
+                                                    </div>
+                                                    <div class="w-8 h-6 bg-gradient-to-br from-amber-300 to-amber-500 rounded flex items-center justify-center text-[9px] font-bold text-black">
+                                                        CHIP
+                                                    </div>
+                                                </div>
+                                                <div class="font-mono text-sm tracking-widest text-amber-100">
+                                                    9999 •••• •••• 8888
+                                                </div>
+                                                <div class="flex justify-between items-end text-[10px]">
+                                                    <div>
+                                                        <div class="text-slate-400 text-[8px] uppercase">Cardholder</div>
+                                                        <div class="font-bold text-amber-200 uppercase">MR. CHAIRMAN</div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <div class="text-slate-400 text-[8px] uppercase">Expires</div>
+                                                        <div class="font-mono text-amber-200">10/31</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-right text-xs text-amber-400 font-semibold">
+                                            ຄລິກເມນູ "ສ້າງບັດປະທານ" ເພື່ອເລີ່ມຕົ້ນ →
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>👑 ບັດປະທານແມ່ນບັດລະດັບພິເສດສູງສຸດຂອງທະນາຄານ APB MeBank</span>
+                                <span class="font-mono text-slate-400">Exclusive Tier</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Instructions -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">1</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ເຂົ້າສູ່ເມນູ "Card Management" → "ສ້າງບັດປະທານ"</h3>
+                                    <p class="text-xs text-slate-500">Access the Dedicated Chairman Card Issuance Module</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ເມນູ <strong>"ສ້າງບັດປະທານ (Create Chairman Card)"</strong> ເປັນເມນູສະເພາະສຳລັບອອກບັດໃຫ້ແກ່ປະທານສະພາບໍລິຫານ, ຄະນະຜູ້ອຳນວຍການ ແລະ ລູກຄ້າ VIP Platinum ເທົ່ານັ້ນ.
+                            </p>
+
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">ຂັ້ນຕອນການປະຕິບັດ:</h4>
+                                <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
+                                    <li>ເຂົ້າສູ່ລະບົບ Admin Portal ດ້ວຍບັນຊີທີ່ມີສິດ <strong>Card Operator (Maker)</strong>.</li>
+                                    <li>ຢູ່ເມນູດ້ານຊ້າຍ (Sidebar), ຄລິກທີ່ຫົວຂໍ້ <strong>"Card Management (ຈັດການບັດ)"</strong>.</li>
+                                    <li>ເລືອກເມນູ <strong>"ສ້າງບັດປະທານ (Create Chairman Card)"</strong>.</li>
+                                    <li>ລະບົບຈະເປີດໜ້າຕ່າງການອອກບັດ VIP ຂຶ້ນມາ.</li>
+                                </ol>
+                            </div>
+
+                            <div class="p-3.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+                                <span class="text-base">👑</span>
+                                <div>
+                                    <strong>ເງື່ອນໄຂສິດທິ:</strong> ການເຂົ້າເຖິງເມນູນີ້ຕ້ອງຜ່ານການອະນຸມັດພິເສດຈາກຫົວໜ້າພະແນກສູນບັດ (Card Center Director) ເທົ່ານັ້ນ.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <span class="text-xs text-slate-400 font-medium">ຂັ້ນຕອນທີ 1 ຈາກ 7</span>
+                            <button onclick="goToStep(2)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ຄົ້ນຫາລູກຄ້າ VIP</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 2: Search & Select Chairman Profile   -->
+            <!-- ========================================== -->
+            <div id="step-panel-2" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 2: ຄົ້ນຫາຂໍ້ມູນລູກຄ້າລະດັບປະທານ / VIP</span>
+                                </div>
+                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">CIF LOOKUP</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
+                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-4">
+                                    <div class="space-y-1.5">
+                                        <label class="block text-xs font-semibold text-slate-300">ຄົ້ນຫາດ້ວຍເລກ CIF ຫຼື ເລກບັດປະຈຳຕົວ (Search VIP Profile)</label>
+                                        <div class="flex gap-2">
+                                            <input type="text" readonly value="CIF-001099882 (ທ່ານ ປະທານ ຄຳຫຼ້າ ວົງວິຈິດ)" class="flex-1 bg-slate-950 border border-amber-500/60 rounded-xl px-3 py-2 text-xs text-amber-300 font-mono">
+                                            <button class="px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow">ຄົ້ນຫາ</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Customer Profile Card -->
+                                    <div class="bg-slate-950 rounded-xl p-4 border border-amber-500/40 space-y-3">
+                                        <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+                                            <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 border border-amber-400 flex items-center justify-center font-bold text-lg">
+                                                👤
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="font-bold text-sm text-white">ທ່ານ ຄຳຫຼ້າ ວົງວິຈິດ (Mr. Khamla VONGVIJIT)</span>
+                                                    <span class="text-[10px] bg-amber-400 text-black px-2 py-0.5 rounded-full font-extrabold">CHAIRMAN</span>
+                                                </div>
+                                                <p class="text-xs text-slate-400">ປະທານສະພາບໍລິຫານ • APB Board Member</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
+                                            <div><strong>ເລກ CIF:</strong> <span class="text-amber-300 font-mono">001099882</span></div>
+                                            <div><strong>ເບີໂທລະສັບ:</strong> <span class="font-mono">+856 20 9988 7766</span></div>
+                                            <div><strong>ສະຖານະ KYC:</strong> <span class="text-emerald-400 font-bold">✓ Verified Tier 3</span></div>
+                                            <div><strong>ລະດັບຄວາມສຳພັນ:</strong> <span class="text-amber-300">Ultra High Net Worth</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>🔍 ລະບົບຈະກວດສອບ KYC ແລະ CIF ອັດຕະໂນມັດຈາກ Core Banking</span>
+                                <span class="font-mono text-slate-400">Core Banking Connected</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">2</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຄົ້ນຫາ & ເລືອກຂໍ້ມູນລູກຄ້າ VIP / ປະທານ</h3>
+                                    <p class="text-xs text-slate-500">Locate Verified Chairman CIF in Core Banking</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ປ້ອນເລກ <strong>CIF</strong> (Customer Information File) ຫຼື ເລກບັດປະຈຳຕົວຂອງປະທານ ເພື່ອດຶງຂໍ້ມູນພື້ນຖານຈາກ Core Banking System.
+                            </p>
+
+                            <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                                <div class="flex items-start gap-2">
+                                    <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+                                    <span>ກວດສອບວ່າຊື່-ນາມສະກຸນພາສາລາວ ແລະ ພາສາອັງກິດກົງກັບໜັງສືຜ່ານແດນ (Passport) ເພາະຊື່ຈະຖືກສະລັກລົງເທິງໜ້າບັດໂລຫະ Metal Card.</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+                                    <span>ກວດສອບສະຖານະ KYC ຕ້ອງຢູ່ໃນລະດັບສົມບູນ (Tier 3 Verified).</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(1)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <button onclick="goToStep(3)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດສິດທິພິເສດ VIP</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 3: Configure VIP Privileges           -->
+            <!-- ========================================== -->
+            <div id="step-panel-3" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 3: ເລືອກປະເພດບັດ & ສິດທິພິເສດ (Privileges)</span>
+                                </div>
+                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">BENEFITS CONFIG</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
+                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
+                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                                        <span class="font-bold text-xs text-amber-400">ເລືອກປະເພດບັດໂລຫະ (Metal Card Selection)</span>
+                                        <span class="text-[10px] text-slate-400">Heavy Tungsten 18g</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2 text-xs">
+                                        <div class="p-3 rounded-xl border-2 border-amber-400 bg-amber-950/40 text-white space-y-1">
+                                            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                                                <span>◉</span> <span>MeBank Black Metal</span>
+                                            </div>
+                                            <p class="text-[10px] text-slate-300">ໂລຫະສີດຳພິເສດ ສະລັກຊື່ດ້ວຍເລເຊີສີຄຳ</p>
+                                        </div>
+                                        <div class="p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 space-y-1">
+                                            <div class="font-bold flex items-center gap-1.5">
+                                                <span>○</span> <span>MeBank Gold Platinum</span>
+                                            </div>
+                                            <p class="text-[10px] text-slate-500">ບັດພິເສດເຄືອບທອງຄຳ 24K</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2 border-t border-slate-800 space-y-2">
+                                        <div class="text-[11px] font-semibold text-amber-300">ສິດທິພິເສດທີ່ມອບໃຫ້ (Executive Benefits):</div>
+                                        <div class="space-y-1.5 text-xs">
+                                            <div class="flex items-center gap-2 text-slate-200">
+                                                <span class="text-emerald-400">✓</span> <span>ເຂົ້າ Airport VIP Lounge ບໍ່ຈຳກັດທົ່ວໂລກ (Priority Pass Unlimited)</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-slate-200">
+                                                <span class="text-emerald-400">✓</span> <span>ຜູ້ດູແລບັນຊີສ່ວນຕົວ 24/7 (Dedicated Private Banker & Concierge)</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-slate-200">
+                                                <span class="text-emerald-400">✓</span> <span>ປະກັນໄພການເດີນທາງວົງເງິນສູງສຸດ 1,000,000 USD</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-slate-200">
+                                                <span class="text-emerald-400">✓</span> <span>ສິດທິພິເສດ Golf Club & ໂຮງແຮມ 5 ດາວຊັ້ນນຳ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>🎁 ທຸກສິດທິພິເສດຈະຖືກເຊື່ອມຕໍ່ເຂົ້າແອັບ MeBank ຂອງປະທານທັນທີ</span>
+                                <span class="font-mono text-slate-400">Auto Benefit Sync</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">3</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ເລືອກປະເພດບັດ & ກຳນົດສິດທິພິເສດ</h3>
+                                    <p class="text-xs text-slate-500">Select Card Material & Exclusive Executive Privileges</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ເລືອກວັດສະດຸບັດທີ່ຕ້ອງການອອກ: <strong>MeBank Black Metal</strong> (ນ້ຳໜັກ 18 ກຼາມ ໂລຫະພຣີມ່ຽມ) ພ້ອມຕັ້ງຄ່າ Package ສິດທິພິເສດ.
+                            </p>
+
+                            <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                                <p><strong>ການກຳນົດຊື່ເທິງໜ້າບັດ:</strong> ລະບົບຈະດຶງຊື່ພາສາອັງກິດຈາກ Passport ມາສະແດງ. ສາມາດປັບແຕ່ງ Title ເຊັ່ນ: <code>CHAIRMAN KHAMLA VONGVIJIT</code> ໄດ້.</p>
+                            </div>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(2)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <button onclick="goToStep(4)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ຜູກບັນຊີຫຼາຍສະກຸນເງິນ</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 4: Multi-Currency Account Binding     -->
+            <!-- ========================================== -->
+            <div id="step-panel-4" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 4: ຜູກບັນຊີຫຼາຍສະກຸນເງິນ (Multi-Currency)</span>
+                                </div>
+                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">ACCOUNT BINDING</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
+                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3">
+                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                                        <span class="font-bold text-xs text-amber-400">ບັນຊີເງິນຝາກທີ່ຜູກກັບບັດປະທານ</span>
+                                        <span class="text-[10px] text-emerald-400">Auto Currency Conversion</span>
+                                    </div>
+
+                                    <div class="space-y-2 text-xs">
+                                        <!-- LAK Account -->
+                                        <div class="p-3 rounded-lg border border-emerald-500/40 bg-slate-950 flex items-center justify-between">
+                                            <div>
+                                                <div class="font-bold text-white flex items-center gap-1.5">
+                                                    <span class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-emerald-300 font-mono text-[10px]">LAK</span>
+                                                    <span>010-12-00-09887766-001 (ບັນຊີຫຼັກ)</span>
+                                                </div>
+                                                <div class="text-[11px] text-slate-400">Current / Saving Account • ສຳນັກງານໃຫຍ່</div>
+                                            </div>
+                                            <span class="text-emerald-400 font-bold text-xs">PRIMARY</span>
+                                        </div>
+
+                                        <!-- USD Account -->
+                                        <div class="p-3 rounded-lg border border-slate-800 bg-slate-950 flex items-center justify-between">
+                                            <div>
+                                                <div class="font-bold text-white flex items-center gap-1.5">
+                                                    <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-blue-300 font-mono text-[10px]">USD</span>
+                                                    <span>010-12-00-09887766-002 (ບັນຊີໂດລາ)</span>
+                                                </div>
+                                                <div class="text-[11px] text-slate-400">Foreign Currency Account</div>
+                                            </div>
+                                            <span class="text-blue-400 font-bold text-xs">LINKED</span>
+                                        </div>
+
+                                        <!-- THB Account -->
+                                        <div class="p-3 rounded-lg border border-slate-800 bg-slate-950 flex items-center justify-between">
+                                            <div>
+                                                <div class="font-bold text-white flex items-center gap-1.5">
+                                                    <span class="px-1.5 py-0.5 rounded bg-amber-900/60 text-amber-300 font-mono text-[10px]">THB</span>
+                                                    <span>010-12-00-09887766-003 (ບັນຊີບາດ)</span>
+                                                </div>
+                                                <div class="text-[11px] text-slate-400">Foreign Currency Account</div>
+                                            </div>
+                                            <span class="text-amber-400 font-bold text-xs">LINKED</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>🌐 ຮອງຮັບການຮູດຊຳລະທົ່ວໂລກໂດຍຕັດເງິນຕາມສະກຸນເງິນນັ້ນໆ ບໍ່ເສຍຄ່າທຳນຽມແລກປ່ຽນ</span>
+                                <span class="font-mono text-slate-400">Zero FX Fee</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">4</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຜູກມັດບັນຊີເງິນຝາກຫຼາຍສະກຸນເງິນ</h3>
+                                    <p class="text-xs text-slate-500">Link Multi-Currency Accounts for Seamless Global Spending</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ບັດປະທານ MeBank Chairman Card ຮອງຮັບການຜູກບັນຊີຫຼາຍສະກຸນເງິນພ້ອມກັນ (LAK, USD, THB, CNY) ເຮັດໃຫ້ສາມາດຮູດຊຳລະ ຫຼື ຖອນເງິນຢູ່ຕ່າງປະເທດໄດ້ສະດວກສະບາຍ.
+                            </p>
+
+                            <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
+                                <li>ເລືອກ <strong>ບັນຊີຫຼັກ (Primary Account)</strong> ສຳລັບການໃຊ້ຈ່າຍພາຍໃນປະເທດ.</li>
+                                <li>ຕິກເລືອກ <strong>ບັນຊີເງິນຕາຕ່າງປະເທດ (Secondary Accounts)</strong> ທີ່ຕ້ອງການຜູກມັດ.</li>
+                                <li>ເປີດໃຊ້ງານຄຸນສົມບັດ <strong>Smart Auto-Switching</strong> ເພື່ອໃຫ້ບັດເລືອກຕັດເງິນຕາມສະກຸນເງິນຂອງປະເທດທີ່ໃຊ້ຈ່າຍໂດຍອັດຕະໂນມັດ.</li>
+                            </ol>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(3)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <button onclick="goToStep(5)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດວົງເງິນ & ການຈັດສົ່ງ</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 5: Limits & Velvet Box Delivery       -->
+            <!-- ========================================== -->
+            <div id="step-panel-5" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 5: ກຳນົດວົງເງິນ & ຊ່ອງທາງຈັດສົ່ງກ່ອງພິເສດ</span>
+                                </div>
+                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">DELIVERY & CAPS</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
+                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-300 mb-1">ວົງເງິນຮູດຊຳລະສູງສຸດຕໍ່ວັນ (Daily Purchase Limit)</label>
+                                        <input type="text" readonly value="2,000,000,000 LAK (2 ຕື້ກີບ / ມື້ ຫຼື No Preset Limit)" class="w-full bg-slate-950 border border-amber-500/60 rounded-lg px-3 py-2 text-xs text-amber-300 font-mono font-bold">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-300 mb-1">ວົງເງິນຖອນເງິນສົດສູງສຸດ (ATM Cash Withdrawal)</label>
+                                        <input type="text" readonly value="200,000,000 LAK (200 ລ້ານກີບ / ມື້)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 font-mono">
+                                    </div>
+
+                                    <div class="pt-2 border-t border-slate-800 space-y-2">
+                                        <div class="text-[11px] font-semibold text-amber-300">ຮູບແບບການຈັດສົ່ງກ່ອງບັດ (Exclusive Velvet Box Delivery):</div>
+                                        <div class="p-3 rounded-lg border border-amber-500/40 bg-slate-950 space-y-1 text-xs">
+                                            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                                                <span>🎁</span> <span>ກ່ອງກຳມະຢີ່ພິເສດ APB Velvet Presentation Box + VIP Welcome Kit</span>
+                                            </div>
+                                            <p class="text-slate-400 text-[11px]">ຈັດສົ່ງໂດຍທີມ Private Banking ມອບໃຫ້ໂດຍກົງເຖິງມືປະທານ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>📦 ບັດຈະຖືກບັນຈຸໃນກ່ອງກຳມະຢີ່ພິເສດພ້ອມໃບຕ້ອນຮັບສະເພາະ</span>
+                                <span class="font-mono text-slate-400">Hand Delivery by Executive</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">5</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ກຳນົດວົງເງິນ ແລະ ຮູບແບບການຈັດສົ່ງ</h3>
+                                    <p class="text-xs text-slate-500">Configure Limits and Premium Hand-Delivery Protocol</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ກຳນົດວົງເງິນສູງສຸດຕໍ່ວັນຕາມຄວາມຕ້ອງການຂອງປະທານ (ສາມາດເລືອກ <em>No Preset Spending Limit</em> ໄດ້ຕາມມະຕິຄະນະບໍລິຫານ).
+                            </p>
+
+                            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                                <strong>ມາດຕະຖານການຈັດສົ່ງ:</strong> ບັດປະທານຈະບໍ່ຖືກຈັດສົ່ງຜ່ານໄປສະນີທົ່ວໄປ. ຈະມີເຈົ້າໜ້າທີ່ Private Banking ແລະ ຜູ້ຈັດການສາຂານຳໄປມອບໃຫ້ປະທານໂດຍກົງ.
+                            </div>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(4)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <button onclick="goToStep(6)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ສົ່ງອະນຸມັດ 2 ຊັ້ນ</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 6: Dual Approval Submission           -->
+            <!-- ========================================== -->
+            <div id="step-panel-6" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 6: ສົ່ງຄຳຮ້ອງຂໍອະນຸມັດລະດັບສູງ (Dual Authorization)</span>
+                                </div>
+                                <span class="text-[11px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">COMMITTEE APPROVAL</span>
+                            </div>
+
+                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
+                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
+                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                                        <span class="font-bold text-xs text-white">ໃບຄຳຮ້ອງອອກບັດປະທານ (Chairman Card Issuing Request)</span>
+                                        <span class="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded font-mono">REQ-VIP-0091</span>
+                                    </div>
+
+                                    <div class="bg-slate-950 rounded-lg p-3 space-y-2 text-xs">
+                                        <div class="flex justify-between py-1 border-b border-slate-800">
+                                            <span class="text-slate-400">ຊື່ຜູ້ຖືບັດ:</span>
+                                            <span class="text-white font-bold">ທ່ານ ຄຳຫຼ້າ ວົງວິຈິດ (CHAIRMAN)</span>
+                                        </div>
+                                        <div class="flex justify-between py-1 border-b border-slate-800">
+                                            <span class="text-slate-400">ປະເພດບັດ:</span>
+                                            <span class="text-amber-300 font-bold">MeBank Black Metal (Tungsten 18g)</span>
+                                        </div>
+                                        <div class="flex justify-between py-1 border-b border-slate-800">
+                                            <span class="text-slate-400">ບັນຊີຜູກມັດ:</span>
+                                            <span class="text-emerald-400 font-mono">LAK (Primary), USD, THB</span>
+                                        </div>
+                                        <div class="flex justify-between py-1">
+                                            <span class="text-slate-400">ຜູ້ສ້າງຄຳຂໍ (Maker):</span>
+                                            <span class="text-slate-200">somphone.c (Card Operations Head)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2 flex gap-2">
+                                        <div class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-center text-xs font-bold shadow-lg shadow-amber-900/30">
+                                            ຢືນຢັນ & ສົ່ງຄະນະອຳນວຍການອະນຸມັດ (Submit for Board Approval) ✓
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>🛡️ ຕ້ອງໄດ້ຮັບການອະນຸມັດຈາກ Managing Director ຫຼື Board Approver</span>
+                                <span class="font-mono text-slate-400">Two-Level Authorization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">6</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ສົ່ງຄຳຂໍອະນຸມັດສອງຊັ້ນ (Dual Authorization)</h3>
+                                    <p class="text-xs text-slate-500">Submit Request for Executive Level Board Clearance</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ເນື່ອງຈາກບັດປະທານເປັນບັດທີ່ມີວົງເງິນສູງ ແລະ ມີສິດທິພິເສດຫຼາຍ, ລະບົບຈະຮຽກຮ້ອງໃຫ້ມີການອະນຸມັດສອງຊັ້ນ (Dual Checker Approval) ຈາກຄະນະບໍລິຫານທະນາຄານ.
+                            </p>
+
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 list-disc list-inside pl-1">
+                                <li>Maker ກວດສອບຄວາມຖືກຕ້ອງແລ້ວກົດປຸ່ມ <strong>Submit for Board Approval</strong>.</li>
+                                <li>ລະບົບຈະສົ່ງ Notification ໄປທີ່ Admin Portal ຂອງ <strong>Managing Director (MD)</strong> ແລະ <strong>Chief Risk Officer (CRO)</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(5)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <button onclick="goToStep(7)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ອອກບັດປະທານສຳເລັດ</span>
+                                <span>›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STEP 7: Issuance & Digital Activation      -->
+            <!-- ========================================== -->
+            <div id="step-panel-7" class="step-panel hidden" role="tabpanel">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 7: ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ</span>
+                                </div>
+                                <span class="text-[11px] bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">CARD ISSUED & ACTIVE</span>
+                            </div>
+
+                            <div class="p-6 bg-slate-950 flex-1 flex flex-col justify-center items-center text-slate-200 min-h-[460px]">
+                                <div class="w-full max-w-md bg-slate-900 rounded-2xl p-6 border border-amber-500/60 shadow-2xl text-center space-y-4">
+                                    <div class="w-16 h-16 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mx-auto border-2 border-amber-400 shadow-lg shadow-amber-900/40">
+                                        👑
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base text-white">ອອກບັດປະທານ MeBank Black Metal ສຳເລັດ!</h4>
+                                        <p class="text-xs text-amber-200/80 mt-1">Chairman VIP Card Created & Ready for Delivery</p>
+                                    </div>
+
+                                    <div class="bg-slate-950 rounded-xl p-3.5 text-left text-xs space-y-2 border border-slate-800">
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-400">ເລກບັດ:</span>
+                                            <span class="text-amber-300 font-mono font-bold">9999 88** **** 8888</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-400">ຊື່ເທິງໜ້າບັດ:</span>
+                                            <span class="text-white font-bold">CHAIRMAN KHAMLA VONGVIJIT</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-400">Digital Card:</span>
+                                            <span class="text-emerald-400 font-bold">✓ ພ້ອມໃຊ້ງານໃນແອັບ MeBank ແລ້ວ</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-400">Physical Embossing:</span>
+                                            <span class="text-blue-400 font-bold">ກຳລັງສະລັກເລເຊີໂລຫະ Metal</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 bg-amber-950/40 rounded-xl border border-amber-500/30 text-xs text-amber-200 text-left">
+                                        🎉 ບັດດິຈິຕອລ (Digital Chairman Card) ໄດ້ຖືກເຊື່ອມຕໍ່ເຂົ້າແອັບ MeBank ຂອງປະທານຮຽບຮ້ອຍແລ້ວ ສາມາດໃຊ້ງານໄດ້ທັນທີ.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span>🎉 ສຳເລັດຂັ້ນຕອນການສ້າງບັດປະທານ</span>
+                                <span class="font-mono text-slate-400">Status: ISSUED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Details -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">7</span>
+                                <div>
+                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ</h3>
+                                    <p class="text-xs text-slate-500">Successful Issuance, Laser Engraving & Instant Digital Activation</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                ເມື່ອຄະນະຜູ້ບໍລິຫານກວດສອບ ແລະ ກົດອະນຸມັດ:
+                            </p>
+
+                            <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
+                                <li>ລະບົບ Card Management System ຈະສ້າງເລກບັດ ແລະ ເປີດໃຊ້ງານ <strong>Digital Chairman Card</strong> ທັນທີໃນແອັບ MeBank.</li>
+                                <li>ຄຳສັ່ງສະລັກບັດໂລຫະ (Metal Laser Engraving) ຈະຖືກສົ່ງໄປທີ່ເຄື່ອງຈັກສະລັກບັດພິເສດ.</li>
+                                <li>ບັດໂລຫະຈະຖືກບັນຈຸໃນກ່ອງກຳມະຢີ່ APB Velvet Box ເພື່ອກຽມມອບໃຫ້ແກ່ປະທານ.</li>
+                            </ol>
+
+                            <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900">
+                                <strong>ສຳເລັດສົມບູນ:</strong> ຂັ້ນຕອນການສ້າງບັດປະທານຜ່ານລະບົບ Admin Portal ສຳເລັດທຸກຂັ້ນຕອນ.
+                            </div>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="flex items-center justify-between pt-2 no-print">
+                            <button onclick="goToStep(6)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
+                                <span>‹</span> <span>ກ່ອນໜ້າ</span>
+                            </button>
+                            <a href="index.html" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+                                <span>ກັບຄືນໜ້າຫຼັກຄູ່ມື</span>
+                                <span>🏠</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">APB MeBank Manual System</span>
+                <span>•</span>
+                <span>ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="hover:text-white transition">ໜ້າຫຼັກລວມຄູ່ມື</a>
+                <span>•</span>
+                <a href="booking-flight.html" class="hover:text-white transition">ຄູ່ມືຈອງປີ້ເຮືອບິນ</a>
+                <span>•</span>
+                <a href="admin-portal-add-user.html" class="hover:text-white transition">ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script for Step Navigation -->
+    <script>
+        const totalSteps = 7;
+        let currentStep = 1;
+        let isAllView = false;
+
+        const stepLabels = [
+            "1. ເຂົ້າເມນູ 'Card Management' -> 'ສ້າງບັດປະທານ (Create Chairman Card)'",
+            "2. ຄົ້ນຫາ & ເລືອກຂໍ້ມູນລູກຄ້າລະດັບປະທານ / VIP",
+            "3. ເລືອກປະເພດບັດ & ສິດທິພິເສດ VIP (Chairman Privileges)",
+            "4. ຜູກມັດບັນຊີເງິນຝາກຫຼາຍສະກຸນເງິນ (Multi-Currency)",
+            "5. ກຳນົດວົງເງິນສູງສຸດ & ຊ່ອງທາງຈັດສົ່ງກ່ອງພິເສດ Velvet Box",
+            "6. ສົ່ງຄຳຮ້ອງຂໍອະນຸມັດລະດັບສູງ (Dual Authorization)",
+            "7. ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ 🎉"
+        ];
+
+        function goToStep(stepNumber) {
+            if (stepNumber < 1 || stepNumber > totalSteps) return;
+            currentStep = stepNumber;
+
+            if (isAllView) {
+                toggleAllView(false);
+            }
+
+            for (let i = 1; i <= totalSteps; i++) {
+                const panel = document.getElementById(`step-panel-${i}`);
+                const tabBtn = document.getElementById(`tab-btn-${i}`);
+                if (panel) {
+                    if (i === currentStep) {
+                        panel.classList.remove('hidden');
+                    } else {
+                        panel.classList.add('hidden');
+                    }
+                }
+                if (tabBtn) {
+                    if (i === currentStep) {
+                        tabBtn.classList.add('active');
+                    } else {
+                        tabBtn.classList.remove('active');
+                    }
+                }
+            }
+
+            document.getElementById('step-counter-text').innerText = currentStep;
+            document.getElementById('current-step-label').innerText = stepLabels[currentStep - 1];
+
+            const percentage = ((currentStep / totalSteps) * 100).toFixed(2);
+            document.getElementById('step-progress-bar').style.width = `${percentage}%`;
+
+            const btnPrev = document.getElementById('btn-prev-step');
+            const btnNext = document.getElementById('btn-next-step');
+            if (btnPrev) btnPrev.disabled = (currentStep === 1);
+            if (btnNext) btnNext.disabled = (currentStep === totalSteps);
+
+            const activeBtn = document.getElementById(`tab-btn-${currentStep}`);
+            if (activeBtn) {
+                activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            history.replaceState(null, null, `#step-${currentStep}`);
+        }
+
+        function changeStep(delta) {
+            goToStep(currentStep + delta);
+        }
+
+        function toggleAllView(forceState) {
+            if (typeof forceState === 'boolean') {
+                isAllView = forceState;
+            } else {
+                isAllView = !isAllView;
+            }
+
+            const toggleBtnText = document.getElementById('toggle-view-text');
+            for (let i = 1; i <= totalSteps; i++) {
+                const panel = document.getElementById(`step-panel-${i}`);
+                if (panel) {
+                    if (isAllView) {
+                        panel.classList.remove('hidden');
+                    } else {
+                        if (i === currentStep) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    }
+                }
+            }
+
+            if (isAllView) {
+                toggleBtnText.innerText = "📑 ສະຫຼັບເປັນແບບ Slide ທີລະຂັ້ນ";
+            } else {
+                toggleBtnText.innerText = "📄 ເບິ່ງທຸກຂັ້ນຕອນ";
+            }
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+                document.getElementById('fullscreen-icon').innerText = "✕";
+                document.getElementById('fullscreen-text').innerText = "ອອກເຕັມຈໍ";
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    document.getElementById('fullscreen-icon').innerText = "⛶";
+                    document.getElementById('fullscreen-text').innerText = "ເຕັມຈໍ";
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+                changeStep(1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                changeStep(-1);
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash;
+            const match = hash.match(/#step-(\d+)/);
+            if (match) {
+                const s = parseInt(match[1]);
+                if (s >= 1 && s <= totalSteps) {
+                    goToStep(s);
+                    return;
+                }
+            }
+            goToStep(1);
+        });
+    </script>
+</body>
+
+</html>

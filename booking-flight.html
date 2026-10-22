@@ -7,6 +7,8 @@
     <title>ຄູ່ມືການຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway) - APB MeBank</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -77,6 +79,12 @@
             color: #ccfbef !important;
         }
 
+        /* Lucide icon alignment fix */
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
         /* Print styles */
         @media print {
             .no-print {
@@ -105,14 +113,12 @@
             <div class="flex items-center space-x-3">
                 <a href="index.html" title="ກັບໄປໜ້າຫຼັກລວມຄູ່ມື"
                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition border border-white/20 shadow-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span>ໜ້າຫຼັກຄູ່ມື</span>
                 </a>
                 <div
                     class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center font-bold text-xl border border-white/20 shadow-inner">
-                    <span class="text-emerald-300">✈️</span>
+                    <i data-lucide="plane" class="w-5 h-5 text-emerald-300"></i>
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
@@ -128,33 +134,33 @@
                 <!-- Direct Links to Other Manuals -->
                 <a href="admin-portal-add-user.html"
                     class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <span>👤 Admin ເພີ່ມຜູ້ໃຊ້</span>
+                    <i data-lucide="user-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
+                    <span>Admin ເພີ່ມຜູ້ໃຊ້</span>
                 </a>
                 <a href="create-chairman-card.html"
                     class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <span>👑 ເມນູສ້າງບັດປະທານ</span>
+                    <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                    <span>ເມນູສ້າງບັດປະທານ</span>
                 </a>
 
                 <!-- Full Screen Toggle -->
                 <button id="btn-fullscreen" onclick="toggleFullScreen()"
                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="fullscreen-icon">⛶</span>
-                    <span id="fullscreen-text">ເຕັມຈໍ (Full Screen)</span>
+                    <i data-lucide="maximize" class="w-3.5 h-3.5" id="fullscreen-icon"></i>
+                    <span id="fullscreen-text">ເຕັມຈໍ</span>
                 </button>
 
                 <!-- View Mode Toggle: Interactive Tabs vs All Steps List -->
                 <button id="btn-toggle-view" onclick="toggleAllView()"
                     class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <span id="toggle-view-text">📄 ເບິ່ງທຸກຂັ້ນຕອນພ້ອມກັນ</span>
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span id="toggle-view-text">ເບິ່ງທຸກຂັ້ນຕອນ</span>
                 </button>
 
                 <button onclick="window.print()"
                     class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-xs sm:text-sm font-bold transition shadow-md">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span>ພິມຄູ່ມື (Print / PDF)</span>
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    <span>ພິມຄູ່ມື (PDF)</span>
                 </button>
             </div>
         </div>

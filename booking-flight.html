@@ -191,13 +191,13 @@
                 <div class="flex items-center gap-2 self-end sm:self-center">
                     <button id="btn-prev-step" onclick="changeStep(-1)"
                         class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
-                        <span>‹</span>
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
                         <span>ກ່ອນໜ້າ</span>
                     </button>
                     <button id="btn-next-step" onclick="changeStep(1)"
                         class="px-4 py-1.5 rounded-xl bg-apb-600 hover:bg-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-emerald-200">
                         <span>ຕໍ່ໄປ</span>
-                        <span>›</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -209,55 +209,64 @@
                         class="step-tab-btn active px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
+                        <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i>
                         <span>1. ເລືອກເມນູ</span>
                     </button>
                     <button onclick="goToStep(2)" id="tab-btn-2"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
                         <span>2. ຄົ້ນຫາຖ້ຽວບິນ</span>
                     </button>
                     <button onclick="goToStep(3)" id="tab-btn-3"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
+                        <i data-lucide="ticket" class="w-3.5 h-3.5"></i>
                         <span>3. ເລືອກຊັ້ນບິນ</span>
                     </button>
                     <button onclick="goToStep(4)" id="tab-btn-4"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
+                        <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
                         <span>4. ເງື່ອນໄຂປັອບອັບ</span>
                     </button>
                     <button onclick="goToStep(5)" id="tab-btn-5"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">5</span>
+                        <i data-lucide="users" class="w-3.5 h-3.5"></i>
                         <span>5. ປ້ອນຊື່ຜູ້ໂດຍສານ</span>
                     </button>
                     <button onclick="goToStep(6)" id="tab-btn-6"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">6</span>
+                        <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i>
                         <span>6. ກວດສອບຂໍ້ມູນ</span>
                     </button>
                     <button onclick="goToStep(7)" id="tab-btn-7"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">7</span>
+                        <i data-lucide="wallet" class="w-3.5 h-3.5"></i>
                         <span>7. ເລືອກບັນຊີຊຳລະ</span>
                     </button>
                     <button onclick="goToStep(8)" id="tab-btn-8"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">8</span>
+                        <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
                         <span>8. ຢັ້ງຢືນ TPIN</span>
                     </button>
                     <button onclick="goToStep(9)" id="tab-btn-9"
                         class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
                         <span
                             class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">9</span>
-                        <span>9. ສຳເລັດ & ດາວໂຫຼດ 🎉</span>
+                        <i data-lucide="party-popper" class="w-3.5 h-3.5"></i>
+                        <span>9. ສຳເລັດ & ດາວໂຫຼດ</span>
                     </button>
                 </div>
             </div>

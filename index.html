@@ -65,7 +65,7 @@
 
         .bg-grid-pattern {
             background-size: 40px 40px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(2, 103, 93, 0.04) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(2, 103, 93, 0.04) 1px, transparent 1px);
         }
@@ -84,45 +84,60 @@
     <header class="bg-gradient-to-r from-apb-900 via-apb-800 to-apb-700 text-white shadow-xl sticky top-0 z-50">
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-3.5">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-200 flex items-center justify-center font-black text-apb-900 text-xl shadow-lg shadow-emerald-900/30">
-                    <i data-lucide="landmark" class="w-6 h-6 text-apb-900"></i>
+                <div class="w-11 h-11 rounded-2xl bg-white p-1.5 flex items-center justify-center shadow-lg shadow-emerald-900/30">
+                    <img src="images/admin/apb_logo.png" alt="APB Logo" class="w-full h-full object-contain">
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
                         <span>APB MeBank Manuals Hub</span>
                         <span class="text-xs bg-emerald-400/25 text-emerald-200 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
                             <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-300"></i>
-                            <span>Official Portal</span>
+                            <span>Official Portal 2026</span>
                         </span>
                     </div>
-                    <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</p>
+                    <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ Admin Portal MeBank ແລະ ແອັບມືຖື ທະນາຄານສົ່ງເສີມກະສິກຳ (APB)</p>
                 </div>
             </div>
 
             <!-- Quick Navigation Menu to Manuals -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <nav class="hidden lg:flex items-center gap-1.5 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
-                    <a href="booking-flight.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
+            <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                <nav class="hidden xl:flex items-center gap-1 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+                    <a href="create-chairman-card.html" class="px-2.5 py-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-amber-500/25 transition flex items-center gap-1 border border-amber-400/30">
+                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                        <span>Chairman</span>
+                    </a>
+                    <a href="admin-portal-add-user.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1">
+                        <i data-lucide="building-2" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>ສ້າງບໍລິສັດ & ຜູ້ໃຊ້</span>
+                    </a>
+                    <a href="admin-portal-account-approve.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>ເພີ່ມບັນຊີ & ອະນຸມັດ</span>
+                    </a>
+                    <a href="admin-portal-manage-user.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1">
+                        <i data-lucide="user-cog" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>ແກ້ໄຂ/ລົບ/ເບິ່ງ User</span>
+                    </a>
+                    <a href="admin-portal-user-control.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1">
+                        <i data-lucide="key-round" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>User Control</span>
+                    </a>
+                    <a href="booking-flight.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1">
                         <i data-lucide="plane" class="w-3.5 h-3.5 text-emerald-300"></i>
                         <span>ຈອງປີ້ເຮືອບິນ</span>
                     </a>
-                    <a href="admin-portal-add-user.html" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:text-white hover:bg-white/15 transition flex items-center gap-1.5">
-                        <i data-lucide="user-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
-                        <span>Admin ເພີ່ມຜູ້ໃຊ້</span>
-                    </a>
-                    <a href="create-chairman-card.html" class="px-3 py-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-amber-500/25 transition flex items-center gap-1.5 border border-amber-400/30">
-                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
-                        <span>ເມນູສ້າງບັດປະທານ</span>
-                    </a>
                 </nav>
 
-                <div class="flex items-center gap-2">
-                    <span class="text-[11px] bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-                        <span>3 Modules Active</span>
-                    </span>
-                </div>
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold transition shadow-md">
+                    <i data-lucide="file-down" class="w-4 h-4"></i>
+                    <span>ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</span>
+                </a>
+
+                <span class="hidden sm:inline-flex text-[11px] bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1 rounded-full font-mono items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>6 Modules • 16 PDF Topics</span>
+                </span>
             </div>
         </div>
     </header>
@@ -138,252 +153,476 @@
             <div class="absolute -right-20 -top-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute right-1/3 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="relative z-10 max-w-4xl space-y-5">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold backdrop-blur-md border border-white/15">
-                    <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-300"></i>
-                    <span>ລະບົບຄູ່ມືປະຕິບັດງານແບບ Interactive & Print Ready</span>
-                </div>
-
-                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                    ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບ <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300 bg-clip-text text-transparent">APB MeBank</span>
-                </h1>
-
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
-                    ຮວບຮວມທຸກຂັ້ນຕອນການດຳເນີນງານລະບົບແອັບມືຖື ແລະ ລະບົບ Admin Portal ຂອງທະນາຄານສົ່ງເສີມກະສິກຳ. 
-                    ມີພາບປະກອບຕົວຈິງ, ຄຳອະທິບາຍທຸກຟິວຂໍ້ມູນ, ຮອງຮັບການສະຫຼັບຮູບ Marked/Original ແລະ ພິມເປັນເອກະສານ PDF ໄດ້ທັນທີ.
-                </p>
-
-                <!-- Search and Live Filter Input -->
-                <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <div class="relative flex-1 max-w-xl">
-                        <div class="absolute left-3.5 top-3.5 text-slate-400 pointer-events-none">
-                            <i data-lucide="search" class="w-4 h-4"></i>
-                        </div>
-                        <input type="text" id="manual-search-input" oninput="filterManualCards()"
-                            placeholder="ຄົ້ນຫາຄູ່ມື (ເຊັ່ນ: ຈອງປີ້ເຮືອບິນ, Add User, ສ້າງບັດປະທານ, flight, admin...)"
-                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
-                        <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-3.5 top-3 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
-                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                        </button>
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div class="max-w-3xl space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold backdrop-blur-md border border-white/15">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-300"></i>
+                        <span>ລະບົບຄູ່ມືປະຕິບັດງານແບບ Slide Interactive & Print Ready</span>
                     </div>
 
-                    <!-- Category Filter Buttons -->
-                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold" id="category-pills">
-                        <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5">
-                            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-                            <span>ທັງໝົດ</span>
-                        </button>
-                        <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5">
-                            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-emerald-300"></i>
-                            <span>ແອັບ MeBank</span>
-                        </button>
-                        <button onclick="setCategoryFilter('admin')" id="cat-admin" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5">
-                            <i data-lucide="shield" class="w-3.5 h-3.5 text-teal-300"></i>
-                            <span>Admin Portal</span>
-                        </button>
-                        <button onclick="setCategoryFilter('card')" id="cat-card" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-amber-400/30 text-amber-200 flex items-center gap-1.5">
-                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
-                            <span>ບັດ VIP</span>
-                        </button>
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        ສູນລວມຄູ່ມືການນຳໃຊ້ <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300 bg-clip-text text-transparent">Admin Portal MeBank</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        ຮວບຮວມຄົບທຸກ <strong>16 ຫົວຂໍ້</strong> ຈາກເອກະສານຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (Update 2026) ແລະ ຄູ່ມືແອັບມືຖື.
+                        ແບ່ງເປັນສະໄລ້ຕາມຫົວຂໍ້ຍ່ອຍ ພ້ອມຮູບໜ້າຈໍຕົວຈິງຈາກ PDF, ປຸ່ມສະຫຼັບຮູບ <strong>Marked / Original</strong> ແລະ ລະບົບຊູມຂະຫຍາຍຮູບ.
+                    </p>
+
+                    <!-- Search and Live Filter Input -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <div class="relative flex-1 max-w-xl">
+                            <div class="absolute left-3.5 top-3.5 text-slate-400 pointer-events-none">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </div>
+                            <input type="text" id="manual-search-input" oninput="filterManualCards()"
+                                placeholder="ຄົ້ນຫາຄູ່ມື (ເຊັ່ນ: ສ້າງບໍລິສັດ, ອະນຸມັດ, Reset Password, Tpin, Lock, Chairman...)"
+                                class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
+                            <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-3.5 top-3 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Category Filter Buttons -->
+                        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold" id="category-pills">
+                            <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0">
+                                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                                <span>ທັງໝົດ (6)</span>
+                            </button>
+                            <button onclick="setCategoryFilter('admin')" id="cat-admin" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
+                                <i data-lucide="shield" class="w-3.5 h-3.5 text-teal-300"></i>
+                                <span>Admin Portal (5)</span>
+                            </button>
+                            <button onclick="setCategoryFilter('card')" id="cat-card" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-amber-400/30 text-amber-200 flex items-center gap-1.5 flex-shrink-0">
+                                <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
+                                <span>Chairman (1)</span>
+                            </button>
+                            <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
+                                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-emerald-300"></i>
+                                <span>ແອັບ MeBank (1)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Box: Original PDF Download Card -->
+                <div class="bg-slate-950/70 backdrop-blur-md border border-amber-400/30 rounded-2xl p-5 lg:w-80 space-y-3.5 flex-shrink-0 shadow-xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider">ເອກະສານຕົ້ນສະບັບ PDF</div>
+                            <div class="font-bold text-sm text-white">ຄູ່ມື Admin Portal MeBank</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        ເອກະສານຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update 2026) ສະບັບເຕັມ 42 ໜ້າ (ພາກ I: ການສ້າງ ແລະ ພາກ II: ການແກ້ໄຂ).
+                    </p>
+                    <div class="pt-1 flex flex-col gap-2">
+                        <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
+                            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-extrabold shadow transition">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span>ເປີດເບິ່ງ / ດາວໂຫຼດໄຟລ໌ PDF</span>
+                        </a>
+                        <a href="#pdf-toc-section"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-emerald-200 text-xs font-semibold border border-white/15 transition">
+                            <i data-lucide="list-tree" class="w-3.5 h-3.5"></i>
+                            <span>ເບິ່ງສາລະບານທັງ 16 ຫົວຂໍ້</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================================= -->
-        <!-- MANUALS GRID: CARDS FOR EACH MODULE                           -->
+        <!-- MANUALS GRID: 6 MODULE CARDS                                  -->
         <!-- ============================================================= -->
         <section class="space-y-6">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between flex-wrap gap-3">
                 <div>
                     <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2">
                         <i data-lucide="files" class="w-6 h-6 text-apb-700"></i>
-                        <span>ເລືອກຄູ່ມືທີ່ຕ້ອງການສຶກສາ (Available Manuals)</span>
+                        <span>ເລືອກໝວດຄູ່ມືທີ່ຕ້ອງການສຶກສາ (Available Slide Manuals)</span>
                     </h2>
-                    <p class="text-xs sm:text-sm text-slate-500">ຄລິກທີ່ກາດ ຫຼື ປຸ່ມ "ເປີດຄູ່ມື" ເພື່ອເຂົ້າສູ່ໜ້າຄູ່ມືຂັ້ນຕອນລະອຽດ</p>
+                    <p class="text-xs sm:text-sm text-slate-500">ຄລິກທີ່ກາດ ຫຼື ກົດເລືອກຫົວຂໍ້ຍ່ອຍເພື່ອເປີດໜ້າຄູ່ມືສະໄລ້ຂັ້ນຕອນລະອຽດ</p>
                 </div>
                 <span id="manual-count-badge" class="text-xs font-bold bg-apb-50 text-apb-700 border border-apb-200 px-3 py-1 rounded-full flex items-center gap-1">
                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-600"></i>
-                    <span>ສະແດງ 3 ຄູ່ມື</span>
+                    <span>ສະແດງ 6 ຄູ່ມື</span>
                 </span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch" id="manuals-card-grid">
 
                 <!-- ========================================================= -->
-                <!-- CARD 1: CHAIRMAN CARD (HIGHLIGHTED PER USER REQUEST)     -->
+                <!-- CARD 1: CREATE & CHANGE CHAIRMAN (PDF II.10 & II.8)       -->
                 <!-- ========================================================= -->
                 <div class="manual-card card-hover-effect chairman-glow flex flex-col justify-between bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl border-2 border-amber-500/50 shadow-xl overflow-hidden cursor-pointer group"
                     data-category="admin card"
-                    data-keywords="ສ້າງບັດປະທານ chairman card vip metal card management admin portal ອອກບັດ"
+                    data-keywords="ສ້າງປະທານ ປ່ຽນສິດປະທານ create chairman change chairman user control admin portal ປະທານບໍລິສັດ"
                     onclick="window.location.href='create-chairman-card.html'">
-                    
+
                     <div>
-                        <!-- Header Banner -->
                         <div class="relative h-48 bg-gradient-to-tr from-black via-zinc-900 to-slate-900 p-5 overflow-hidden flex flex-col justify-between border-b border-amber-500/30">
                             <div class="absolute -right-12 -top-12 w-44 h-44 bg-amber-500/15 rounded-full blur-2xl"></div>
 
                             <div class="flex items-center justify-between relative z-10">
                                 <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 text-[11px] font-extrabold uppercase tracking-wider shadow flex items-center gap-1">
                                     <i data-lucide="crown" class="w-3.5 h-3.5 text-slate-950"></i>
-                                    <span>VIP EXECUTIVE</span>
+                                    <span>CHAIRMAN ROLE (II.8 & II.10)</span>
                                 </span>
                                 <span class="px-2.5 py-1 rounded-full bg-slate-800/80 text-amber-300 text-[11px] font-mono border border-amber-500/30 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-amber-300"></i>
-                                    <span>7 ຂັ້ນຕອນ</span>
+                                    <i data-lucide="layers" class="w-3 h-3 text-amber-300"></i>
+                                    <span>2 ຫົວຂໍ້ • 9 ຂັ້ນຕອນ</span>
                                 </span>
                             </div>
 
-                            <!-- Metallic Chairman Card Preview Graphic -->
-                            <div class="relative z-10 w-full max-w-[270px] mx-auto h-24 rounded-xl bg-gradient-to-r from-zinc-900 via-black to-zinc-900 border border-amber-400/50 p-3 shadow-2xl flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
-                                <div class="flex justify-between items-center text-[10px]">
-                                    <span class="font-bold text-amber-400 tracking-wider">APB MeBank</span>
-                                    <span class="text-[8px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-extrabold flex items-center gap-0.5">
-                                        <i data-lucide="sparkles" class="w-2.5 h-2.5 text-black"></i>
-                                        <span>BLACK METAL</span>
-                                    </span>
+                            <!-- Preview Graphic -->
+                            <div class="relative z-10 w-full max-w-[290px] mx-auto rounded-xl bg-gradient-to-r from-zinc-900 via-black to-zinc-900 border border-amber-400/50 p-3.5 shadow-2xl flex items-center justify-between gap-3 group-hover:scale-105 transition-transform duration-300">
+                                <div class="w-12 h-12 rounded-xl bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300 flex-shrink-0">
+                                    <i data-lucide="crown" class="w-6 h-6 text-amber-400"></i>
                                 </div>
-                                <div class="font-mono text-xs text-amber-200 tracking-widest flex items-center justify-between">
-                                    <span>9999 •••• •••• 8888</span>
-                                    <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
-                                </div>
-                                <div class="flex justify-between text-[8px] text-amber-300 uppercase">
-                                    <span>CHAIRMAN CARD</span>
-                                    <span>EXP: 10/31</span>
+                                <div class="space-y-1 min-w-0 flex-1">
+                                    <div class="text-xs font-extrabold text-amber-300 truncate">Create & Change Chairman</div>
+                                    <div class="text-[10px] text-slate-300 truncate">Customer → User Control → Chairman</div>
+                                    <div class="text-[9px] text-amber-400 font-mono">ໜ້າ 32–34 & 37–39 ໃນ PDF</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Card Content -->
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="credit-card" class="w-3.5 h-3.5 text-amber-400"></i>
-                                    <span>Admin Portal • Card Management</span>
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i>
+                                    <span>Admin Portal • User Control (Chairman)</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center gap-2">
-                                    <span>ຄູ່ມືເມນູສ້າງບັດປະທານ</span>
+                                <h3 class="text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                                    ຄູ່ມືການສ້າງ ແລະ ປ່ຽນສິດປະທານ (Chairman)
                                 </h3>
-                                <p class="text-xs text-slate-300 mt-1.5 line-clamp-3 leading-relaxed">
-                                    ຄູ່ມືຂັ້ນຕອນການອອກບັດພິເສດລະດັບສູງສຸດ MeBank Black Executive Metal Card: ການຄົ້ນຫາລູກຄ້າ VIP, ຕັ້ງຄ່າສິດທິພິເສດ, ຜູກບັນຊີຫຼາຍສະກຸນເງິນ ແລະ ການອະນຸມັດສອງຊັ້ນ.
+                                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                                    ຂັ້ນຕອນການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານບໍລິສັດ (Create Chairman) ແລະ ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman) ຕາມຄູ່ມື Admin Portal ໜ້າ 32–39.
                                 </p>
                             </div>
 
-                            <!-- Key Steps Badges -->
-                            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
+                            <div class="space-y-1.5 pt-2 border-t border-slate-800" onclick="event.stopPropagation()">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ກົດເລືອກຫົວຂໍ້ຍ່ອຍໂດຍກົງ:</div>
                                 <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">1. ເມນູສ້າງບັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">2. ຄົ້ນຫາ VIP</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">3. ສິດທິພິເສດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[10px]">4. ຜູກບັນຊີ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-amber-950 text-amber-300 border border-amber-600/40 text-[10px]">6. ອະນຸມັດ 2 ຊັ້ນ</span>
+                                    <a href="create-chairman-card.html?topic=1" class="px-2.5 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-500/40 text-[11px] font-semibold transition">
+                                        1. ສ້າງ User ປະທານ (Create Chairman)
+                                    </a>
+                                    <a href="create-chairman-card.html?topic=2" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold transition">
+                                        2. ປ່ຽນສິດຜູ້ໃຊ້ (Change Chairman)
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card Action Button -->
                     <div class="p-6 pt-0">
-                        <a href="create-chairman-card.html"
-                            onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg shadow-amber-950/40 transition-all duration-300 group-hover:shadow-amber-500/20">
-                            <span>ເປີດຄູ່ມືສ້າງບັດປະທານ (Open Manual)</span>
+                        <a href="create-chairman-card.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold shadow-lg shadow-amber-950/40 transition-all duration-300">
+                            <span>ເປີດຄູ່ມືສ້າງ/ປ່ຽນສິດປະທານ (Open Manual)</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- CARD 2: ADMIN PORTAL - ADD USER                           -->
+                <!-- CARD 2: CREATE CORPORATE, SUB, USER & INDIVIDUAL (I.1-I.4)-->
                 <!-- ========================================================= -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
                     data-category="admin"
-                    data-keywords="admin portal add user ເພີ່ມຜູ້ໃຊ້ງານ ຈັດການຜູ້ໃຊ້ role maker checker permissions ຄວາມປອດໄພ"
+                    data-keywords="ສ້າງບໍລິສັດ ສ້າງບໍລິສັດລູກ ສ້າງຢູເຊີບໍລິສັດ ສ້າງບໍລິສັດສ່ວນບຸກຄົນ create corporate create sub corporate create user corporate create individual"
                     onclick="window.location.href='admin-portal-add-user.html'">
-                    
+
                     <div>
-                        <!-- Header Banner -->
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-800 p-5 overflow-hidden flex flex-col justify-between text-white">
+                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-5 overflow-hidden flex flex-col justify-between text-white">
                             <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl"></div>
 
                             <div class="flex items-center justify-between relative z-10">
                                 <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-300"></i>
-                                    <span>ADMIN SECURITY</span>
+                                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-emerald-300"></i>
+                                    <span>PART I.1 – I.4 • CREATION</span>
                                 </span>
                                 <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>7 ຂັ້ນຕອນ</span>
+                                    <i data-lucide="layers" class="w-3 h-3 text-emerald-300"></i>
+                                    <span>4 ຫົວຂໍ້ • 18 ຂັ້ນຕອນ</span>
                                 </span>
                             </div>
 
-                            <!-- Graphic Illustration of Admin Users -->
                             <div class="relative z-10 flex items-center justify-center gap-3 py-2">
                                 <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
-                                    <i data-lucide="user-plus" class="w-7 h-7 text-emerald-300"></i>
+                                    <i data-lucide="building-2" class="w-7 h-7 text-emerald-300"></i>
                                 </div>
                                 <div class="space-y-1">
-                                    <div class="text-xs font-bold text-white">User Management</div>
-                                    <div class="text-[10px] text-emerald-300 font-mono">Role: Maker / Checker</div>
+                                    <div class="text-xs font-bold text-white">Corporate & Individual Creation</div>
+                                    <div class="text-[10px] text-emerald-300 font-mono">ບໍລິສັດແມ່ • ບໍລິສັດລູກ • ຢູເຊີ • ບຸກຄົນ</div>
                                     <div class="text-[9px] bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
-                                        <i data-lucide="key-round" class="w-2.5 h-2.5"></i>
-                                        <span>2FA Protected</span>
+                                        <span>ໜ້າ 1–11 ໃນໄຟລ໌ PDF</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Card Content -->
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="users" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • User Access Control</span>
+                                    <i data-lucide="user-plus" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
-                                    <span>ຄູ່ມື Admin Portal: ເພີ່ມຜູ້ໃຊ້ງານ</span>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors">
+                                    ຄູ່ມືການສ້າງບໍລິສັດ & ຜູ້ໃຊ້ໃໝ່
                                 </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed">
-                                    ຄູ່ມືສຳລັບຜູ້ດູແລລະບົບ (Admin) ໃນການສ້າງບັນຊີຜູ້ໃຊ້ງານໃໝ່, ກຳນົດບົດບາດ (Role & Permissions), ກຳນົດຂອບເຂດສາຂາ, ວົງເງິນ Limit ແລະ ຂັ້ນຕອນການອະນຸມັດໂດຍ Checker.
+                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                    ຄູ່ມືລະອຽດສຳລັບການສ້າງບໍລິສັດ (Create Corporate), ສ້າງບໍລິສັດລູກ (Create Sub Corporate), ສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub) ແລະ ສ້າງບຸກຄົນທົ່ວໄປ (Create Individual).
                                 </p>
                             </div>
 
-                            <!-- Key Steps Badges -->
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100" onclick="event.stopPropagation()">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ກົດເລືອກຫົວຂໍ້ຍ່ອຍໂດຍກົງ:</div>
                                 <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">1. Login 2FA</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">2. ເມນູ Add User</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">3. ຂໍ້ມູນພະນັກງານ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px]">4. ກຳນົດ Role</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">7. Checker ອະນຸມັດ</span>
+                                    <a href="admin-portal-add-user.html?topic=1" class="px-2 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 text-apb-800 border border-emerald-200 text-[10px] font-semibold">1. Create Corporate</a>
+                                    <a href="admin-portal-add-user.html?topic=2" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">2. Create Sub Corporate</a>
+                                    <a href="admin-portal-add-user.html?topic=3" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">3. Create User Corporate</a>
+                                    <a href="admin-portal-add-user.html?topic=4" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">4. Create Individual</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card Action Button -->
                     <div class="p-6 pt-0">
-                        <a href="admin-portal-add-user.html"
-                            onclick="event.stopPropagation();"
+                        <a href="admin-portal-add-user.html" onclick="event.stopPropagation();"
                             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
-                            <span>ເປີດຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ (Open Manual)</span>
+                            <span>ເປີດຄູ່ມືການສ້າງບໍລິສັດ & ຜູ້ໃຊ້ (Open Manual)</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- CARD 3: FLIGHT BOOKING (MOVED FROM ORIGINAL INDEX)       -->
+                <!-- CARD 3: ADD ACCOUNT & APPROVE REQUESTS (PDF I.5 & I.6)    -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                    data-category="admin"
+                    data-keywords="ເພີ່ມບັນຊີ ສ້າງບັນຊີບໍລິສັດ ອະນຸມັດລາຍການ create account master approve pending requests system management"
+                    onclick="window.location.href='admin-portal-account-approve.html'">
+
+                    <div>
+                        <div class="relative h-48 bg-gradient-to-tr from-apb-950 via-teal-800 to-emerald-600 p-5 overflow-hidden flex flex-col justify-between text-white">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/15 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <i data-lucide="check-square" class="w-3.5 h-3.5 text-emerald-200"></i>
+                                    <span>PART I.5 & I.6 • ACCOUNT & APPROVAL</span>
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-slate-900/50 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="layers" class="w-3 h-3 text-emerald-200"></i>
+                                    <span>2 ຫົວຂໍ້ • 9 ຂັ້ນຕອນ</span>
+                                </span>
+                            </div>
+
+                            <div class="relative z-10 flex items-center justify-center gap-3 py-2">
+                                <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="wallet" class="w-7 h-7 text-emerald-200"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-xs font-bold text-white">Account Master & Approval</div>
+                                    <div class="text-[10px] text-emerald-100 font-mono">ເພີ່ມບັນຊີບໍລິສັດ & ອະນຸມັດລາຍການຄ້າງ</div>
+                                    <div class="text-[9px] bg-white/20 text-white px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
+                                        <span>ໜ້າ 11–16 ໃນໄຟລ໌ PDF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>Admin Portal • ບັນຊີ & ການອະນຸມັດ</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors">
+                                    ຄູ່ມືການເພີ່ມບັນຊີ & ການອະນຸມັດລາຍການ
+                                </h3>
+                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                    ວິທີການສ້າງບັນຊີບໍລິສັດ (Create Account Master) ແລະ ຂັ້ນຕອນການກວດສອບ-ອະນຸມັດລາຍການທີ່ຍັງຄ້າງ (Approve Pending Requests) ທັງ 3 ສ່ວນ.
+                                </p>
+                            </div>
+
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100" onclick="event.stopPropagation()">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ກົດເລືອກຫົວຂໍ້ຍ່ອຍໂດຍກົງ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <a href="admin-portal-account-approve.html?topic=1" class="px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 text-apb-800 border border-emerald-200 text-[10px] font-semibold">5. ເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)</a>
+                                    <a href="admin-portal-account-approve.html?topic=2" class="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">6. ວິທີການອະນຸມັດລາຍການ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0">
+                        <a href="admin-portal-account-approve.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
+                            <span>ເປີດຄູ່ມືເພີ່ມບັນຊີ & ອະນຸມັດ (Open Manual)</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= -->
+                <!-- CARD 4: UPDATE, DELETE & VIEW USER (PDF II.1 - II.3)      -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                    data-category="admin"
+                    data-keywords="ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ ລົບຜູ້ໃຊ້ ກວດເບິ່ງຜູ້ໃຊ້ update user delete user view user individual corporate"
+                    onclick="window.location.href='admin-portal-manage-user.html'">
+
+                    <div>
+                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-apb-700 p-5 overflow-hidden flex flex-col justify-between text-white">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-teal-400/20 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <i data-lucide="user-cog" class="w-3.5 h-3.5 text-teal-300"></i>
+                                    <span>PART II.1 – II.3 • USER PROFILE</span>
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="layers" class="w-3 h-3 text-teal-300"></i>
+                                    <span>3 ຫົວຂໍ້ • 12 ຂັ້ນຕອນ</span>
+                                </span>
+                            </div>
+
+                            <div class="relative z-10 flex items-center justify-center gap-3 py-2">
+                                <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="user-pen" class="w-7 h-7 text-teal-300"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-xs font-bold text-white">Update • Delete • View User</div>
+                                    <div class="text-[10px] text-teal-200 font-mono">ແກ້ໄຂຂໍ້ມູນ • ລົບຜູ້ໃຊ້ • ກວດເບິ່ງຂໍ້ມູນ</div>
+                                    <div class="text-[9px] bg-teal-400/20 text-teal-200 px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
+                                        <span>ໜ້າ 16–21 ໃນໄຟລ໌ PDF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="users" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors">
+                                    ຄູ່ມືການແກ້ໄຂ, ລົບ ແລະ ກວດເບິ່ງ User
+                                </h3>
+                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                    ຂັ້ນຕອນການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User), ການລົບຜູ້ໃຊ້ອອກຈາກລະບົບ (Delete User) ແລະ ການກວດເບິ່ງລາຍລະອຽດສິດທິຂອງຜູ້ໃຊ້ (View User).
+                                </p>
+                            </div>
+
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100" onclick="event.stopPropagation()">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ກົດເລືອກຫົວຂໍ້ຍ່ອຍໂດຍກົງ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <a href="admin-portal-manage-user.html?topic=1" class="px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 text-apb-800 border border-emerald-200 text-[10px] font-semibold">1. Update User (ແກ້ໄຂ)</a>
+                                    <a href="admin-portal-manage-user.html?topic=2" class="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">2. Delete User (ລົບ)</a>
+                                    <a href="admin-portal-manage-user.html?topic=3" class="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">3. View User (ກວດເບິ່ງ)</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0">
+                        <a href="admin-portal-manage-user.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
+                            <span>ເປີດຄູ່ມືແກ້ໄຂ/ລົບ/ກວດເບິ່ງ User (Open Manual)</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= -->
+                <!-- CARD 5: USER CONTROL (PDF II.4, II.5, II.6, II.7, II.9)   -->
+                <!-- ========================================================= -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                    data-category="admin"
+                    data-keywords="reset password reset tpin resend create password lock unlock user change username ຣີເຊັດລະຫັດຜ່ານ ລ໋ອກ ປົດລ໋ອກ ປ່ຽນຊື່ຜູ້ໃຊ້"
+                    onclick="window.location.href='admin-portal-user-control.html'">
+
+                    <div>
+                        <div class="relative h-48 bg-gradient-to-tr from-slate-950 via-apb-900 to-teal-800 p-5 overflow-hidden flex flex-col justify-between text-white">
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl"></div>
+
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <i data-lucide="key-round" class="w-3.5 h-3.5 text-emerald-300"></i>
+                                    <span>PART II.4 – II.9 • USER CONTROL</span>
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-slate-900/60 text-slate-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="layers" class="w-3 h-3 text-emerald-300"></i>
+                                    <span>5 ຫົວຂໍ້ • 26 ຂັ້ນຕອນ</span>
+                                </span>
+                            </div>
+
+                            <div class="relative z-10 flex items-center justify-center gap-3 py-2">
+                                <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="lock" class="w-7 h-7 text-emerald-300"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-xs font-bold text-white">Security & User Control</div>
+                                    <div class="text-[10px] text-emerald-200 font-mono">Password • TPIN • Resend • Lock • Username</div>
+                                    <div class="text-[9px] bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded font-mono inline-flex items-center gap-1">
+                                        <span>ໜ້າ 21–37 ໃນໄຟລ໌ PDF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-apb-700"></i>
+                                    <span>Admin Portal • User Control</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors">
+                                    ຄູ່ມືຈັດການລະຫັດຜ່ານ, ລ໋ອກບັນຊີ & ປ່ຽນຊື່ຜູ້ໃຊ້
+                                </h3>
+                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                    ລວມວິທີການ Reset Password, Reset Tpin, Resend Create Password, ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock) ແລະ ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username).
+                                </p>
+                            </div>
+
+                            <div class="space-y-1.5 pt-2 border-t border-slate-100" onclick="event.stopPropagation()">
+                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ກົດເລືອກຫົວຂໍ້ຍ່ອຍໂດຍກົງ:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <a href="admin-portal-user-control.html?topic=1" class="px-2 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 text-apb-800 border border-emerald-200 text-[10px] font-semibold">4. Reset Password</a>
+                                    <a href="admin-portal-user-control.html?topic=2" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">5. Reset Tpin</a>
+                                    <a href="admin-portal-user-control.html?topic=3" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">6. Resend Password</a>
+                                    <a href="admin-portal-user-control.html?topic=4" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">7. Lock/Unlock</a>
+                                    <a href="admin-portal-user-control.html?topic=5" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold">9. Change Username</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0">
+                        <a href="admin-portal-user-control.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-apb-700/20 transition-all duration-300">
+                            <span>ເປີດຄູ່ມື User Control (Open Manual)</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= -->
+                <!-- CARD 6: FLIGHT BOOKING (MOBILE APP MANUAL)                -->
                 <!-- ========================================================= -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
                     data-category="mobile"
                     data-keywords="ຊຳລະບິນປີ້ເຮືອບິນ ຈອງປີ້ເຮືອບິນ booking flight lao skyway ລາວເດີນອາກາດ mebank mobile app ປີ້ເຮືອບິນ"
                     onclick="window.location.href='booking-flight.html'">
-                    
+
                     <div>
-                        <!-- Header Banner -->
                         <div class="relative h-48 bg-gradient-to-tr from-apb-800 via-teal-700 to-emerald-600 p-5 overflow-hidden flex flex-col justify-between text-white">
                             <div class="absolute -right-8 -top-8 w-36 h-36 bg-white/15 rounded-full blur-2xl"></div>
 
@@ -398,7 +637,6 @@
                                 </span>
                             </div>
 
-                            <!-- Airplane Preview Graphic -->
                             <div class="relative z-10 flex items-center justify-center gap-3 py-2">
                                 <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg">
                                     <i data-lucide="plane" class="w-8 h-8 text-white"></i>
@@ -414,22 +652,20 @@
                             </div>
                         </div>
 
-                        <!-- Card Content -->
                         <div class="p-6 space-y-4">
                             <div>
                                 <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                                     <i data-lucide="receipt" class="w-3.5 h-3.5 text-apb-700"></i>
                                     <span>ແອັບມືຖື MeBank • Bill Payment</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors flex items-center gap-2">
-                                    <span>ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ</span>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors">
+                                    ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ
                                 </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed">
+                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
                                     ຄູ່ມືການຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway) ຜ່ານແອັບ MeBank ແບບລະອຽດ 9 ຂັ້ນຕອນ: ຄົ້ນຫາຖ້ຽວບິນ, ເລືອກຊັ້ນບິນ, ປ້ອນຊື່ຜູ້ໂດຍສານ ແລະ ຢືນຢັນ TPIN.
                                 </p>
                             </div>
 
-                            <!-- Key Steps Badges -->
                             <div class="space-y-1.5 pt-2 border-t border-slate-100">
                                 <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນຫຼັກ:</div>
                                 <div class="flex flex-wrap gap-1.5">
@@ -443,10 +679,8 @@
                         </div>
                     </div>
 
-                    <!-- Card Action Button -->
                     <div class="p-6 pt-0">
-                        <a href="booking-flight.html"
-                            onclick="event.stopPropagation();"
+                        <a href="booking-flight.html" onclick="event.stopPropagation();"
                             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-teal-700/20 transition-all duration-300">
                             <span>ເປີດຄູ່ມືຈອງປີ້ເຮືອບິນ (Open Manual)</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -462,7 +696,7 @@
                     <i data-lucide="search-x" class="w-6 h-6"></i>
                 </div>
                 <h3 class="text-base font-bold text-slate-800">ບໍ່ພົບຄູ່ມືທີ່ກົງກັບຄຳຄົ້ນຫາ</h3>
-                <p class="text-xs text-slate-500">ກະລຸນາລອງປ້ອນຄຳຄົ້ນຫາໃໝ່ ເຊັ່ນ: "ເຮືອບິນ", "admin", "ບັດປະທານ" ຫຼື ກົດປຸ່ມລ້າງຄຳຄົ້ນຫາ</p>
+                <p class="text-xs text-slate-500">ກະລຸນາລອງປ້ອນຄຳຄົ້ນຫາໃໝ່ ຫຼື ກົດປຸ່ມລ້າງຄຳຄົ້ນຫາ</p>
                 <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm inline-flex items-center gap-1.5">
                     <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                     <span>ລ້າງການຄົ້ນຫາ (Clear Search)</span>
@@ -471,47 +705,115 @@
         </section>
 
         <!-- ============================================================= -->
-        <!-- SYSTEM HIGHLIGHTS / QUICK REFERENCE                           -->
+        <!-- FULL PDF TABLE OF CONTENTS (16 TOPICS DEEP-LINKS)             -->
         <!-- ============================================================= -->
-        <section class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-            <div class="flex items-center gap-3">
-                <span class="w-10 h-10 rounded-2xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center text-lg border border-apb-200">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-apb-700"></i>
-                </span>
-                <div>
-                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຄຸນລັກສະນະເດັ່ນຂອງລະບົບຄູ່ມື APB MeBank</h3>
-                    <p class="text-xs text-slate-500">Standards and Features Designed for APB Staff and Customers</p>
+        <section id="pdf-toc-section" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-2xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center text-lg border border-apb-200">
+                        <i data-lucide="book-marked" class="w-5 h-5 text-apb-700"></i>
+                    </span>
+                    <div>
+                        <h3 class="font-bold text-base sm:text-lg text-slate-900">ສາລະບານຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (ຄົບທັງ 16 ຫົວຂໍ້ຕາມ PDF)</h3>
+                        <p class="text-xs text-slate-500">ຄລິກໃສ່ຫົວຂໍ້ໃດກໍໄດ້ເພື່ອເປີດສະໄລ້ຂັ້ນຕອນຂອງຫົວຂໍ້ນັ້ນທັນທີ • ລິ້ງລະບົບ: <code class="text-apb-700 font-mono">http://ibk.apb.com.local:30002/</code></p>
+                    </div>
                 </div>
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition self-start sm:self-center">
+                    <i data-lucide="file-down" class="w-4 h-4 text-amber-400"></i>
+                    <span>ເປີດໄຟລ໌ PDF ຕົ້ນສະບັບ (42 ໜ້າ)</span>
+                </a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                        <i data-lucide="images" class="w-5 h-5"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Part I: Creation (6 Topics) -->
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-5 space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+                        <span class="font-extrabold text-sm text-apb-800 flex items-center gap-2">
+                            <i data-lucide="folder-plus" class="w-4 h-4 text-apb-600"></i>
+                            <span>I. ພາກການສ້າງ (Creation • 6 ຫົວຂໍ້)</span>
+                        </span>
+                        <span class="text-[11px] font-mono text-slate-400">ໜ້າ 1 – 15</span>
                     </div>
-                    <div class="font-bold text-slate-900">ພາບປະກອບທຸກຂັ້ນຕອນ</div>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">ສະຫຼັບເບິ່ງຮູບຕົ້ນສະບັບ ແລະ ຮູບທີ່ມີໝາຍເນັ້ນຈຸດສຳຄັນພ້ອມລະບົບຊູມຂະຫຍາຍ.</p>
+                    <div class="space-y-2 text-xs">
+                        <a href="admin-portal-add-user.html?topic=1" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 1–3 →</span>
+                        </a>
+                        <a href="admin-portal-add-user.html?topic=2" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 4–6 →</span>
+                        </a>
+                        <a href="admin-portal-add-user.html?topic=3" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 7–9 →</span>
+                        </a>
+                        <a href="admin-portal-add-user.html?topic=4" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">4. ວິທີການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 9–11 →</span>
+                        </a>
+                        <a href="admin-portal-account-approve.html?topic=1" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">5. ວິທີການເພີ່ມບັນຊີ (5.1 ການສ້າງບັນຊີບໍລິສັດ - Create Account Master)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 11–13 →</span>
+                        </a>
+                        <a href="admin-portal-account-approve.html?topic=2" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)</span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-apb-600">ໜ້າ 13–16 →</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                    <div class="w-9 h-9 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
-                        <i data-lucide="printer" class="w-5 h-5"></i>
+
+                <!-- Part II: Modification & User Control (10 Topics) -->
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-5 space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+                        <span class="font-extrabold text-sm text-apb-800 flex items-center gap-2">
+                            <i data-lucide="sliders" class="w-4 h-4 text-apb-600"></i>
+                            <span>II. ພາກການແກ້ໄຂ & User Control (10 ຫົວຂໍ້)</span>
+                        </span>
+                        <span class="text-[11px] font-mono text-slate-400">ໜ້າ 16 – 39</span>
                     </div>
-                    <div class="font-bold text-slate-900">ພິມ ຫຼື ບັນທຶກເປັນ PDF</div>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">ອອກແບບພິເສດສຳລັບການພິມ ຫຼື Export ເປັນເອກະສານຝຶກອົບຮົມໂດຍບໍ່ມີແຖບເມນູລົບກວນ.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                    <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
-                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <a href="admin-portal-manage-user.html?topic=1" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 16 →</span>
+                        </a>
+                        <a href="admin-portal-manage-user.html?topic=2" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">2. ການລົບ User (Delete User)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 19 →</span>
+                        </a>
+                        <a href="admin-portal-manage-user.html?topic=3" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">3. ການກວດເບິ່ງ User (View User)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 21 →</span>
+                        </a>
+                        <a href="admin-portal-user-control.html?topic=1" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">4. ຣີເຊັດລະຫັດຜ່ານ (Reset Password)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 21 →</span>
+                        </a>
+                        <a href="admin-portal-user-control.html?topic=2" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">5. ວິທີ Reset Tpin</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 24 →</span>
+                        </a>
+                        <a href="admin-portal-user-control.html?topic=3" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">6. ວິທີ Resend Create Password</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 26 →</span>
+                        </a>
+                        <a href="admin-portal-user-control.html?topic=4" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">7. ລ໋ອກ/ປົດລ໋ອກ (Lock/Unlock User)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 29 →</span>
+                        </a>
+                        <a href="create-chairman-card.html?topic=2" class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/70 hover:bg-amber-100/80 border border-amber-200 transition group">
+                            <span class="font-bold text-amber-950">8. ປ່ຽນສິດຜູ້ໃຊ້ (Change Chairman)</span>
+                            <span class="text-[10px] font-mono text-amber-700">ໜ້າ 32 →</span>
+                        </a>
+                        <a href="admin-portal-user-control.html?topic=5" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
+                            <span class="font-bold text-slate-800 group-hover:text-apb-700">9. ປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)</span>
+                            <span class="text-[10px] font-mono text-slate-400">ໜ້າ 34 →</span>
+                        </a>
+                        <a href="create-chairman-card.html?topic=1" class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/70 hover:bg-amber-100/80 border border-amber-200 transition group">
+                            <span class="font-bold text-amber-950">10. ສ້າງ User ຜູ້ໃຊ້ (Create Chairman)</span>
+                            <span class="text-[10px] font-mono text-amber-700">ໜ້າ 37 →</span>
+                        </a>
                     </div>
-                    <div class="font-bold text-slate-900">ມາດຕະຖານ Maker-Checker</div>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">ລະບົບແບ່ງແຍກສິດທິການສ້າງ (Maker) ແລະ ການອະນຸມັດ (Checker) ຕາມມາດຕະຖານທະນາຄານ.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                    <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
-                        <i data-lucide="crown" class="w-5 h-5 text-amber-600"></i>
-                    </div>
-                    <div class="font-bold text-slate-900">ສິດທິພິເສດ Chairman VIP</div>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">ຮອງຮັບການອອກບັດໂລຫະ Metal Card ລະດັບສູງສຸດພ້ອມບໍລິການ Private Banking.</p>
                 </div>
             </div>
         </section>
@@ -523,36 +825,33 @@
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-slate-800">
                 <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-sm">
-                        <i data-lucide="landmark" class="w-4 h-4 text-slate-950"></i>
+                    <div class="w-8 h-8 rounded-lg bg-white p-1 flex items-center justify-center">
+                        <img src="images/admin/apb_logo.png" alt="APB Logo" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <div class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</div>
-                        <div class="text-[11px] text-slate-500">ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ & ດິຈິຕອລແບັງກິ້ງ (IT & Digital Banking Division)</div>
+                        <div class="text-[11px] text-slate-500">ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບ Admin Portal MeBank & Mobile Banking (2026)</div>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-4 text-[11px]">
-                    <a href="booking-flight.html" class="hover:text-emerald-300 transition flex items-center gap-1">
-                        <i data-lucide="plane" class="w-3.5 h-3.5"></i>
-                        <span>ຄູ່ມືຈອງປີ້ເຮືອບິນ</span>
-                    </a>
+                <div class="flex flex-wrap items-center gap-3 text-[11px]">
+                    <a href="create-chairman-card.html" class="hover:text-amber-300 transition">Create/Change Chairman</a>
                     <span>•</span>
-                    <a href="admin-portal-add-user.html" class="hover:text-emerald-300 transition flex items-center gap-1">
-                        <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
-                        <span>ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ Admin</span>
-                    </a>
+                    <a href="admin-portal-add-user.html" class="hover:text-emerald-300 transition">ສ້າງບໍລິສັດ & ຜູ້ໃຊ້</a>
                     <span>•</span>
-                    <a href="create-chairman-card.html" class="hover:text-amber-300 transition flex items-center gap-1">
-                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-300"></i>
-                        <span>ຄູ່ມືສ້າງບັດປະທານ</span>
-                    </a>
+                    <a href="admin-portal-account-approve.html" class="hover:text-emerald-300 transition">ເພີ່ມບັນຊີ & ອະນຸມັດ</a>
+                    <span>•</span>
+                    <a href="admin-portal-manage-user.html" class="hover:text-emerald-300 transition">ແກ້ໄຂ/ລົບ/ເບິ່ງ User</a>
+                    <span>•</span>
+                    <a href="admin-portal-user-control.html" class="hover:text-emerald-300 transition">User Control</a>
+                    <span>•</span>
+                    <a href="booking-flight.html" class="hover:text-emerald-300 transition">ຈອງປີ້ເຮືອບິນ</a>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
                 <div>© 2026 APB MeBank. ສະຫງວນລິຂະສິດທຸກປະການ (All Rights Reserved).</div>
-                <div>Internal Banking Documentation Portal • Version 2.5 • Powered by Lucide Icons</div>
+                <div>Internal Banking Documentation Portal • Updated from Official Admin Portal PDF</div>
             </div>
         </div>
     </footer>
@@ -607,15 +906,14 @@
         function setCategoryFilter(category) {
             currentCategory = category;
 
-            // Update button styles
             const buttons = ['all', 'mobile', 'admin', 'card'];
             buttons.forEach(b => {
                 const btn = document.getElementById(`cat-${b}`);
                 if (btn) {
                     if (b === category) {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5";
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0";
                     } else {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5";
+                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0";
                     }
                 }
             });

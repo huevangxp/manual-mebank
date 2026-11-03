@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ຄູ່ມືເມນູສ້າງບັດປະທານ (Create Chairman Card) - APB MeBank Admin Portal</title>
+    <title>ຄູ່ມືການສ້າງ ແລະ ປ່ຽນສິດປະທານ (Create & Change Chairman) - APB MeBank Admin Portal</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -23,13 +23,6 @@
                             700: '#02675d',
                             800: '#06524b',
                             900: '#08443e'
-                        },
-                        gold: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                            600: '#ca8a04',
-                            700: '#a16207'
                         }
                     },
                     fontFamily: {
@@ -39,7 +32,6 @@
             }
         }
     </script>
-    <!-- Google Fonts for Lao and English -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,7 +42,6 @@
             font-family: 'Noto Sans Lao', 'Inter', sans-serif;
         }
 
-        /* Custom scrollbar for horizontal tabs */
         .tabs-scrollbar::-webkit-scrollbar {
             height: 6px;
         }
@@ -69,11 +60,24 @@
             background: #94a3b8;
         }
 
-        /* Active Tab styles */
+        /* Active Topic Pill */
+        .topic-pill-btn.active {
+            background: linear-gradient(135deg, #06524b 0%, #008375 100%) !important;
+            color: #ffffff !important;
+            border-color: #008375 !important;
+            box-shadow: 0 6px 16px rgba(0, 131, 117, 0.25);
+        }
+
+        .topic-pill-btn.active .topic-num-badge {
+            background-color: #facc15 !important;
+            color: #0f172a !important;
+        }
+
+        /* Active Step Tab */
         .step-tab-btn.active {
             background-color: #06524b !important;
             color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(6, 82, 75, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 131, 117, 0.25);
             border-color: #ca8a04 !important;
         }
 
@@ -82,13 +86,11 @@
             color: #ffffff !important;
         }
 
-        /* Lucide icon alignment fix */
         [data-lucide] {
             display: inline-block;
             vertical-align: middle;
         }
 
-        /* Print styles */
         @media print {
             .no-print {
                 display: none !important;
@@ -99,10 +101,6 @@
                 page-break-after: always;
                 margin-bottom: 2.5rem;
             }
-
-            .lg\:sticky {
-                position: static !important;
-            }
         }
     </style>
 </head>
@@ -110,43 +108,56 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between">
 
     <!-- Top Navigation Bar -->
-    <header
-        class="bg-gradient-to-r from-slate-950 via-apb-900 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-amber-500/30 no-print">
+    <header class="bg-gradient-to-r from-slate-950 via-apb-900 to-slate-900 border-b border-amber-500/30 text-white shadow-lg sticky top-0 z-50 no-print">
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <a href="index.html" title="ກັບໄປໜ້າຫຼັກລວມຄູ່ມື"
-                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/20 shadow-sm">
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition border border-white/20 shadow-sm">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span>ໜ້າຫຼັກຄູ່ມື</span>
                 </a>
-                <div
-                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-bold text-xl text-slate-950 shadow-lg shadow-amber-500/20">
-                    <i data-lucide="crown" class="w-5 h-5 text-slate-950"></i>
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 shadow-lg shadow-amber-500/20 flex items-center justify-center font-bold text-xl">
+                    <i data-lucide="crown" class="w-5 h-5"></i>
                 </div>
                 <div>
                     <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
                         <span>APB MeBank Admin Portal</span>
-                        <span
-                            class="text-xs bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
-                            <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
-                            <span>VIP Chairman Card</span>
-                        </span>
+                        <span class="text-xs bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2.5 py-0.5 rounded-full font-semibold">Chairman Role Control</span>
                     </div>
-                    <p class="text-xs text-amber-100/80">ຄູ່ມືເມນູສ້າງບັດປະທານ: ຂັ້ນຕອນການອອກບັດ VIP Chairman Card ແລະ ກຳນົດສິດທິພິເສດ</p>
+                    <p class="text-xs text-emerald-100/80">ຄູ່ມືລະບົບ Admin Portal: ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman) ແລະ ການປ່ຽນສິດປະທານ (Change Chairman)</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2.5 sm:gap-3">
-                <!-- Direct Links to Other Manuals -->
-                <a href="booking-flight.html"
-                    class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <i data-lucide="plane" class="w-3.5 h-3.5 text-emerald-300"></i>
-                    <span>ຈອງປີ້ເຮືອບິນ</span>
-                </a>
-                <a href="admin-portal-add-user.html"
-                    class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold transition border border-white/15">
-                    <i data-lucide="user-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
-                    <span>ເພີ່ມຜູ້ໃຊ້ງານ Admin</span>
+            <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                <!-- Quick Module Switcher Dropdown / Links -->
+                <div class="hidden xl:flex items-center gap-1.5 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+                    <a href="create-chairman-card.html" class="px-2.5 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold transition flex items-center gap-1">
+                        <i data-lucide="crown" class="w-3.5 h-3.5"></i>
+                        <span>Chairman</span>
+                    </a>
+                    <a href="admin-portal-add-user.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+                        <span>ສ້າງບໍລິສັດ & ຜູ້ໃຊ້</span>
+                    </a>
+                    <a href="admin-portal-account-approve.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                        <span>ເພີ່ມບັນຊີ & ອະນຸມັດ</span>
+                    </a>
+                    <a href="admin-portal-manage-user.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="user-cog" class="w-3.5 h-3.5"></i>
+                        <span>ແກ້ໄຂ/ລົບ/ເບິ່ງ User</span>
+                    </a>
+                    <a href="admin-portal-user-control.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+                        <span>User Control</span>
+                    </a>
+                </div>
+
+                <!-- Original PDF Link -->
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition border border-white/20">
+                    <i data-lucide="file-down" class="w-3.5 h-3.5 text-amber-300"></i>
+                    <span class="hidden sm:inline">ໄຟລ໌ PDF ຕົ້ນສະບັບ</span>
                 </a>
 
                 <!-- Full Screen Toggle -->
@@ -159,7 +170,7 @@
                 <!-- View Mode Toggle -->
                 <button id="btn-toggle-view" onclick="toggleAllView()"
                     class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
-                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <i data-lucide="list" class="w-3.5 h-3.5"></i>
                     <span id="toggle-view-text">ເບິ່ງທຸກຂັ້ນຕອນ</span>
                 </button>
 
@@ -176,90 +187,78 @@
     <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
 
         <!-- ============================================================= -->
-        <!-- SLICE TABS BAR                                                -->
+        <!-- SUB-TOPIC SELECTOR BAR (Separates slides by sub-topic)        -->
         <!-- ============================================================= -->
-        <div
-            class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-3.5 sm:p-4 mb-4 no-print">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    <i data-lucide="folder-kanban" class="w-4 h-4 text-apb-600"></i>
+                    <span>ເລືອກຫົວຂໍ້ຍ່ອຍທີ່ຕ້ອງການສຶກສາ (Select Sub-Topic Workflow):</span>
+                </div>
+                <span class="text-[11px] text-slate-500 font-mono">URL ລະບົບ: http://ibk.apb.com.local:30002/</span>
+            </div>
+            <div class="overflow-x-auto pb-1 tabs-scrollbar">
+                <div class="flex items-center gap-2.5 min-w-max">
+                    
+                    <button onclick="selectTopic(1)" id="topic-btn-1"
+                        class="topic-pill-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm flex-shrink-0">
+                        <span class="topic-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[11px] font-extrabold">1</span>
+                        <i data-lucide="crown" class="w-4 h-4"></i>
+                        <span>1. ສ້າງ User ປະທານ (Create Chairman)</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">4 Steps</span>
+                    </button>
+                    <button onclick="selectTopic(2)" id="topic-btn-2"
+                        class="topic-pill-btn  px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm flex-shrink-0">
+                        <span class="topic-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[11px] font-extrabold">2</span>
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                        <span>2. ປ່ຽນສິດປະທານ (Change Chairman)</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">5 Steps</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- SLICE TABS BAR (Steps for the currently active sub-topic)     -->
+        <!-- ============================================================= -->
+        <div class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                <div class="flex items-center gap-2.5">
-                    <span
-                        class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                        <span>ຂັ້ນຕອນທີ <strong id="step-counter-text" class="text-amber-900 text-sm">1</strong> ຈາກ 7</span>
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-xs font-bold uppercase tracking-wider text-apb-700 bg-apb-50 px-3 py-1 rounded-full border border-apb-200 flex items-center gap-1.5 flex-shrink-0">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>ຂັ້ນຕອນທີ <strong id="step-counter-text" class="text-apb-800 text-sm">1</strong> ຈາກ <span id="step-total-text">4</span></span>
                     </span>
                     <span id="current-step-label" class="text-xs sm:text-sm font-bold text-slate-800 truncate">
-                        1. ເຂົ້າເມນູ "Card Management" -> "ສ້າງບັດປະທານ (Create Chairman Card)"
+                        ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Create Chairman ແລະ ເລືອກບໍລິສັດ
                     </span>
                 </div>
 
                 <!-- Navigation Action Buttons (Prev / Next) -->
-                <div class="flex items-center gap-2 self-end sm:self-center">
+                <div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
                     <button id="btn-prev-step" onclick="changeStep(-1)"
                         class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
                         <i data-lucide="chevron-left" class="w-4 h-4"></i>
                         <span>ກ່ອນໜ້າ</span>
                     </button>
                     <button id="btn-next-step" onclick="changeStep(1)"
-                        class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-apb-700 to-apb-600 hover:from-apb-800 hover:to-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-amber-200">
+                        class="px-4 py-1.5 rounded-xl bg-apb-600 hover:bg-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-emerald-200">
                         <span>ຕໍ່ໄປ</span>
                         <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Horizontal Scrollable Tabs Strip -->
+            <!-- Horizontal Scrollable Step Tabs Strip (Dynamically populated per sub-topic) -->
             <div class="overflow-x-auto pb-1 tabs-scrollbar" id="tabs-scroll-container">
-                <div class="flex items-center gap-2 min-w-max" role="tablist" aria-label="Create Chairman Card Steps">
-                    <button onclick="goToStep(1)" id="tab-btn-1"
-                        class="step-tab-btn active px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
-                        <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
-                        <span>1. ເຂົ້າເມນູສ້າງບັດປະທານ</span>
-                    </button>
-                    <button onclick="goToStep(2)" id="tab-btn-2"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
-                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
-                        <span>2. ຄົ້ນຫາລູກຄ້າ VIP</span>
-                    </button>
-                    <button onclick="goToStep(3)" id="tab-btn-3"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                        <span>3. ກຳນົດສິດທິພິເສດ VIP</span>
-                    </button>
-                    <button onclick="goToStep(4)" id="tab-btn-4"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
-                        <i data-lucide="globe-2" class="w-3.5 h-3.5"></i>
-                        <span>4. ຜູກບັນຊີຫຼາຍສະກຸນເງິນ</span>
-                    </button>
-                    <button onclick="goToStep(5)" id="tab-btn-5"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">5</span>
-                        <i data-lucide="package" class="w-3.5 h-3.5"></i>
-                        <span>5. ກຳນົດວົງເງິນ & ການຈັດສົ່ງ</span>
-                    </button>
-                    <button onclick="goToStep(6)" id="tab-btn-6"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">6</span>
-                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                        <span>6. ສົ່ງອະນຸມັດ 2 ຊັ້ນ</span>
-                    </button>
-                    <button onclick="goToStep(7)" id="tab-btn-7"
-                        class="step-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
-                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">7</span>
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i>
-                        <span>7. ອອກບັດປະທານສຳເລັດ</span>
-                    </button>
+                <div id="step-tabs-strip" class="flex items-center gap-2 min-w-max" role="tablist">
                 </div>
             </div>
 
             <!-- Animated Progress Bar -->
             <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
                 <div id="step-progress-bar"
-                    class="h-full bg-gradient-to-r from-amber-500 via-emerald-500 to-apb-600 transition-all duration-300"
-                    style="width: 14.28%;"></div>
+                    class="h-full bg-gradient-to-r from-apb-600 via-teal-500 to-emerald-400 transition-all duration-300"
+                    style="width: 25%;"></div>
             </div>
         </div>
 
@@ -267,956 +266,1347 @@
         <!-- STEPS CONTAINER                                               -->
         <!-- ============================================================= -->
         <div id="all-steps-container" class="space-y-12">
-
+            
             <!-- ========================================== -->
-            <!-- STEP 1: Access Chairman Card Menu          -->
+            <!-- TOPIC 1 - STEP 1: ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Create Chairman ແລະ ເລືອກບໍລິສັດ -->
             <!-- ========================================== -->
-            <div id="step-panel-1" class="step-panel" role="tabpanel">
+            <div id="topic-1-step-1" class="step-panel" data-topic="1" data-step="1" role="tabpanel" >
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Simulated Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="crown" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 1: ເລືອກເມນູ "Card Management" -> "ສ້າງບັດປະທານ"</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 1 (1. ສ້າງ User ປະທານ (Create Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-amber-950 text-amber-300 border border-amber-600/40 px-2.5 py-0.5 rounded-full font-mono flex items-center gap-1">
-                                    <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
-                                    <span>CHAIRMAN VIP</span>
-                                </span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s1-marked" onclick="switchStepImage('img-t1-s1', 'images/admin/select_corp_marked.png', 'images/admin/select_corp.png', 'btn-t1-s1-marked', 'btn-t1-s1-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s1-orig" onclick="switchStepImage('img-t1-s1', 'images/admin/select_corp_marked.png', 'images/admin/select_corp.png', 'btn-t1-s1-marked', 'btn-t1-s1-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex text-slate-200 min-h-[460px]">
-                                <div class="w-full flex rounded-xl border border-slate-800 overflow-hidden bg-slate-900">
-                                    <!-- Sidebar -->
-                                    <div class="w-60 bg-slate-950 border-r border-slate-800 p-3 space-y-4">
-                                        <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider px-2">APB Card System</div>
-                                        <div class="space-y-1">
-                                            <div class="px-2.5 py-2 rounded-lg text-xs text-slate-400 flex items-center gap-2">
-                                                <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
-                                                <span>Dashboard</span>
-                                            </div>
-                                            <div class="px-2.5 py-2 rounded-lg text-xs bg-slate-800 text-white font-bold flex items-center justify-between border-l-4 border-amber-400">
-                                                <div class="flex items-center gap-2">
-                                                    <i data-lucide="credit-card" class="w-4 h-4 text-amber-400"></i>
-                                                    <span>Card Management</span>
-                                                </div>
-                                                <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div class="pl-4 space-y-1">
-                                                <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-400 flex items-center gap-1.5">
-                                                    <span>•</span> <span>ບັດທົ່ວໄປ (Standard Cards)</span>
-                                                </div>
-                                                <!-- Highlighting Chairman Card Menu -->
-                                                <div class="px-2 py-2 rounded-lg text-[11px] bg-gradient-to-r from-amber-950/80 to-amber-900/40 text-amber-200 font-bold border border-amber-500/50 shadow-md flex items-center justify-between">
-                                                    <span class="flex items-center gap-1.5">
-                                                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400"></i>
-                                                        <span>ເມນູສ້າງບັດປະທານ</span>
-                                                    </span>
-                                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                                                </div>
-                                                <div class="px-2 py-1.5 rounded-md text-[11px] text-slate-400 flex items-center gap-1.5">
-                                                    <span>•</span> <span>ຕິດຕາມສະຖານະການອອກບັດ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Main Preview -->
-                                    <div class="flex-1 p-5 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-slate-950">
-                                        <div class="space-y-4">
-                                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                                                <div>
-                                                    <h4 class="font-bold text-sm text-white flex items-center gap-2">
-                                                        <i data-lucide="crown" class="w-4 h-4 text-amber-400"></i>
-                                                        <span>ລະບົບສ້າງບັດປະທານ (Create Chairman Card)</span>
-                                                    </h4>
-                                                    <p class="text-[11px] text-amber-200/70">ບໍລິການອອກບັດພິເສດລະດັບສູງສຸດ MeBank Black Executive Metal</p>
-                                                </div>
-                                                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full border border-amber-500/40 font-mono">TIER 1 VIP</span>
-                                            </div>
-
-                                            <!-- Card Visual Mockup -->
-                                            <div class="w-full max-w-sm mx-auto h-44 rounded-2xl bg-gradient-to-tr from-black via-slate-900 to-zinc-800 border border-amber-400/40 p-4 shadow-2xl relative overflow-hidden flex flex-col justify-between text-white">
-                                                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-400/10 rounded-full blur-xl"></div>
-                                                <div class="flex justify-between items-start">
-                                                    <div>
-                                                        <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase">APB MeBank</span>
-                                                        <div class="text-xs font-extrabold text-white">CHAIRMAN VIP</div>
-                                                    </div>
-                                                    <div class="w-8 h-6 bg-gradient-to-br from-amber-300 to-amber-500 rounded flex items-center justify-center">
-                                                        <i data-lucide="cpu" class="w-4 h-4 text-black"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="font-mono text-sm tracking-widest text-amber-100">
-                                                    9999 •••• •••• 8888
-                                                </div>
-                                                <div class="flex justify-between items-end text-[10px]">
-                                                    <div>
-                                                        <div class="text-slate-400 text-[8px] uppercase">Cardholder</div>
-                                                        <div class="font-bold text-amber-200 uppercase">MR. CHAIRMAN</div>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <div class="text-slate-400 text-[8px] uppercase">Expires</div>
-                                                        <div class="font-mono text-amber-200">10/31</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-right text-xs text-amber-400 font-semibold flex items-center justify-end gap-1">
-                                            <span>ຄລິກເມນູ "ສ້າງບັດປະທານ" ເພື່ອເລີ່ມຕົ້ນ</span>
-                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s1" src="images/admin/select_corp_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Create Chairman ແລະ ເລືອກບໍລິສັດ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s1')">
+                                <button onclick="openLightbox('img-t1-s1')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-600"></i>
-                                    <span>ບັດປະທານແມ່ນບັດລະດັບພິເສດສູງສຸດຂອງທະນາຄານ APB MeBank</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Exclusive Tier</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Instructions -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">1</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ເຂົ້າສູ່ເມນູ "Card Management" → "ສ້າງບັດປະທານ"</h3>
-                                    <p class="text-xs text-slate-500">Access the Dedicated Chairman Card Issuance Module</p>
-                                </div>
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ເມນູ <strong>"ສ້າງບັດປະທານ (Create Chairman Card)"</strong> ເປັນເມນູສະເພາະສຳລັບອອກບັດໃຫ້ແກ່ປະທານສະພາບໍລິຫານ, ຄະນະຜູ້ອຳນວຍການ ແລະ ລູກຄ້າ VIP Platinum ເທົ່ານັ້ນ.
-                            </p>
-
-                            <div class="space-y-2.5">
-                                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">ຂັ້ນຕອນການປະຕິບັດ:</h4>
-                                <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
-                                    <li>ເຂົ້າສູ່ລະບົບ Admin Portal ດ້ວຍບັນຊີທີ່ມີສິດ <strong>Card Operator (Maker)</strong>.</li>
-                                    <li>ຢູ່ເມນູດ້ານຊ້າຍ (Sidebar), ຄລິກທີ່ຫົວຂໍ້ <strong>"Card Management (ຈັດການບັດ)"</strong>.</li>
-                                    <li>ເລືອກເມນູ <strong>"ສ້າງບັດປະທານ (Create Chairman Card)"</strong>.</li>
-                                    <li>ລະບົບຈະເປີດໜ້າຕ່າງການອອກບັດ VIP ຂຶ້ນມາ.</li>
-                                </ol>
-                            </div>
-
-                            <div class="p-3.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-                                <i data-lucide="crown" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
-                                <div>
-                                    <strong>ເງື່ອນໄຂສິດທິ:</strong> ການເຂົ້າເຖິງເມນູນີ້ຕ້ອງຜ່ານການອະນຸມັດພິເສດຈາກຫົວໜ້າພະແນກສູນບັດ (Card Center Director) ເທົ່ານັ້ນ.
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.10 • CREATE CHAIRMAN • ຂັ້ນຕອນທີ 1 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Create Chairman ແລະ ເລືອກບໍລິສັດ</h2>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <span class="text-xs text-slate-400 font-medium">ຂັ້ນຕອນທີ 1 ຈາກ 7</span>
-                            <button onclick="goToStep(2)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ຄົ້ນຫາລູກຄ້າ VIP</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ວິທີເຂົ້າເມນູ ແລະ ຄົ້ນຫາບໍລິສັດທີ່ຕ້ອງການສ້າງ Chairman</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">Customer management → User management → User Control → Create Chairman</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກບໍລິສັດທີ່ຕ້ອງການສ້າງ Chairman (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກໃສ່ຊ່ອງຄົ້ນຫາ <strong>"ລາຍລະອຽດຂອງບໍລິສັດ"</strong> ເພື່ອເລືອກບໍລິສັດ (Corporate) ທີ່ຕ້ອງການກຳນົດຜູ້ໃຊ້ເປັນປະທານ (Chairman).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກເລືອກບໍລິສັດທີ່ຕ້ອງການສ້າງ Chairman ແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ຢູ່ແຖບດ້ານລຸ່ມເພື່ອໄປສູ່ໜ້າເລືອກຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ເຂົ້າລະບົບຜ່ານລິ້ງ http://ibk.apb.com.local:30002/ ແລ້ວເລືອກເມນູ Customer management → User management → User Control → Create Chairman.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button disabled
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-200 text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ສ້າງ User ປະທານ (Create Chairman) • ຂັ້ນຕອນ 1 / 4</span>
+                    
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ເລືອກຜູ້ໃຊ້ເປັນປະທານ (Step 2)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 2: Search & Select Chairman Profile   -->
+            <!-- TOPIC 1 - STEP 2: ຂັ້ນຕອນທີ 2: ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການຕັ້ງເປັນປະທານ (Chairman) -->
             <!-- ========================================== -->
-            <div id="step-panel-2" class="step-panel hidden" role="tabpanel">
+            <div id="topic-1-step-2" class="step-panel" data-topic="1" data-step="2" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="search" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 2: ຄົ້ນຫາຂໍ້ມູນລູກຄ້າລະດັບປະທານ / VIP</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 2 (1. ສ້າງ User ປະທານ (Create Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">CIF LOOKUP</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s2-marked" onclick="switchStepImage('img-t1-s2', 'images/admin/chairman_select_user_marked.png', 'images/admin/chairman_select_user.png', 'btn-t1-s2-marked', 'btn-t1-s2-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s2-orig" onclick="switchStepImage('img-t1-s2', 'images/admin/chairman_select_user_marked.png', 'images/admin/chairman_select_user.png', 'btn-t1-s2-marked', 'btn-t1-s2-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
-                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-4">
-                                    <div class="space-y-1.5">
-                                        <label class="block text-xs font-semibold text-slate-300">ຄົ້ນຫາດ້ວຍເລກ CIF ຫຼື ເລກບັດປະຈຳຕົວ (Search VIP Profile)</label>
-                                        <div class="flex gap-2">
-                                            <input type="text" readonly value="CIF-001099882 (ທ່ານ ປະທານ ຄຳຫຼ້າ ວົງວິຈິດ)" class="flex-1 bg-slate-950 border border-amber-500/60 rounded-xl px-3 py-2 text-xs text-amber-300 font-mono">
-                                            <button class="px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow flex items-center gap-1">
-                                                <i data-lucide="search" class="w-3.5 h-3.5"></i>
-                                                <span>ຄົ້ນຫາ</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Customer Profile Card -->
-                                    <div class="bg-slate-950 rounded-xl p-4 border border-amber-500/40 space-y-3">
-                                        <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
-                                            <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 border border-amber-400 flex items-center justify-center font-bold text-lg">
-                                                <i data-lucide="user" class="w-6 h-6 text-amber-400"></i>
-                                            </div>
-                                            <div>
-                                                <div class="flex items-center gap-2">
-                                                    <span class="font-bold text-sm text-white">ທ່ານ ຄຳຫຼ້າ ວົງວິຈິດ (Mr. Khamla VONGVIJIT)</span>
-                                                    <span class="text-[10px] bg-amber-400 text-black px-2 py-0.5 rounded-full font-extrabold flex items-center gap-1">
-                                                        <i data-lucide="crown" class="w-2.5 h-2.5 text-black"></i>
-                                                        <span>CHAIRMAN</span>
-                                                    </span>
-                                                </div>
-                                                <p class="text-xs text-slate-400">ປະທານສະພາບໍລິຫານ • APB Board Member</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
-                                            <div><strong>ເລກ CIF:</strong> <span class="text-amber-300 font-mono">001099882</span></div>
-                                            <div><strong>ເບີໂທລະສັບ:</strong> <span class="font-mono">+856 20 9988 7766</span></div>
-                                            <div><strong>ສະຖານະ KYC:</strong> <span class="text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> Verified Tier 3</span></div>
-                                            <div><strong>ລະດັບຄວາມສຳພັນ:</strong> <span class="text-amber-300">Ultra High Net Worth</span></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s2" src="images/admin/chairman_select_user_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 2: ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການຕັ້ງເປັນປະທານ (Chairman)"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s2')">
+                                <button onclick="openLightbox('img-t1-s2')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="database" class="w-3.5 h-3.5 text-apb-600"></i>
-                                    <span>ລະບົບຈະກວດສອບ KYC ແລະ CIF ອັດຕະໂນມັດຈາກ Core Banking</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Core Banking Connected</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">2</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຄົ້ນຫາ & ເລືອກຂໍ້ມູນລູກຄ້າ VIP / ປະທານ</h3>
-                                    <p class="text-xs text-slate-500">Locate Verified Chairman CIF in Core Banking</p>
-                                </div>
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ປ້ອນເລກ <strong>CIF</strong> (Customer Information File) ຫຼື ເລກບັດປະຈຳຕົວຂອງປະທານ ເພື່ອດຶງຂໍ້ມູນພື້ນຖານຈາກ Core Banking System.
-                            </p>
-
-                            <div class="space-y-2 text-xs sm:text-sm text-slate-700">
-                                <div class="flex items-start gap-2">
-                                    <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
-                                    <span>ກວດສອບວ່າຊື່-ນາມສະກຸນພາສາລາວ ແລະ ພາສາອັງກິດກົງກັບໜັງສືຜ່ານແດນ (Passport) ເພາະຊື່ຈະຖືກສະລັກລົງເທິງໜ້າບັດໂລຫະ Metal Card.</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
-                                    <span>ກວດສອບສະຖານະ KYC ຕ້ອງຢູ່ໃນລະດັບສົມບູນ (Tier 3 Verified).</span>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.10 • CREATE CHAIRMAN • ຂັ້ນຕອນທີ 2 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 2: ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການຕັ້ງເປັນປະທານ (Chairman)</h2>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(1)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <button onclick="goToStep(3)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດສິດທິພິເສດ VIP</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ເລືອກ User ພາຍໃນບໍລິສັດ ແລະ ກວດສອບລາຍລະອຽດສິດທິ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ໃຊ້ທີ່ຈະເປັນປະທານ</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກຊື່ຜູ້ໃຊ້ (User) ຂອງບໍລິສັດ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ເລືອກ User ທີ່ຕ້ອງການສ້າງເປັນ Chairman ຈາກຊ່ອງຄົ້ນຫາ (ຕົວຢ່າງ: <code>vanh | MOUMINII CONSRUCTION COMPANY</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບຂໍ້ມູນພື້ນຖານ ແລະ ສະຖານະ Chairman (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລະບົບສະແດງຂໍ້ມູນຜູ້ໃຊ້ ເຊັ່ນ: ເບີຕິດຕໍ່, ອີເມວ, ວັນເດືອນປີເກີດ, ສະຖານະ 2FA (Y) ແລະ ຊ່ອງ <strong>"ແມ່ນປະທານ ຫຼື ບໍ່?: Y"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບ Role ແລະ ວົງເງິນ Limit (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບສິດປະຈຳຕົວ (ເຊັ່ນ: <code>CHECKER CORPORATE</code>, <code>GENERAL CORPORATE LIMIT</code>) ແລະ ຂໍ້ມູນບໍລິສັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 4)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ເມື່ອກວດສອບຂໍ້ມູນຜູ້ໃຊ້ຖືກຕ້ອງແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ຢູ່ດ້ານລຸ່ມ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ຜູ້ໃຊ້ທີ່ຖືກເລືອກເປັນ Chairman ຈະມີສັນຍາລັກຮູບດາວ (★) ຢູ່ທາງຫຼັງຊື່ຜູ້ໃຊ້.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(1)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ສ້າງ User ປະທານ (Create Chairman) • ຂັ້ນຕອນ 2 / 4</span>
+                    
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ກວດສອບ & ຍອມຮັບ (Step 3)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 3: Configure VIP Privileges           -->
+            <!-- TOPIC 1 - STEP 3: ຂັ້ນຕອນທີ 3: ກວດສອບຂໍ້ມູນສະຫຼຸບ ແລະ ກົດປຸ່ມຍອມຮັບ -->
             <!-- ========================================== -->
-            <div id="step-panel-3" class="step-panel hidden" role="tabpanel">
+            <div id="topic-1-step-3" class="step-panel" data-topic="1" data-step="3" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 3: ເລືອກປະເພດບັດ & ສິດທິພິເສດ (Privileges)</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 3 (1. ສ້າງ User ປະທານ (Create Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">BENEFITS CONFIG</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s3-marked" onclick="switchStepImage('img-t1-s3', 'images/admin/chairman_summary_marked.png', 'images/admin/chairman_summary.png', 'btn-t1-s3-marked', 'btn-t1-s3-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s3-orig" onclick="switchStepImage('img-t1-s3', 'images/admin/chairman_summary_marked.png', 'images/admin/chairman_summary.png', 'btn-t1-s3-marked', 'btn-t1-s3-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
-                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
-                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                                        <span class="font-bold text-xs text-amber-400">ເລືອກປະເພດບັດໂລຫະ (Metal Card Selection)</span>
-                                        <span class="text-[10px] text-slate-400 font-mono">Heavy Tungsten 18g</span>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-2 text-xs">
-                                        <div class="p-3 rounded-xl border-2 border-amber-400 bg-amber-950/40 text-white space-y-1">
-                                            <div class="font-bold text-amber-300 flex items-center gap-1.5">
-                                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400"></i>
-                                                <span>MeBank Black Metal</span>
-                                            </div>
-                                            <p class="text-[10px] text-slate-300">ໂລຫະສີດຳພິເສດ ສະລັກຊື່ດ້ວຍເລເຊີສີຄຳ</p>
-                                        </div>
-                                        <div class="p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 space-y-1">
-                                            <div class="font-bold flex items-center gap-1.5">
-                                                <i data-lucide="circle" class="w-4 h-4 text-slate-500"></i>
-                                                <span>MeBank Gold Platinum</span>
-                                            </div>
-                                            <p class="text-[10px] text-slate-500">ບັດພິເສດເຄືອບທອງຄຳ 24K</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2 border-t border-slate-800 space-y-2">
-                                        <div class="text-[11px] font-semibold text-amber-300">ສິດທິພິເສດທີ່ມອບໃຫ້ (Executive Benefits):</div>
-                                        <div class="space-y-1.5 text-xs">
-                                            <div class="flex items-center gap-2 text-slate-200">
-                                                <i data-lucide="plane-takeoff" class="w-4 h-4 text-emerald-400"></i>
-                                                <span>ເຂົ້າ Airport VIP Lounge ບໍ່ຈຳກັດທົ່ວໂລກ (Priority Pass Unlimited)</span>
-                                            </div>
-                                            <div class="flex items-center gap-2 text-slate-200">
-                                                <i data-lucide="headset" class="w-4 h-4 text-emerald-400"></i>
-                                                <span>ຜູ້ດູແລບັນຊີສ່ວນຕົວ 24/7 (Dedicated Private Banker & Concierge)</span>
-                                            </div>
-                                            <div class="flex items-center gap-2 text-slate-200">
-                                                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-                                                <span>ປະກັນໄພການເດີນທາງວົງເງິນສູງສຸດ 1,000,000 USD</span>
-                                            </div>
-                                            <div class="flex items-center gap-2 text-slate-200">
-                                                <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
-                                                <span>ສິດທິພິເສດ Golf Club & ໂຮງແຮມ 5 ດາວຊັ້ນນຳ</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s3" src="images/admin/chairman_summary_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 3: ກວດສອບຂໍ້ມູນສະຫຼຸບ ແລະ ກົດປຸ່ມຍອມຮັບ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s3')">
+                                <button onclick="openLightbox('img-t1-s3')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="gift" class="w-3.5 h-3.5 text-amber-600"></i>
-                                    <span>ທຸກສິດທິພິເສດຈະຖືກເຊື່ອມຕໍ່ເຂົ້າແອັບ MeBank ຂອງປະທານທັນທີ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Auto Benefit Sync</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">3</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">3</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ເລືອກປະເພດບັດ & ກຳນົດສິດທິພິເສດ</h3>
-                                    <p class="text-xs text-slate-500">Select Card Material & Exclusive Executive Privileges</p>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.10 • CREATE CHAIRMAN • ຂັ້ນຕອນທີ 3 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 3: ກວດສອບຂໍ້ມູນສະຫຼຸບ ແລະ ກົດປຸ່ມຍອມຮັບ</h2>
                                 </div>
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ເລືອກວັດສະດຸບັດທີ່ຕ້ອງການອອກ: <strong>MeBank Black Metal</strong> (ນ້ຳໜັກ 18 ກຼາມ ໂລຫະພຣີມ່ຽມ) ພ້ອມຕັ້ງຄ່າ Package ສິດທິພິເສດ.
-                            </p>
-
-                            <div class="space-y-2 text-xs sm:text-sm text-slate-700">
-                                <p><strong>ການກຳນົດຊື່ເທິງໜ້າບັດ:</strong> ລະບົບຈະດຶງຊື່ພາສາອັງກິດຈາກ Passport ມາສະແດງ. ສາມາດປັບແຕ່ງ Title ເຊັ່ນ: <code>CHAIRMAN KHAMLA VONGVIJIT</code> ໄດ້.</p>
                             </div>
                         </div>
 
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(2)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <button onclick="goToStep(4)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ຜູກບັນຊີຫຼາຍສະກຸນເງິນ</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຢືນຢັນລາຍລະອຽດຜູ້ໃຊ້ທີ່ຈະເປັນປະທານໃນໜ້າ ເລືອກຜູ້ອະນຸມັດ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ອະນຸມັດ (Summary View)</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບຕາຕະລາງສະຫຼຸບ "ເລືອກຜູ້ໃຊ້ທີ່ຈະເປັນປະທານ" (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບຊື່ບໍລິສັດ (<code>MOUMINII CONSRUCTION COMPANY</code>), ຊື່ເຕັມ (<code>vanh</code>), ອີເມວ (<code>vanh@g.com</code>), ເບີຕິດຕໍ່ ແລະ ວັນໝົດອາຍຸຂອງຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຍອມຮັບ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກກວດສອບຄວາມຖືກຕ້ອງຄົບຖ້ວນແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຍອມຮັບ >"</strong> ເພື່ອສົ່ງຄຳຮ້ອງຂໍສ້າງ Chairman.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ທຸກລາຍການທີ່ສ້າງຂຶ້ນຈະຕ້ອງຜ່ານການອະນຸມັດ (Approve) ຈາກຜູ້ອະນຸມັດຈຶ່ງຈະສຳເລັດສົມບູນ.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ສ້າງ User ປະທານ (Create Chairman) • ຂັ້ນຕອນ 3 / 4</span>
+                    
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ສຳເລັດ (Success) (Step 4)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 4: Multi-Currency Account Binding     -->
+            <!-- TOPIC 1 - STEP 4: ຂັ້ນຕອນທີ 4: ໜ້າຈໍສົ່ງຄຳຮ້ອງຂໍສ້າງ Chairman ສຳເລັດ -->
             <!-- ========================================== -->
-            <div id="step-panel-4" class="step-panel hidden" role="tabpanel">
+            <div id="topic-1-step-4" class="step-panel" data-topic="1" data-step="4" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="globe-2" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 4: ຜູກບັນຊີຫຼາຍສະກຸນເງິນ (Multi-Currency)</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 4 (1. ສ້າງ User ປະທານ (Create Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">ACCOUNT BINDING</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s4-marked" onclick="switchStepImage('img-t1-s4', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t1-s4-marked', 'btn-t1-s4-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s4-orig" onclick="switchStepImage('img-t1-s4', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t1-s4-marked', 'btn-t1-s4-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
-                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3">
-                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                                        <span class="font-bold text-xs text-amber-400">ບັນຊີເງິນຝາກທີ່ຜູກກັບບັດປະທານ</span>
-                                        <span class="text-[10px] text-emerald-400 font-mono">Auto Currency Conversion</span>
-                                    </div>
-
-                                    <div class="space-y-2 text-xs">
-                                        <!-- LAK Account -->
-                                        <div class="p-3 rounded-lg border border-emerald-500/40 bg-slate-950 flex items-center justify-between">
-                                            <div>
-                                                <div class="font-bold text-white flex items-center gap-1.5">
-                                                    <span class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-emerald-300 font-mono text-[10px]">LAK</span>
-                                                    <span>010-12-00-09887766-001 (ບັນຊີຫຼັກ)</span>
-                                                </div>
-                                                <div class="text-[11px] text-slate-400">Current / Saving Account • ສຳນັກງານໃຫຍ່</div>
-                                            </div>
-                                            <span class="text-emerald-400 font-bold text-xs">PRIMARY</span>
-                                        </div>
-
-                                        <!-- USD Account -->
-                                        <div class="p-3 rounded-lg border border-slate-800 bg-slate-950 flex items-center justify-between">
-                                            <div>
-                                                <div class="font-bold text-white flex items-center gap-1.5">
-                                                    <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-blue-300 font-mono text-[10px]">USD</span>
-                                                    <span>010-12-00-09887766-002 (ບັນຊີໂດລາ)</span>
-                                                </div>
-                                                <div class="text-[11px] text-slate-400">Foreign Currency Account</div>
-                                            </div>
-                                            <span class="text-blue-400 font-bold text-xs">LINKED</span>
-                                        </div>
-
-                                        <!-- THB Account -->
-                                        <div class="p-3 rounded-lg border border-slate-800 bg-slate-950 flex items-center justify-between">
-                                            <div>
-                                                <div class="font-bold text-white flex items-center gap-1.5">
-                                                    <span class="px-1.5 py-0.5 rounded bg-amber-900/60 text-amber-300 font-mono text-[10px]">THB</span>
-                                                    <span>010-12-00-09887766-003 (ບັນຊີບາດ)</span>
-                                                </div>
-                                                <div class="text-[11px] text-slate-400">Foreign Currency Account</div>
-                                            </div>
-                                            <span class="text-amber-400 font-bold text-xs">LINKED</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s4" src="images/admin/request_success_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 4: ໜ້າຈໍສົ່ງຄຳຮ້ອງຂໍສ້າງ Chairman ສຳເລັດ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s4')">
+                                <button onclick="openLightbox('img-t1-s4')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="globe" class="w-3.5 h-3.5 text-apb-600"></i>
-                                    <span>ຮອງຮັບການຮູດຊຳລະທົ່ວໂລກໂດຍຕັດເງິນຕາມສະກຸນເງິນນັ້ນໆ ບໍ່ເສຍຄ່າທຳນຽມແລກປ່ຽນ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Zero FX Fee</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">4</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">4</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ຜູກມັດບັນຊີເງິນຝາກຫຼາຍສະກຸນເງິນ</h3>
-                                    <p class="text-xs text-slate-500">Link Multi-Currency Accounts for Seamless Global Spending</p>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.10 • CREATE CHAIRMAN • ຂັ້ນຕອນທີ 4 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 4: ໜ້າຈໍສົ່ງຄຳຮ້ອງຂໍສ້າງ Chairman ສຳເລັດ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ລະບົບສະແດງຜົນ Request Success</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: Request Success</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສະຖານະ Request Success (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລະບົບສະແດງເຄື່ອງໝາຍຖືກສີຂຽວ <strong>"Request Success - Your Request successfully"</strong> ຢັ້ງຢືນການສົ່ງຄຳຮ້ອງຂໍສຳເລັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຂໍ້ມູນການແຈ້ງເຕືອນທາງ Email (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລາຍລະອຽດ Username, Password ແລະ Tpin ຈະຖືກສົ່ງໄປທາງອີເມວຂອງຜູ້ໃຊ້ຫຼັງຈາກລາຍການຖືກອະນຸມັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປຸ່ມ Share / Save / Home (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສາມາດກົດ <strong>Save</strong> ເພື່ອບັນທຶກຮູບໃບຢັ້ງຢືນ ຫຼື ກົດ <strong>Home</strong> ເພື່ອກັບຄືນສູ່ໜ້າຫຼັກ.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ບັດປະທານ MeBank Chairman Card ຮອງຮັບການຜູກບັນຊີຫຼາຍສະກຸນເງິນພ້ອມກັນ (LAK, USD, THB, CNY) ເຮັດໃຫ້ສາມາດຮູດຊຳລະ ຫຼື ຖອນເງິນຢູ່ຕ່າງປະເທດໄດ້ສະດວກສະບາຍ.
-                            </p>
-
-                            <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
-                                <li>ເລືອກ <strong>ບັນຊີຫຼັກ (Primary Account)</strong> ສຳລັບການໃຊ້ຈ່າຍພາຍໃນປະເທດ.</li>
-                                <li>ຕິກເລືອກ <strong>ບັນຊີເງິນຕາຕ່າງປະເທດ (Secondary Accounts)</strong> ທີ່ຕ້ອງການຜູກມັດ.</li>
-                                <li>ເປີດໃຊ້ງານຄຸນສົມບັດ <strong>Smart Auto-Switching</strong> ເພື່ອໃຫ້ບັດເລືອກຕັດເງິນຕາມສະກຸນເງິນຂອງປະເທດທີ່ໃຊ້ຈ່າຍໂດຍອັດຕະໂນມັດ.</li>
-                            </ol>
-                        </div>
-
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(3)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <button onclick="goToStep(5)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ກຳນົດວົງເງິນ & ການຈັດສົ່ງ</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ຫຼັງຈາກສ້າງຄຳຮ້ອງຂໍສຳເລັດ ກະລຸນາແຈ້ງຜູ້ອະນຸມັດ (Checker/Admin Approver) ກວດສອບໃນໜ້າລາຍການທີ່ຍັງຄ້າງ.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ສ້າງ User ປະທານ (Create Chairman) • ຂັ້ນຕອນ 4 / 4</span>
+                    
+                    <button onclick="selectTopic(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold shadow-md transition">
+                        <span>ໄປຫົວຂໍ້ຕໍ່ໄປ: 2. ປ່ຽນສິດປະທານ (Change Chairman)</span>
+                        <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 5: Limits & Velvet Box Delivery       -->
+            <!-- TOPIC 2 - STEP 1: ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Change Chairman ແລະ ເລືອກບໍລິສັດ -->
             <!-- ========================================== -->
-            <div id="step-panel-5" class="step-panel hidden" role="tabpanel">
+            <div id="topic-2-step-1" class="step-panel" data-topic="2" data-step="1" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="package" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 5: ກຳນົດວົງເງິນ & ຊ່ອງທາງຈັດສົ່ງກ່ອງພິເສດ</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 1 (2. ປ່ຽນສິດປະທານ (Change Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-slate-800 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">DELIVERY & CAPS</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s1-marked" onclick="switchStepImage('img-t2-s1', 'images/admin/select_corp_marked.png', 'images/admin/select_corp.png', 'btn-t2-s1-marked', 'btn-t2-s1-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s1-orig" onclick="switchStepImage('img-t2-s1', 'images/admin/select_corp_marked.png', 'images/admin/select_corp.png', 'btn-t2-s1-marked', 'btn-t2-s1-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
-                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
-                                    <div>
-                                        <label class="block text-xs font-semibold text-slate-300 mb-1">ວົງເງິນຮູດຊຳລະສູງສຸດຕໍ່ວັນ (Daily Purchase Limit)</label>
-                                        <input type="text" readonly value="2,000,000,000 LAK (2 ຕື້ກີບ / ມື້ ຫຼື No Preset Limit)" class="w-full bg-slate-950 border border-amber-500/60 rounded-lg px-3 py-2 text-xs text-amber-300 font-mono font-bold">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-xs font-semibold text-slate-300 mb-1">ວົງເງິນຖອນເງິນສົດສູງສຸດ (ATM Cash Withdrawal)</label>
-                                        <input type="text" readonly value="200,000,000 LAK (200 ລ້ານກີບ / ມື້)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 font-mono">
-                                    </div>
-
-                                    <div class="pt-2 border-t border-slate-800 space-y-2">
-                                        <div class="text-[11px] font-semibold text-amber-300">ຮູບແບບການຈັດສົ່ງກ່ອງບັດ (Exclusive Velvet Box Delivery):</div>
-                                        <div class="p-3 rounded-lg border border-amber-500/40 bg-slate-950 space-y-1 text-xs">
-                                            <div class="font-bold text-amber-300 flex items-center gap-1.5">
-                                                <i data-lucide="gift" class="w-4 h-4 text-amber-400"></i>
-                                                <span>ກ່ອງກຳມະຢີ່ພິເສດ APB Velvet Presentation Box + VIP Welcome Kit</span>
-                                            </div>
-                                            <p class="text-slate-400 text-[11px]">ຈັດສົ່ງໂດຍທີມ Private Banking ມອບໃຫ້ໂດຍກົງເຖິງມືປະທານ</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s1" src="images/admin/select_corp_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Change Chairman ແລະ ເລືອກບໍລິສັດ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s1')">
+                                <button onclick="openLightbox('img-t2-s1')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="package-check" class="w-3.5 h-3.5 text-apb-600"></i>
-                                    <span>ບັດຈະຖືກບັນຈຸໃນກ່ອງກຳມະຢີ່ພິເສດພ້ອມໃບຕ້ອນຮັບສະເພາະ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Hand Delivery by Executive</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">5</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ກຳນົດວົງເງິນ ແລະ ຮູບແບບການຈັດສົ່ງ</h3>
-                                    <p class="text-xs text-slate-500">Configure Limits and Premium Hand-Delivery Protocol</p>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.8 • CHANGE CHAIRMAN • ຂັ້ນຕອນທີ 1 ຈາກ 5</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Change Chairman ແລະ ເລືອກບໍລິສັດ</h2>
                                 </div>
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ກຳນົດວົງເງິນສູງສຸດຕໍ່ວັນຕາມຄວາມຕ້ອງການຂອງປະທານ (ສາມາດເລືອກ <em>No Preset Spending Limit</em> ໄດ້ຕາມມະຕິຄະນະບໍລິຫານ).
-                            </p>
-
-                            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
-                                <strong>ມາດຕະຖານການຈັດສົ່ງ:</strong> ບັດປະທານຈະບໍ່ຖືກຈັດສົ່ງຜ່ານໄປສະນີທົ່ວໄປ. ຈະມີເຈົ້າໜ້າທີ່ Private Banking ແລະ ຜູ້ຈັດການສາຂານຳໄປມອບໃຫ້ປະທານໂດຍກົງ.
                             </div>
                         </div>
 
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(4)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <button onclick="goToStep(6)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ສົ່ງອະນຸມັດ 2 ຊັ້ນ</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ເລືອກບໍລິສັດ (Corporate) ທີ່ຕ້ອງການປ່ຽນສິດຜູ້ໃຊ້ Chairman</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">Customer management → User management → User Control → Change Chairman</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກບໍລິສັດທີ່ຕ້ອງການປ່ຽນສິດ Chairman (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກຊ່ອງ <strong>"ລາຍລະອຽດຂອງບໍລິສັດ"</strong> ເພື່ອຄົ້ນຫາ ແລະ ເລືອກບໍລິສັດທີ່ຕ້ອງການປ່ຽນຜູ້ຖືສິດປະທານ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ເພື່ອສະແດງລາຍລະອຽດຂອງບໍລິສັດທີ່ເລືອກ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ເມນູ Change Chairman ໃຊ້ສຳລັບບໍລິສັດທີ່ຕ້ອງການໂອນຍ້າຍ ຫຼື ປ່ຽນສິດ Chairman ໄປໃຫ້ User ອື່ນໃນບໍລິສັດ.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button disabled
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-200 text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ປ່ຽນສິດປະທານ (Change Chairman) • ຂັ້ນຕອນ 1 / 5</span>
+                    
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ກວດຂໍ້ມູນບໍລິສັດ (Step 2)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 6: Dual Approval Submission           -->
+            <!-- TOPIC 2 - STEP 2: ຂັ້ນຕອນທີ 2: ກວດສອບລາຍລະອຽດບໍລິສັດທີ່ເລືອກ -->
             <!-- ========================================== -->
-            <div id="step-panel-6" class="step-panel hidden" role="tabpanel">
+            <div id="topic-2-step-2" class="step-panel" data-topic="2" data-step="2" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 6: ສົ່ງຄຳຮ້ອງຂໍອະນຸມັດລະດັບສູງ (Dual Authorization)</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 2 (2. ປ່ຽນສິດປະທານ (Change Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full font-mono">COMMITTEE APPROVAL</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s2-marked" onclick="switchStepImage('img-t2-s2', 'images/admin/user_control_corp_info_marked.png', 'images/admin/user_control_corp_info.png', 'btn-t2-s2-marked', 'btn-t2-s2-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s2-orig" onclick="switchStepImage('img-t2-s2', 'images/admin/user_control_corp_info_marked.png', 'images/admin/user_control_corp_info.png', 'btn-t2-s2-marked', 'btn-t2-s2-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-5 bg-slate-950 flex-1 flex flex-col justify-center text-slate-200 min-h-[460px]">
-                                <div class="bg-slate-900 rounded-xl p-5 border border-slate-800 space-y-3.5">
-                                    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                                        <span class="font-bold text-xs text-white">ໃບຄຳຮ້ອງອອກບັດປະທານ (Chairman Card Issuing Request)</span>
-                                        <span class="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded font-mono">REQ-VIP-0091</span>
-                                    </div>
-
-                                    <div class="bg-slate-950 rounded-lg p-3 space-y-2 text-xs">
-                                        <div class="flex justify-between py-1 border-b border-slate-800">
-                                            <span class="text-slate-400">ຊື່ຜູ້ຖືບັດ:</span>
-                                            <span class="text-white font-bold">ທ່ານ ຄຳຫຼ້າ ວົງວິຈິດ (CHAIRMAN)</span>
-                                        </div>
-                                        <div class="flex justify-between py-1 border-b border-slate-800">
-                                            <span class="text-slate-400">ປະເພດບັດ:</span>
-                                            <span class="text-amber-300 font-bold">MeBank Black Metal (Tungsten 18g)</span>
-                                        </div>
-                                        <div class="flex justify-between py-1 border-b border-slate-800">
-                                            <span class="text-slate-400">ບັນຊີຜູກມັດ:</span>
-                                            <span class="text-emerald-400 font-mono">LAK (Primary), USD, THB</span>
-                                        </div>
-                                        <div class="flex justify-between py-1">
-                                            <span class="text-slate-400">ຜູ້ສ້າງຄຳຂໍ (Maker):</span>
-                                            <span class="text-slate-200">somphone.c (Card Operations Head)</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="pt-2 flex gap-2">
-                                        <div class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-center text-xs font-bold shadow-lg shadow-amber-900/30 flex items-center justify-center gap-1.5">
-                                            <i data-lucide="check" class="w-4 h-4"></i>
-                                            <span>ຢືນຢັນ & ສົ່ງຄະນະອຳນວຍການອະນຸມັດ (Submit for Board Approval)</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s2" src="images/admin/user_control_corp_info_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 2: ກວດສອບລາຍລະອຽດບໍລິສັດທີ່ເລືອກ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s2')">
+                                <button onclick="openLightbox('img-t2-s2')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="lock" class="w-3.5 h-3.5 text-apb-600"></i>
-                                    <span>ຕ້ອງໄດ້ຮັບການອະນຸມັດຈາກ Managing Director ຫຼື Board Approver</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Two-Level Authorization</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">6</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ສົ່ງຄຳຂໍອະນຸມັດສອງຊັ້ນ (Dual Authorization)</h3>
-                                    <p class="text-xs text-slate-500">Submit Request for Executive Level Board Clearance</p>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.8 • CHANGE CHAIRMAN • ຂັ້ນຕອນທີ 2 ຈາກ 5</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 2: ກວດສອບລາຍລະອຽດບໍລິສັດທີ່ເລືອກ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ກວດສອບຊື່ບໍລິສັດ, ອີເມວ ແລະ ເບີໂທຕິດຕໍ່ຂອງບໍລິສັດ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກບໍລິສັດ (ລາຍລະອຽດບໍລິສັດຂອງເຈົ້າ)</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຊື່ບໍລິສັດທີ່ເລືອກ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບຊື່ບໍລິສັດໃນແຖບຄົ້ນຫາ (ເຊັ່ນ: <code>MOUMINII CONSRUCTION COMPANY | ໝູ່ມີ່ ກໍ່ສ້າງ ແລະ ເຄຫາສະຖານ ຈຳກັດ</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ລາຍລະອຽດບໍລິສັດຂອງເຈົ້າ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບຊື່ບໍລິສັດພາສາລາວ, ພາສາອັງກິດ, ອີເມວ (<code>moumini@g.com</code>) ແລະ ເບີຕິດຕໍ່ (<code>2099777777</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກກວດສອບຂໍ້ມູນບໍລິສັດຖືກຕ້ອງແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ເນື່ອງຈາກບັດປະທານເປັນບັດທີ່ມີວົງເງິນສູງ ແລະ ມີສິດທິພິເສດຫຼາຍ, ລະບົບຈະຮຽກຮ້ອງໃຫ້ມີການອະນຸມັດສອງຊັ້ນ (Dual Checker Approval) ຈາກຄະນະບໍລິຫານທະນາຄານ.
-                            </p>
-
-                            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 list-disc list-inside pl-1">
-                                <li>Maker ກວດສອບຄວາມຖືກຕ້ອງແລ້ວກົດປຸ່ມ <strong>Submit for Board Approval</strong>.</li>
-                                <li>ລະບົບຈະສົ່ງ Notification ໄປທີ່ Admin Portal ຂອງ <strong>Managing Director (MD)</strong> ແລະ <strong>Chief Risk Officer (CRO)</strong>.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(5)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <button onclick="goToStep(7)" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                                <span>ຂັ້ນຕອນຕໍ່ໄປ: ອອກບັດປະທານສຳເລັດ</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ກວດສອບໃຫ້ແນ່ໃຈວ່າເລືອກຖືກບໍລິສັດກ່ອນດຳເນີນການປ່ຽນສິດ Chairman.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(1)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ປ່ຽນສິດປະທານ (Change Chairman) • ຂັ້ນຕອນ 2 / 5</span>
+                    
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ເລືອກ User ປະທານໃໝ່ (Step 3)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
             <!-- ========================================== -->
-            <!-- STEP 7: Issuance & Digital Activation      -->
+            <!-- TOPIC 2 - STEP 3: ຂັ້ນຕອນທີ 3: ເລືອກ User ທີ່ຕ້ອງການປ່ຽນເປັນປະທານ -->
             <!-- ========================================== -->
-            <div id="step-panel-7" class="step-panel hidden" role="tabpanel">
+            <div id="topic-2-step-3" class="step-panel" data-topic="2" data-step="3" role="tabpanel" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    <!-- LEFT COLUMN: Mockup Screen -->
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
                     <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
-                            <div class="bg-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
                                 <div class="flex items-center space-x-2">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-                                    <span class="font-bold text-xs sm:text-sm">ໜ້າຈໍທີ 7: ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 3 (2. ປ່ຽນສິດປະທານ (Change Chairman))</span>
                                 </div>
-                                <span class="text-[11px] bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full font-mono">CARD ISSUED & ACTIVE</span>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s3-marked" onclick="switchStepImage('img-t2-s3', 'images/admin/chairman_select_user_marked.png', 'images/admin/chairman_select_user.png', 'btn-t2-s3-marked', 'btn-t2-s3-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s3-orig" onclick="switchStepImage('img-t2-s3', 'images/admin/chairman_select_user_marked.png', 'images/admin/chairman_select_user.png', 'btn-t2-s3-marked', 'btn-t2-s3-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="p-6 bg-slate-950 flex-1 flex flex-col justify-center items-center text-slate-200 min-h-[460px]">
-                                <div class="w-full max-w-md bg-slate-900 rounded-2xl p-6 border border-amber-500/60 shadow-2xl text-center space-y-4">
-                                    <div class="w-16 h-16 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mx-auto border-2 border-amber-400 shadow-lg shadow-amber-900/40">
-                                        <i data-lucide="crown" class="w-8 h-8 text-amber-400"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-base text-white">ອອກບັດປະທານ MeBank Black Metal ສຳເລັດ!</h4>
-                                        <p class="text-xs text-amber-200/80 mt-1">Chairman VIP Card Created & Ready for Delivery</p>
-                                    </div>
-
-                                    <div class="bg-slate-950 rounded-xl p-3.5 text-left text-xs space-y-2 border border-slate-800">
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">ເລກບັດ:</span>
-                                            <span class="text-amber-300 font-mono font-bold">9999 88** **** 8888</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">ຊື່ເທິງໜ້າບັດ:</span>
-                                            <span class="text-white font-bold">CHAIRMAN KHAMLA VONGVIJIT</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">Digital Card:</span>
-                                            <span class="text-emerald-400 font-bold flex items-center gap-1">
-                                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                                                <span>ພ້ອມໃຊ້ງານໃນແອັບ MeBank ແລ້ວ</span>
-                                            </span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">Physical Embossing:</span>
-                                            <span class="text-blue-400 font-bold flex items-center gap-1">
-                                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                                                <span>ກຳລັງສະລັກເລເຊີໂລຫະ Metal</span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="p-3 bg-amber-950/40 rounded-xl border border-amber-500/30 text-xs text-amber-200 text-left flex items-start gap-2">
-                                        <i data-lucide="party-popper" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
-                                        <div>ບັດດິຈິຕອລ (Digital Chairman Card) ໄດ້ຖືກເຊື່ອມຕໍ່ເຂົ້າແອັບ MeBank ຂອງປະທານຮຽບຮ້ອຍແລ້ວ ສາມາດໃຊ້ງານໄດ້ທັນທີ.</div>
-                                    </div>
-                                </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s3" src="images/admin/chairman_select_user_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 3: ເລືອກ User ທີ່ຕ້ອງການປ່ຽນເປັນປະທານ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s3')">
+                                <button onclick="openLightbox('img-t2-s3')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
                             </div>
                             <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
-                                <span class="flex items-center gap-1">
-                                    <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
-                                    <span>ສຳເລັດຂັ້ນຕອນການສ້າງບັດປະທານ</span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
                                 </span>
-                                <span class="font-mono text-slate-400">Status: ISSUED</span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Details -->
-                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-between space-y-5">
-                        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm border border-amber-300">7</span>
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">3</span>
                                 <div>
-                                    <h3 class="font-bold text-base sm:text-lg text-slate-900">ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ</h3>
-                                    <p class="text-xs text-slate-500">Successful Issuance, Laser Engraving & Instant Digital Activation</p>
-                                </div>
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                ເມື່ອຄະນະຜູ້ບໍລິຫານກວດສອບ ແລະ ກົດອະນຸມັດ:
-                            </p>
-
-                            <ol class="space-y-2 text-xs sm:text-sm text-slate-700 list-decimal list-inside pl-1">
-                                <li>ລະບົບ Card Management System ຈະສ້າງເລກບັດ ແລະ ເປີດໃຊ້ງານ <strong>Digital Chairman Card</strong> ທັນທີໃນແອັບ MeBank.</li>
-                                <li>ຄຳສັ່ງສະລັກບັດໂລຫະ (Metal Laser Engraving) ຈະຖືກສົ່ງໄປທີ່ເຄື່ອງຈັກສະລັກບັດພິເສດ.</li>
-                                <li>ບັດໂລຫະຈະຖືກບັນຈຸໃນກ່ອງກຳມະຢີ່ APB Velvet Box ເພື່ອກຽມມອບໃຫ້ແກ່ປະທານ.</li>
-                            </ol>
-
-                            <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-start gap-2">
-                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
-                                <div>
-                                    <strong>ສຳເລັດສົມບູນ:</strong> ຂັ້ນຕອນການສ້າງບັດປະທານຜ່ານລະບົບ Admin Portal ສຳເລັດທຸກຂັ້ນຕອນ.
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.8 • CHANGE CHAIRMAN • ຂັ້ນຕອນທີ 3 ຈາກ 5</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 3: ເລືອກ User ທີ່ຕ້ອງການປ່ຽນເປັນປະທານ</h2>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Footer Nav -->
-                        <div class="flex items-center justify-between pt-2 no-print">
-                            <button onclick="goToStep(6)" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold transition hover:bg-slate-100 flex items-center gap-1">
-                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                <span>ກ່ອນໜ້າ</span>
-                            </button>
-                            <a href="index.html" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md">
-                                <i data-lucide="home" class="w-4 h-4"></i>
-                                <span>ກັບຄືນໜ້າຫຼັກຄູ່ມື</span>
-                            </a>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ເລືອກຜູ້ໃຊ້ໃນບໍລິສັດທີ່ຈະຮັບສິດ Chairman</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ໃຊ້ທີ່ຈະເປັນປະທານ</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກ User ທີ່ຕ້ອງການປ່ຽນສິດ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກເລືອກຊື່ຜູ້ໃຊ້ໃນບໍລິສັດທີ່ຕ້ອງການຕັ້ງເປັນ Chairman ຄົນໃໝ່.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບຂໍ້ມູນຜູ້ໃຊ້ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບເບີໂທ, ອີເມວ, ສະຖານະ ACTIVE ແລະ ສະຖານະການຢັ້ງຢືນຕົວຕົນ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບສິດ Role & Limit (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ເບິ່ງລາຍລະອຽດສິດທິ ແລະ ວົງເງິນຂອງຜູ້ໃຊ້ທີ່ເລືອກ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 4)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ເພື່ອໄປສູ່ໜ້າສະຫຼຸບການປ່ຽນສິດ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ຜູ້ໃຊ້ທີ່ຈະປ່ຽນເປັນ Chairman ຕ້ອງມີສະຖານະ ACTIVE ຢູ່ໃນບໍລິສັດນັ້ນ.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ປ່ຽນສິດປະທານ (Change Chairman) • ຂັ້ນຕອນ 3 / 5</span>
+                    
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ຢືນຢັນຂໍ້ມູນ (Step 4)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 4: ຂັ້ນຕອນທີ 4: ກວດສອບສະຫຼຸບຂໍ້ມູນ ແລະ ກົດປຸ່ມຍອມຮັບ -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-4" class="step-panel" data-topic="2" data-step="4" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 4 (2. ປ່ຽນສິດປະທານ (Change Chairman))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s4-marked" onclick="switchStepImage('img-t2-s4', 'images/admin/chairman_summary_marked.png', 'images/admin/chairman_summary.png', 'btn-t2-s4-marked', 'btn-t2-s4-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s4-orig" onclick="switchStepImage('img-t2-s4', 'images/admin/chairman_summary_marked.png', 'images/admin/chairman_summary.png', 'btn-t2-s4-marked', 'btn-t2-s4-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s4" src="images/admin/chairman_summary_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 4: ກວດສອບສະຫຼຸບຂໍ້ມູນ ແລະ ກົດປຸ່ມຍອມຮັບ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s4')">
+                                <button onclick="openLightbox('img-t2-s4')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">4</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.8 • CHANGE CHAIRMAN • ຂັ້ນຕອນທີ 4 ຈາກ 5</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 4: ກວດສອບສະຫຼຸບຂໍ້ມູນ ແລະ ກົດປຸ່ມຍອມຮັບ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຢືນຢັນການປ່ຽນສິດຜູ້ໃຊ້ Chairman</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ອະນຸມັດ</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບລາຍລະອຽດກ່ອນຢືນຢັນ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບຊື່ບໍລິສັດ, ຊື່ເຕັມຜູ້ໃຊ້, ອີເມວ, ເບີຕິດຕໍ່ ແລະ ວັນໝົດອາຍຸຂອງຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຍອມຮັບ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຍອມຮັບ >"</strong> ເພື່ອສົ່ງຄຳຮ້ອງຂໍປ່ຽນສິດ Chairman.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ຫຼັງຈາກກົດຍອມຮັບ ລາຍການຈະຖືກສົ່ງໄປລໍຖ້າການອະນຸມັດ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ປ່ຽນສິດປະທານ (Change Chairman) • ຂັ້ນຕອນ 4 / 5</span>
+                    
+                    <button onclick="goToStep(5)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ສຳເລັດ (Success) (Step 5)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 5: ຂັ້ນຕອນທີ 5: ປ່ຽນສິດຜູ້ໃຊ້ Chairman ສຳເລັດ -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-5" class="step-panel" data-topic="2" data-step="5" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 5 (2. ປ່ຽນສິດປະທານ (Change Chairman))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s5-marked" onclick="switchStepImage('img-t2-s5', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t2-s5-marked', 'btn-t2-s5-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s5-orig" onclick="switchStepImage('img-t2-s5', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t2-s5-marked', 'btn-t2-s5-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s5" src="images/admin/request_success_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 5: ປ່ຽນສິດຜູ້ໃຊ້ Chairman ສຳເລັດ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s5')">
+                                <button onclick="openLightbox('img-t2-s5')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">5</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.8 • CHANGE CHAIRMAN • ຂັ້ນຕອນທີ 5 ຈາກ 5</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 5: ປ່ຽນສິດຜູ້ໃຊ້ Chairman ສຳເລັດ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ໜ້າຈໍຢັ້ງຢືນ Request Success</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: Request Success</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສະຖານະ Request Success (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລະບົບສະແດງໜ້າຈໍສຳເລັດ <strong>"Request Success"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ການແຈ້ງເຕືອນຜ່ານອີເມວ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລະບົບຈະສົ່ງຂໍ້ມູນແຈ້ງເຕືອນໄປຫາອີເມວຂອງຜູ້ໃຊ້ຫຼັງຈາກໄດ້ຮັບການອະນຸມັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປຸ່ມ Share / Save / Home (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສາມາດບັນທຶກຮູບ ຫຼື ກັບສູ່ໜ້າຫຼັກໄດ້ທັນທີ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສຳເລັດຂັ້ນຕອນການປ່ຽນສິດຜູ້ໃຊ້ (Change Chairman).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ປ່ຽນສິດປະທານ (Change Chairman) • ຂັ້ນຕອນ 5 / 5</span>
+                    
+                    <a href="index.html"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md transition">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                        <span>ສຳເລັດຄູ່ມືໝວດນີ້ (ກັບໜ້າຫຼັກ)</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <i data-lucide="landmark" class="w-4 h-4 text-amber-400"></i>
-                <span class="font-bold text-white">APB MeBank Manual System</span>
-                <span>•</span>
-                <span>ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</span>
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="image-lightbox"
+        class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm hidden items-center justify-center p-4 no-print"
+        onclick="closeLightbox()">
+        <div class="relative max-w-6xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <div class="w-full flex items-center justify-between text-white mb-3 px-2">
+                <span id="lightbox-caption" class="text-xs sm:text-sm font-bold text-emerald-300">ພາບຂະຫຍາຍໜ້າຈໍ (Zoom View)</span>
+                <button onclick="closeLightbox()"
+                    class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5 border border-white/20">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                    <span>ປິດຮູບ (ESC)</span>
+                </button>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="hover:text-white transition flex items-center gap-1">
-                    <i data-lucide="home" class="w-3.5 h-3.5"></i>
-                    <span>ໜ້າຫຼັກລວມຄູ່ມື</span>
-                </a>
+            <img id="lightbox-img" src="" alt="Zoomed View"
+                class="max-h-[85vh] w-auto object-contain rounded-2xl border border-white/20 shadow-2xl bg-slate-900">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+                <span class="w-6 h-6 rounded-md bg-apb-600 text-white font-bold flex items-center justify-center text-xs">
+                    <i data-lucide="landmark" class="w-3.5 h-3.5 text-white"></i>
+                </span>
+                <span>ທະນາຄານສົ່ງເສີມກະສິກຳ (APB) • ຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (2026)</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hover:text-emerald-300 transition">ໜ້າຫຼັກຄູ່ມື</a>
                 <span>•</span>
-                <a href="booking-flight.html" class="hover:text-white transition flex items-center gap-1">
-                    <i data-lucide="plane" class="w-3.5 h-3.5"></i>
-                    <span>ຄູ່ມືຈອງປີ້ເຮືອບິນ</span>
-                </a>
-                <span>•</span>
-                <a href="admin-portal-add-user.html" class="hover:text-white transition flex items-center gap-1">
-                    <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
-                    <span>ຄູ່ມືເພີ່ມຜູ້ໃຊ້ງານ</span>
-                </a>
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank" class="hover:text-amber-300 transition">ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</a>
             </div>
         </div>
     </footer>
 
-    <!-- Interactive Script for Step Navigation -->
     <script>
-        const totalSteps = 7;
+        const TOPICS_DATA = [{"topicNum": 1, "badge": "ໝວດ II.10 • CREATE CHAIRMAN", "shortTitle": "1. ສ້າງ User ປະທານ (Create Chairman)", "fullTitle": "10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)", "icon": "crown", "steps": [{"stepNum": 1, "tabLabel": "ເລືອກບໍລິສັດ", "tabIcon": "building-2", "fullTitle": "ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Create Chairman ແລະ ເລືອກບໍລິສັດ", "panelId": "topic-1-step-1"}, {"stepNum": 2, "tabLabel": "ເລືອກຜູ້ໃຊ້ເປັນປະທານ", "tabIcon": "user-check", "fullTitle": "ຂັ້ນຕອນທີ 2: ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການຕັ້ງເປັນປະທານ (Chairman)", "panelId": "topic-1-step-2"}, {"stepNum": 3, "tabLabel": "ກວດສອບ & ຍອມຮັບ", "tabIcon": "clipboard-check", "fullTitle": "ຂັ້ນຕອນທີ 3: ກວດສອບຂໍ້ມູນສະຫຼຸບ ແລະ ກົດປຸ່ມຍອມຮັບ", "panelId": "topic-1-step-3"}, {"stepNum": 4, "tabLabel": "ສຳເລັດ (Success)", "tabIcon": "party-popper", "fullTitle": "ຂັ້ນຕອນທີ 4: ໜ້າຈໍສົ່ງຄຳຮ້ອງຂໍສ້າງ Chairman ສຳເລັດ", "panelId": "topic-1-step-4"}]}, {"topicNum": 2, "badge": "ໝວດ II.8 • CHANGE CHAIRMAN", "shortTitle": "2. ປ່ຽນສິດປະທານ (Change Chairman)", "fullTitle": "8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)", "icon": "refresh-cw", "steps": [{"stepNum": 1, "tabLabel": "ເລືອກບໍລິສັດ", "tabIcon": "building-2", "fullTitle": "ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ Change Chairman ແລະ ເລືອກບໍລິສັດ", "panelId": "topic-2-step-1"}, {"stepNum": 2, "tabLabel": "ກວດຂໍ້ມູນບໍລິສັດ", "tabIcon": "file-check", "fullTitle": "ຂັ້ນຕອນທີ 2: ກວດສອບລາຍລະອຽດບໍລິສັດທີ່ເລືອກ", "panelId": "topic-2-step-2"}, {"stepNum": 3, "tabLabel": "ເລືອກ User ປະທານໃໝ່", "tabIcon": "user-check", "fullTitle": "ຂັ້ນຕອນທີ 3: ເລືອກ User ທີ່ຕ້ອງການປ່ຽນເປັນປະທານ", "panelId": "topic-2-step-3"}, {"stepNum": 4, "tabLabel": "ຢືນຢັນຂໍ້ມູນ", "tabIcon": "clipboard-check", "fullTitle": "ຂັ້ນຕອນທີ 4: ກວດສອບສະຫຼຸບຂໍ້ມູນ ແລະ ກົດປຸ່ມຍອມຮັບ", "panelId": "topic-2-step-4"}, {"stepNum": 5, "tabLabel": "ສຳເລັດ (Success)", "tabIcon": "party-popper", "fullTitle": "ຂັ້ນຕອນທີ 5: ປ່ຽນສິດຜູ້ໃຊ້ Chairman ສຳເລັດ", "panelId": "topic-2-step-5"}]}];
+        let currentTopic = 1;
         let currentStep = 1;
         let isAllView = false;
 
-        const stepLabels = [
-            "1. ເຂົ້າເມນູ 'Card Management' -> 'ສ້າງບັດປະທານ (Create Chairman Card)'",
-            "2. ຄົ້ນຫາ & ເລືອກຂໍ້ມູນລູກຄ້າລະດັບປະທານ / VIP",
-            "3. ເລືອກປະເພດບັດ & ສິດທິພິເສດ VIP (Chairman Privileges)",
-            "4. ຜູກມັດບັນຊີເງິນຝາກຫຼາຍສະກຸນເງິນ (Multi-Currency)",
-            "5. ກຳນົດວົງເງິນສູງສຸດ & ຊ່ອງທາງຈັດສົ່ງກ່ອງພິເສດ Velvet Box",
-            "6. ສົ່ງຄຳຮ້ອງຂໍອະນຸມັດລະດັບສູງ (Dual Authorization)",
-            "7. ອະນຸມັດສຳເລັດ & ເປີດໃຊ້ງານບັດປະທານ"
-        ];
+        function renderStepTabs() {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            const strip = document.getElementById('step-tabs-strip');
+            strip.innerHTML = topicObj.steps.map(s => {
+                const activeCls = (s.stepNum === currentStep && !isAllView) ? 'active' : '';
+                return `
+                    <button onclick="goToStep(${s.stepNum})" id="tab-btn-${s.stepNum}"
+                        class="step-tab-btn ${activeCls} px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">${s.stepNum}</span>
+                        <i data-lucide="${s.tabIcon}" class="w-3.5 h-3.5"></i>
+                        <span>${s.stepNum}. ${s.tabLabel}</span>
+                    </button>
+                `;
+            }).join('');
+            if (window.lucide) lucide.createIcons();
+        }
 
-        function goToStep(stepNumber) {
-            if (stepNumber < 1 || stepNumber > totalSteps) return;
-            currentStep = stepNumber;
+        function selectTopic(topicNum) {
+            currentTopic = topicNum;
+            currentStep = 1;
+            if (isAllView) {
+                isAllView = false;
+                document.getElementById('toggle-view-text').textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
+            }
+
+            // Update topic pills
+            document.querySelectorAll('.topic-pill-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx + 1 === currentTopic);
+            });
+
+            renderStepTabs();
+            updateActivePanel();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToStep(stepNum) {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            if (stepNum < 1 || stepNum > topicObj.steps.length) return;
+            currentStep = stepNum;
 
             if (isAllView) {
-                toggleAllView(false);
+                isAllView = false;
+                document.getElementById('toggle-view-text').textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
             }
 
-            for (let i = 1; i <= totalSteps; i++) {
-                const panel = document.getElementById(`step-panel-${i}`);
-                const tabBtn = document.getElementById(`tab-btn-${i}`);
-                if (panel) {
-                    if (i === currentStep) {
-                        panel.classList.remove('hidden');
-                    } else {
-                        panel.classList.add('hidden');
-                    }
-                }
-                if (tabBtn) {
-                    if (i === currentStep) {
-                        tabBtn.classList.add('active');
-                    } else {
-                        tabBtn.classList.remove('active');
-                    }
-                }
-            }
+            updateActivePanel();
+        }
 
-            document.getElementById('step-counter-text').innerText = currentStep;
-            document.getElementById('current-step-label').innerText = stepLabels[currentStep - 1];
+        function updateActivePanel() {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            const stepObj = topicObj.steps[currentStep - 1];
+            const totalSteps = topicObj.steps.length;
 
-            const percentage = ((currentStep / totalSteps) * 100).toFixed(2);
-            document.getElementById('step-progress-bar').style.width = `${percentage}%`;
+            // Show only current topic + current step panel
+            document.querySelectorAll('.step-panel').forEach(panel => {
+                const pTopic = parseInt(panel.getAttribute('data-topic'));
+                const pStep = parseInt(panel.getAttribute('data-step'));
+                panel.style.display = (pTopic === currentTopic && pStep === currentStep) ? 'block' : 'none';
+            });
 
-            const btnPrev = document.getElementById('btn-prev-step');
-            const btnNext = document.getElementById('btn-next-step');
-            if (btnPrev) btnPrev.disabled = (currentStep === 1);
-            if (btnNext) btnNext.disabled = (currentStep === totalSteps);
+            // Update tab buttons
+            document.querySelectorAll('.step-tab-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx + 1 === currentStep);
+            });
 
-            const activeBtn = document.getElementById(`tab-btn-${currentStep}`);
+            const activeBtn = document.getElementById('tab-btn-' + currentStep);
             if (activeBtn) {
                 activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
 
-            history.replaceState(null, null, `#step-${currentStep}`);
+            document.getElementById('step-counter-text').textContent = currentStep;
+            document.getElementById('step-total-text').textContent = totalSteps;
+            document.getElementById('current-step-label').textContent = stepObj.fullTitle;
+            document.getElementById('step-progress-bar').style.width = ((currentStep / totalSteps) * 100) + '%';
 
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+            document.getElementById('btn-prev-step').disabled = (currentStep === 1);
+            document.getElementById('btn-next-step').disabled = (currentStep === totalSteps);
         }
 
         function changeStep(delta) {
             goToStep(currentStep + delta);
         }
 
-        function toggleAllView(forceState) {
-            if (typeof forceState === 'boolean') {
-                isAllView = forceState;
-            } else {
-                isAllView = !isAllView;
-            }
-
-            const toggleBtnText = document.getElementById('toggle-view-text');
-            for (let i = 1; i <= totalSteps; i++) {
-                const panel = document.getElementById(`step-panel-${i}`);
-                if (panel) {
-                    if (isAllView) {
-                        panel.classList.remove('hidden');
-                    } else {
-                        if (i === currentStep) {
-                            panel.classList.remove('hidden');
-                        } else {
-                            panel.classList.add('hidden');
-                        }
-                    }
-                }
-            }
-
+        function toggleAllView() {
+            isAllView = !isAllView;
+            const label = document.getElementById('toggle-view-text');
             if (isAllView) {
-                toggleBtnText.innerText = "ສະຫຼັບເປັນແບບ Slide ທີລະຂັ້ນ";
+                // Show all steps of the current topic (or all topics)
+                document.querySelectorAll('.step-panel').forEach(panel => {
+                    const pTopic = parseInt(panel.getAttribute('data-topic'));
+                    panel.style.display = (pTopic === currentTopic) ? 'block' : 'none';
+                });
+                label.textContent = 'ກັບສູ່ໂໝດສະໄລ້ (Slide Mode)';
             } else {
-                toggleBtnText.innerText = "ເບິ່ງທຸກຂັ້ນຕອນ";
-            }
-
-            if (window.lucide) {
-                lucide.createIcons();
+                label.textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
+                updateActivePanel();
             }
         }
 
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => console.log(err));
-                document.getElementById('fullscreen-text').innerText = "ອອກເຕັມຈໍ";
+        function switchStepImage(imgId, markedSrc, origSrc, btnMarkedId, btnOrigId, mode) {
+            const img = document.getElementById(imgId);
+            const btnM = document.getElementById(btnMarkedId);
+            const btnO = document.getElementById(btnOrigId);
+            if (mode === 'marked') {
+                img.src = markedSrc;
+                btnM.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
+                btnO.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                    document.getElementById('fullscreen-text').innerText = "ເຕັມຈໍ";
-                }
+                img.src = origSrc;
+                btnO.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
+                btnM.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
             }
-            if (window.lucide) {
-                lucide.createIcons();
+        }
+
+        function openLightbox(imgId) {
+            const srcImg = document.getElementById(imgId);
+            const lb = document.getElementById('image-lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            const lbCap = document.getElementById('lightbox-caption');
+            lbImg.src = srcImg.src;
+            lbCap.textContent = srcImg.alt || 'ພາບຂະຫຍາຍໜ້າຈໍ';
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('image-lightbox');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+        }
+
+        function toggleFullScreen() {
+            const textEl = document.getElementById('fullscreen-text');
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(() => {
+                    if (textEl) textEl.textContent = 'ອອກເຕັມຈໍ';
+                }).catch(() => {});
+            } else {
+                document.exitFullscreen().then(() => {
+                    if (textEl) textEl.textContent = 'ເຕັມຈໍ';
+                }).catch(() => {});
             }
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-                changeStep(1);
-            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-                changeStep(-1);
-            }
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') changeStep(1);
+            if (e.key === 'ArrowLeft') changeStep(-1);
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash;
-            const match = hash.match(/#step-(\d+)/);
-            if (match) {
-                const s = parseInt(match[1]);
-                if (s >= 1 && s <= totalSteps) {
-                    goToStep(s);
-                    return;
-                }
-            }
-            goToStep(1);
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStepTabs();
+            updateActivePanel();
+            if (window.lucide) lucide.createIcons();
         });
     </script>
 </body>

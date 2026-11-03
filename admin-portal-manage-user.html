@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="lo" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ຄູ່ມືການແກ້ໄຂ, ລົບ ແລະ ກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ (Update, Delete & View User) - APB MeBank Admin Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apb: {
+                            50: '#f0fdf9',
+                            100: '#ccfbef',
+                            200: '#99f6df',
+                            500: '#00a884',
+                            600: '#008375',
+                            700: '#02675d',
+                            800: '#06524b',
+                            900: '#08443e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans Lao"', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Lao', 'Inter', sans-serif;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        .tabs-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Active Topic Pill */
+        .topic-pill-btn.active {
+            background: linear-gradient(135deg, #06524b 0%, #008375 100%) !important;
+            color: #ffffff !important;
+            border-color: #008375 !important;
+            box-shadow: 0 6px 16px rgba(0, 131, 117, 0.25);
+        }
+
+        .topic-pill-btn.active .topic-num-badge {
+            background-color: #facc15 !important;
+            color: #0f172a !important;
+        }
+
+        /* Active Step Tab */
+        .step-tab-btn.active {
+            background-color: #008375 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 131, 117, 0.25);
+            border-color: #008375 !important;
+        }
+
+        .step-tab-btn.active .step-num-badge {
+            background-color: #ffffff !important;
+            color: #008375 !important;
+        }
+
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .step-panel {
+                display: block !important;
+                page-break-after: always;
+                margin-bottom: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-gradient-to-r from-apb-900 via-apb-800 to-apb-700 text-white shadow-lg sticky top-0 z-50 no-print">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" title="ກັບໄປໜ້າຫຼັກລວມຄູ່ມື"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition border border-white/20 shadow-sm">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>ໜ້າຫຼັກຄູ່ມື</span>
+                </a>
+                <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md text-emerald-300 border border-white/20 shadow-inner flex items-center justify-center font-bold text-xl">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-lg sm:text-xl tracking-tight flex items-center gap-2">
+                        <span>APB MeBank Admin Portal</span>
+                        <span class="text-xs bg-emerald-400/20 text-emerald-200 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">Part II.1–II.3 • User Profile Management</span>
+                    </div>
+                    <p class="text-xs text-emerald-100/80">ຄູ່ມືລະບົບ Admin Portal: ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User), ການລົບຜູ້ໃຊ້ (Delete User) ແລະ ການກວດເບິ່ງຜູ້ໃຊ້ (View User)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                <!-- Quick Module Switcher Dropdown / Links -->
+                <div class="hidden xl:flex items-center gap-1.5 bg-black/20 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+                    <a href="create-chairman-card.html" class="px-2.5 py-1.5 rounded-lg text-amber-200 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="crown" class="w-3.5 h-3.5"></i>
+                        <span>Chairman</span>
+                    </a>
+                    <a href="admin-portal-add-user.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+                        <span>ສ້າງບໍລິສັດ & ຜູ້ໃຊ້</span>
+                    </a>
+                    <a href="admin-portal-account-approve.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                        <span>ເພີ່ມບັນຊີ & ອະນຸມັດ</span>
+                    </a>
+                    <a href="admin-portal-manage-user.html" class="px-2.5 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition flex items-center gap-1">
+                        <i data-lucide="user-cog" class="w-3.5 h-3.5"></i>
+                        <span>ແກ້ໄຂ/ລົບ/ເບິ່ງ User</span>
+                    </a>
+                    <a href="admin-portal-user-control.html" class="px-2.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition flex items-center gap-1">
+                        <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+                        <span>User Control</span>
+                    </a>
+                </div>
+
+                <!-- Original PDF Link -->
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition border border-white/20">
+                    <i data-lucide="file-down" class="w-3.5 h-3.5 text-amber-300"></i>
+                    <span class="hidden sm:inline">ໄຟລ໌ PDF ຕົ້ນສະບັບ</span>
+                </a>
+
+                <!-- Full Screen Toggle -->
+                <button id="btn-fullscreen" onclick="toggleFullScreen()"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
+                    <i data-lucide="maximize" class="w-3.5 h-3.5" id="fullscreen-icon"></i>
+                    <span id="fullscreen-text">ເຕັມຈໍ</span>
+                </button>
+
+                <!-- View Mode Toggle -->
+                <button id="btn-toggle-view" onclick="toggleAllView()"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold transition backdrop-blur-sm border border-white/20">
+                    <i data-lucide="list" class="w-3.5 h-3.5"></i>
+                    <span id="toggle-view-text">ເບິ່ງທຸກຂັ້ນຕອນ</span>
+                </button>
+
+                <button onclick="window.print()"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-xs sm:text-sm font-bold transition shadow-md">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    <span>ພິມຄູ່ມື (PDF)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
+
+        <!-- ============================================================= -->
+        <!-- SUB-TOPIC SELECTOR BAR (Separates slides by sub-topic)        -->
+        <!-- ============================================================= -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-3.5 sm:p-4 mb-4 no-print">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    <i data-lucide="folder-kanban" class="w-4 h-4 text-apb-600"></i>
+                    <span>ເລືອກຫົວຂໍ້ຍ່ອຍທີ່ຕ້ອງການສຶກສາ (Select Sub-Topic Workflow):</span>
+                </div>
+                <span class="text-[11px] text-slate-500 font-mono">URL ລະບົບ: http://ibk.apb.com.local:30002/</span>
+            </div>
+            <div class="overflow-x-auto pb-1 tabs-scrollbar">
+                <div class="flex items-center gap-2.5 min-w-max">
+                    
+                    <button onclick="selectTopic(1)" id="topic-btn-1"
+                        class="topic-pill-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm flex-shrink-0">
+                        <span class="topic-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[11px] font-extrabold">1</span>
+                        <i data-lucide="user-pen" class="w-4 h-4"></i>
+                        <span>1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">6 Steps</span>
+                    </button>
+                    <button onclick="selectTopic(2)" id="topic-btn-2"
+                        class="topic-pill-btn  px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm flex-shrink-0">
+                        <span class="topic-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[11px] font-extrabold">2</span>
+                        <i data-lucide="user-x" class="w-4 h-4"></i>
+                        <span>2. ລົບຜູ້ໃຊ້ (Delete User)</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">4 Steps</span>
+                    </button>
+                    <button onclick="selectTopic(3)" id="topic-btn-3"
+                        class="topic-pill-btn  px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm flex-shrink-0">
+                        <span class="topic-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[11px] font-extrabold">3</span>
+                        <i data-lucide="eye" class="w-4 h-4"></i>
+                        <span>3. ກວດເບິ່ງຜູ້ໃຊ້ (View User)</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">2 Steps</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- SLICE TABS BAR (Steps for the currently active sub-topic)     -->
+        <!-- ============================================================= -->
+        <div class="sticky top-[61px] z-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-md p-3 sm:p-4 mb-8 no-print">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-xs font-bold uppercase tracking-wider text-apb-700 bg-apb-50 px-3 py-1 rounded-full border border-apb-200 flex items-center gap-1.5 flex-shrink-0">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>ຂັ້ນຕອນທີ <strong id="step-counter-text" class="text-apb-800 text-sm">1</strong> ຈາກ <span id="step-total-text">6</span></span>
+                    </span>
+                    <span id="current-step-label" class="text-xs sm:text-sm font-bold text-slate-800 truncate">
+                        ຂັ້ນຕອນທີ 1 (1.1): ເຂົ້າເມນູ Update User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ
+                    </span>
+                </div>
+
+                <!-- Navigation Action Buttons (Prev / Next) -->
+                <div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
+                    <button id="btn-prev-step" onclick="changeStep(-1)"
+                        class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed transition flex items-center gap-1 shadow-sm">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ກ່ອນໜ້າ</span>
+                    </button>
+                    <button id="btn-next-step" onclick="changeStep(1)"
+                        class="px-4 py-1.5 rounded-xl bg-apb-600 hover:bg-apb-700 text-xs font-bold text-white shadow-sm transition flex items-center gap-1.5 ring-2 ring-emerald-200">
+                        <span>ຕໍ່ໄປ</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Step Tabs Strip (Dynamically populated per sub-topic) -->
+            <div class="overflow-x-auto pb-1 tabs-scrollbar" id="tabs-scroll-container">
+                <div id="step-tabs-strip" class="flex items-center gap-2 min-w-max" role="tablist">
+                </div>
+            </div>
+
+            <!-- Animated Progress Bar -->
+            <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div id="step-progress-bar"
+                    class="h-full bg-gradient-to-r from-apb-600 via-teal-500 to-emerald-400 transition-all duration-300"
+                    style="width: 25%;"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- STEPS CONTAINER                                               -->
+        <!-- ============================================================= -->
+        <div id="all-steps-container" class="space-y-12">
+            
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 1: ຂັ້ນຕອນທີ 1 (1.1): ເຂົ້າເມນູ Update User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-1" class="step-panel" data-topic="1" data-step="1" role="tabpanel" >
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 1 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s1-marked" onclick="switchStepImage('img-t1-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t1-s1-marked', 'btn-t1-s1-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s1-orig" onclick="switchStepImage('img-t1-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t1-s1-marked', 'btn-t1-s1-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s1" src="images/admin/select_user_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 1 (1.1): ເຂົ້າເມນູ Update User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s1')">
+                                <button onclick="openLightbox('img-t1-s1')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 1 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 1 (1.1): ເຂົ້າເມນູ Update User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຄົ້ນຫາ User ທີ່ຕ້ອງການແກ້ໄຂຂໍ້ມູນ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">Customer management → User management → Individual & Corporate → Update User</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກ User ຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກໃສ່ຊ່ອງ <strong>"ລາຍລະອຽດຂອງຜູ້ໃຊ້"</strong> ເພື່ອຄົ້ນຫາ ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂຂໍ້ມູນ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ຢູ່ດ້ານລຸ່ມ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສາມາດຄົ້ນຫາຜູ້ໃຊ້ດ້ວຍຊື່ຜູ້ໃຊ້ ຫຼື ຊື່ບໍລິສັດ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button disabled
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-200 text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 1 / 6</span>
+                    
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ກວດຂໍ້ມູນປັດຈຸບັນ (Step 2)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 2: ຂັ້ນຕອນທີ 2: ກວດສອບໜ້າຕ່າງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-2" class="step-panel" data-topic="1" data-step="2" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 2 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s2-marked" onclick="switchStepImage('img-t1-s2', 'images/admin/user_selected_card_marked.png', 'images/admin/user_selected_card.png', 'btn-t1-s2-marked', 'btn-t1-s2-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s2-orig" onclick="switchStepImage('img-t1-s2', 'images/admin/user_selected_card_marked.png', 'images/admin/user_selected_card.png', 'btn-t1-s2-marked', 'btn-t1-s2-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s2" src="images/admin/user_selected_card_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 2: ກວດສອບໜ້າຕ່າງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s2')">
+                                <button onclick="openLightbox('img-t1-s2')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 2 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 2: ກວດສອບໜ້າຕ່າງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ເບິ່ງລາຍລະອຽດຂໍ້ມູນປັດຈຸບັນກ່ອນທຳການແກ້ໄຂ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ໃຊ້ (User Details View)</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຜູ້ໃຊ້ ແລະ ບໍລິສັດທີ່ເລືອກ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສະແດງຊື່ຜູ້ໃຊ້ ແລະ ບໍລິສັດ (ເຊັ່ນ: <code>vone | MOUMINII CONSRUCTION COMPANY</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ລາຍລະອຽດຂໍ້ມູນຜູ້ໃຊ້ປັດຈຸບັນ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສະແດງເບີຕິດຕໍ່, ອີເມວ, ວັນເດືອນປີເກີດ, ທີ່ຢູ່, ປະເພດຜູ້ໃຊ້, ສະຖານະ 2FA ແລະ ຮູບຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສິດທິ Role ແລະ ວົງເງິນ Limit (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສະແດງສິດ <code>MAKER CORPORATE</code>, <code>GENERAL CORPORATE LIMIT</code>, ລາຍລະອຽດການພິສູດຢືນຢັນ ແລະ ບໍລິສັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 4)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ເພື່ອເຂົ້າສູ່ແບບຟອມແກ້ໄຂຂໍ້ມູນ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ກວດສອບວ່າເປັນຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂແທ້ ແລ້ວກົດປຸ່ມຕໍ່ໄປ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(1)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 2 / 6</span>
+                    
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Step 3)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 3: ຂັ້ນຕອນທີ 3 (1.2): ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ (ອັບເດດຜູ້ໃຊ້) -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-3" class="step-panel" data-topic="1" data-step="3" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 3 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s3-marked" onclick="switchStepImage('img-t1-s3', 'images/admin/update_user_form_marked.png', 'images/admin/update_user_form.png', 'btn-t1-s3-marked', 'btn-t1-s3-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s3-orig" onclick="switchStepImage('img-t1-s3', 'images/admin/update_user_form_marked.png', 'images/admin/update_user_form.png', 'btn-t1-s3-marked', 'btn-t1-s3-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s3" src="images/admin/update_user_form_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 3 (1.2): ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ (ອັບເດດຜູ້ໃຊ້)"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s3')">
+                                <button onclick="openLightbox('img-t1-s3')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">3</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 3 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 3 (1.2): ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ (ອັບເດດຜູ້ໃຊ້)</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ແກ້ໄຂຊື່ເຕັມ, ອີເມວ, ເບີຕິດຕໍ່, ວັນເດືອນປີເກີດ ແລະ ທີ່ຢູ່</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ອັບເດດຜູ້ໃຊ້</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຂໍ້ມູນບໍລິສັດ, ວົງເງິນ Limit ແລະ Role (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບ ຫຼື ເລືອກວົງເງິນ (<code>GENERAL CORPORATE LIMIT</code>) ແລະ ສິດ (<code>MAKER CORPORATE</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວຂອງຜູ້ໃຊ້ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ໃນໜ້ານີ້ສາມາດແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ ເຊັ່ນ: <strong>ຊື່ເຕັມ</strong>, <strong>ອີເມວ</strong>, <strong>ເບີຕິດຕໍ່</strong>, <strong>ວັນເດືອນປີເກີດ</strong> ແລະ <strong>ທີ່ຢູ່ (Address)</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກແກ້ໄຂຂໍ້ມູນສຳເລັດແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສາມາດແກ້ໄຂສະເພາະຊ່ອງຂໍ້ມູນທີ່ຕ້ອງການປ່ຽນແປງ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 3 / 6</span>
+                    
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ອັບໂຫຼດຮູບຜູ້ໃຊ້ (Step 4)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 4: ຂັ້ນຕອນທີ 4: ອັບໂຫຼດຮູບພາບຜູ້ໃຊ້ (ໃສ່ ຫຼື ບໍ່ໃສ່ກໍໄດ້) -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-4" class="step-panel" data-topic="1" data-step="4" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 4 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s4-marked" onclick="switchStepImage('img-t1-s4', 'images/admin/update_user_img_marked.png', 'images/admin/update_user_img.png', 'btn-t1-s4-marked', 'btn-t1-s4-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s4-orig" onclick="switchStepImage('img-t1-s4', 'images/admin/update_user_img_marked.png', 'images/admin/update_user_img.png', 'btn-t1-s4-marked', 'btn-t1-s4-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s4" src="images/admin/update_user_img_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 4: ອັບໂຫຼດຮູບພາບຜູ້ໃຊ້ (ໃສ່ ຫຼື ບໍ່ໃສ່ກໍໄດ້)"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s4')">
+                                <button onclick="openLightbox('img-t1-s4')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">4</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 4 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 4: ອັບໂຫຼດຮູບພາບຜູ້ໃຊ້ (ໃສ່ ຫຼື ບໍ່ໃສ່ກໍໄດ້)</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ໜ້າຕ່າງຮູບພາບອັບໂຫຼດ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ຮູບພາບອັບໂຫຼດ</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ອັບໂຫຼດຮູບຜູ້ໃຊ້ (ຮູບພາບຜູ້ໃຊ້) (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຜູ້ໃຊ້ສາມາດກົດໄອຄອນກ້ອງເພື່ອໃສ່ຮູບພາບໃໝ່ໄດ້ ຫຼື ບໍ່ໃສ່ກໍໄດ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ເພື່ອໄປສູ່ໜ້າສະຫຼຸບລາຍລະອຽດ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ຖ້າບໍ່ຕ້ອງການປ່ຽນຮູບຜູ້ໃຊ້ ສາມາດກົດປຸ່ມ ຕໍ່ໄປ ຂ້າມໄປໄດ້ເລີຍ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 4 / 6</span>
+                    
+                    <button onclick="goToStep(5)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ສະຫຼຸບ & ຍອມຮັບ (Step 5)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 5: ຂັ້ນຕອນທີ 5: ກວດຂໍ້ມູນສະຫຼຸບລາຍລະອຽດ ແລະ ກົດປຸ່ມຍອມຮັບ -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-5" class="step-panel" data-topic="1" data-step="5" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 5 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s5-marked" onclick="switchStepImage('img-t1-s5', 'images/admin/update_user_summary_marked.png', 'images/admin/update_user_summary.png', 'btn-t1-s5-marked', 'btn-t1-s5-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s5-orig" onclick="switchStepImage('img-t1-s5', 'images/admin/update_user_summary_marked.png', 'images/admin/update_user_summary.png', 'btn-t1-s5-marked', 'btn-t1-s5-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s5" src="images/admin/update_user_summary_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 5: ກວດຂໍ້ມູນສະຫຼຸບລາຍລະອຽດ ແລະ ກົດປຸ່ມຍອມຮັບ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s5')">
+                                <button onclick="openLightbox('img-t1-s5')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">5</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 5 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 5: ກວດຂໍ້ມູນສະຫຼຸບລາຍລະອຽດ ແລະ ກົດປຸ່ມຍອມຮັບ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຢືນຢັນຂໍ້ມູນຫຼັງການແກ້ໄຂ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ສະຫຼຸບລາຍລະອຽດ</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດສອບຂໍ້ມູນທີ່ແກ້ໄຂ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດເບິ່ງຊື່ບໍລິສັດ, ຊື່ເຕັມ, ອີເມວ, ເບີຕິດຕໍ່, ວັນເດືອນປີເກີດ ແລະ ທີ່ຢູ່.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຍອມຮັບ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກກວດຂໍ້ມູນຄົບຖ້ວນແລ້ວ ກົດປຸ່ມ <strong>"ຍອມຮັບ >"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ລາຍການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ຈະຖືກສົ່ງໄປລໍຖ້າການອະນຸມັດ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 5 / 6</span>
+                    
+                    <button onclick="goToStep(6)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ສຳເລັດ (Success) (Step 6)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 1 - STEP 6: ຂັ້ນຕອນທີ 6: ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ສຳເລັດ (Request Success) -->
+            <!-- ========================================== -->
+            <div id="topic-1-step-6" class="step-panel" data-topic="1" data-step="6" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 6 (1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t1-s6-marked" onclick="switchStepImage('img-t1-s6', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t1-s6-marked', 'btn-t1-s6-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t1-s6-orig" onclick="switchStepImage('img-t1-s6', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t1-s6-marked', 'btn-t1-s6-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t1-s6" src="images/admin/request_success_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 6: ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ສຳເລັດ (Request Success)"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t1-s6')">
+                                <button onclick="openLightbox('img-t1-s6')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">6</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.1 • UPDATE USER • ຂັ້ນຕອນທີ 6 ຈາກ 6</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 6: ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ສຳເລັດ (Request Success)</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ໜ້າຈໍຢັ້ງຢືນ Request Success</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: Request Success</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສະຖານະ Request Success (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສົ່ງຄຳຮ້ອງຂໍແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ສຳເລັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ລາຍລະອຽດຜູ້ໃຊ້ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຂໍ້ມູນຈະມີຜົນທັນທີຫຼັງຈາກຜູ້ອະນຸມັດກົດ Approve.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປຸ່ມ Share / Save / Home (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດ Save ຫຼື Home.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສຳເລັດຂັ້ນຕອນການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(5)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) • ຂັ້ນຕອນ 6 / 6</span>
+                    
+                    <button onclick="selectTopic(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold shadow-md transition">
+                        <span>ໄປຫົວຂໍ້ຕໍ່ໄປ: 2. ລົບຜູ້ໃຊ້ (Delete User)</span>
+                        <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 1: ຂັ້ນຕອນທີ 1 (2.1): ເຂົ້າເມນູ Delete User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-1" class="step-panel" data-topic="2" data-step="1" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 1 (2. ລົບຜູ້ໃຊ້ (Delete User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s1-marked" onclick="switchStepImage('img-t2-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t2-s1-marked', 'btn-t2-s1-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s1-orig" onclick="switchStepImage('img-t2-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t2-s1-marked', 'btn-t2-s1-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s1" src="images/admin/select_user_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 1 (2.1): ເຂົ້າເມນູ Delete User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s1')">
+                                <button onclick="openLightbox('img-t2-s1')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.2 • DELETE USER • ຂັ້ນຕອນທີ 1 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 1 (2.1): ເຂົ້າເມນູ Delete User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຄົ້ນຫາ User ທີ່ຕ້ອງການລົບອອກຈາກລະບົບ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">Customer management → User management → Individual & Corporate → Delete User</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກ User ຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກໃສ່ຊ່ອງ <strong>"ລາຍລະອຽດຂອງຜູ້ໃຊ້"</strong> ເພື່ອຄົ້ນຫາ ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong> ເພື່ອເບິ່ງລາຍລະອຽດຂອງຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ກະລຸນາກວດສອບຊື່ຜູ້ໃຊ້ ແລະ ບໍລິສັດໃຫ້ລະອຽດກ່ອນດຳເນີນການລົບ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button disabled
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-200 text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ລົບຜູ້ໃຊ້ (Delete User) • ຂັ້ນຕອນ 1 / 4</span>
+                    
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ກວດຂໍ້ມູນຜູ້ໃຊ້ (Step 2)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 2: ຂັ້ນຕອນທີ 2: ກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ ແລ້ວກົດປຸ່ມຕໍ່ໄປ -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-2" class="step-panel" data-topic="2" data-step="2" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 2 (2. ລົບຜູ້ໃຊ້ (Delete User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s2-marked" onclick="switchStepImage('img-t2-s2', 'images/admin/user_selected_card_marked.png', 'images/admin/user_selected_card.png', 'btn-t2-s2-marked', 'btn-t2-s2-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s2-orig" onclick="switchStepImage('img-t2-s2', 'images/admin/user_selected_card_marked.png', 'images/admin/user_selected_card.png', 'btn-t2-s2-marked', 'btn-t2-s2-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s2" src="images/admin/user_selected_card_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 2: ກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ ແລ້ວກົດປຸ່ມຕໍ່ໄປ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s2')">
+                                <button onclick="openLightbox('img-t2-s2')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.2 • DELETE USER • ຂັ້ນຕອນທີ 2 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 2: ກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ ແລ້ວກົດປຸ່ມຕໍ່ໄປ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ກວດສອບລາຍລະອຽດຜູ້ໃຊ້ກ່ອນລົບ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ໃຊ້</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຊື່ຜູ້ໃຊ້ ແລະ ບໍລິສັດ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບຊື່ຜູ້ໃຊ້ ແລະ ບໍລິສັດທີ່ເລືອກ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຂໍ້ມູນສ່ວນຕົວ ແລະ ສະຖານະບັນຊີ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບເບີໂທ, ອີເມວ, ວັນເກີດ ແລະ ສະຖານະ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສິດ Role ແລະ ວົງເງິນ Limit (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດສອບ Role ແລະ Limit ຂອງຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 4)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກເລືອກ User ທີ່ຈະລົບແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຕໍ່ໄປ >"</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ກົດປຸ່ມຕໍ່ໄປເພື່ອເຂົ້າສູ່ໜ້າຢືນຢັນການລົບຂໍ້ມູນ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(1)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ລົບຜູ້ໃຊ້ (Delete User) • ຂັ້ນຕອນ 2 / 4</span>
+                    
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ຢືນຢັນການລົບ (Step 3)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 3: ຂັ້ນຕອນທີ 3 (2.2): ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນ User ແລ້ວກົດປຸ່ມຍອມຮັບ -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-3" class="step-panel" data-topic="2" data-step="3" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 3 (2. ລົບຜູ້ໃຊ້ (Delete User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s3-marked" onclick="switchStepImage('img-t2-s3', 'images/admin/delete_user_confirm_marked.png', 'images/admin/delete_user_confirm.png', 'btn-t2-s3-marked', 'btn-t2-s3-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s3-orig" onclick="switchStepImage('img-t2-s3', 'images/admin/delete_user_confirm_marked.png', 'images/admin/delete_user_confirm.png', 'btn-t2-s3-marked', 'btn-t2-s3-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s3" src="images/admin/delete_user_confirm_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 3 (2.2): ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນ User ແລ້ວກົດປຸ່ມຍອມຮັບ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s3')">
+                                <button onclick="openLightbox('img-t2-s3')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">3</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.2 • DELETE USER • ຂັ້ນຕອນທີ 3 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 3 (2.2): ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນ User ແລ້ວກົດປຸ່ມຍອມຮັບ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ການລົບຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ອະນຸມັດ (Delete Confirmation)</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກວດເບິ່ງຂໍ້ມູນລະບົບຂອງ User ທີ່ຈະລົບ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ລະບົບສະແດງຂໍ້ມູນ: <code>user_id</code>, <code>user_type</code>, <code>auth_2fa</code>, <code>user_status</code>, <code>ib_user_details</code>, <code>ib_persons</code>, <code>ib_roles</code> ແລະ <code>ib_apv_limit</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຍອມຮັບ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຫຼັງຈາກກວດເບິ່ງ User ແລ້ວ ໃຫ້ກົດປຸ່ມ <strong>"ຍອມຮັບ >"</strong> ເພື່ອຢືນຢັນການລົບ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ເມື່ອກົດປຸ່ມຍອມຮັບແລ້ວ ຈະເຫັນໜ້າຕ່າງສຳເລັດ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ລົບຜູ້ໃຊ້ (Delete User) • ຂັ້ນຕອນ 3 / 4</span>
+                    
+                    <button onclick="goToStep(4)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ສຳເລັດ (Success) (Step 4)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 2 - STEP 4: ຂັ້ນຕອນທີ 4: ສົ່ງຄຳຮ້ອງຂໍລົບ User ສຳເລັດ (Request Success) -->
+            <!-- ========================================== -->
+            <div id="topic-2-step-4" class="step-panel" data-topic="2" data-step="4" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 4 (2. ລົບຜູ້ໃຊ້ (Delete User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t2-s4-marked" onclick="switchStepImage('img-t2-s4', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t2-s4-marked', 'btn-t2-s4-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t2-s4-orig" onclick="switchStepImage('img-t2-s4', 'images/admin/request_success_marked.png', 'images/admin/request_success.png', 'btn-t2-s4-marked', 'btn-t2-s4-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t2-s4" src="images/admin/request_success_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 4: ສົ່ງຄຳຮ້ອງຂໍລົບ User ສຳເລັດ (Request Success)"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t2-s4')">
+                                <button onclick="openLightbox('img-t2-s4')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">4</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.2 • DELETE USER • ຂັ້ນຕອນທີ 4 ຈາກ 4</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 4: ສົ່ງຄຳຮ້ອງຂໍລົບ User ສຳເລັດ (Request Success)</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ໜ້າຈໍຢັ້ງຢືນ Request Success</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: Request Success</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສະຖານະ Request Success (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສົ່ງຄຳຮ້ອງຂໍລົບຜູ້ໃຊ້ສຳເລັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ລໍຖ້າການອະນຸມັດ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ການລົບ User ຈະສຳເລັດສົມບູນເມື່ອຜ່ານການອະນຸມັດຈາກຜູ້ອະນຸມັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປຸ່ມ Share / Save / Home (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດ Save ຫຼື Home.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສຳເລັດຂັ້ນຕອນການລົບ User.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(3)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">2. ລົບຜູ້ໃຊ້ (Delete User) • ຂັ້ນຕອນ 4 / 4</span>
+                    
+                    <button onclick="selectTopic(3)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold shadow-md transition">
+                        <span>ໄປຫົວຂໍ້ຕໍ່ໄປ: 3. ກວດເບິ່ງຜູ້ໃຊ້ (View User)</span>
+                        <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 3 - STEP 1: ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ View User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການກວດເບິ່ງ -->
+            <!-- ========================================== -->
+            <div id="topic-3-step-1" class="step-panel" data-topic="3" data-step="1" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 1 (3. ກວດເບິ່ງຜູ້ໃຊ້ (View User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t3-s1-marked" onclick="switchStepImage('img-t3-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t3-s1-marked', 'btn-t3-s1-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t3-s1-orig" onclick="switchStepImage('img-t3-s1', 'images/admin/select_user_marked.png', 'images/admin/select_user.png', 'btn-t3-s1-marked', 'btn-t3-s1-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t3-s1" src="images/admin/select_user_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ View User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການກວດເບິ່ງ"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t3-s1')">
+                                <button onclick="openLightbox('img-t3-s1')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.3 • VIEW USER • ຂັ້ນຕອນທີ 1 ຈາກ 2</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ View User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການກວດເບິ່ງ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ຄົ້ນຫາ User ໃນລະບົບເພື່ອກວດເບິ່ງລາຍລະອຽດ</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">Customer management → User management → Individual & Corporate → View User</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ເລືອກ User ທີ່ຕ້ອງການກວດເບິ່ງ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ຄລິກຊ່ອງຄົ້ນຫາ <strong>"ລາຍລະອຽດຂອງຜູ້ໃຊ້"</strong> ເພື່ອເລືອກ User ທີ່ຕ້ອງການກວດສອບຂໍ້ມູນ.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ກົດປຸ່ມ "ຕໍ່ໄປ >" (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດເພື່ອສະແດງຂໍ້ມູນລະອຽດຂອງຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ເມນູ View User ໃຊ້ສຳລັບກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ໂດຍບໍ່ມີການປ່ຽນແປງຂໍ້ມູນ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button disabled
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-200 text-slate-400 opacity-40 cursor-not-allowed">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">3. ກວດເບິ່ງຜູ້ໃຊ້ (View User) • ຂັ້ນຕອນ 1 / 2</span>
+                    
+                    <button onclick="goToStep(2)"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold shadow-md transition">
+                        <span>ຕໍ່ໄປ: ລາຍລະອຽດ User (Step 2)</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            <!-- TOPIC 3 - STEP 2: ຂັ້ນຕອນທີ 2: ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນທັງໝົດຂອງ User -->
+            <!-- ========================================== -->
+            <div id="topic-3-step-2" class="step-panel" data-topic="3" data-step="2" role="tabpanel" style="display: none;">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <!-- LEFT COLUMN: Screenshot Card with Marked / Original Toggle -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div class="bg-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 flex-shrink-0">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    <span class="font-bold text-xs sm:text-sm">ພາບປະກອບຂັ້ນຕອນທີ 2 (3. ກວດເບິ່ງຜູ້ໃຊ້ (View User))</span>
+                                </div>
+                                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs font-medium no-print">
+                                    <button id="btn-t3-s2-marked" onclick="switchStepImage('img-t3-s2', 'images/admin/view_user_card_marked.png', 'images/admin/view_user_card.png', 'btn-t3-s2-marked', 'btn-t3-s2-orig', 'marked')"
+                                        class="px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold">
+                                        ຮູບມີໝາຍ (Marked)
+                                    </button>
+                                    <button id="btn-t3-s2-orig" onclick="switchStepImage('img-t3-s2', 'images/admin/view_user_card_marked.png', 'images/admin/view_user_card.png', 'btn-t3-s2-marked', 'btn-t3-s2-orig', 'original')"
+                                        class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold">
+                                        ຕົ້ນສະບັບ (Original)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 bg-slate-100 flex-1 flex justify-center items-center relative group min-h-[380px] lg:min-h-[480px]">
+                                <img id="img-t3-s2" src="images/admin/view_user_card_marked.png"
+                                    alt="ຂັ້ນຕອນທີ 2: ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນທັງໝົດຂອງ User"
+                                    class="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm border border-slate-200 cursor-zoom-in"
+                                    onclick="openLightbox('img-t3-s2')">
+                                <button onclick="openLightbox('img-t3-s2')"
+                                    class="no-print absolute bottom-5 right-5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-sm shadow opacity-0 group-hover:opacity-100 transition flex items-center gap-1.5">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    <span>ຂະຫຍາຍຮູບໃຫຍ່</span>
+                                </button>
+                            </div>
+                            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 flex-shrink-0">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span>ຄລິກປຸ່ມເທິງເພື່ອສະຫຼັບຮູບ Marked / Original ຫຼື ກົດຮູບເພື່ອຂະຫຍາຍ</span>
+                                </span>
+                                <span class="font-mono text-slate-400">Admin Portal MeBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Step Explanation & Callout Breakdown -->
+                    <div class="lg:col-span-6 xl:col-span-6 flex flex-col space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-shrink-0">
+                            <div class="flex items-start gap-3.5">
+                                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-apb-600 to-apb-700 text-white flex items-center justify-center font-bold text-base shadow flex-shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider">ໝວດ II.3 • VIEW USER • ຂັ້ນຕອນທີ 2 ຈາກ 2</div>
+                                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">ຂັ້ນຕອນທີ 2: ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນທັງໝົດຂອງ User</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="w-2 h-5 bg-apb-600 rounded-sm inline-block"></span>
+                                    <span>ສະແດງຂໍ້ມູນສ່ວນຕົວ, ສະຖານະ, ສິດທິ Role ແລະ ວົງເງິນ Limit</span>
+                                </h3>
+                                
+                                <div class="p-3 rounded-xl bg-slate-900 text-slate-100 text-xs font-mono flex flex-wrap items-center gap-1.5 border border-slate-800">
+                                    <i data-lucide="compass" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                    <span class="text-slate-400">ເສັ້ນທາງເມນູ:</span>
+                                    <span class="text-emerald-300 font-bold">ໜ້າຕ່າງ: ເລືອກຜູ້ໃຊ້ (View Mode)</span>
+                                </div>
+                                <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-400 space-y-2.5">
+                                    
+                                    <div class=" flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">1</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຊື່ຜູ້ໃຊ້ ແລະ ບໍລິສັດ (Mark 1)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສະແດງຊື່ຜູ້ໃຊ້, ບໍລິສັດ, ວັນໝົດອາຍຸ ແລະ ສະຖານະ <code>ACTIVE</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">2</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ຂໍ້ມູນຜູ້ໃຊ້ ແລະ ຮູບພາບ (Mark 2)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກວດເບິ່ງເບີຕິດຕໍ່, ອີເມວ, ວັນເດືອນປີເກີດ, ທີ່ຢູ່, ປະເພດຜູ້ໃຊ້, ສະຖານະ 2FA, ສິດ Admin Portal, ສະຖານະເຈົ້າຂອງບໍລິສັດ, ສະຖານະປະທານ ແລະ ຮູບຜູ້ໃຊ້.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">3</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ສິດ Role, ວົງເງິນ Limit ແລະ ບໍລິສັດ (Mark 3)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ສາມາດກົດຂະຫຍາຍເບິ່ງ <code>MAKER CORPORATE</code>, <code>GENERAL CORPORATE LIMIT</code>, <code>ລາຍລະອຽດການພິສູດຢືນຢັນ</code> ແລະ <code>ບໍລິສັດ</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2.5 border-t border-emerald-200/80 flex items-start gap-2.5">
+                                        <span class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-xs shadow ring-4 ring-rose-100 flex-shrink-0 mt-0.5">4</span>
+                                        <div>
+                                            <h4 class="font-bold text-emerald-950 text-sm sm:text-base">ປຸ່ມ "ຍອມຮັບ >" (Mark 4)</h4>
+                                            <p class="text-xs sm:text-sm text-emerald-950 leading-relaxed mt-0.5">
+                                                ກົດປຸ່ມ <strong>"ຍອມຮັບ >"</strong> ເມື່ອກວດເບິ່ງຂໍ້ມູນສຳເລັດ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed">
+                                    <strong>ໝາຍເຫດ:</strong> ສຳເລັດການກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ (View User).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Nav Controller -->
+                <div class="mt-4 sm:mt-5 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-3 no-print">
+                    <button onclick="goToStep(1)"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border text-xs font-semibold transition border-slate-300 text-slate-700 hover:bg-slate-100">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>ຂັ້ນຕອນກ່ອນໜ້າ</span>
+                    </button>
+                    <span class="text-xs text-slate-500 font-bold">3. ກວດເບິ່ງຜູ້ໃຊ້ (View User) • ຂັ້ນຕອນ 2 / 2</span>
+                    
+                    <a href="index.html"
+                        class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md transition">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                        <span>ສຳເລັດຄູ່ມືໝວດນີ້ (ກັບໜ້າຫຼັກ)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="image-lightbox"
+        class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm hidden items-center justify-center p-4 no-print"
+        onclick="closeLightbox()">
+        <div class="relative max-w-6xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <div class="w-full flex items-center justify-between text-white mb-3 px-2">
+                <span id="lightbox-caption" class="text-xs sm:text-sm font-bold text-emerald-300">ພາບຂະຫຍາຍໜ້າຈໍ (Zoom View)</span>
+                <button onclick="closeLightbox()"
+                    class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5 border border-white/20">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                    <span>ປິດຮູບ (ESC)</span>
+                </button>
+            </div>
+            <img id="lightbox-img" src="" alt="Zoomed View"
+                class="max-h-[85vh] w-auto object-contain rounded-2xl border border-white/20 shadow-2xl bg-slate-900">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+                <span class="w-6 h-6 rounded-md bg-apb-600 text-white font-bold flex items-center justify-center text-xs">
+                    <i data-lucide="landmark" class="w-3.5 h-3.5 text-white"></i>
+                </span>
+                <span>ທະນາຄານສົ່ງເສີມກະສິກຳ (APB) • ຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (2026)</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hover:text-emerald-300 transition">ໜ້າຫຼັກຄູ່ມື</a>
+                <span>•</span>
+                <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank" class="hover:text-amber-300 transition">ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const TOPICS_DATA = [{"topicNum": 1, "badge": "ໝວດ II.1 • UPDATE USER", "shortTitle": "1. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)", "fullTitle": "1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)", "icon": "user-pen", "steps": [{"stepNum": 1, "tabLabel": "ເລືອກຜູ້ໃຊ້", "tabIcon": "search", "fullTitle": "ຂັ້ນຕອນທີ 1 (1.1): ເຂົ້າເມນູ Update User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການແກ້ໄຂ", "panelId": "topic-1-step-1"}, {"stepNum": 2, "tabLabel": "ກວດຂໍ້ມູນປັດຈຸບັນ", "tabIcon": "user-check", "fullTitle": "ຂັ້ນຕອນທີ 2: ກວດສອບໜ້າຕ່າງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ", "panelId": "topic-1-step-2"}, {"stepNum": 3, "tabLabel": "ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້", "tabIcon": "edit-3", "fullTitle": "ຂັ້ນຕອນທີ 3 (1.2): ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ (ອັບເດດຜູ້ໃຊ້)", "panelId": "topic-1-step-3"}, {"stepNum": 4, "tabLabel": "ອັບໂຫຼດຮູບຜູ້ໃຊ້", "tabIcon": "camera", "fullTitle": "ຂັ້ນຕອນທີ 4: ອັບໂຫຼດຮູບພາບຜູ້ໃຊ້ (ໃສ່ ຫຼື ບໍ່ໃສ່ກໍໄດ້)", "panelId": "topic-1-step-4"}, {"stepNum": 5, "tabLabel": "ສະຫຼຸບ & ຍອມຮັບ", "tabIcon": "clipboard-check", "fullTitle": "ຂັ້ນຕອນທີ 5: ກວດຂໍ້ມູນສະຫຼຸບລາຍລະອຽດ ແລະ ກົດປຸ່ມຍອມຮັບ", "panelId": "topic-1-step-5"}, {"stepNum": 6, "tabLabel": "ສຳເລັດ (Success)", "tabIcon": "party-popper", "fullTitle": "ຂັ້ນຕອນທີ 6: ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ສຳເລັດ (Request Success)", "panelId": "topic-1-step-6"}]}, {"topicNum": 2, "badge": "ໝວດ II.2 • DELETE USER", "shortTitle": "2. ລົບຜູ້ໃຊ້ (Delete User)", "fullTitle": "2. ການລົບ User (Delete User)", "icon": "user-x", "steps": [{"stepNum": 1, "tabLabel": "ເລືອກຜູ້ໃຊ້ທີ່ຈະລົບ", "tabIcon": "search", "fullTitle": "ຂັ້ນຕອນທີ 1 (2.1): ເຂົ້າເມນູ Delete User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການລົບ", "panelId": "topic-2-step-1"}, {"stepNum": 2, "tabLabel": "ກວດຂໍ້ມູນຜູ້ໃຊ້", "tabIcon": "user-check", "fullTitle": "ຂັ້ນຕອນທີ 2: ກວດເບິ່ງຂໍ້ມູນຜູ້ໃຊ້ທີ່ເລືອກ ແລ້ວກົດປຸ່ມຕໍ່ໄປ", "panelId": "topic-2-step-2"}, {"stepNum": 3, "tabLabel": "ຢືນຢັນການລົບ", "tabIcon": "trash-2", "fullTitle": "ຂັ້ນຕອນທີ 3 (2.2): ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນ User ແລ້ວກົດປຸ່ມຍອມຮັບ", "panelId": "topic-2-step-3"}, {"stepNum": 4, "tabLabel": "ສຳເລັດ (Success)", "tabIcon": "party-popper", "fullTitle": "ຂັ້ນຕອນທີ 4: ສົ່ງຄຳຮ້ອງຂໍລົບ User ສຳເລັດ (Request Success)", "panelId": "topic-2-step-4"}]}, {"topicNum": 3, "badge": "ໝວດ II.3 • VIEW USER", "shortTitle": "3. ກວດເບິ່ງຜູ້ໃຊ້ (View User)", "fullTitle": "3. ການກວດເບິ່ງ User (View User)", "icon": "eye", "steps": [{"stepNum": 1, "tabLabel": "ເລືອກຜູ້ໃຊ້", "tabIcon": "search", "fullTitle": "ຂັ້ນຕອນທີ 1: ເຂົ້າເມນູ View User ແລະ ເລືອກຜູ້ໃຊ້ທີ່ຕ້ອງການກວດເບິ່ງ", "panelId": "topic-3-step-1"}, {"stepNum": 2, "tabLabel": "ລາຍລະອຽດ User", "tabIcon": "file-text", "fullTitle": "ຂັ້ນຕອນທີ 2: ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນທັງໝົດຂອງ User", "panelId": "topic-3-step-2"}]}];
+        let currentTopic = 1;
+        let currentStep = 1;
+        let isAllView = false;
+
+        function renderStepTabs() {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            const strip = document.getElementById('step-tabs-strip');
+            strip.innerHTML = topicObj.steps.map(s => {
+                const activeCls = (s.stepNum === currentStep && !isAllView) ? 'active' : '';
+                return `
+                    <button onclick="goToStep(${s.stepNum})" id="tab-btn-${s.stepNum}"
+                        class="step-tab-btn ${activeCls} px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-2 flex-shrink-0 shadow-sm">
+                        <span class="step-num-badge w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold">${s.stepNum}</span>
+                        <i data-lucide="${s.tabIcon}" class="w-3.5 h-3.5"></i>
+                        <span>${s.stepNum}. ${s.tabLabel}</span>
+                    </button>
+                `;
+            }).join('');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectTopic(topicNum) {
+            currentTopic = topicNum;
+            currentStep = 1;
+            if (isAllView) {
+                isAllView = false;
+                document.getElementById('toggle-view-text').textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
+            }
+
+            // Update topic pills
+            document.querySelectorAll('.topic-pill-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx + 1 === currentTopic);
+            });
+
+            renderStepTabs();
+            updateActivePanel();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToStep(stepNum) {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            if (stepNum < 1 || stepNum > topicObj.steps.length) return;
+            currentStep = stepNum;
+
+            if (isAllView) {
+                isAllView = false;
+                document.getElementById('toggle-view-text').textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
+            }
+
+            updateActivePanel();
+        }
+
+        function updateActivePanel() {
+            const topicObj = TOPICS_DATA[currentTopic - 1];
+            const stepObj = topicObj.steps[currentStep - 1];
+            const totalSteps = topicObj.steps.length;
+
+            // Show only current topic + current step panel
+            document.querySelectorAll('.step-panel').forEach(panel => {
+                const pTopic = parseInt(panel.getAttribute('data-topic'));
+                const pStep = parseInt(panel.getAttribute('data-step'));
+                panel.style.display = (pTopic === currentTopic && pStep === currentStep) ? 'block' : 'none';
+            });
+
+            // Update tab buttons
+            document.querySelectorAll('.step-tab-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx + 1 === currentStep);
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + currentStep);
+            if (activeBtn) {
+                activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            document.getElementById('step-counter-text').textContent = currentStep;
+            document.getElementById('step-total-text').textContent = totalSteps;
+            document.getElementById('current-step-label').textContent = stepObj.fullTitle;
+            document.getElementById('step-progress-bar').style.width = ((currentStep / totalSteps) * 100) + '%';
+
+            document.getElementById('btn-prev-step').disabled = (currentStep === 1);
+            document.getElementById('btn-next-step').disabled = (currentStep === totalSteps);
+        }
+
+        function changeStep(delta) {
+            goToStep(currentStep + delta);
+        }
+
+        function toggleAllView() {
+            isAllView = !isAllView;
+            const label = document.getElementById('toggle-view-text');
+            if (isAllView) {
+                // Show all steps of the current topic (or all topics)
+                document.querySelectorAll('.step-panel').forEach(panel => {
+                    const pTopic = parseInt(panel.getAttribute('data-topic'));
+                    panel.style.display = (pTopic === currentTopic) ? 'block' : 'none';
+                });
+                label.textContent = 'ກັບສູ່ໂໝດສະໄລ້ (Slide Mode)';
+            } else {
+                label.textContent = 'ເບິ່ງທຸກຂັ້ນຕອນ';
+                updateActivePanel();
+            }
+        }
+
+        function switchStepImage(imgId, markedSrc, origSrc, btnMarkedId, btnOrigId, mode) {
+            const img = document.getElementById(imgId);
+            const btnM = document.getElementById(btnMarkedId);
+            const btnO = document.getElementById(btnOrigId);
+            if (mode === 'marked') {
+                img.src = markedSrc;
+                btnM.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
+                btnO.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
+            } else {
+                img.src = origSrc;
+                btnO.className = 'px-2.5 py-1 rounded-md bg-apb-600 text-white shadow-sm transition text-xs font-semibold';
+                btnM.className = 'px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition text-xs font-semibold';
+            }
+        }
+
+        function openLightbox(imgId) {
+            const srcImg = document.getElementById(imgId);
+            const lb = document.getElementById('image-lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            const lbCap = document.getElementById('lightbox-caption');
+            lbImg.src = srcImg.src;
+            lbCap.textContent = srcImg.alt || 'ພາບຂະຫຍາຍໜ້າຈໍ';
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('image-lightbox');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+        }
+
+        function toggleFullScreen() {
+            const textEl = document.getElementById('fullscreen-text');
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(() => {
+                    if (textEl) textEl.textContent = 'ອອກເຕັມຈໍ';
+                }).catch(() => {});
+            } else {
+                document.exitFullscreen().then(() => {
+                    if (textEl) textEl.textContent = 'ເຕັມຈໍ';
+                }).catch(() => {});
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') changeStep(1);
+            if (e.key === 'ArrowLeft') changeStep(-1);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStepTabs();
+            updateActivePanel();
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

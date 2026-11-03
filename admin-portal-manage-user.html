@@ -1988,6 +1988,14 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const tParam = parseInt(params.get('topic'));
+            if (tParam >= 1 && tParam <= TOPICS_DATA.length) {
+                currentTopic = tParam;
+                document.querySelectorAll('.topic-pill-btn').forEach((btn, idx) => {
+                    btn.classList.toggle('active', idx + 1 === currentTopic);
+                });
+            }
             renderStepTabs();
             updateActivePanel();
             if (window.lucide) lucide.createIcons();

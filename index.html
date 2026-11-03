@@ -23,13 +23,6 @@
                             700: '#02675d',
                             800: '#06524b',
                             900: '#08443e'
-                        },
-                        gold: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                            600: '#ca8a04',
-                            700: '#a16207'
                         }
                     },
                     fontFamily: {
@@ -51,12 +44,11 @@
         }
 
         .card-hover-effect {
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .card-hover-effect:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px rgba(0, 131, 117, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
         }
 
         .bg-grid-pattern {
@@ -90,7 +82,7 @@
                             <span>Official Portal 2026</span>
                         </span>
                     </div>
-                    <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (ແຍກຄົບທັງ 16 ຫົວຂໍ້) ແລະ ຄູ່ມືແອັບມືຖື APB</p>
+                    <p class="text-xs text-emerald-100/80">ສູນລວມຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (16 ຫົວຂໍ້) ແລະ ແອັບມືຖື APB</p>
                 </div>
             </div>
 
@@ -106,1288 +98,652 @@
                     <i data-lucide="file-down" class="w-4 h-4"></i>
                     <span>ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</span>
                 </a>
-
-                <span class="hidden sm:inline-flex text-[11px] bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1 rounded-full font-mono items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>17 Cards • 16 Admin Pages</span>
-                </span>
             </div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-10">
+    <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-7 w-full flex-grow space-y-8">
 
         <!-- ============================================================= -->
-        <!-- HERO BANNER SECTION                                           -->
+        <!-- COMPACT SEARCH & FILTER BAR                                   -->
         <!-- ============================================================= -->
-        <section class="relative rounded-3xl bg-gradient-to-r from-apb-900 via-apb-800 to-slate-900 text-white p-6 sm:p-10 lg:p-12 shadow-2xl overflow-hidden border border-apb-700/50">
-            <div class="absolute -right-20 -top-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute right-1/3 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                <div class="max-w-3xl space-y-5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold backdrop-blur-md border border-white/15">
-                        <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-300"></i>
-                        <span>ລະບົບຄູ່ມືປະຕິບັດງານແບບ Slide ແຍກໜ້າຕາມຫົວຂໍ້ (1 Card = 1 ໜ້າຄູ່ມືສະໄລ້)</span>
-                    </div>
-
-                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                        ສູນລວມຄູ່ມືການນຳໃຊ້ <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300 bg-clip-text text-transparent">Admin Portal MeBank</span>
+        <section class="rounded-2xl bg-gradient-to-r from-apb-900 via-apb-800 to-slate-900 text-white p-5 sm:p-6 shadow-lg border border-apb-700/50">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                        ສູນລວມຄູ່ມືການນຳໃຊ້ Admin Portal MeBank & Mobile App
                     </h1>
-
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                        ແຍກຄົບທຸກ <strong>16 ຫົວຂໍ້</strong> ຈາກເອກະສານຄູ່ມື Admin Portal MeBank (Update 2026) ແລະ ຄູ່ມືຈອງປີ້ຍົນ ອອກເປັນ <strong>17 Cards (17 ໜ້າສະໄລ້ແຍກອິດສະຫຼະ)</strong>
-                        ພ້ອມຮູບໜ້າຈໍຕົວຈິງ, ປຸ່ມສະຫຼັບຮູບ <strong>Marked / Original</strong> ແລະ ລະບົບຊູມຂະຫຍາຍຮູບ.
+                    <p class="text-slate-300 text-xs sm:text-sm">
+                        ເລືອກຫົວຂໍ້ຄູ່ມືທີ່ຕ້ອງການສຶກສາ ຫຼື ຄົ້ນຫາຕາມຊື່ເມນູ (ທັງໝົດ 17 ຄູ່ມືສະໄລ້)
                     </p>
-
-                    <!-- Search and Live Filter Input -->
-                    <div class="pt-2 space-y-3">
-                        <div class="relative max-w-xl">
-                            <div class="absolute left-3.5 top-3.5 text-slate-400 pointer-events-none">
-                                <i data-lucide="search" class="w-4 h-4"></i>
-                            </div>
-                            <input type="text" id="manual-search-input" oninput="filterManualCards()"
-                                placeholder="ຄົ້ນຫາຄູ່ມືທັງ 17 ໜ້າ (ເຊັ່ນ: Create Corporate, ອະນຸມັດ, Update, Delete, Reset Password, Tpin, Lock, Chairman...)"
-                                class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition shadow-inner">
-                            <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-3.5 top-3 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
-                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                            </button>
-                        </div>
-
-                        <!-- Category Filter Buttons -->
-                        <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-semibold" id="category-pills">
-                            <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0">
-                                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-                                <span>ທັງໝົດ (17)</span>
-                            </button>
-                            <button onclick="setCategoryFilter('part1')" id="cat-part1" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
-                                <i data-lucide="folder-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
-                                <span>I. ພາກການສ້າງ (6)</span>
-                            </button>
-                            <button onclick="setCategoryFilter('part2')" id="cat-part2" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
-                                <i data-lucide="sliders" class="w-3.5 h-3.5 text-amber-300"></i>
-                                <span>II. ພາກການແກ້ໄຂ & User Control (10)</span>
-                            </button>
-                            <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
-                                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-teal-300"></i>
-                                <span>ແອັບມືຖື MeBank (1)</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Right Hero Box: Original PDF Download Card -->
-                <div class="bg-slate-950/70 backdrop-blur-md border border-amber-400/30 rounded-2xl p-5 lg:w-80 space-y-3.5 flex-shrink-0 shadow-xl">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300">
-                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                <!-- Search and Category Filter Controls -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
+                    <div class="relative w-full sm:w-72">
+                        <div class="absolute left-3.5 top-2.5 text-slate-400 pointer-events-none">
+                            <i data-lucide="search" class="w-4 h-4"></i>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider">ເອກະສານຕົ້ນສະບັບ PDF</div>
-                            <div class="font-bold text-sm text-white">ຄູ່ມື Admin Portal MeBank</div>
-                        </div>
+                        <input type="text" id="manual-search-input" oninput="filterManualCards()"
+                            placeholder="ຄົ້ນຫາຄູ່ມື..."
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:bg-white/15 transition">
+                        <button onclick="clearSearch()" id="btn-clear-search" class="hidden absolute right-2.5 top-2 text-slate-400 hover:text-white text-xs font-bold bg-white/10 rounded-full w-5 h-5 flex items-center justify-center">
+                            <i data-lucide="x" class="w-3 h-3"></i>
+                        </button>
                     </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        ເອກະສານຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update 2026) ສະບັບເຕັມ 42 ໜ້າ (ພາກ I: 6 ຫົວຂໍ້ ແລະ ພາກ II: 10 ຫົວຂໍ້).
-                    </p>
-                    <div class="pt-1 flex flex-col gap-2">
-                        <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
-                            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-extrabold shadow transition">
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                            <span>ເປີດເບິ່ງ / ດາວໂຫຼດໄຟລ໌ PDF</span>
-                        </a>
-                        <a href="#pdf-toc-section"
-                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-emerald-200 text-xs font-semibold border border-white/15 transition">
-                            <i data-lucide="list-tree" class="w-3.5 h-3.5"></i>
-                            <span>ເບິ່ງສາລະບານທັງ 16 ຫົວຂໍ້</span>
-                        </a>
+
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs font-semibold" id="category-pills">
+                        <button onclick="setCategoryFilter('all')" id="cat-all" class="px-3 py-2 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0">
+                            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                            <span>ທັງໝົດ (17)</span>
+                        </button>
+                        <button onclick="setCategoryFilter('part1')" id="cat-part1" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
+                            <i data-lucide="folder-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
+                            <span>I. ການສ້າງ (6)</span>
+                        </button>
+                        <button onclick="setCategoryFilter('part2')" id="cat-part2" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
+                            <i data-lucide="sliders" class="w-3.5 h-3.5 text-amber-300"></i>
+                            <span>II. ການແກ້ໄຂ & Control (10)</span>
+                        </button>
+                        <button onclick="setCategoryFilter('mobile')" id="cat-mobile" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0">
+                            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-teal-300"></i>
+                            <span>ແອັບມືຖື (1)</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================================= -->
-        <!-- MANUALS GRID: 17 INDIVIDUAL CARDS                             -->
+        <!-- MANUALS GRID: 4 CARDS PER ROW (CLEAN COMPACT UI)              -->
         <!-- ============================================================= -->
-        <section class="space-y-6">
-            <div class="flex items-center justify-between flex-wrap gap-3">
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2">
-                        <i data-lucide="files" class="w-6 h-6 text-apb-700"></i>
-                        <span>ເລືອກຫົວຂໍ້ຄູ່ມືທີ່ຕ້ອງການສຶກສາ (All 17 Standalone Slide Manuals)</span>
-                    </h2>
-                    <p class="text-xs sm:text-sm text-slate-500">ແຕ່ລະຫົວຂໍ້ຖືກແຍກອອກເປັນໜ້າສະໄລ້ສະເພາະ (ກົດທີ່ Card ເພື່ອເປີດໜ້າສະໄລ້ຂັ້ນຕອນທີ 1..N ທັນທີ)</p>
-                </div>
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-800 flex items-center gap-2">
+                    <i data-lucide="grid" class="w-4 h-4 text-apb-600"></i>
+                    <span>ລາຍການຄູ່ມືທັງໝົດ</span>
+                </h2>
                 <span id="manual-count-badge" class="text-xs font-bold bg-apb-50 text-apb-700 border border-apb-200 px-3 py-1 rounded-full flex items-center gap-1">
                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-600"></i>
                     <span>ສະແດງ 17 ຄູ່ມື</span>
                 </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch" id="manuals-card-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch" id="manuals-card-grid">
                 
-                <!-- ========================================================= -->
-                <!-- CARD 1: I.1 1. ວິທີການສ້າງບໍລິສັດ (Create Corporate) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 1: 1. ວິທີການສ້າງບໍລິສັດ (Create Corporate) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="create corporate ສ້າງບໍລິສັດ ນິຕິບຸກຄົນ cif maker checker 1.1 1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)"
                     onclick="window.location.href='admin-create-corporate.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.1 • ໜ້າ 1–3</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/corp_step1_marked.png" alt="1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Create Corporate</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/corp_step1_marked.png" alt="1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ສ້າງຂໍ້ມູນບໍລິສັດແມ່, ອັບໂຫຼດເອກະສານ 7 ລາຍການ, ຜູກ CIF ແລະ ເພີ່ມຜູ້ໃຊ້ Maker/Checker
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ຂໍ້ມູນພື້ນຖານບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ອັບໂຫຼດຮູບເອກະສານ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເພີ່ມບັນຊີ & CIF</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ເພີ່ມຜູ້ໃຊ້ Maker/Checker</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)">
+                                1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ສ້າງຂໍ້ມູນບໍລິສັດແມ່, ອັບໂຫຼດເອກະສານ 7 ລາຍການ, ຜູກ CIF ແລະ ເພີ່ມຜູ້ໃຊ້ Maker/Checker
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-corporate.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 2: I.2 2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 2: 2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="create sub corporate ສ້າງບໍລິສັດລູກ ບໍລິສັດຍ່ອຍ cif maker checker 2.1 2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)"
                     onclick="window.location.href='admin-create-sub-corporate.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.2 • ໜ້າ 4–6</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/subcorp_step1_marked.png" alt="2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Create Sub Corporate</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/subcorp_step1_marked.png" alt="2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ເລືອກບໍລິສັດແມ່, ປ້ອນຂໍ້ມູນບໍລິສັດລູກ, ອັບໂຫຼດເອກະສານ, ເພີ່ມບັນຊີ CIF ແລະ ຜູ້ໃຊ້
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດແມ່ & ຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ອັບໂຫຼດຮູບເອກະສານ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເພີ່ມບັນຊີ & CIF</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ເພີ່ມຜູ້ໃຊ້ Maker/Checker</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)">
+                                2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ເລືອກບໍລິສັດແມ່, ປ້ອນຂໍ້ມູນບໍລິສັດລູກ, ອັບໂຫຼດເອກະສານ, ເພີ່ມບັນຊີ CIF ແລະ ຜູ້ໃຊ້
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-sub-corporate.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 3: I.3 3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 3: 3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="create user corporate and sub ສ້າງຢູເຊີບໍລິສັດ ເພີ່ມຜູ້ໃຊ້ບໍລິສັດ maker checker 3.1 3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)"
                     onclick="window.location.href='admin-create-user-corporate.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.3 • ໜ້າ 7–9</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>4 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Create User Corporate & Sub</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 4 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="user-plus" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ເພີ່ມຜູ້ໃຊ້ໃໝ່ເຂົ້າໃນບໍລິສັດແມ່ ຫຼື ບໍລິສັດລູກ ແລະ ກຳນົດສິດ Maker / Checker / Admin Portal
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (4 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ປ້ອນຂໍ້ມູນຢູເຊີ & ສິດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ສະຫຼຸບລາຍລະອຽດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)">
+                                3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ເພີ່ມຜູ້ໃຊ້ໃໝ່ເຂົ້າໃນບໍລິສັດແມ່ ຫຼື ບໍລິສັດລູກ ແລະ ກຳນົດສິດ Maker / Checker / Admin Portal
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-user-corporate.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (4 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 4: I.4 4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 4: 4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="create individual ສ້າງບໍລິສັດສ່ວນບຸກຄົນ ບຸກຄົນທົ່ວໄປ cif 4.1 4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)"
                     onclick="window.location.href='admin-create-individual.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.4 • ໜ້າ 9–11</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>4 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/ind_step1_marked.png" alt="4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Create Individual</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 4 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/ind_step1_marked.png" alt="4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="user" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ສ້າງຜູ້ໃຊ້ໃໝ່ສຳລັບລູກຄ້າບຸກຄົນທົ່ວໄປ / ບໍລິສັດສ່ວນບຸກຄົນ, ອັບໂຫຼດເອກະສານ ແລະ ຜູກ CIF
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (4 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ຂໍ້ມູນທົ່ວໄປບຸກຄົນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ອັບໂຫຼດຮູບເອກະສານ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເພີ່ມບັນຊີ & CIF</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)">
+                                4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ສ້າງຜູ້ໃຊ້ໃໝ່ສຳລັບລູກຄ້າບຸກຄົນທົ່ວໄປ / ບໍລິສັດສ່ວນບຸກຄົນ, ອັບໂຫຼດເອກະສານ ແລະ ຜູກ CIF
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-individual.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (4 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 5: I.5 5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 5: 5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="create account master ເພີ່ມບັນຊີ ສ້າງບັນຊີບໍລິສັດ system management 5.1 5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)"
                     onclick="window.location.href='admin-create-account.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="wallet" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.5 • ໜ້າ 11–13</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>4 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/acc_step1_marked.png" alt="5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">System management → Account → Create Account Master</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 4 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/acc_step1_marked.png" alt="5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="wallet" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ເພີ່ມເລກບັນຊີທະນາຄານເຂົ້າໃນບໍລິສັດຜ່ານເມນູ System management → Account
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (4 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ປ້ອນເລກບັນຊີ & ຄົ້ນຫາ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ສະຫຼຸບລາຍລະອຽດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)">
+                                5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ເພີ່ມເລກບັນຊີທະນາຄານເຂົ້າໃນບໍລິສັດຜ່ານເມນູ System management → Account
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-account.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (4 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 6: I.6 6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 6: 6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part1"
                     data-keywords="approve pending requests ອະນຸມັດລາຍການ ລາຍການຄ້າງຢູ່ checker ປະຕິເສດ 6 6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)"
                     onclick="window.location.href='admin-approve-request.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-apb-900 to-apb-700 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ I.6 • ໜ້າ 13–16</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/approve_step1_marked.png" alt="6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">ໜ້າຫຼັກ (Dashboard) → Status → ຄ້າງຢູ່</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/approve_step1_marked.png" alt="6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ I: ການສ້າງ (Creation)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ກວດສອບລາຍການສະຖານະຄ້າງຢູ່ (Pending), ກວດລາຍລະອຽດ 3 ສ່ວນ ແລະ ກົດອະນຸມັດ/ປະຕິເສດ
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ໜ້າຫຼັກ & ລາຍການຄ້າງ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ລາຍການທີ່ຍັງຄ້າງ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ 3 ຕົວເລືອກ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ກວດລາຍລະອຽດ 3 ສ່ວນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ອະນຸມັດສຳເລັດ</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)">
+                                6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ກວດສອບລາຍການສະຖານະຄ້າງຢູ່ (Pending), ກວດລາຍລະອຽດ 3 ສ່ວນ ແລະ ກົດອະນຸມັດ/ປະຕິເສດ
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-approve-request.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-apb-600 hover:bg-apb-700 text-white font-bold shadow-apb-700/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 7: II.1 1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 7: 1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="update user ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ ອັບເດດຜູ້ໃຊ້ ພາກທີ II 1.1 1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)"
                     onclick="window.location.href='admin-update-user.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="user-pen" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.1 • ໜ້າ 16–18</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>6 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_user_marked.png" alt="1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Update User</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 6 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_user_marked.png" alt="1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="user-pen" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ຄົ້ນຫາຜູ້ໃຊ້ ແລະ ແກ້ໄຂຊື່ເຕັມ, ອີເມວ, ເບີໂທຕິດຕໍ່, ວັນເດືອນປີເກີດ, ທີ່ຢູ່ ຫຼື ຮູບຜູ້ໃຊ້
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (6 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນປັດຈຸບັນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ອັບໂຫຼດຮູບຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສະຫຼຸບ & ຍອມຮັບ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">6. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)">
+                                1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຄົ້ນຫາຜູ້ໃຊ້ ແລະ ແກ້ໄຂຊື່ເຕັມ, ອີເມວ, ເບີໂທຕິດຕໍ່, ວັນເດືອນປີເກີດ, ທີ່ຢູ່ ຫຼື ຮູບຜູ້ໃຊ້
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-update-user.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (6 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 8: II.2 2. ການລົບຜູ້ໃຊ້ (Delete User) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 8: 2. ການລົບຜູ້ໃຊ້ (Delete User) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="delete user ລົບຜູ້ໃຊ້ ລຶບ user ພາກທີ II 2.1 2. ການລົບຜູ້ໃຊ້ (Delete User)"
                     onclick="window.location.href='admin-delete-user.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="user-x" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.2 • ໜ້າ 19–21</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>4 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_user_marked.png" alt="2. ການລົບຜູ້ໃຊ້ (Delete User)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">2. ການລົບຜູ້ໃຊ້ (Delete User)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → Delete User</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 4 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_user_marked.png" alt="2. ການລົບຜູ້ໃຊ້ (Delete User)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="user-x" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    2. ການລົບຜູ້ໃຊ້ (Delete User)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ຄົ້ນຫາ User ທີ່ຕ້ອງການລົບ, ກວດສອບລາຍລະອຽດສິດທິ ແລະ ຢືນຢັນການລົບອອກຈາກລະບົບ
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (4 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກຜູ້ໃຊ້ທີ່ຈະລົບ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ຢືນຢັນການລົບ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="2. ການລົບຜູ້ໃຊ້ (Delete User)">
+                                2. ການລົບຜູ້ໃຊ້ (Delete User)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຄົ້ນຫາ User ທີ່ຕ້ອງການລົບ, ກວດສອບລາຍລະອຽດສິດທິ ແລະ ຢືນຢັນການລົບອອກຈາກລະບົບ
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-delete-user.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (4 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 9: II.3 3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 9: 3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="view user ກວດເບິ່ງຜູ້ໃຊ້ ເບິ່ງຂໍ້ມູນ user ພາກທີ II 3 3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)"
                     onclick="window.location.href='admin-view-user.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.3 • ໜ້າ 21</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>2 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_user_marked.png" alt="3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → Individual & Corporate → View User</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 2 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_user_marked.png" alt="3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="eye" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນສ່ວນຕົວ, ສະຖານະບັນຊີ, 2FA, ສິດ Role ແລະ ວົງເງິນ Limit ຂອງ User
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (2 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ລາຍລະອຽດ User</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)">
+                                3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ກວດເບິ່ງລາຍລະອຽດຂໍ້ມູນສ່ວນຕົວ, ສະຖານະບັນຊີ, 2FA, ສິດ Role ແລະ ວົງເງິນ Limit ຂອງ User
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-view-user.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (2 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 10: II.4 4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 10: 4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="reset password ຣີເຊັດລະຫັດຜ່ານ ລືມລະຫັດຜ່ານ user control 4.1 4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)"
                     onclick="window.location.href='admin-reset-password.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.4 • ໜ້າ 21–24</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Reset password</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="key-round" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ຣີເຊັດລະຫັດຜ່ານໃໝ່ໃຫ້ລູກຄ້າ Corporate ຫຼື Individual ແລະ ເລືອກສົ່ງທາງ Email / SMS
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ/ບຸກຄົນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ User & Email/SMS</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)">
+                                4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຣີເຊັດລະຫັດຜ່ານໃໝ່ໃຫ້ລູກຄ້າ Corporate ຫຼື Individual ແລະ ເລືອກສົ່ງທາງ Email / SMS
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-reset-password.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 11: II.5 5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 11: 5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="reset tpin ຣີເຊັດ tpin ລະຫັດເຮັດທຸລະກຳ user control 5.1 5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)"
                     onclick="window.location.href='admin-reset-tpin.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.5 • ໜ້າ 24–26</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Reset Tpin</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ຣີເຊັດລະຫັດທຸລະກຳ 6 ຕົວເລກ (TPIN) ສຳລັບຜູ້ໃຊ້ Corporate ຫຼື Individual ຜ່ານ Email / SMS
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ/ບຸກຄົນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ User & Email/SMS</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)">
+                                5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຣີເຊັດລະຫັດທຸລະກຳ 6 ຕົວເລກ (TPIN) ສຳລັບຜູ້ໃຊ້ Corporate ຫຼື Individual ຜ່ານ Email / SMS
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-reset-tpin.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 12: II.6 6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 12: 6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="resend create password ສົ່ງລະຫັດຄືນໃໝ່ ບໍ່ເຫັນລະຫັດ user control 6.1 6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)"
                     onclick="window.location.href='admin-resend-password.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.6 • ໜ້າ 26–29</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Resend create password</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="send" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ສົ່ງລະຫັດຜ່ານສຳລັບຕັ້ງຄ່າບັນຊີໃໝ່ອີກຄັ້ງ ກໍລະນີລູກຄ້າບໍ່ໄດ້ຮັບຂໍ້ຄວາມທາງ Email / SMS
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ/ບຸກຄົນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ User & Email/SMS</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)">
+                                6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ສົ່ງລະຫັດຜ່ານສຳລັບຕັ້ງຄ່າບັນຊີໃໝ່ອີກຄັ້ງ ກໍລະນີລູກຄ້າບໍ່ໄດ້ຮັບຂໍ້ຄວາມທາງ Email / SMS
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-resend-password.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 13: II.7 7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 13: 7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="lock unlock user ລ໋ອກ ປົດລ໋ອກ active inactive lock user control 7.1 7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)"
                     onclick="window.location.href='admin-lock-unlock-user.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.7 • ໜ້າ 29–31</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>6 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Lock/Unlock User</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 6 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="lock" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ປ່ຽນສະຖານະບັນຊີຜູ້ໃຊ້ລະຫວ່າງ Active (ປົດລ໋ອກ), Inactive (ປິດຊົ່ວຄາວ) ຫຼື Lock (ລ໋ອກບັນຊີ)
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (6 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ/ບຸກຄົນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ User</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ເລືອກ Active/Inactive/Lock</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">6. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)">
+                                7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ປ່ຽນສະຖານະບັນຊີຜູ້ໃຊ້ລະຫວ່າງ Active (ປົດລ໋ອກ), Inactive (ປິດຊົ່ວຄາວ) ຫຼື Lock (ລ໋ອກບັນຊີ)
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-lock-unlock-user.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (6 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 14: II.8 8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 14: 8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="change chairman ປ່ຽນສິດຜູ້ໃຊ້ ປ່ຽນປະທານ ປະທານບໍລິສັດ user control 8 8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)"
                     onclick="window.location.href='admin-change-chairman.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-950 via-zinc-900 to-amber-950 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-extrabold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.8 • ໜ້າ 32–34</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Change Chairman</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: User Control (Chairman)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ໂອນຍ້າຍ ຫຼື ປ່ຽນສິດປະທານບໍລິສັດ (Chairman Role) ໄປໃຫ້ User ຄົນໃໝ່ພາຍໃນບໍລິສັດ
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກ User ປະທານໃໝ່</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)">
+                                8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ໂອນຍ້າຍ ຫຼື ປ່ຽນສິດປະທານບໍລິສັດ (Chairman Role) ໄປໃຫ້ User ຄົນໃໝ່ພາຍໃນບໍລິສັດ
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-change-chairman.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold shadow-amber-900/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 15: II.9 9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 15: 9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="change username ປ່ຽນຊື່ຜູ້ໃຊ້ ປ່ຽນ user user control 9.1 9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)"
                     onclick="window.location.href='admin-change-username.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-900 via-teal-900 to-emerald-800 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-teal-400/25 text-teal-200 border border-teal-400/30 font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="at-sign" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.9 • ໜ້າ 34–37</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>5 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Change Username</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 5 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="at-sign" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: ການແກ້ໄຂ & User Control</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ປ່ຽນຊື່ບັນຊີຜູ້ໃຊ້ (Username) ໃໝ່ ແລະ ຢືນຢັນຊື່ຜູ້ໃຊ້ໃໝ່ໃຫ້ກັບລູກຄ້າ
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (5 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ກວດຂໍ້ມູນຜູ້ໃຊ້</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ປ້ອນຊື່ຜູ້ໃຊ້ໃໝ່</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ຢືນຢັນຂໍ້ມູນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">5. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)">
+                                9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ປ່ຽນຊື່ບັນຊີຜູ້ໃຊ້ (Username) ໃໝ່ ແລະ ຢືນຢັນຊື່ຜູ້ໃຊ້ໃໝ່ໃຫ້ກັບລູກຄ້າ
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-change-username.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white font-bold shadow-teal-800/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (5 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 16: II.10 10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman) -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 16: 10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="part2"
                     data-keywords="create chairman ສ້າງ user ຜູ້ໃຊ້ ປະທານບໍລິສັດ ສ້າງປະທານ user control 10 10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)"
                     onclick="window.location.href='admin-create-chairman.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-slate-950 via-zinc-900 to-amber-950 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-extrabold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="crown" class="w-3.5 h-3.5"></i>
-                                    <span>ໝວດ II.10 • ໜ້າ 37–39</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-slate-950/60 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-300"></i>
-                                    <span>4 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <!-- Screenshot Preview Box -->
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/55 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/admin/select_corp_marked.png" alt="10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)</div>
-                                    <div class="text-[10px] text-emerald-200 truncate">Customer management → User management → User Control → Create Chairman</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 4 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/admin/select_corp_marked.png" alt="10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="crown" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>Admin Portal • ພາກທີ II: User Control (Chairman)</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ກຳນົດ ແລະ ສ້າງສິດຜູ້ໃຊ້ໃຫ້ເປັນປະທານບໍລິສັດ (Chairman) ຜ່ານເມນູ User Control
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (4 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເລືອກບໍລິສັດ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ເລືອກຜູ້ໃຊ້ເປັນປະທານ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ກວດສອບ & ຍອມຮັບ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">4. ສຳເລັດ (Success)</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)">
+                                10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ກຳນົດ ແລະ ສ້າງສິດຜູ້ໃຊ້ໃຫ້ເປັນປະທານບໍລິສັດ (Chairman) ຜ່ານເມນູ User Control
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="admin-create-chairman.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold shadow-amber-900/20 text-xs sm:text-sm shadow-md transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (4 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
-                <!-- ========================================================= -->
-                <!-- CARD 17: FLIGHT BOOKING (MOBILE APP MANUAL)               -->
-                <!-- ========================================================= -->
-                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden cursor-pointer group"
+                <!-- CARD 17: FLIGHT BOOKING (MOBILE APP MANUAL) -->
+                <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-category="mobile"
                     data-keywords="ຊຳລະບິນປີ້ເຮືອບິນ ຈອງປີ້ເຮືອບິນ booking flight lao skyway ລາວເດີນອາກາດ mebank mobile app ປີ້ເຮືອບິນ"
                     onclick="window.location.href='booking-flight.html'">
 
                     <div>
-                        <div class="relative h-48 bg-gradient-to-tr from-apb-800 via-teal-700 to-emerald-600 p-4 overflow-hidden flex flex-col justify-between text-white">
-                            <div class="flex items-center justify-between relative z-10">
-                                <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
-                                    <i data-lucide="smartphone" class="w-3.5 h-3.5 text-white"></i>
-                                    <span>MOBILE APP • LAO SKYWAY</span>
-                                </span>
-                                <span class="px-2.5 py-1 rounded-full bg-black/25 text-emerald-200 text-[11px] font-mono border border-white/10 flex items-center gap-1">
-                                    <i data-lucide="list-ordered" class="w-3 h-3 text-emerald-200"></i>
-                                    <span>9 ຂັ້ນຕອນ</span>
-                                </span>
-                            </div>
-
-                            <div class="relative z-10 my-auto flex items-center gap-3 bg-slate-950/45 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 shadow-lg group-hover:scale-[1.02] transition-transform">
-                                <img src="images/bill_payment_marked.png" alt="Lao Skyway Booking"
-                                    class="w-24 h-16 object-cover object-top rounded-lg border border-white/20 flex-shrink-0 bg-white">
-                                <div class="min-w-0 flex-1 space-y-1">
-                                    <div class="text-xs font-bold text-white truncate">Lao Skyway Flight Booking</div>
-                                    <div class="text-[10px] text-emerald-100 truncate">ແອັບ MeBank → ຊຳລະບິນ → ລາວເດີນອາກາດ</div>
-                                    <div class="text-[9px] text-amber-300 font-mono">ຄູ່ມືສະໄລ້ແຍກໜ້າ • 9 Steps</div>
-                                </div>
-                            </div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/bill_payment_marked.png" alt="ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
-                        <div class="p-6 space-y-4">
-                            <div>
-                                <div class="text-[11px] font-bold text-apb-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="plane" class="w-3.5 h-3.5 text-apb-700"></i>
-                                    <span>ແອັບມືຖື MeBank • Bill Payment</span>
-                                </div>
-                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-apb-600 transition-colors leading-snug">
-                                    ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ
-                                </h3>
-                                <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                    ຄູ່ມືການຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway) ຜ່ານແອັບ MeBank ແບບລະອຽດ 9 ຂັ້ນຕອນ: ຄົ້ນຫາຖ້ຽວບິນ, ເລືອກຊັ້ນບິນ, ປ້ອນຊື່ຜູ້ໂດຍສານ ແລະ ຢືນຢັນ TPIN.
-                                </p>
-                            </div>
-
-                            <div class="space-y-1.5 pt-2 border-t border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ຂັ້ນຕອນໃນໜ້ານີ້ (9 Steps):</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">1. ເມນູຊຳລະບິນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">2. ຄົ້ນຫາຖ້ຽວບິນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">3. ເລືອກຊັ້ນບິນ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">7. ບັນຊີຊຳລະ</span>
-                                    <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-medium">9. ສຳເລັດ</span>
-                                </div>
-                            </div>
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)">
+                                ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນການຈອງ ແລະ ຊຳລະບິນປີ້ເຮືອບິນ Lao Skyway ຜ່ານແອັບມືຖື MeBank ຄົບທັງ 9 ຂັ້ນຕອນ.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0">
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
                         <a href="booking-flight.html" onclick="event.stopPropagation();"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-700/20 transition-all duration-300">
-                            <span>ເປີດຄູ່ມືສະໄລ້ (9 ຂັ້ນຕອນ)</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- No results message -->
-            <div id="no-search-results" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
-                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
-                    <i data-lucide="search-x" class="w-6 h-6"></i>
+            <div id="no-search-results" class="hidden text-center py-12 bg-white rounded-2xl border border-slate-200 p-6 space-y-2.5">
+                <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+                    <i data-lucide="search-x" class="w-5 h-5"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800">ບໍ່ພົບຄູ່ມືທີ່ກົງກັບຄຳຄົ້ນຫາ</h3>
-                <p class="text-xs text-slate-500">ກະລຸນາລອງປ້ອນຄຳຄົ້ນຫາໃໝ່ ຫຼື ກົດປຸ່ມລ້າງຄຳຄົ້ນຫາ</p>
-                <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm inline-flex items-center gap-1.5">
+                <h3 class="text-sm font-bold text-slate-800">ບໍ່ພົບຄູ່ມືທີ່ກົງກັບຄຳຄົ້ນຫາ</h3>
+                <button onclick="clearSearch()" class="px-3.5 py-1.5 rounded-xl bg-apb-600 text-white text-xs font-bold shadow-sm inline-flex items-center gap-1.5">
                     <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                    <span>ລ້າງການຄົ້ນຫາ (Clear Search)</span>
+                    <span>ລ້າງການຄົ້ນຫາ</span>
                 </button>
             </div>
         </section>
@@ -1395,35 +751,34 @@
         <!-- ============================================================= -->
         <!-- FULL PDF TABLE OF CONTENTS (16 STANDALONE PAGES)              -->
         <!-- ============================================================= -->
-        <section id="pdf-toc-section" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <section id="pdf-toc-section" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-slate-100">
                 <div class="flex items-center gap-3">
-                    <span class="w-10 h-10 rounded-2xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center text-lg border border-apb-200">
-                        <i data-lucide="book-marked" class="w-5 h-5 text-apb-700"></i>
+                    <span class="w-9 h-9 rounded-xl bg-apb-100 text-apb-700 font-bold flex items-center justify-center border border-apb-200">
+                        <i data-lucide="book-marked" class="w-4 h-4 text-apb-700"></i>
                     </span>
                     <div>
-                        <h3 class="font-bold text-base sm:text-lg text-slate-900">ສາລະບານຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (ຄົບທັງ 16 ໜ້າແຍກຕາມຫົວຂໍ້)</h3>
-                        <p class="text-xs text-slate-500">ຄລິກໃສ່ຫົວຂໍ້ໃດກໍໄດ້ເພື່ອເປີດໜ້າຄູ່ມືສະໄລ້ຂອງຫົວຂໍ້ນັ້ນທັນທີ • ລິ້ງລະບົບ: <code class="text-apb-700 font-mono">http://ibk.apb.com.local:30002/</code></p>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900">ສາລະບານຄູ່ມືການນຳໃຊ້ Admin Portal MeBank (16 ຫົວຂໍ້ຕາມ PDF)</h3>
+                        <p class="text-xs text-slate-500">ລິ້ງລະບົບ: <code class="text-apb-700 font-mono">http://ibk.apb.com.local:30002/</code></p>
                     </div>
                 </div>
                 <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank"
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition self-start sm:self-center">
-                    <i data-lucide="file-down" class="w-4 h-4 text-amber-400"></i>
+                    class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition self-start sm:self-center">
+                    <i data-lucide="file-down" class="w-3.5 h-3.5 text-amber-400"></i>
                     <span>ເປີດໄຟລ໌ PDF ຕົ້ນສະບັບ (42 ໜ້າ)</span>
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Part I: Creation (6 Topics) -->
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-5 space-y-3">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
-                        <span class="font-extrabold text-sm text-apb-800 flex items-center gap-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div class="rounded-xl bg-slate-50 border border-slate-200/80 p-4 space-y-2.5">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-slate-200">
+                        <span class="font-extrabold text-xs sm:text-sm text-apb-800 flex items-center gap-1.5">
                             <i data-lucide="folder-plus" class="w-4 h-4 text-apb-600"></i>
                             <span>I. ພາກການສ້າງ (Creation • 6 ໜ້າຄູ່ມື)</span>
                         </span>
                         <span class="text-[11px] font-mono text-slate-400">ໜ້າ 1 – 16</span>
                     </div>
-                    <div class="space-y-2 text-xs">
+                    <div class="space-y-1.5 text-xs">
                         
                         <a href="admin-create-corporate.html" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
                             <span class="font-bold text-slate-800 group-hover:text-apb-700">1. ວິທີການສ້າງບໍລິສັດ (Create Corporate)</span>
@@ -1452,16 +807,15 @@
                     </div>
                 </div>
 
-                <!-- Part II: Modification & User Control (10 Topics) -->
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-5 space-y-3">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
-                        <span class="font-extrabold text-sm text-apb-800 flex items-center gap-2">
+                <div class="rounded-xl bg-slate-50 border border-slate-200/80 p-4 space-y-2.5">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-slate-200">
+                        <span class="font-extrabold text-xs sm:text-sm text-apb-800 flex items-center gap-1.5">
                             <i data-lucide="sliders" class="w-4 h-4 text-apb-600"></i>
                             <span>II. ພາກການແກ້ໄຂ & User Control (10 ໜ້າຄູ່ມື)</span>
                         </span>
                         <span class="text-[11px] font-mono text-slate-400">ໜ້າ 16 – 39</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
                         
                         <a href="admin-update-user.html" class="flex items-center justify-between p-2.5 rounded-xl bg-white hover:bg-apb-50 border border-slate-200/80 transition group">
                             <span class="font-bold text-slate-800 group-hover:text-apb-700">1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User)</span>
@@ -1511,38 +865,15 @@
     </main>
 
     <!-- Global Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-xs py-8 mt-12 border-t border-slate-800">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-slate-800">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-lg bg-white p-1 flex items-center justify-center">
-                        <img src="images/admin/apb_logo.png" alt="APB Logo" class="w-full h-full object-contain">
-                    </div>
-                    <div>
-                        <div class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (Agricultural Promotion Bank)</div>
-                        <div class="text-[11px] text-slate-500">ສູນລວມຄູ່ມືການນຳໃຊ້ລະບົບ Admin Portal MeBank (16 ຫົວຂໍ້) & Mobile Banking (2026)</div>
-                    </div>
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-10 border-t border-slate-800">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-7 h-7 rounded-lg bg-white p-1 flex items-center justify-center">
+                    <img src="images/admin/apb_logo.png" alt="APB Logo" class="w-full h-full object-contain">
                 </div>
-
-                <div class="flex flex-wrap items-center gap-3 text-[11px]">
-                    <a href="admin-create-corporate.html" class="hover:text-emerald-300 transition">I.1 Create Corporate</a>
-                    <span>•</span>
-                    <a href="admin-approve-request.html" class="hover:text-emerald-300 transition">I.6 Approve Requests</a>
-                    <span>•</span>
-                    <a href="admin-update-user.html" class="hover:text-emerald-300 transition">II.1 Update User</a>
-                    <span>•</span>
-                    <a href="admin-reset-password.html" class="hover:text-emerald-300 transition">II.4 Reset Password</a>
-                    <span>•</span>
-                    <a href="admin-create-chairman.html" class="hover:text-amber-300 transition">II.10 Create Chairman</a>
-                    <span>•</span>
-                    <a href="booking-flight.html" class="hover:text-emerald-300 transition">ຈອງປີ້ເຮືອບິນ</a>
-                </div>
+                <span class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (APB MeBank Manuals Hub)</span>
             </div>
-
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
-                <div>© 2026 APB MeBank. ສະຫງວນລິຂະສິດທຸກປະການ (All Rights Reserved).</div>
-                <div>Internal Banking Documentation Portal • 17 Standalone Slide Manuals</div>
-            </div>
+            <div class="text-[11px] text-slate-500">© 2026 APB MeBank • 17 Standalone Slide Manuals</div>
         </div>
     </footer>
 
@@ -1601,9 +932,9 @@
                 const btn = document.getElementById(`cat-${b}`);
                 if (btn) {
                     if (b === category) {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0";
+                        btn.className = "px-3 py-2 rounded-xl bg-white text-apb-900 font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0";
                     } else {
-                        btn.className = "px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0";
+                        btn.className = "px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 flex-shrink-0";
                     }
                 }
             });

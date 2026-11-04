@@ -84,22 +84,6 @@
                 </div>
             </div>
 
-            <!-- TOP 2 MAIN MENU TABS: Admin Portal Mebank vs Mebank Client -->
-            <div class="flex items-center bg-slate-950/35 p-1 rounded-2xl border border-white/15 backdrop-blur-md">
-                <button onclick="switchMainMenu('admin')" id="top-tab-admin"
-                    class="px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-white text-apb-900 shadow-md">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-apb-700"></i>
-                    <span>Admin Portal Mebank</span>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-apb-100 text-apb-800">16</span>
-                </button>
-                <button onclick="switchMainMenu('client')" id="top-tab-client"
-                    class="px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-emerald-100 hover:text-white hover:bg-white/10">
-                    <i data-lucide="smartphone" class="w-4 h-4 text-emerald-300"></i>
-                    <span>Mebank Client</span>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/15 text-white">1</span>
-                </button>
-            </div>
-
             <!-- Right Action -->
             <div class="flex items-center gap-2">
                 <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank" id="header-pdf-btn"
@@ -915,9 +899,6 @@
             currentMainMenu = menu;
             currentCategory = 'all';
 
-            // Update Top Header Tabs
-            const topAdmin = document.getElementById('top-tab-admin');
-            const topClient = document.getElementById('top-tab-client');
             const mainAdmin = document.getElementById('main-tab-admin');
             const mainClient = document.getElementById('main-tab-client');
             const subFilters = document.getElementById('admin-subfilters');
@@ -925,8 +906,6 @@
             const menuTitle = document.getElementById('active-menu-title');
 
             if (menu === 'admin') {
-                topAdmin.className = "px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-white text-apb-900 shadow-md";
-                topClient.className = "px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-emerald-100 hover:text-white hover:bg-white/10";
                 mainAdmin.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-apb-700 text-white shadow-sm";
                 mainClient.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900";
                 subFilters.classList.remove('hidden');
@@ -935,8 +914,6 @@
                 menuTitle.textContent = "ຄູ່ມືການນຳໃຊ້ລະບົບ Admin Portal Mebank";
                 setCategoryFilter('all');
             } else {
-                topClient.className = "px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-white text-apb-900 shadow-md";
-                topAdmin.className = "px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-emerald-100 hover:text-white hover:bg-white/10";
                 mainClient.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-apb-700 text-white shadow-sm";
                 mainAdmin.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900";
                 subFilters.classList.add('hidden');

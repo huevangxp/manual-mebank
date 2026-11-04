@@ -67,7 +67,7 @@
 
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between bg-grid-pattern">
 
-    <!-- Top Navigation Header with 2 Main Menu Tabs -->
+    <!-- Top Navigation Header -->
     <header class="bg-gradient-to-r from-apb-900 via-apb-800 to-apb-700 text-white shadow-xl sticky top-0 z-50">
         <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
             <!-- Brand -->
@@ -84,12 +84,12 @@
                 </div>
             </div>
 
-            <!-- Right Action -->
+            <!-- Right Action: Dynamic PDF Download Button -->
             <div class="flex items-center gap-2">
                 <a href="files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf" target="_blank" id="header-pdf-btn"
                     class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold transition shadow-md">
                     <i data-lucide="file-down" class="w-4 h-4"></i>
-                    <span>ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</span>
+                    <span id="header-pdf-text">ດາວໂຫຼດ PDF ຕົ້ນສະບັບ</span>
                 </a>
             </div>
         </div>
@@ -99,7 +99,7 @@
     <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow space-y-6">
 
         <!-- ============================================================= -->
-        <!-- MENU TABS & FILTER BAR                                        -->
+        <!-- MENU TABS & FILTER BAR (IN TOP PAGE MAIN AREA)                -->
         <!-- ============================================================= -->
         <section class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-4">
             <!-- Prominent 2-Tab Switcher + Search Input -->
@@ -114,7 +114,7 @@
                     <button onclick="switchMainMenu('client')" id="main-tab-client"
                         class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900">
                         <i data-lucide="smartphone" class="w-4 h-4"></i>
-                        <span>Mebank Client (1 ຄູ່ມື)</span>
+                        <span>Mebank Client (11 ຄູ່ມື)</span>
                     </button>
                 </div>
 
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-            <!-- Sub-header info + Sub-category pills (Admin Portal only) -->
+            <!-- Sub-header info + Sub-category pills -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-center gap-2.5">
                     <span id="active-menu-title" class="text-sm sm:text-base font-extrabold text-slate-800">
@@ -158,6 +158,26 @@
                         <span>II. ພາກການແກ້ໄຂ & User Control (10)</span>
                     </button>
                 </div>
+
+                <!-- Mebank Client Sub-Category Filter Buttons -->
+                <div class="hidden items-center gap-1.5 overflow-x-auto text-xs font-semibold" id="client-subfilters">
+                    <button onclick="setCategoryFilter('all')" id="client-cat-all" class="px-3 py-1.5 rounded-xl bg-apb-700 text-white font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0">
+                        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                        <span>ທັງໝົດ (11)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('client_intro')" id="client-cat-client_intro" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0">
+                        <i data-lucide="compass" class="w-3.5 h-3.5 text-apb-600"></i>
+                        <span>ເລີ່ມຕົ້ນ & Dashboard (4)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('client_transfer')" id="client-cat-client_transfer" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0">
+                        <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-amber-600"></i>
+                        <span>ການໂອນເງິນ & ອະນຸມັດ (3)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('client_services')" id="client-cat-client_services" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0">
+                        <i data-lucide="qr-code" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span>QR, ຊຳລະບິນ & ປະຫວັດ (4)</span>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -167,7 +187,7 @@
         <section>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch" id="manuals-card-grid">
                 
-                <!-- CARD 1: 1. ວິທີການສ້າງບໍລິສັດ (Create Corporate) -->
+                <!-- ADMIN CARD 1: 1. ວິທີການສ້າງບໍລິສັດ (Create Corporate) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -201,7 +221,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 2: 2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate) -->
+                <!-- ADMIN CARD 2: 2. ວິທີການສ້າງບໍລິສັດລູກ (Create Sub Corporate) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -235,7 +255,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 3: 3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub) -->
+                <!-- ADMIN CARD 3: 3. ການສ້າງຢູເຊີບໍລິສັດ (Create User Corporate & Sub) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -269,7 +289,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 4: 4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual) -->
+                <!-- ADMIN CARD 4: 4. ການສ້າງບໍລິສັດສ່ວນບຸກຄົນ (Create Individual) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -303,7 +323,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 5: 5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master) -->
+                <!-- ADMIN CARD 5: 5. ວິທີການເພີ່ມບັນຊີບໍລິສັດ (Create Account Master) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -337,7 +357,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 6: 6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests) -->
+                <!-- ADMIN CARD 6: 6. ວິທີການອະນຸມັດລາຍການ (Approve Pending Requests) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part1"
@@ -371,7 +391,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 7: 1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) -->
+                <!-- ADMIN CARD 7: 1. ການແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້ (Update User) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -405,7 +425,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 8: 2. ການລົບຜູ້ໃຊ້ (Delete User) -->
+                <!-- ADMIN CARD 8: 2. ການລົບຜູ້ໃຊ້ (Delete User) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -439,7 +459,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 9: 3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User) -->
+                <!-- ADMIN CARD 9: 3. ການກວດເບິ່ງຜູ້ໃຊ້ (View User) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -473,7 +493,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 10: 4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password) -->
+                <!-- ADMIN CARD 10: 4. ການຣີເຊັດລະຫັດຜ່ານ (Reset Password) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -507,7 +527,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 11: 5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin) -->
+                <!-- ADMIN CARD 11: 5. ວິທີການຣີເຊັດລະຫັດ Tpin (Reset Tpin) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -541,7 +561,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 12: 6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password) -->
+                <!-- ADMIN CARD 12: 6. ວິທີສົ່ງລະຫັດສ້າງບັນຊີຄືນໃໝ່ (Resend Create Password) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -575,7 +595,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 13: 7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User) -->
+                <!-- ADMIN CARD 13: 7. ການລ໋ອກ ແລະ ປົດລ໋ອກ User (Lock/Unlock User) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -609,7 +629,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 14: 8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman) -->
+                <!-- ADMIN CARD 14: 8. ການປ່ຽນສິດຜູ້ໃຊ້ເປັນປະທານ (Change Chairman) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -643,7 +663,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 15: 9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username) -->
+                <!-- ADMIN CARD 15: 9. ການປ່ຽນຊື່ຜູ້ໃຊ້ (Change Username) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -677,7 +697,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- CARD 16: 10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman) -->
+                <!-- ADMIN CARD 16: 10. ການສ້າງ User ຜູ້ໃຊ້ເປັນປະທານ (Create Chairman) -->
                 <div class="manual-card card-hover-effect flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="admin"
                     data-category="part2"
@@ -712,27 +732,367 @@
                     </div>
                 </div>
                 
-                <!-- CLIENT CARD 1: FLIGHT BOOKING (MEBANK CLIENT) -->
+                <!-- CLIENT CARD 1: 1. ປະເພດຂອງຜູ້ໃຊ້ (Type of User) -->
                 <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
                     data-menu="client"
-                    data-category="mobile"
-                    data-keywords="ຊຳລະບິນປີ້ເຮືອບິນ ຈອງປີ້ເຮືອບິນ booking flight lao skyway ລາວເດີນອາກາດ mebank client mobile app ປີ້ເຮືອບິນ"
-                    onclick="window.location.href='booking-flight.html'">
+                    data-category="client_intro"
+                    data-keywords="type of user ປະເພດຂອງຜູ້ໃຊ້ individual maker checker chairman shareman ບຸກຄົນທົ່ວໄປ ຜູ້ສ້າງທຸລະກຳ ຜູ້ອະນຸມັດ ປະທານ 1. ປະເພດຂອງຜູ້ໃຊ້ (Type of User)"
+                    onclick="window.location.href='client-user-types.html'">
 
                     <div>
                         <!-- 1. Image -->
                         <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
-                            <img src="images/bill_payment_marked.png" alt="ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ"
+                            <img src="images/client/user_types_marked.png" alt="1. ປະເພດຂອງຜູ້ໃຊ້ (Type of User)"
                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         </div>
 
                         <!-- 2. Title & 3. Description -->
                         <div class="p-4 space-y-1.5">
-                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)">
-                                ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="1. ປະເພດຂອງຜູ້ໃຊ້ (Type of User)">
+                                1. ປະເພດຂອງຜູ້ໃຊ້ (Type of User)
                             </h3>
                             <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
-                                ຂັ້ນຕອນການຈອງ ແລະ ຊຳລະບິນປີ້ເຮືອບິນ Lao Skyway ຜ່ານແອັບມືຖື MeBank Client ຄົບທັງ 9 ຂັ້ນຕອນ.
+                                ທຳຄວາມເຂົ້າໃຈສິດທິຂອງຜູ້ໃຊ້ທັງ 4 ປະເພດ: ບຸກຄົນທົ່ວໄປ (Individual), ຜູ້ສ້າງທຸລະກຳ (Maker), ຜູ້ອະນຸມັດ (Checker) ແລະ ປະທານ (Chairman)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-user-types.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 2: 2. ວິທີການເຂົ້າ Website Internet Banking -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_intro"
+                    data-keywords="website internet banking login ເຂົ້າເວັບໄຊ mebank.apb.com.la ລ໋ອກອິນ ອັດຕາແລກປ່ຽນ ຕູ້ atm ອັດຕາດອກເບ້ຍ 2. ວິທີການເຂົ້າ Website Internet Banking"
+                    onclick="window.location.href='client-website-login.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/website_login_s1_marked.png" alt="2. ວິທີການເຂົ້າ Website Internet Banking"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="2. ວິທີການເຂົ້າ Website Internet Banking">
+                                2. ວິທີການເຂົ້າ Website Internet Banking
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ການເຂົ້າສູ່ລະບົບຜ່ານເວັບໄຊ https://mebank.apb.com.la ປ້ອນຊື່ຜູ້ໃຊ້-ລະຫັດຜ່ານ ແລະ ການໃຊ້ຟັງຊັ້ນເສີມໜ້າເວັບ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-website-login.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 3: 3. ການຢັ້ງຢືນຕົວຕົນ TPIN ແລະ OTP -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_intro"
+                    data-keywords="tpin otp verification ການຢັ້ງຢືນຕົວຕົນ ລະຫັດ 6 ຕົວເລກ ອະນຸມັດລາຍການ ກວດສອບ 3. ການຢັ້ງຢືນຕົວຕົນ TPIN ແລະ OTP"
+                    onclick="window.location.href='client-tpin-otp.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/tpin_verify_marked.png" alt="3. ການຢັ້ງຢືນຕົວຕົນ TPIN ແລະ OTP"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="3. ການຢັ້ງຢືນຕົວຕົນ TPIN ແລະ OTP">
+                                3. ການຢັ້ງຢືນຕົວຕົນ TPIN ແລະ OTP
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ການຢັ້ງຢືນຕົວຕົນໃນການໃຊ້ງານ ແລະ ອະນຸມັດລາຍການດ້ວຍລະຫັດ TPIN 6 ຕົວເລກ ຫຼື ລະຫັດ OTP ຜ່ານເບີໂທລະສັບ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-tpin-otp.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 4: 4. ພາບລວມຂອງ Dashboard -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_intro"
+                    data-keywords="dashboard overview ພາບລວມ ໜ້າຫຼັກ ບັນຊີ ທສກ ທຸລະກຳທີ່ລໍຖ້າອະນຸມັດ ລາຍງານລວມ 4. ພາບລວມຂອງ Dashboard"
+                    onclick="window.location.href='client-dashboard-overview.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/dashboard_overview_marked.png" alt="4. ພາບລວມຂອງ Dashboard"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="4. ພາບລວມຂອງ Dashboard">
+                                4. ພາບລວມຂອງ Dashboard
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ສ່ວນປະກອບຫຼັກຂອງໜ້າຈໍ Dashboard: ແຖບເມນູທຸລະກຳ, ບັນຊີຂອງ ທສກ ຫຼາຍສະກຸນເງິນ, ສະຖານະລໍຖ້າອະນຸມັດ ແລະ ກຣາຟລາຍງານ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-dashboard-overview.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 5: 5. ການໂອນເງິນພາຍໃນ ທສກ (ບຸກຄົນທົ່ວໄປ) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_transfer"
+                    data-keywords="internal transfer individual ການໂອນເງິນພາຍໃນ ທສກ ບຸກຄົນທົ່ວໄປ ໂອນເງິນ ໃບບິນ 5. ການໂອນເງິນພາຍໃນ ທສກ (ບຸກຄົນທົ່ວໄປ)"
+                    onclick="window.location.href='client-transfer-internal.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/transfer_internal_s1_marked.png" alt="5. ການໂອນເງິນພາຍໃນ ທສກ (ບຸກຄົນທົ່ວໄປ)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="5. ການໂອນເງິນພາຍໃນ ທສກ (ບຸກຄົນທົ່ວໄປ)">
+                                5. ການໂອນເງິນພາຍໃນ ທສກ (ບຸກຄົນທົ່ວໄປ)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນການໂອນເງິນພາຍໃນ ທສກ ສຳລັບຜູ້ໃຊ້ບຸກຄົນທົ່ວໄປ (Individual) ຕັ້ງແຕ່ປ້ອນຂໍ້ມູນ, ຢືນຢັນ TPIN/OTP ຈົນຮັບໃບບິນ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-transfer-internal.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 6: 6. ການໂອນເງິນພາຍໃນ ທສກ (ແບບມີຜູ້ອະນຸມັດ ຫຼື ປະທານ) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_transfer"
+                    data-keywords="corporate transfer maker checker chairman ການໂອນເງິນພາຍໃນ ແບບມີຜູ້ອະນຸມັດ ປະທານ ໝາຍດາວ ເລືອກຜູ້ອະນຸມັດ 6. ການໂອນເງິນພາຍໃນ ທສກ (ແບບມີຜູ້ອະນຸມັດ ຫຼື ປະທານ)"
+                    onclick="window.location.href='client-transfer-corporate.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/transfer_corp_s1_marked.png" alt="6. ການໂອນເງິນພາຍໃນ ທສກ (ແບບມີຜູ້ອະນຸມັດ ຫຼື ປະທານ)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="6. ການໂອນເງິນພາຍໃນ ທສກ (ແບບມີຜູ້ອະນຸມັດ ຫຼື ປະທານ)">
+                                6. ການໂອນເງິນພາຍໃນ ທສກ (ແບບມີຜູ້ອະນຸມັດ ຫຼື ປະທານ)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນການສ້າງລາຍການໂອນເງິນສຳລັບບໍລິສັດ (Maker) ແລະ ການເລືອກຜູ້ອະນຸມັດທົ່ວໄປ (2 ຄົນຂຶ້ນໄປ) ຫຼື ປະທານ (★ 1 ຄົນ)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-transfer-corporate.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 7: 7. ການອະນຸມັດການໂອນເງິນ (ຜູ້ອະນຸມັດ ຫຼື ປະທານ) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_transfer"
+                    data-keywords="approve transfer checker chairman ການອະນຸມັດການໂອນເງິນ ລໍຖ້າຢູ່ pending ອະນຸມັດ ປະຕິເສດ ຂໍ້ສັງເກດ 7. ການອະນຸມັດການໂອນເງິນ (ຜູ້ອະນຸມັດ ຫຼື ປະທານ)"
+                    onclick="window.location.href='client-approve-transfer.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/approve_transfer_s1_marked.png" alt="7. ການອະນຸມັດການໂອນເງິນ (ຜູ້ອະນຸມັດ ຫຼື ປະທານ)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="7. ການອະນຸມັດການໂອນເງິນ (ຜູ້ອະນຸມັດ ຫຼື ປະທານ)">
+                                7. ການອະນຸມັດການໂອນເງິນ (ຜູ້ອະນຸມັດ ຫຼື ປະທານ)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນສຳລັບ Checker ຫຼື Chairman ໃນການເຂົ້າເມນູ “ລໍຖ້າຢູ່” ເພື່ອກວດສອບລາຍການ PENDING, ປ້ອນຂໍ້ສັງເກດ ແລະ ອະນຸມັດ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-approve-transfer.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 8: 8. ການສ້າງ QR Code (LAO QR) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_services"
+                    data-keywords="create qr code ການສ້າງ qr code ຄິວອາໂຄດ lao qr ຮັບເງິນ ດາວໂຫຼດ qr 8. ການສ້າງ QR Code (LAO QR)"
+                    onclick="window.location.href='client-create-qr.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/create_qr_s1_marked.png" alt="8. ການສ້າງ QR Code (LAO QR)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="8. ການສ້າງ QR Code (LAO QR)">
+                                8. ການສ້າງ QR Code (LAO QR)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ວິທີການສ້າງ QR Code ຮັບເງິນ (LAO QR) ສຳລັບແຕ່ລະບັນຊີ, ການກຳນົດຈຳນວນເງິນ, ດາວໂຫຼດ ແລະ ແບ່ງປັນ QR
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-create-qr.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 9: 9. ການຊຳລະໃບບິນ (Bill Payment) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_services"
+                    data-keywords="bill payment ການຊຳລະໃບບິນ ຊຳລະບິນ ເຕີມມູນຄ່າໂທ ຈ່າຍຄ່າໄຟຟ້າ ຈ່າຍຄ່ານ້ຳ ຄ່າທຳນຽມທາງ umoney mmoney kolao krungsri ຈ່າຍຄ່າອາກອນ 9. ການຊຳລະໃບບິນ (Bill Payment)"
+                    onclick="window.location.href='client-bill-payment.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/bill_payment_s1_marked.png" alt="9. ການຊຳລະໃບບິນ (Bill Payment)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="9. ການຊຳລະໃບບິນ (Bill Payment)">
+                                9. ການຊຳລະໃບບິນ (Bill Payment)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນການເຂົ້າເມນູຊຳລະບິນ: ເຕີມມູນຄ່າໂທ, ຄ່າໄຟຟ້າ, ຄ່ານ້ຳປະປາ, ຄ່າທຳນຽມທາງ, Umoney, MMoney, Kolao, Krungsri ແລະ ຄ່າອາກອນ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-bill-payment.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 10: 10. ປະຫວັດການຈ່າຍ ແລະ ດາວໂຫຼດ Online Statement -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_services"
+                    data-keywords="payment history online statement ປະຫວັດການຈ່າຍ ປະຫວັດ ດາວໂຫຼດ ບັນຊີສຳຮອງ ການເຄື່ອນໄຫວບັນຊີ 10. ປະຫວັດການຈ່າຍ ແລະ ດາວໂຫຼດ Online Statement"
+                    onclick="window.location.href='client-payment-history.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/client/payment_history_s1_marked.png" alt="10. ປະຫວັດການຈ່າຍ ແລະ ດາວໂຫຼດ Online Statement"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="10. ປະຫວັດການຈ່າຍ ແລະ ດາວໂຫຼດ Online Statement">
+                                10. ປະຫວັດການຈ່າຍ ແລະ ດາວໂຫຼດ Online Statement
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ວິທີກວດເບິ່ງປະຫວັດທຸລະກຳຍ້ອນຫຼັງ, ດາວໂຫຼດໃບບິນລາຍການ ແລະ ການດາວໂຫຼດໃບລາຍງານບັນຊີສຳຮອງ (Online Statement)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Button View -->
+                    <div class="px-4 pb-4 pt-1">
+                        <a href="client-payment-history.html" onclick="event.stopPropagation();"
+                            class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-apb-600 hover:bg-apb-700 text-white text-xs font-bold transition-all duration-200">
+                            <span>ເບິ່ງຄູ່ມື (View)</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- CLIENT CARD 11: FLIGHT BOOKING (MEBANK CLIENT) -->
+                <div class="manual-card card-hover-effect hidden flex-col justify-between bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl overflow-hidden cursor-pointer group"
+                    data-menu="client"
+                    data-category="client_services"
+                    data-keywords="11 ຊຳລະບິນປີ້ເຮືອບິນ ຈອງປີ້ເຮືອບິນ booking flight lao skyway ລາວເດີນອາກາດ mebank client mobile app ປີ້ເຮືອບິນ"
+                    onclick="window.location.href='booking-flight.html'">
+
+                    <div>
+                        <!-- 1. Image -->
+                        <div class="relative h-40 bg-slate-100 overflow-hidden border-b border-slate-100">
+                            <img src="images/bill_payment_marked.png" alt="11. ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- 2. Title & 3. Description -->
+                        <div class="p-4 space-y-1.5">
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-apb-600 transition-colors line-clamp-1" title="11. ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)">
+                                11. ຄູ່ມືຊຳລະບິນປີ້ເຮືອບິນ ລາວເດີນອາກາດ (Lao Skyway)
+                            </h3>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                                ຂັ້ນຕອນການຈອງ ແລະ ຊຳລະບິນປີ້ເຮືອບິນ Lao Skyway ຜ່ານລະບົບ MeBank Client ຄົບທັງ 9 ຂັ້ນຕອນ.
                             </p>
                         </div>
                     </div>
@@ -772,45 +1132,86 @@
                 </div>
                 <span class="font-bold text-white">ທະນາຄານສົ່ງເສີມກະສິກຳ (APB MeBank Manuals Hub)</span>
             </div>
-            <div class="text-[11px] text-slate-500">© 2026 APB MeBank • Admin Portal Mebank & Mebank Client</div>
+            <div class="text-[11px] text-slate-500">© 2026 APB MeBank • Admin Portal Mebank (16) & Mebank Client (11)</div>
         </div>
     </footer>
 
-    <!-- Interactive Menu Tabs, Sub-Filtering & Search Script -->
     <script>
-        let currentMainMenu = 'admin'; // 'admin' or 'client'
-        let currentCategory = 'all';   // 'all', 'part1', 'part2'
+        let currentMenu = 'admin';
+        let currentCategory = 'all';
 
         function switchMainMenu(menu) {
-            currentMainMenu = menu;
+            currentMenu = menu;
             currentCategory = 'all';
 
-            const mainAdmin = document.getElementById('main-tab-admin');
-            const mainClient = document.getElementById('main-tab-client');
-            const subFilters = document.getElementById('admin-subfilters');
-            const menuTitle = document.getElementById('active-menu-title');
+            const tabAdmin = document.getElementById('main-tab-admin');
+            const tabClient = document.getElementById('main-tab-client');
+            const activeTitle = document.getElementById('active-menu-title');
+            const adminSubfilters = document.getElementById('admin-subfilters');
+            const clientSubfilters = document.getElementById('client-subfilters');
+            const pdfBtn = document.getElementById('header-pdf-btn');
+
+            const activeCls = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-apb-700 text-white shadow-sm';
+            const inactiveCls = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900';
 
             if (menu === 'admin') {
-                mainAdmin.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-apb-700 text-white shadow-sm";
-                mainClient.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900";
-                subFilters.classList.remove('hidden');
-                subFilters.classList.add('flex');
-                menuTitle.textContent = "ຄູ່ມືການນຳໃຊ້ລະບົບ Admin Portal Mebank";
-                setCategoryFilter('all');
+                tabAdmin.className = activeCls;
+                tabClient.className = inactiveCls;
+                activeTitle.textContent = 'ຄູ່ມືການນຳໃຊ້ລະບົບ Admin Portal Mebank';
+                adminSubfilters.classList.remove('hidden');
+                adminSubfilters.classList.add('flex');
+                clientSubfilters.classList.add('hidden');
+                clientSubfilters.classList.remove('flex');
+                if (pdfBtn) pdfBtn.href = 'files/ຄູ່ມືການນຳໃຊ້ Admin Portal Mebank (Update).pdf';
             } else {
-                mainClient.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 bg-apb-700 text-white shadow-sm";
-                mainAdmin.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900";
-                subFilters.classList.add('hidden');
-                subFilters.classList.remove('flex');
-                menuTitle.textContent = "ຄູ່ມືການນຳໃຊ້ແອັບລູກຄ້າ Mebank Client";
-                filterManualCards();
+                tabClient.className = activeCls;
+                tabAdmin.className = inactiveCls;
+                activeTitle.textContent = 'ຄູ່ມືການນຳໃຊ້ລະບົບ Mebank Client (Internet Banking & App)';
+                adminSubfilters.classList.add('hidden');
+                adminSubfilters.classList.remove('flex');
+                clientSubfilters.classList.remove('hidden');
+                clientSubfilters.classList.add('flex');
+                if (pdfBtn) pdfBtn.href = 'files/mebank client.pdf';
             }
+
+            setCategoryFilter('all');
+        }
+
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+
+            if (currentMenu === 'admin') {
+                const cats = ['all', 'part1', 'part2'];
+                cats.forEach(c => {
+                    const btn = document.getElementById('cat-' + c);
+                    if (!btn) return;
+                    if (c === cat) {
+                        btn.className = 'px-3 py-1.5 rounded-xl bg-apb-700 text-white font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0';
+                    } else {
+                        btn.className = 'px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0';
+                    }
+                });
+            } else {
+                const cats = ['all', 'client_intro', 'client_transfer', 'client_services'];
+                cats.forEach(c => {
+                    const btn = document.getElementById('client-cat-' + c);
+                    if (!btn) return;
+                    if (c === cat) {
+                        btn.className = 'px-3 py-1.5 rounded-xl bg-apb-700 text-white font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0';
+                    } else {
+                        btn.className = 'px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0';
+                    }
+                });
+            }
+
+            filterManualCards();
         }
 
         function filterManualCards() {
-            const query = document.getElementById('manual-search-input').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.manual-card');
+            const input = document.getElementById('manual-search-input');
+            const query = (input.value || '').trim().toLowerCase();
             const clearBtn = document.getElementById('btn-clear-search');
+            const cards = document.querySelectorAll('.manual-card');
             let visibleCount = 0;
 
             if (query.length > 0) {
@@ -820,16 +1221,16 @@
             }
 
             cards.forEach(card => {
-                const cardMenu = card.getAttribute('data-menu');
-                const keywords = card.getAttribute('data-keywords').toLowerCase();
-                const category = card.getAttribute('data-category');
-                const cardText = card.innerText.toLowerCase();
+                const menu = card.getAttribute('data-menu');
+                const cat = card.getAttribute('data-category');
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const textContent = (card.innerText || '').toLowerCase();
 
-                const matchesMenu = (cardMenu === currentMainMenu);
-                const matchesQuery = query === '' || keywords.includes(query) || cardText.includes(query);
-                const matchesCategory = currentMainMenu === 'client' || currentCategory === 'all' || category === currentCategory;
+                const matchesMenu = (menu === currentMenu);
+                const matchesCat = (currentCategory === 'all') || (cat === currentCategory);
+                const matchesQuery = !query || keywords.includes(query) || textContent.includes(query);
 
-                if (matchesMenu && matchesQuery && matchesCategory) {
+                if (matchesMenu && matchesCat && matchesQuery) {
                     card.classList.remove('hidden');
                     card.classList.add('flex');
                     visibleCount++;
@@ -839,50 +1240,27 @@
                 }
             });
 
-            const noResults = document.getElementById('no-search-results');
-            const countBadge = document.getElementById('manual-count-badge');
+            document.getElementById('manual-count-badge').textContent = `${visibleCount} ຄູ່ມື`;
 
+            const noRes = document.getElementById('no-search-results');
             if (visibleCount === 0) {
-                noResults.classList.remove('hidden');
+                noRes.classList.remove('hidden');
             } else {
-                noResults.classList.add('hidden');
+                noRes.classList.add('hidden');
             }
-
-            countBadge.textContent = `${visibleCount} ຄູ່ມື`;
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        }
-
-        function setCategoryFilter(category) {
-            currentCategory = category;
-
-            const buttons = ['all', 'part1', 'part2'];
-            buttons.forEach(b => {
-                const btn = document.getElementById(`cat-${b}`);
-                if (btn) {
-                    if (b === category) {
-                        btn.className = "px-3 py-1.5 rounded-xl bg-apb-700 text-white font-bold transition shadow-sm flex items-center gap-1.5 flex-shrink-0";
-                    } else {
-                        btn.className = "px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 flex-shrink-0";
-                    }
-                }
-            });
-
-            filterManualCards();
         }
 
         function clearSearch() {
-            document.getElementById('manual-search-input').value = '';
+            const input = document.getElementById('manual-search-input');
+            input.value = '';
             filterManualCards();
+            input.focus();
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            if (params.get('menu') === 'client' || window.location.hash === '#client') {
+            if (params.get('menu') === 'client') {
                 switchMainMenu('client');
-            } else {
-                switchMainMenu('admin');
             }
             if (window.lucide) {
                 lucide.createIcons();
